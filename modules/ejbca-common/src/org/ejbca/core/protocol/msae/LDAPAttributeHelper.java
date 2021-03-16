@@ -120,7 +120,9 @@ public class LDAPAttributeHelper {
             
             log.info("Security descriptor for " + (String)attributes.get("CN").get());
             for (ACE ace : accessControlEntries) {
-                log.info(GUID.getGuidAsString(ace.getObjectType()) + " ; " + ace.getType().toString());
+                if (ace.getObjectType() != null) {
+                    log.info(GUID.getGuidAsString(ace.getObjectType()) + " ; " + ace.getType().toString());
+                }
             }
             
             
