@@ -79,10 +79,12 @@ public class ServiceControlFilter implements Filter {
         
         // TODO REMVOE THIS
         if (serviceName.equals("MSAE")) {
+            log.info("Headers:");
             Enumeration<String> headerNames = httpRequest.getHeaderNames();
             if (headerNames != null) {
                 while (headerNames.hasMoreElements()) {
-                    log.info("Header: " + httpRequest.getHeader(headerNames.nextElement()));
+                    String headerName = headerNames.nextElement();
+                    log.info("'" + headerName + "' - '" + httpRequest.getHeader(headerName) + "'");
                 }
             } else {
                 log.info("No headers found in request");
