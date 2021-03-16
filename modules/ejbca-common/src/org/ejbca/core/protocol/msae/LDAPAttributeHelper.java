@@ -122,6 +122,8 @@ public class LDAPAttributeHelper {
                         ace.getObjectType() != null && 
                         GUID.getGuidAsString(ace.getObjectType()).equals(AD_ACCESS_TYPE_AUTOENROLL)) {
                     if (groupMembership.contains(ace.getSid().toString())) {
+                        //TODO REMOVE
+                        log.info("Requesting user is member of '" + ace.getSid().toString() + "' which allows autoenrolle");
                         autoenrollAllowed = true;
                     }
                 }
