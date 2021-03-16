@@ -117,6 +117,13 @@ public class LDAPAttributeHelper {
             byte[] securityDescription = (byte[]) attribute.get();
             final SDDL sddl = new SDDL(securityDescription);
             final List<ACE> accessControlEntries = sddl.getDacl().getAces();
+            
+            log.info("Security descriptor for " + (String)attributes.get("CN").get());
+            for (ACE ace : accessControlEntries) {
+                log.info(GUID.getGuidAsString(ace.getObjectType()) + " ; " + ace.getType().toString());
+            }
+            
+            
             for (ACE ace : accessControlEntries) {
                 if (ace.getType() == AceType.ACCESS_ALLOWED_OBJECT_ACE_TYPE && 
                         ace.getObjectType() != null && 
