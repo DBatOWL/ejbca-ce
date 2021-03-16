@@ -123,7 +123,7 @@ public class LDAPAttributeHelper {
                         GUID.getGuidAsString(ace.getObjectType()).equals(AD_ACCESS_TYPE_AUTOENROLL)) {
                     if (groupMembership.contains(ace.getSid().toString())) {
                         //TODO REMOVE
-                        log.info("Requesting user is member of '" + ace.getSid().toString() + "' which allows autoenrolle");
+                        log.info("Requesting user is member of '" + ace.getSid().toString() + "' which allows auto enroll");
                         autoenrollAllowed = true;
                     }
                 }
@@ -131,6 +131,7 @@ public class LDAPAttributeHelper {
                         ace.getObjectType() != null && 
                         GUID.getGuidAsString(ace.getObjectType()).equals(AD_ACCESS_TYPE_ENROLL)) {
                     if (groupMembership.contains(ace.getSid().toString())) {
+                        log.info("Requesting user is member of '" + ace.getSid().toString() + "' which allows enroll");
                         enrollAllowed = true;
                     }
                 }
