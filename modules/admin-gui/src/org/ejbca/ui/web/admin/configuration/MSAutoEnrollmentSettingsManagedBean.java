@@ -372,9 +372,10 @@ public class MSAutoEnrollmentSettingsManagedBean extends BaseManagedBean {
         List<SelectItem> availableTemplates = new ArrayList<>();
         availableTemplates.add(new SelectItem(SELECT_MST));
 
-        for (MSAutoEnrollmentSettingsTemplate template: getAvailableTemplateSettingsFromAD()) {
-            availableTemplates.add(new SelectItem(template.getOid(), template.getDisplayName()));
-        }
+        getAvailableTemplateSettingsFromAD().stream()
+            .map(template -> new SelectItem(template.getOid(), template.getDisplayName()))
+            .sorted((item1, item2) -> item1.getValue().toString().compareTo(item2.getValue().toString()))
+            .forEach(item -> availableTemplates.add(item));
 
         return availableTemplates;
     }
