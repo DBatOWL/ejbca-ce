@@ -117,11 +117,20 @@ public class LDAPAttributeHelper {
             byte[] securityDescription = (byte[]) attribute.get();
             final SDDL sddl = new SDDL(securityDescription);
             final List<ACE> accessControlEntries = sddl.getDacl().getAces();
+            //TODO REMOVE THIS LOGGING
+            log.info("Security descriptor for " + (String)attributes.get("CN").get());
+            for (ACE ace : accessControlEntries) {
+                if (ace.getObjectType() != null) {
+                    log.info(GUID.getGuidAsString(ace.getObjectType()) + " ; " + ace.getType().toString());
+                }
+            }
             for (ACE ace : accessControlEntries) {
                 if (ace.getType() == AceType.ACCESS_ALLOWED_OBJECT_ACE_TYPE && 
                         ace.getObjectType() != null && 
                         GUID.getGuidAsString(ace.getObjectType()).equals(AD_ACCESS_TYPE_AUTOENROLL)) {
                     if (groupMembership.contains(ace.getSid().toString())) {
+                        //TODO REMOVE
+                        log.info("User is member of '" + ace.getSid().toString() + "' which allows auto enroll for " + (String)attributes.get("CN").get());
                         autoenrollAllowed = true;
                     }
                 }
@@ -129,6 +138,7 @@ public class LDAPAttributeHelper {
                         ace.getObjectType() != null && 
                         GUID.getGuidAsString(ace.getObjectType()).equals(AD_ACCESS_TYPE_ENROLL)) {
                     if (groupMembership.contains(ace.getSid().toString())) {
+                        log.info("User is member of '" + ace.getSid().toString() + "' which allows enroll for " + (String)attributes.get("CN").get());
                         enrollAllowed = true;
                     }
                 }
