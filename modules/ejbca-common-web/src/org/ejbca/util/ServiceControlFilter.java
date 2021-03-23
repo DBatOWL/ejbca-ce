@@ -89,6 +89,7 @@ public class ServiceControlFilter implements Filter {
             } else {
                 log.info("No headers found in request");
             }
+        }
         
         // Note: Swagger gets serviceName == AvailableProtocols.REST_CERTIFICATE_MANAGEMENT
         if (!availableProtocolsConfiguration.getProtocolStatus(serviceName)) {
