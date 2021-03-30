@@ -83,6 +83,7 @@ public class LDAPAttributeHelper {
         // Set Display Name
         msaeTemplate.setDisplayName(displayName);
         // Set Name
+        log.info("setName: " + name); //TODO REMOVE
         msaeTemplate.setName(name);
         // Set Publish To AD
         final Long adEnrollment = Long.valueOf(enrollmentFlag);
