@@ -474,6 +474,19 @@ public final class StringTools {
       Matcher m2 = StringTools.VALID_IPV6_PATTERN.matcher(ipAddress);
       return m2.matches();
     }
+    
+    /**
+     * Determine if the given string is a valid IPv6 address @see StringTools#isIpAddress(String)
+     *
+     * @param ipAddress A string that is to be examined to verify whether or not
+     *  it could be a valid IPv6 address.
+     * @return <code>true</code> if the string is a value that is a valid IPv6 address,
+     *  <code>false</code> otherwise.
+     */
+    public static boolean isIPv6Address(String ipAddress) {
+      Matcher m2 = StringTools.VALID_IPV6_PATTERN.matcher(ipAddress);
+      return m2.matches();
+    }
 
     /**
      * Determines if the given string is a valid URI

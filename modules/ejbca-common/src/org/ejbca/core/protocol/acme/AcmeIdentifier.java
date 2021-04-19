@@ -15,8 +15,6 @@ package org.ejbca.core.protocol.acme;
 /**
  * An ACME identifier is what the client requests the CA to certify.
  * Only the type DNS name exists so far (RFC draft 06).
- * 
- * @version $Id$
  */
 public interface AcmeIdentifier {
     
@@ -29,7 +27,8 @@ public interface AcmeIdentifier {
     void setValue(String value);
 
     enum AcmeIdentifierTypes {
-        DNS;
+        DNS,
+        IP;
 
         public String getJsonValue() { return this.name().toLowerCase(); }
     }
