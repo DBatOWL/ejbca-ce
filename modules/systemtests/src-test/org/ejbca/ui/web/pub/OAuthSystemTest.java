@@ -222,9 +222,8 @@ public class OAuthSystemTest {
         ), null));
         // Add the second RA role
         roleMember = new RoleMember(OAuth2AuthenticationTokenMetaData.TOKEN_TYPE,
-                adminca.getCAId(), OAuth2AccessMatchValue.CLAIM_SUBJECT.getNumericValue(), AccessMatchType.TYPE_EQUALCASE.getNumericValue(),
+                adminca.getCAId(), oAuthKeyInfo.getInternalId(), OAuth2AccessMatchValue.CLAIM_SUBJECT.getNumericValue(), AccessMatchType.TYPE_EQUALCASE.getNumericValue(),
                 OAUTH_SUB, role1.getRoleId(), null);
-        roleMember.setTokenProviderId(oAuthKeyInfo.getInternalId());
         roleMember = roleMemberSession.persist(authenticationToken, roleMember);
 
         token = encodeToken("{\"alg\":\"RS256\",\"kid\":\"" + OAUTH_KEY + "\",\"typ\":\"JWT\"}", "{\"sub\":\"" + OAUTH_SUB + "\"}", privKey);

@@ -73,6 +73,7 @@ public class RoleInitializationSessionBean implements RoleInitializationSessionR
         final Role role = roleSession.persistRole(authenticationToken, new Role(null, roleName, accessRules));
         roleMemberSession.persist(authenticationToken, new RoleMember(X509CertificateAuthenticationTokenMetaData.TOKEN_TYPE,
                 CertTools.getIssuerDN(certificate).hashCode(),
+                RoleMember.NO_PROVIDER,
                 X500PrincipalAccessMatchValue.WITH_SERIALNUMBER.getNumericValue(),
                 AccessMatchType.TYPE_EQUALCASE.getNumericValue(),
                 CertTools.getSerialNumber(certificate).toString(16),
@@ -112,6 +113,7 @@ public class RoleInitializationSessionBean implements RoleInitializationSessionR
             final Role role = roleSession.persistRole(alwaysAllowAuthenticationToken, new Role(roleNameSpace, roleName, initialAccessRules));
             roleMemberSession.persist(alwaysAllowAuthenticationToken, new RoleMember(X509CertificateAuthenticationTokenMetaData.TOKEN_TYPE,
                     CertTools.getIssuerDN(x509Certificate).hashCode(),
+                    RoleMember.NO_PROVIDER,
                     X500PrincipalAccessMatchValue.WITH_SERIALNUMBER.getNumericValue(),
                     AccessMatchType.TYPE_EQUALCASE.getNumericValue(),
                     CertTools.getSerialNumber(x509Certificate).toString(16),

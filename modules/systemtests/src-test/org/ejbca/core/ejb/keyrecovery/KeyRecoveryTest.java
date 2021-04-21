@@ -143,7 +143,7 @@ public class KeyRecoveryTest extends CaTestCase {
                 AccessRulesConstants.REGULAR_KEYRECOVERY,
                 StandardRules.CAACCESS.resource() + getTestCAId()
                 ), null));
-        roleMemberSession.persist(internalAdmin, new RoleMember(X509CertificateAuthenticationTokenMetaData.TOKEN_TYPE, getTestCAId(),
+        roleMemberSession.persist(internalAdmin, new RoleMember(X509CertificateAuthenticationTokenMetaData.TOKEN_TYPE, getTestCAId(), RoleMember.NO_PROVIDER,
                 X500PrincipalAccessMatchValue.WITH_COMMONNAME.getNumericValue(), AccessMatchType.TYPE_EQUALCASE.getNumericValue(),
                 CertTools.getPartFromDN(CertTools.getSubjectDN(getTestCACert()), "CN"), role.getRoleId(), null));
     }
