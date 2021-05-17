@@ -12,26 +12,6 @@
  *************************************************************************/
 package org.ejbca.core.model.era;
 
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.SignatureException;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateEncodingException;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateExpiredException;
-import java.security.cert.X509Certificate;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.cesecore.CesecoreException;
 import org.cesecore.audit.enums.EventType;
 import org.cesecore.authentication.AuthenticationFailedException;
@@ -63,6 +43,7 @@ import org.cesecore.certificates.certificateprofile.CertificateProfileDoesNotExi
 import org.cesecore.certificates.endentity.EndEntityInformation;
 import org.cesecore.config.GlobalCesecoreConfiguration;
 import org.cesecore.config.GlobalOcspConfiguration;
+import org.cesecore.config.OAuthConfiguration;
 import org.cesecore.config.RaStyleInfo;
 import org.cesecore.configuration.ConfigurationBase;
 import org.cesecore.keys.token.CryptoTokenOfflineException;
@@ -111,6 +92,26 @@ import org.ejbca.cvc.exception.ConstructionException;
 import org.ejbca.cvc.exception.ParseException;
 import org.ejbca.ui.web.protocol.CertificateRenewalException;
 import org.ejbca.util.query.IllegalQueryException;
+
+import java.io.IOException;
+import java.math.BigInteger;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.security.SignatureException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateEncodingException;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateExpiredException;
+import java.security.cert.X509Certificate;
+import java.security.spec.InvalidKeySpecException;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * API of available methods on the CA that can be invoked by the RA.
@@ -526,13 +527,14 @@ public interface RaMasterApi {
     void finishUserAfterLocalKeyRecovery(AuthenticationToken authenticationToken, String username, String password) throws AuthorizationDeniedException, EjbcaException;
 
     /**
-     * Generates keystore for the specified end entity. Used for server side generated key pairs. It can be of PKCS12 or JKS type.
-     * Keystore can be loaded with:
+     * <p>Generates keystore for the specified end entity. Used for server side generated key pairs. The keystore can be one of
+     * the following types:
+     * <ul>
+     *     <li>PKCS12</li>
+     *     <li>BCFKS</li>
+     *     <li>JKS</li>
+     * </ul>
      *
-     * KeyStore ks = KeyStore.getInstance(endEntityInformation.getTokenType() == EndEntityConstants.TOKEN_SOFT_P12 ? "PKCS12" : "JKS");
-     * ks.load(new ByteArrayInputStream(keystoreAsByteArray), endEntityInformation.getPassword().toCharArray());
-     *
-     * Note that endEntityInformation are still needed to load a keystore.
      * @param authenticationToken authentication token
      * @param endEntityInformation holds end entity information (including user's password)
      * @return generated keystore
@@ -924,7 +926,19 @@ public interface RaMasterApi {
     SignRequestSignatureException, AuthStatusException, AuthLoginException, IllegalNameException, CertificateCreateException, CertificateRevokeException, CertificateSerialNumberException,
     IllegalValidityException, CAOfflineException, InvalidAlgorithmException, SignatureException, CertificateException, AuthorizationDeniedException,
     CertificateExtensionException, CertificateRenewalException;
-
+    
+    /**
+     * Verifies and decrypts the SCEP PKCS10 message CSR with the CAs cryptoToken.
+     * 
+     * @param authenticationToken the origin of the request
+     * @param alias name of alias containing SCEP configuration
+     * @param message to parse
+     * @return the DER encoded CSR or null.
+     * @throws CertificateCreateException if the message could not be parsed or verified.
+     * @since RA Master API version 11 (EJBCA 7.5.0)  
+     */
+    byte[] verifyScepPkcs10RequestMessage(final AuthenticationToken authenticationToken, final String alias, final byte[] message) throws CertificateCreateException;
+    
     /**
      * Dispatch CMP request over RaMasterApi.
      *
@@ -945,7 +959,7 @@ public interface RaMasterApi {
      * @since RA Master API version 2 (EJBCA 6.11.0)
      */
     @Deprecated
-    byte[] estDispatch(String operation, String alias, X509Certificate cert, String username, String password, byte[] requestBody)
+    byte[] estDispatch(String operation, String alias, X509Certificate tlscert, String username, String password, byte[] requestBody)
             throws NoSuchAliasException, CADoesntExistsException, CertificateCreateException, CertificateRenewalException, AuthenticationFailedException;
 
     /**
@@ -956,7 +970,7 @@ public interface RaMasterApi {
      * @param authenticationToken the origin of the request
      * @param operation the EST operation to perform
      * @param alias the requested CA configuration that should handle the request.
-     * @param cert The client certificate used to request this operation if any
+     * @param tlscert The client TLS certificate used to request this operation if any
      * @param username The authentication username if any
      * @param password The authentication password if any
      * @param requestBody The HTTP request body. Usually a PKCS#10
@@ -973,7 +987,7 @@ public interface RaMasterApi {
      * @see org.ejbca.core.protocol.est.EstOperationsSessionRemote
      * @since Added in EJBCA 7.5.0, 7.4.3, 7.4.1.1. Those have different API versions, so this method is not tied to any specific version.
      */
-    byte[] estDispatchAuthenticated(AuthenticationToken authenticationToken, String operation, String alias, X509Certificate cert, String username,
+    byte[] estDispatchAuthenticated(AuthenticationToken authenticationToken, String operation, String alias, X509Certificate tlscert, String username,
             String password, byte[] requestBody) throws AuthorizationDeniedException, NoSuchAliasException, CADoesntExistsException, CertificateCreateException,
             CertificateRenewalException, AuthenticationFailedException;
 
@@ -1447,6 +1461,7 @@ public interface RaMasterApi {
      * @see GlobalAcmeConfiguration
      * @see GlobalOcspConfiguration
      * @see GlobalUpgradeConfiguration
+     * @see OAuthConfiguration
      *
      * @param type the concrete global configuration object class.
      * @return the global configuration or null.

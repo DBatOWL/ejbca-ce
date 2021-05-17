@@ -12,23 +12,6 @@
  *************************************************************************/
 package org.cesecore.certificates.certificateprofile;
 
-import java.io.Serializable;
-import java.security.PublicKey;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.StringTokenizer;
-
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -51,6 +34,23 @@ import org.cesecore.internal.UpgradeableDataHashMap;
 import org.cesecore.keys.util.KeyTools;
 import org.cesecore.util.CertTools;
 import org.cesecore.util.ValidityDate;
+
+import java.io.Serializable;
+import java.security.PublicKey;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.StringTokenizer;
 
 /**
  * CertificateProfile is a basic class used to customize a certificate configuration or be inherited by fixed certificate profiles.
@@ -178,6 +178,7 @@ public class CertificateProfile extends UpgradeableDataHashMap implements Serial
     protected static final String SUBJECTALTNAMESUBSET = "subjectaltnamesubset";
     protected static final String USEDCERTIFICATEEXTENSIONS = "usedcertificateextensions";
     protected static final String DESCRIPTION = "description";
+    protected static final String EABNAMESPACE = "eabnamespace";
     /**
      * @deprecated since 6.8.0, where approval settings and profiles became interlinked.
      */
@@ -558,6 +559,7 @@ public class CertificateProfile extends UpgradeableDataHashMap implements Serial
 
         setOverridableExtensionOIDs(new LinkedHashSet<>());
         setNonOverridableExtensionOIDs(new LinkedHashSet<>());
+        setEabNamespace(null);
     }
 
     /**
@@ -1373,13 +1375,19 @@ public class CertificateProfile extends UpgradeableDataHashMap implements Serial
         final List<String> availableKeyAlgorithms = getAvailableKeyAlgorithmsAsList();
         final List<Integer> availableBitLengths = getAvailableBitLengthsAsList();
         final List<String> availableEcCurves = getAvailableEcCurvesAsList();
-        if (!availableKeyAlgorithms.contains(keyAlgorithm)) { return false; }
+        if (!availableKeyAlgorithms.contains(keyAlgorithm)) {
+            return false;
+        }
         if (StringUtils.isNumeric(keySpecification)) {
             // keySpecification is a bit length (RSA)
             return availableBitLengths.contains(Integer.parseInt(keySpecification));
         } else {
             // keySpecification is a curve name (EC)
-            return availableEcCurves.contains(keySpecification) || availableEcCurves.contains(CertificateProfile.ANY_EC_CURVE);
+            final boolean anyCurveIsAllowed = availableEcCurves.contains(CertificateProfile.ANY_EC_CURVE);
+            final boolean specifiedCurveIsAllowed = availableEcCurves
+                    .stream()
+                    .anyMatch(AlgorithmTools.getEcKeySpecAliases(keySpecification)::contains);
+            return anyCurveIsAllowed || specifiedCurveIsAllowed;
         }
     }
 
@@ -1958,6 +1966,18 @@ public class CertificateProfile extends UpgradeableDataHashMap implements Serial
             data.put(DESCRIPTION, "");
         } else {
             data.put(DESCRIPTION, description);
+        }
+    }
+
+    public String getEabNamespace() {
+        return StringUtils.defaultString((String) data.get(EABNAMESPACE));
+    }
+
+    public void setEabNamespace(String eabNamespace) {
+        if (eabNamespace == null) {
+            data.put(EABNAMESPACE, "");
+        } else {
+            data.put(EABNAMESPACE, eabNamespace);
         }
     }
 

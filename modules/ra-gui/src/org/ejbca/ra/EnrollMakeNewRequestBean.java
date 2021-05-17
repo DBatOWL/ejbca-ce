@@ -184,6 +184,7 @@ public class EnrollMakeNewRequestBean implements Serializable {
     private String signature;
     private String csrFileName;
     private String extensionData;
+    private String accountBindingId;
     private SubjectDn subjectDn;
     private SubjectAlternativeName subjectAlternativeName;
     private SubjectDirectoryAttributes subjectDirectoryAttributes;
@@ -263,6 +264,20 @@ public class EnrollMakeNewRequestBean implements Serializable {
         }
         String availableKeyStores = endEntityProfile.getValue(EndEntityProfile.AVAILKEYSTORE, 0);
         return availableKeyStores != null && availableKeyStores.contains(String.valueOf(SecConst.TOKEN_SOFT_P12))
+                && getSelectedKeyPairGenerationEnum() != null && KeyPairGeneration.ON_SERVER.equals(getSelectedKeyPairGenerationEnum())
+                && !isApprovalRequired();
+    }
+
+    /**
+     * @return true if keystore download options in FIPS PKCS#12 format should be provided (e.g. keystore generation was used and no approvals are required)
+     */
+    public boolean isgenerateBcfksButtonRendered() {
+        EndEntityProfile endEntityProfile = getEndEntityProfile();
+        if (endEntityProfile == null) {
+            return false;
+        }
+        String availableKeyStores = endEntityProfile.getValue(EndEntityProfile.AVAILKEYSTORE, 0);
+        return availableKeyStores != null && availableKeyStores.contains(String.valueOf(SecConst.TOKEN_SOFT_BCFKS))
                 && getSelectedKeyPairGenerationEnum() != null && KeyPairGeneration.ON_SERVER.equals(getSelectedKeyPairGenerationEnum())
                 && !isApprovalRequired();
     }
@@ -539,6 +554,10 @@ public class EnrollMakeNewRequestBean implements Serializable {
             }
         }
         return true;
+    }
+
+    public boolean isEABrendered(){
+        return (isKeyAlgorithmAvailable() || isTokenTypeAvilable()) && (getCertificateProfile() != null && StringUtils.isNotEmpty(getCertificateProfile().getEabNamespace()));
     }
 
     /**
@@ -837,6 +856,11 @@ public class EnrollMakeNewRequestBean implements Serializable {
         downloadToken(token, APPLICATION_X_PKCS12, ".p12");
     }
 
+    public void addEndEntityAndgenerateBcfks() {
+        byte[] token = addEndEntityAndGenerateToken(EndEntityConstants.TOKEN_SOFT_BCFKS, null);
+        downloadToken(token, APPLICATION_X_PKCS12, ".p12");
+    }
+
     public void addEndEntityAndGenerateJks() {
         byte[] token = addEndEntityAndGenerateToken(EndEntityConstants.TOKEN_SOFT_JKS, null);
         downloadToken(token, APPLICATION_OCTET_STREAM, ".jks");
@@ -875,6 +899,10 @@ public class EnrollMakeNewRequestBean implements Serializable {
                     }
                 }
             }
+        }
+        // Add account binding Id
+        if (accountBindingId != null) {
+            extendedInformation.setAccountBindingId(accountBindingId);
         }
         // Add PSD2 QC Statement
         if (selectedPsd2PspRoles != null && !selectedPsd2PspRoles.isEmpty()) {
@@ -1046,7 +1074,6 @@ public class EnrollMakeNewRequestBean implements Serializable {
 
     /**
      * Reports an error message in the GUI and in the server log.
-     * @param endEntityInformation End Entity
      * @param errorCode Error code, may be null
      * @param exception Exception
      */
@@ -1075,7 +1102,6 @@ public class EnrollMakeNewRequestBean implements Serializable {
      * Reports an error message in the GUI and in the server log.
      * @param messageKey Language string key
      * @param logMessage Message to log at INFO level
-     * @param endEntityInformation End Entity
      * @param errorCode Error code, may be null
      * @param exception Exception
      */
@@ -1864,6 +1890,14 @@ public class EnrollMakeNewRequestBean implements Serializable {
 
     public void setExtensionData(String extensionData) {
         this.extensionData = extensionData;
+    }
+
+    public String getAccountBindingId() {
+        return accountBindingId;
+    }
+
+    public void setAccountBindingId(String accountBindingId) {
+        this.accountBindingId = accountBindingId;
     }
 
     public String getPsd2NcaName() {
