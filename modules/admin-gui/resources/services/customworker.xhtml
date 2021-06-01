@@ -23,7 +23,25 @@
      -->
 	</ui:remove>
 	<body>
+
 	<ui:composition>
+
+	<f:verbatim>
+		<script>
+			function enableDisable(groupName) {
+				var selection = document.getElementsByClassName("controller-" + groupName).item(0);
+				var selectedValue = btoa(selection.value);
+				for (e of document.getElementsByClassName("enable-" + groupName)) {
+					e.disabled = !e.className.includes("enable-" + groupName + "-" + selectedValue);
+				}
+			}
+			function enableDisableAfterPageLoad(groupName) {
+				window.addEventListener('load', (event) => {
+					enableDisable(groupName);
+				});
+			}
+		</script>
+	</f:verbatim>
 
 	<h:panelGrid styleClass="edit-ctnd" width="100%" columns="2"
 		rowClasses="Row0,Row1"
@@ -113,18 +131,26 @@
 			<h:column>
 				<h:inputText rendered="#{customUiProperty.typeText}"
 					value="#{customUiProperty.value}" style="min-width: 240px;"
-					disabled="#{not editService.hasEditRights}" />
+					disabled="#{not editService.hasEditRights}"
+					styleClass="#{customUiProperty.cssClass}" />
 				<h:inputSecret rendered="#{customUiProperty.typeSecret}"
+					redisplay="true"
 					value="#{customUiProperty.value}" style="min-width: 240px;"
-					disabled="#{not editService.hasEditRights}" />
+					disabled="#{not editService.hasEditRights}" 
+					styleClass="#{customUiProperty.cssClass}"/>
 				<h:selectBooleanCheckbox rendered="#{customUiProperty.typeBoolean}"
 					value="#{customUiProperty.booleanValue}"
 					disabled="#{not editService.hasEditRights}" />
 				<h:selectOneMenu rendered="#{customUiProperty.typeSelectOne}"
+					styleClass="controller-#{customUiProperty.enabledGroupId}"
 					value="#{customUiProperty.value}" style="min-width: 240px;"
-					disabled="#{not editService.hasEditRights}">
+					disabled="#{not editService.hasEditRights}"
+					onchange="enableDisable('#{customUiProperty.enabledGroupId}');">
 					<f:selectItems
 						value="#{editService.customWorkerType.customUiPropertySelectItems}" />
+					<script>
+						enableDisableAfterPageLoad('#{customUiProperty.enabledGroupId}');
+					</script>
 				</h:selectOneMenu>
 				<h:selectManyListbox rendered="#{customUiProperty.typeSelectMany}"
 					value="#{customUiProperty.multiValue}" style="min-width: 240px;"
@@ -137,4 +163,5 @@
 	</h:panelGroup>
 	</ui:composition>
 	</body>
+
 </html>
