@@ -1843,6 +1843,16 @@ public class UpgradeSessionBean implements UpgradeSessionLocal, UpgradeSessionRe
             log.error("    UPDATE CRLData SET crlPartitionIndex=-1 WHERE crlPartitionIndex IS NULL OR crlPartitionIndex=0;");
             throw new UpgradeFailedException(e);
         }
+        upgradeSession.fixPartitionedCrlsIndexes();
+    }
+
+    /**
+     * Updates CRL indexes. Called by {@link #fixPartitionedCrls}.
+     * Runs without a transaction because indexes are modified.
+     */
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    @Override
+    public void fixPartitionedCrlsIndexes() throws UpgradeFailedException {
         try {
             final long startReindex = System.currentTimeMillis();
             final Query dropCrlDataIndex3 = entityManager.createNativeQuery("DROP INDEX IF EXISTS crldata_idx3 ON CRLData");
