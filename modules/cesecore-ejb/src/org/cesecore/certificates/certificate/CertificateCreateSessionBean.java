@@ -328,7 +328,12 @@ public class CertificateCreateSessionBean implements CertificateCreateSessionLoc
         }
         return ca;
     }
-    
+
+    // Run in a new transaction, so the certificate is always stored, even if there is a network/database failure during
+    // publishing (which happens after createCertificate is called). Validation of both the data and the final certificate
+    // happens in this method, so those steps can still trigger a roll back (except of pre-certificates, which are never
+    // rolled back).
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Override
     public CertificateDataWrapper createCertificate(final AuthenticationToken admin, final EndEntityInformation endEntityInformation, final CA ca,
             final RequestMessage request, final PublicKey pk, final int keyusage, final Date notBefore, final Date notAfter,
