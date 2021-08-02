@@ -66,23 +66,22 @@ EJBCA_DIRECTORY=$(echo "$startdirectory" | sed 's/\/bin\/.*//')
 
 mysql_root_user="root"
 
-WILDFLY_VERSION="10.1.0.Final"
-#EJBCA_VERSION="6_5.0.5"
-MARIADB_CONNECTOR_VERSION="2.2.0"
+WILDFLY_VERSION="22.0.1.Final"
+#EJBCA_VERSION="7_5.0.1"
+MARIADB_CONNECTOR_VERSION="2.7.0"
 
 #EJBCA_DOWNLOAD_URL="https://downloads.sourceforge.net/project/ejbca/ejbca6/ejbca_6_5_0/ejbca_ce_${EJBCA_VERSION}.zip"
 #EJBCA_DOWNLOAD_SHA256=85c09d584896bef01d207b874c54ae2f994d38dd85b40fd10c21f71f7210be8a
 #EJBCA_DOWNLOAD_SHA256_URL="https://downloads.sourceforge.net/project/ejbca/ejbca6/ejbca_6_5_0/ejbca_ce_${EJBCA_VERSION}.zip.SHA-256"
 
 MARIADB_DOWNLOAD_URL="https://downloads.mariadb.com/Connectors/java/connector-java-${MARIADB_CONNECTOR_VERSION}/mariadb-java-client-${MARIADB_CONNECTOR_VERSION}.jar"
-MARIADB_DOWNLOAD_SHA256=fead0b3c61eba772fdaef2abed3b80eaeadbb5706abd78acf7698fe0a871cd4c
+MARIADB_DOWNLOAD_SHA256=0015110ee9fce50d3591fd75f6be328c3b65e63bbd160f6e5769d7c94dd211dc
 #MARIADB_DOWNLOAD_SHA256_URL="https://downloads.mariadb.com/Connectors/java/connector-java-${MARIADB_CONNECTOR_VERSION}/sha256sums.txt"
 
-WILDFLY_TAR="wildfly-${WILDFLY_VERSION}.tar.gz"
-WILDFLY_TAR_SHA256=80781609be387045273f974662dadf7f64ad43ee93395871429bc6b7786ec8bc
-WILDFLY_DIR="wildfly-${WILDFLY_VERSION}"
+WILDFLY_TAR="wildfly-preview-${WILDFLY_VERSION}.tar.gz"
+WILDFLY_TAR_SHA256=df4d454d2cf37a23d54cc7ebc64ef791f632ef4899b14085b76e4a67f4b4617b
+WILDFLY_DIR="wildfly-preview-${WILDFLY_VERSION}"
 WILDFLY_DOWNLOAD_URL=https://download.jboss.org/wildfly/${WILDFLY_VERSION}/${WILDFLY_TAR}
-
 # Which OS are we running? RHEL or UBUNTU? This is updated automagically in the end of this script
 BASE_OS=UBUNTU
 
@@ -163,6 +162,8 @@ wildfly_check() {
   for i in `seq 1 $DURATION`; do
     wildfly/bin/jboss-cli.sh --connect ":read-attribute(name=server-state)" | grep "result" | awk '{ print $3; }'|grep running
     if [ $? -eq 0 ]; then
+      echo "sleeping 5s before continuing"
+      sleep 5
       return 0
     fi
     sleep 5
@@ -217,31 +218,51 @@ wildfly_setup_https() {
   wildfly_exec "/interface=httpspub:add(inet-address=\"0.0.0.0\")"
   wildfly_exec "/interface=httpspriv:add(inet-address=\"0.0.0.0\")"
   wildfly_exec "/socket-binding-group=standard-sockets/socket-binding=http:add(port="8080",interface=\"http\")"
-  wildfly_exec "/subsystem=undertow/server=default-server/http-listener=http:add(socket-binding=http)"
-  wildfly_exec "/subsystem=undertow/server=default-server/http-listener=http:write-attribute(name=redirect-socket, value=\"httpspriv\")"
-  wildfly_exec ":reload"
-  
-  wildfly_check
-  
-  wildfly_exec "/core-service=management/security-realm=SSLRealm:add()"
-  wildfly_exec "/core-service=management/security-realm=SSLRealm/server-identity=ssl:add(keystore-relative-to=\"jboss.server.config.dir\", keystore-path=\"keystore/keystore.jks\", keystore-password=\"${keystore_password}\", alias=\"${web_hostname}\")"
-  wildfly_exec "/core-service=management/security-realm=SSLRealm/authentication=truststore:add(keystore-relative-to=\"jboss.server.config.dir\", keystore-path=\"keystore/truststore.jks\", keystore-password=\"${truststore_pass}\")"
-  wildfly_exec "/socket-binding-group=standard-sockets/socket-binding=httpspriv:add(port="8443",interface=\"httpspriv\")"
   wildfly_exec "/socket-binding-group=standard-sockets/socket-binding=httpspub:add(port="8442", interface=\"httpspub\")"
+  wildfly_exec "/socket-binding-group=standard-sockets/socket-binding=httpspriv:add(port="8443",interface=\"httpspriv\")"
+#  wildfly_exec "/subsystem=undertow/server=default-server/http-listener=http:add(socket-binding=http)"
+#  wildfly_exec "/subsystem=undertow/server=default-server/http-listener=http:write-attribute(name=redirect-socket, value=\"httpspriv\")"
+  wildfly_exec "/subsystem=elytron/credential-store=defaultCS:add-alias(alias=httpsKeystorePassword, secret-value=\"${keystore_password}\")"
+  wildfly_exec "/subsystem=elytron/credential-store=defaultCS:add-alias(alias=httpsTruststorePassword, secret-value=\"${truststore_pass}\")"
+  wildfly_exec "/subsystem=elytron/key-store=httpsKS:add(path="keystore/keystore.jks",relative-to=jboss.server.config.dir,credential-reference={store=defaultCS, alias=httpsKeystorePassword},type=JKS)"
+  wildfly_exec "/subsystem=elytron/key-store=httpsTS:add(path="keystore/truststore.jks",relative-to=jboss.server.config.dir,credential-reference={store=defaultCS, alias=httpsTruststorePassword},type=JKS)"
+  wildfly_exec "/subsystem=elytron/key-manager=httpsKM:add(key-store=httpsKS,algorithm="SunX509",credential-reference={store=defaultCS, alias=httpsKeystorePassword})"
+  wildfly_exec "/subsystem=elytron/trust-manager=httpsTM:add(key-store=httpsTS)"
+  
+  wildfly_exec '/subsystem=elytron/server-ssl-context=httpspub:add(key-manager=httpsKM,protocols=["TLSv1.2"],use-cipher-suites-order=false,cipher-suite-filter="TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256")'
+  wildfly_exec '/subsystem=elytron/server-ssl-context=httpspriv:add(key-manager=httpsKM,protocols=["TLSv1.2"],use-cipher-suites-order=false,cipher-suite-filter="TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",trust-manager=httpsTM,need-client-auth=true)'
+
+  #wildfly_exec "/subsystem=elytron/server-ssl-context=httpspub:add(key-manager=httpsKM,protocols=["TLSv1.3","TLSv1.2"],use-cipher-suites-order=false,cipher-suite-filter="TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",cipher-suite-names="TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256")"
+  #wildfly_exec "/subsystem=elytron/server-ssl-context=httpspriv:add(key-manager=httpsKM,protocols=["TLSv1.3","TLSv1.2"],use-cipher-suites-order=false,cipher-suite-filter="TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",cipher-suite-names="TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256",trust-manager=httpsTM,need-client-auth=true)"
+
+  wildfly_exec "/subsystem=undertow/server=default-server/http-listener=http:add(socket-binding="http", redirect-socket="httpspriv")"
+  wildfly_exec "/subsystem=undertow/server=default-server/https-listener=httpspub:add(socket-binding="httpspub", ssl-context="httpspub", max-parameters=2048)"
+  wildfly_exec "/subsystem=undertow/server=default-server/https-listener=httpspriv:add(socket-binding="httpspriv", ssl-context="httpspriv", max-parameters=2048)"
+
+#  wildfly_exec ":reload"
+  
+#  wildfly_check
+  
+#  wildfly_exec "/core-service=management/security-realm=SSLRealm:add()"
+#  wildfly_exec "/core-service=management/security-realm=SSLRealm/server-identity=ssl:add(keystore-relative-to=\"jboss.server.config.dir\", keystore-path=\"keystore/keystore.jks\", keystore-password=\"${keystore_password}\", alias=\"${web_hostname}\")"
+#  wildfly_exec "/core-service=management/security-realm=SSLRealm/authentication=truststore:add(keystore-relative-to=\"jboss.server.config.dir\", keystore-path=\"keystore/truststore.jks\", keystore-password=\"${truststore_pass}\")"
+#  wildfly_exec "/socket-binding-group=standard-sockets/socket-binding=httpspriv:add(port="8443",interface=\"httpspriv\")"
+#  wildfly_exec "/socket-binding-group=standard-sockets/socket-binding=httpspub:add(port="8442", interface=\"httpspub\")"
 
   wildfly_exec ":shutdown"
   nohup wildfly/bin/standalone.sh -b 0.0.0.0 > /dev/null 2> /dev/null &
   wildfly_check 240
 
-  wildfly_exec "/subsystem=undertow/server=default-server/https-listener=httpspriv:add(socket-binding=httpspriv, security-realm=\"SSLRealm\", verify-client=REQUIRED)"
-  wildfly_exec "/subsystem=undertow/server=default-server/https-listener=httpspub:add(socket-binding=httpspub, security-realm=\"SSLRealm\")"
-  wildfly_exec ":reload"
-  wildfly_check 30
+#  wildfly_exec "/subsystem=undertow/server=default-server/https-listener=httpspriv:add(socket-binding=httpspriv, security-realm=\"SSLRealm\", verify-client=REQUIRED)"
+#  wildfly_exec "/subsystem=undertow/server=default-server/https-listener=httpspub:add(socket-binding=httpspub, security-realm=\"SSLRealm\")"
+#  wildfly_exec ":reload"
+#  wildfly_check 30
 
   wildfly_exec "/system-property=org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH:add(value=true)"
   wildfly_exec "/system-property=org.apache.catalina.connector.CoyoteAdapter.ALLOW_BACKSLASH:add(value=true)"
   wildfly_exec "/system-property=org.apache.catalina.connector.URI_ENCODING:add(value=\"UTF-8\")"
   wildfly_exec "/system-property=org.apache.catalina.connector.USE_BODY_ENCODING_FOR_QUERY_STRING:add(value=true)"
+  wildfly_exec "/system-property=org.apache.tomcat.util.http.Parameters.MAX_COUNT:add(value=2048)"
   wildfly_exec "/subsystem=webservices:write-attribute(name=wsdl-host, value=jbossws.undefined.host)"
   wildfly_exec "/subsystem=webservices:write-attribute(name=modify-wsdl-address, value=true)"
   wildfly_exec ":reload"
@@ -353,32 +374,38 @@ ejbca_installer() {
   sleep 3
   wildfly_check || exit 1
   #wildfly_register_database || exit 1
-  wildfly_enable_ajp || exit 1
-  wildfly_reload || exit 1
-  wildfly_check || exit 1
+  #wildfly_enable_ajp || exit 1
+  #wildfly_reload || exit 1
+  #wildfly_check || exit 1
   
   # Add datasource
   wildfly_exec "data-source add --name=ejbcads --driver-name=\"mariadb-java-client.jar\" --connection-url=\"jdbc:mysql://${database_host}:3306/${database_name}\" --jndi-name=\"java:/EjbcaDS\" --use-ccm=true --driver-class=\"org.mariadb.jdbc.Driver\" --user-name=\"${database_username}\" --password=\"${database_password}\" --validate-on-match=true --background-validation=false --prepared-statements-cache-size=50 --share-prepared-statements=true --min-pool-size=5 --max-pool-size=150 --pool-prefill=true --transaction-isolation=TRANSACTION_READ_COMMITTED --check-valid-connection-sql=\"select 1;\""
   wildfly_exec ":reload"
   
+  # Create a credential store
+  echo '#!/bin/sh' > wildfly/bin/wildfly_pass
+  echo "echo '$(openssl rand -base64 24)'" >> wildfly/bin/wildfly_pass
+  chmod 700 wildfly/bin/wildfly_pass
+  
+  mkdir wildfly/standalone/configuration/keystore
+  wildfly_exec '/subsystem=elytron/credential-store=defaultCS:add(location=keystore/credentials, relative-to=jboss.server.config.dir, credential-reference={clear-text="{EXT}wildfly/bin/wildfly_pass", type="COMMAND"}, create=true)'
+  
   # Configure WildFly Remoting
-  wildfly_exec "/subsystem=remoting/http-connector=http-remoting-connector:remove"
-  wildfly_exec "/subsystem=remoting/http-connector=http-remoting-connector:add(connector-ref=\"remoting\",security-realm=\"ApplicationRealm\")"
-  wildfly_exec "/socket-binding-group=standard-sockets/socket-binding=remoting:add(port=\"4447\")"
-  wildfly_exec "/subsystem=undertow/server=default-server/http-listener=remoting:add(socket-binding=remoting)"
+  wildfly_exec "/subsystem=remoting/http-connector=http-remoting-connector:write-attribute(name=connector-ref,value=remoting)"
+  wildfly_exec "/socket-binding-group=standard-sockets/socket-binding=remoting:add(port=4447,interface=management)"
+  wildfly_exec "/subsystem=undertow/server=default-server/http-listener=remoting:add(socket-binding=remoting,enable-http2=true)"
   wildfly_exec ":reload"
   
   # Configure logging
-  wildfly_exec "/subsystem=logging/logger=org.ejbca:add"
-  wildfly_exec "/subsystem=logging/logger=org.ejbca:write-attribute(name=level, value=DEBUG)"
-  wildfly_exec "/subsystem=logging/logger=org.cesecore:add"
-  wildfly_exec "/subsystem=logging/logger=org.cesecore:write-attribute(name=level, value=DEBUG)"
+  wildfly_exec "/subsystem=logging/logger=org.ejbca:add(level=DEBUG)"
+  wildfly_exec "/subsystem=logging/logger=org.cesecore:add(level=DEBUG)"
   
   # Remove existing TLS and HTTP configuration
   wildfly_exec "/subsystem=undertow/server=default-server/http-listener=default:remove"
   wildfly_exec "/subsystem=undertow/server=default-server/https-listener=https:remove"
   wildfly_exec "/socket-binding-group=standard-sockets/socket-binding=http:remove"
   wildfly_exec "/socket-binding-group=standard-sockets/socket-binding=https:remove"
+  wildfly_exec "/core-service=management/security-realm=ApplicationRealm/server-identity=ssl:remove()"
   wildfly_exec ":reload"
   
   echo
