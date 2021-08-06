@@ -13,7 +13,15 @@
 package org.ejbca.core.model.ca.publisher;
 
 import java.io.Serializable;
+import java.util.Base64;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import org.apache.commons.lang.Validate;
 
 /**
  * Helper class for UIs that want to present a nice view of the configurable properties of a Custom Publisher.
@@ -37,6 +45,20 @@ public class CustomPublisherProperty implements Serializable {
     private final List<String> options;
     private final List<String> optionTexts;
     String value;
+    
+    // unique ID to identify this control
+    private String enabledGroupId = UUID.randomUUID().toString();
+    
+    // enable this control when the control identified by <key> has <value>, disable otherwise
+    private final HashMap<String, HashSet<String>> enabledWhenControlHasValue = new HashMap<>();
+
+    /** set this control to only be enabled when controllingControl has value = value */
+    public void enableWhenControlHasValue(final CustomPublisherProperty controllingControl, final String value) {
+        if (!enabledWhenControlHasValue.containsKey(controllingControl.enabledGroupId)) {
+            enabledWhenControlHasValue.put(controllingControl.enabledGroupId, new HashSet<>());
+        }
+        enabledWhenControlHasValue.get(controllingControl.enabledGroupId).add(Base64.getEncoder().encodeToString(value.getBytes()));
+    }
     
     /**
      * Representation of a property where the user can select from a list of choices.
@@ -77,7 +99,7 @@ public class CustomPublisherProperty implements Serializable {
     
     /** Set the current value of this property (as String) */
     public void setValue(String value) {
-        if (value!=null) {
+        if (value != null) {
             value = value.trim();
         }
         this.value = value;
@@ -91,4 +113,45 @@ public class CustomPublisherProperty implements Serializable {
     public List<String> getOptions() { return options; }
     /** @return a List of user-friendly texts corresponding to the values this property can have or null if this does not apply to the type */
     public List<String> getOptionTexts() { return optionTexts; }
+    
+    /**
+     * Return a class string in the format of "enable-ID1 enable-ID1-value1 enable-ID1-value2 ..."
+     */
+    public static String conditionalEnableToClassNames(final String controllingControlId, final Collection<String> enablingValues) {
+        Validate.notNull(enablingValues);
+        Validate.notEmpty(enablingValues);
+        
+        return "enable-" + controllingControlId + " " + 
+            enablingValues.stream()
+                .map(v -> "enable-" + controllingControlId + "-" + v)
+                .collect(Collectors.joining(" " ));
+    }
+
+    /**
+     * Get a unique CSS class set that can be used in javascript to find this control when enabling/disabling.  
+     * The CSS class set will look like:
+     * "enable-ID1 enable-ID1-value1 enable-ID1-value2... enable-ID2 enable-ID2-value1 ..."
+     * 
+     * This allows java script to look for all controls that should be enabled based on the control with id = ID
+     * and then enable them if the controlling control has one of the selected values.  value1, value2, ... 
+     * should be safe as class id parts (they are base64'ed elsewhere).
+     */
+    public String getCssClass() {
+        org.apache.log4j.Logger.getLogger(CustomPublisherProperty.class).warn("getting cssClass for " + this.name);
+        org.apache.log4j.Logger.getLogger(CustomPublisherProperty.class).warn(enabledWhenControlHasValue);
+        if (enabledWhenControlHasValue.isEmpty()) {
+            return "";
+        } else {
+            //@formatter:off
+            return enabledWhenControlHasValue.keySet().stream()
+                    .map(c -> conditionalEnableToClassNames(c, enabledWhenControlHasValue.get(c)))
+                    .collect(Collectors.joining());
+            //@formatter:on
+        }
+    }
+
+    public String getEnabledGroupId() {
+        org.apache.log4j.Logger.getLogger(CustomPublisherProperty.class).warn("getEnabledGroupId for " + this.name + " = " + enabledGroupId);
+        return enabledGroupId;
+    }
 }
