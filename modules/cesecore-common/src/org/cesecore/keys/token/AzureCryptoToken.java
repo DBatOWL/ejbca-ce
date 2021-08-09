@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.net.NoRouteToHostException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
@@ -913,6 +914,17 @@ public class AzureCryptoToken extends BaseCryptoToken {
             } else {
                 throw new CryptoTokenAuthenticationFailedException(
                         "Azure Crypto Token authorization failed with unknown response code " + authStatusCode + ", JSON response: " + json);
+            }
+        }
+        catch (NoRouteToHostException e) {
+            // Special case - connection error when configured for managed identity shouldn't happen on an Azure VM, so this
+            // is probably not an Azure VM and we can indicate that in the error message.
+            if (isKeyVaultUseManagedIdentity()) {
+                log.error("Unable to access Managed Identity Token service.  Is this an Azure-hosted VM?", e);
+                throw new CryptoTokenAuthenticationFailedException(
+                        "Unable to access Managed Identity Token service at " + request.getURI() + ".  Is this an Azure Hosted VM?", e);
+            } else {
+                throw e;
             }
         }
     }
