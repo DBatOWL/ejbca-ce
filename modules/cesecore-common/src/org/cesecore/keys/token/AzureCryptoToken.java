@@ -920,9 +920,9 @@ public class AzureCryptoToken extends BaseCryptoToken {
             // Special case - connection error when configured for managed identity shouldn't happen on an Azure VM, so this
             // is probably not an Azure VM and we can indicate that in the error message.
             if (isKeyVaultUseManagedIdentity()) {
-                log.error("Unable to access Managed Identity Token service.  Is this an Azure-hosted VM?", e);
-                throw new CryptoTokenAuthenticationFailedException(
-                        "Unable to access Managed Identity Token service at " + request.getURI() + ".  Is this an Azure Hosted VM?", e);
+                final String msg = "Unable to access Managed Identity Token service at " + request.getURI() + ".  Is this an Azure Hosted VM?";
+                log.error(msg, e);
+                throw new CryptoTokenAuthenticationFailedException(msg, e);
             } else {
                 throw e;
             }
