@@ -149,7 +149,12 @@ public class CertificateCreateSessionBean implements CertificateCreateSessionLoc
         CryptoProviderTools.installBCProviderIfNotAvailable();
     }
 
+    // Run in a new transaction, so the certificate is always stored, even if there is a network/database failure during
+    // publishing (which happens after createCertificate is called). Validation of both the data and the final certificate
+    // happens in this method, so those steps can still trigger a roll back (except of pre-certificates, which are never
+    // rolled back).
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public CertificateResponseMessage createCertificate(final AuthenticationToken admin, final EndEntityInformation endEntityInformation, final CA ca,
             final RequestMessage requestMessage, final Class<? extends ResponseMessage> responseClass, CertificateGenerationParams certGenParams,
             final long updateTime) throws CryptoTokenOfflineException, SignRequestSignatureException, IllegalKeyException, IllegalNameException,
@@ -266,6 +271,7 @@ public class CertificateCreateSessionBean implements CertificateCreateSessionLoc
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public CertificateResponseMessage createCertificate(final AuthenticationToken admin, final EndEntityInformation userData,
             final RequestMessage req, final Class<? extends ResponseMessage> responseClass, CertificateGenerationParams certGenParams) throws CADoesntExistsException,
             AuthorizationDeniedException, CryptoTokenOfflineException, SignRequestSignatureException, IllegalKeyException, IllegalNameException,
@@ -274,8 +280,8 @@ public class CertificateCreateSessionBean implements CertificateCreateSessionLoc
         return createCertificate(admin, userData, req, responseClass, certGenParams, updateTime);
     }
 
-
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public CertificateResponseMessage createCertificate(final AuthenticationToken admin, final EndEntityInformation userData,
             final RequestMessage req, final Class<? extends ResponseMessage> responseClass, CertificateGenerationParams certGenParams, final long updateTime) throws CADoesntExistsException,
             AuthorizationDeniedException, CryptoTokenOfflineException, SignRequestSignatureException, IllegalKeyException, IllegalNameException,
@@ -329,12 +335,8 @@ public class CertificateCreateSessionBean implements CertificateCreateSessionLoc
         return ca;
     }
 
-    // Run in a new transaction, so the certificate is always stored, even if there is a network/database failure during
-    // publishing (which happens after createCertificate is called). Validation of both the data and the final certificate
-    // happens in this method, so those steps can still trigger a roll back (except of pre-certificates, which are never
-    // rolled back).
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public CertificateDataWrapper createCertificate(final AuthenticationToken admin, final EndEntityInformation endEntityInformation, final CA ca,
             final RequestMessage request, final PublicKey pk, final int keyusage, final Date notBefore, final Date notAfter,
             final Extensions extensions, final String sequence, CertificateGenerationParams certGenParams, final long updateTime)
