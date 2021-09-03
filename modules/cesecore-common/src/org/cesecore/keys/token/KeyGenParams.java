@@ -62,8 +62,7 @@ public class KeyGenParams implements Serializable {
         /** PKCS#11 attributes for the private key generation with P11-NG */
         private Map<Long, Object> privateAttributesMap;
 
-        protected KeyGenParamsBuilder(final String keySpecification) {
-            this.keySpecification = keySpecification;
+        protected KeyGenParamsBuilder() {
             this.publicAttributesMap = new HashMap<>();
             this.privateAttributesMap = new HashMap<>();
         }
@@ -150,8 +149,8 @@ public class KeyGenParams implements Serializable {
      * @param keySpecification the type of key to use, e.g. 'RSA2048' or 'secp256r1'.
      * @return a builder for constructing {@link KeyGenParams} instances.
      */
-    public static KeyGenParamsBuilder builder(final String keySpecification) {
-        return new KeyGenParamsBuilder(keySpecification);
+    public static KeyGenParamsBuilder builder() {
+        return new KeyGenParamsBuilder();
     }
 
     /**
