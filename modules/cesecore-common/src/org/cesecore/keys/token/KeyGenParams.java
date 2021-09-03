@@ -13,13 +13,13 @@
 
 package org.cesecore.keys.token;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.commons.lang.StringUtils;
 import org.cesecore.certificates.util.AlgorithmConstants;
 import org.pkcs11.jacknji11.CKA;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Immutable object used for passing key parameters and attributes for key generation.
@@ -40,13 +40,19 @@ public class KeyGenParams implements Serializable {
          */
         SIGN,
         /**
-         * Template for a key pair only allowed to be used for key wrapping and unwrapping.
+         * Template for a key pair only allowed to be used for key encryption and decryption of data.
          */
         ENCRYPT,
         /**
-         * Template for a key pair allowed to be used for signing, verifying, unwrapping and wrapping.
+         * Template for a key pair allowed to be used for signing, verifying, encrypting and decrypting.
+         *
+         * Does not work well in FIPS mode.
          */
-        SIGN_ENCRYPT
+        SIGN_ENCRYPT,
+        /**
+         * Template for a key pair allowed to be used for wrapping and unwrapping other keys.
+         */
+        WRAP,
     }
 
     public static class KeyGenParamsBuilder {
@@ -102,6 +108,13 @@ public class KeyGenParams implements Serializable {
                 publicAttributesMap.put(CKA.ENCRYPT, true);
                 publicAttributesMap.put(CKA.WRAP, false);
                 publicAttributesMap.put(CKA.VERIFY, true);
+            } else if (keyPairTemplate == KeyPairTemplate.WRAP) {
+                privateAttributesMap.put(CKA.DECRYPT, false);
+                privateAttributesMap.put(CKA.UNWRAP, true);
+                privateAttributesMap.put(CKA.SIGN, false);
+                publicAttributesMap.put(CKA.ENCRYPT, false);
+                publicAttributesMap.put(CKA.WRAP, true);
+                publicAttributesMap.put(CKA.VERIFY, false);
             }
             return this;
         }
