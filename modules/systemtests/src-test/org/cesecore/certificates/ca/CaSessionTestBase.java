@@ -12,17 +12,6 @@
  *************************************************************************/
 package org.cesecore.certificates.ca;
 
-import java.security.KeyPair;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.cert.Certificate;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-
 import org.cesecore.CaTestUtils;
 import org.cesecore.RoleUsingTestCase;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -56,6 +45,17 @@ import org.cesecore.util.CertTools;
 import org.cesecore.util.EjbRemoteHelper;
 import org.cesecore.util.StringTools;
 import org.ejbca.core.ejb.ca.sign.SignSessionRemote;
+
+import java.security.KeyPair;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.cert.Certificate;
+import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -322,7 +322,7 @@ public class CaSessionTestBase extends RoleUsingTestCase {
         	int cryptoTokenId = ca.getCAToken().getCryptoTokenId();
         	cryptoTokenManagementSession.activate(roleMgmgToken, cryptoTokenId, tokenpwd);
         	final String signKeyAlias = ca.getCAToken().getAliasFromPurpose(CATokenConstants.CAKEYPURPOSE_CERTSIGN);
-        	cryptoTokenManagementSession.createKeyPair(roleMgmgToken, cryptoTokenId, signKeyAlias, KeyGenParams.builder("RSA1024").build());
+        	cryptoTokenManagementSession.createKeyPair(roleMgmgToken, cryptoTokenId, signKeyAlias, KeyGenParams.builder().setKeySpecification("RSA1024").build());
         	// Now create a CA certificate
         	CAInfo info = caSession.getCAInfo(roleMgmgToken, ca.getCAId());
             // We need the CA public key, since we activated the newly generated key, we know that it has a key purpose now
@@ -379,7 +379,7 @@ public class CaSessionTestBase extends RoleUsingTestCase {
             caSession.editCA(authenticationToken, ca.getCAInfo());
             final int cryptoTokenId = caToken.getCryptoTokenId();
             // Generate CA keys
-            cryptoTokenManagementSession.createKeyPair(authenticationToken, cryptoTokenId, "signKeyAlias", KeyGenParams.builder("RSA1024").build());
+            cryptoTokenManagementSession.createKeyPair(authenticationToken, cryptoTokenId, "signKeyAlias", KeyGenParams.builder().setKeySpecification("RSA1024").build());
             PublicKey pubK = cryptoTokenManagementSession.getPublicKey(authenticationToken, cryptoTokenId, "signKeyAlias").getPublicKey();
             assertNotNull(pubK);
             // Now create a CA certificate

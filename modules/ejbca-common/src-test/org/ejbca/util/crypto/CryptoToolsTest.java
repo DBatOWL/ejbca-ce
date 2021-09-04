@@ -12,6 +12,19 @@
  *************************************************************************/
 package org.ejbca.util.crypto;
 
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.cesecore.certificates.util.AlgorithmConstants;
+import org.cesecore.keys.token.CryptoToken;
+import org.cesecore.keys.token.CryptoTokenFactory;
+import org.cesecore.keys.token.CryptoTokenOfflineException;
+import org.cesecore.keys.token.KeyGenParams;
+import org.cesecore.keys.token.SoftCryptoToken;
+import org.cesecore.keys.token.p11.exception.NoSuchSlotException;
+import org.cesecore.keys.util.KeyTools;
+import org.cesecore.util.Base64;
+import org.junit.Test;
+
+import javax.crypto.spec.SecretKeySpec;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -24,20 +37,6 @@ import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.util.Properties;
-
-import javax.crypto.spec.SecretKeySpec;
-
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.cesecore.certificates.util.AlgorithmConstants;
-import org.cesecore.keys.token.CryptoToken;
-import org.cesecore.keys.token.CryptoTokenFactory;
-import org.cesecore.keys.token.CryptoTokenOfflineException;
-import org.cesecore.keys.token.KeyGenParams;
-import org.cesecore.keys.token.SoftCryptoToken;
-import org.cesecore.keys.token.p11.exception.NoSuchSlotException;
-import org.cesecore.keys.util.KeyTools;
-import org.cesecore.util.Base64;
-import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -99,7 +98,7 @@ public class CryptoToolsTest {
         CryptoToken cryptoToken = CryptoTokenFactory.createCryptoToken(SoftCryptoToken.class.getName(), new Properties(), null, 111, "Soft CryptoToken");
         final String alias = "alias";
         // key pair to encrypt decrypt keys
-        cryptoToken.generateKeyPair(KeyGenParams.builder("1024").build(), alias);
+        cryptoToken.generateKeyPair(KeyGenParams.builder().setKeySpecification("1024").build(), alias);
         {
             final KeyPair keypair = KeyTools.genKeys("1024",  AlgorithmConstants.KEYALGORITHM_RSA);
             byte[] encryptedBytes = CryptoTools.encryptKeys(cryptoToken, alias, keypair);
@@ -202,7 +201,7 @@ public class CryptoToolsTest {
     public void testEncryptDecryptSecret() throws NoSuchSlotException, InvalidAlgorithmParameterException, CryptoTokenOfflineException, IOException, InvalidKeyException {
         CryptoToken cryptoToken = CryptoTokenFactory.createCryptoToken(SoftCryptoToken.class.getName(), new Properties(), null, 111, "Soft CryptoToken");
         final String alias = "alias";
-        cryptoToken.generateKeyPair(KeyGenParams.builder("1024").build(), alias);
+        cryptoToken.generateKeyPair(KeyGenParams.builder().setKeySpecification("1024").build(), alias);
         final String base64Key = "7tUe3OLf3xO4BGV0q0NPYlu2du4zJuUPzKeJDg5NRJo";
         final SecretKeySpec key = new SecretKeySpec(Base64.decodeURLSafe(base64Key), "AES");
         final byte[] encryptedBytes = CryptoTools.encryptKey(cryptoToken, alias, key);

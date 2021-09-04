@@ -1139,7 +1139,7 @@ public class StandaloneOcspResponseGeneratorSessionTest {
         X509CA signatureIssuerCa = CryptoTokenTestUtils.createTestCAWithSoftCryptoToken(authenticationToken,
                 "CN=RevokedSignatureIssuer");
         int cryptoTokenId = signatureIssuerCa.getCAToken().getCryptoTokenId();
-        cryptoTokenManagementSession.createKeyPair(authenticationToken, cryptoTokenId, "signKeyAlias", KeyGenParams.builder("RSA1024").build());
+        cryptoTokenManagementSession.createKeyPair(authenticationToken, cryptoTokenId, "signKeyAlias", KeyGenParams.builder().setKeySpecification("RSA1024").build());
         X509Certificate signerIssuerCaCertificate = (X509Certificate) signatureIssuerCa.getCACertificate();
         //Store the CA Certificate.
         certificateStoreSession.storeCertificateRemote(authenticationToken, EJBTools.wrap(signerIssuerCaCertificate), "foo", "1234", CertificateConstants.CERT_ACTIVE,

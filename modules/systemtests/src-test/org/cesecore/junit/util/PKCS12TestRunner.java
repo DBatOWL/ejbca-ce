@@ -12,9 +12,6 @@
  *************************************************************************/
 package org.cesecore.junit.util;
 
-import java.security.cert.X509Certificate;
-import java.util.Date;
-
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -39,6 +36,9 @@ import org.cesecore.util.CertTools;
 import org.cesecore.util.EJBTools;
 import org.cesecore.util.EjbRemoteHelper;
 import org.junit.runners.model.InitializationError;
+
+import java.security.cert.X509Certificate;
+import java.util.Date;
 
 /**
  * @version $Id$
@@ -68,7 +68,7 @@ public class PKCS12TestRunner extends CryptoTokenRunner {
         caSession.removeCA(alwaysAllowToken, CertTools.stringToBCDNString(getSubjectDn()).hashCode());
         X509CA x509ca = CryptoTokenTestUtils.createTestCAWithSoftCryptoToken(alwaysAllowToken, getSubjectDn());
         int cryptoTokenId = x509ca.getCAToken().getCryptoTokenId();
-        cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, ALIAS, KeyGenParams.builder("RSA1024").build());      
+        cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, ALIAS, KeyGenParams.builder().setKeySpecification("RSA1024").build());
         X509Certificate caCertificate = (X509Certificate) x509ca.getCACertificate();
         //Store the CA Certificate.
         certificateStoreSession.storeCertificateRemote(alwaysAllowToken, EJBTools.wrap(caCertificate), "foo", "1234", CertificateConstants.CERT_ACTIVE,

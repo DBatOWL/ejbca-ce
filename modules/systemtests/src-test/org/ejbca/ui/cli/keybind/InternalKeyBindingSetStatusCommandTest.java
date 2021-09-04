@@ -12,9 +12,6 @@
  *************************************************************************/
 package org.ejbca.ui.cli.keybind;
 
-import java.security.KeyPair;
-import java.security.cert.X509Certificate;
-
 import org.cesecore.CaTestUtils;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -48,6 +45,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.security.KeyPair;
+import java.security.cert.X509Certificate;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -77,7 +77,7 @@ public class InternalKeyBindingSetStatusCommandTest {
         CryptoProviderTools.installBCProvider();
         x509ca = CryptoTokenTestUtils.createTestCAWithSoftCryptoToken(authenticationToken, "CN=" + TESTCLASS_NAME);
         cryptoTokenId = CryptoTokenTestUtils.createSoftCryptoToken(authenticationToken, TESTCLASS_NAME);
-        cryptoTokenManagementSession.createKeyPair(authenticationToken, cryptoTokenId, TESTCLASS_NAME, KeyGenParams.builder("RSA2048").build());
+        cryptoTokenManagementSession.createKeyPair(authenticationToken, cryptoTokenId, TESTCLASS_NAME, KeyGenParams.builder().setKeySpecification("RSA2048").build());
     }
 
     @AfterClass

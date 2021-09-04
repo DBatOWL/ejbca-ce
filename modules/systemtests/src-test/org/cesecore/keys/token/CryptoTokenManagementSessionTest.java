@@ -12,16 +12,6 @@
  *************************************************************************/
 package org.cesecore.keys.token;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.security.InvalidKeyException;
-import java.util.Arrays;
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.cesecore.RoleUsingTestCase;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -33,6 +23,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.security.InvalidKeyException;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * Tests CryptoToken management API.
@@ -110,9 +110,9 @@ public class CryptoTokenManagementSessionTest extends RoleUsingTestCase {
         final String KEYALIAS1 = "newAlias1";
         final String KEYALIAS2 = "newAlias2";
         final String KEYALIAS_BAD = "notAnAlias";
-        cryptoTokenManagementSession.createKeyPair(roleMgmgToken, cryptoTokenId, KEYALIAS1, KeyGenParams.builder(keySpec).build());
+        cryptoTokenManagementSession.createKeyPair(roleMgmgToken, cryptoTokenId, KEYALIAS1, KeyGenParams.builder().setKeySpecification(keySpec).build());
         try {
-            cryptoTokenManagementSession.createKeyPair(roleMgmgToken, cryptoTokenId, KEYALIAS1, KeyGenParams.builder(keySpec).build());
+            cryptoTokenManagementSession.createKeyPair(roleMgmgToken, cryptoTokenId, KEYALIAS1, KeyGenParams.builder().setKeySpecification(keySpec).build());
             fail("Should not be able to generate a key pair with the same alias twice.");
         } catch (InvalidKeyException e) {
             // Expected

@@ -12,17 +12,6 @@
  *************************************************************************/
 package org.cesecore.certificates.ocsp;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.security.PublicKey;
-import java.security.cert.X509Certificate;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.cesecore.CesecoreException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -63,6 +52,17 @@ import org.cesecore.util.EjbRemoteHelper;
 import org.cesecore.util.SimpleTime;
 import org.ejbca.core.ejb.ca.sign.SignSessionRemote;
 import org.junit.Assert;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.security.PublicKey;
+import java.security.cert.X509Certificate;
+import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -106,7 +106,7 @@ public class OcspTestUtils {
         removeInternalKeyBinding(authenticationToken, testName);
         // First create a new CryptoToken
         if (!cryptoTokenManagementSession.isAliasUsedInCryptoToken(cryptoTokenId, testName)) {
-            cryptoTokenManagementSession.createKeyPair(authenticationToken, cryptoTokenId, testName, KeyGenParams.builder(keyspec).build());
+            cryptoTokenManagementSession.createKeyPair(authenticationToken, cryptoTokenId, testName, KeyGenParams.builder().setKeySpecification(keyspec).build());
         }
         // Create a new InternalKeyBinding with a implementation specific property and bind it to the previously generated key
         final Map<String, Serializable> dataMap = new LinkedHashMap<>();

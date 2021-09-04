@@ -929,8 +929,10 @@ public class IntegratedOcspResponseTest {
             try {
                 cryptoTokenId = cryptoTokenManagementSession.createCryptoToken(internalAdmin, "testOcspSigningCacheDoesntAddUnsignedCa",
                         SoftCryptoToken.class.getName(), cryptoTokenProperties, null, null);
-                cryptoTokenManagementSession.createKeyPair(internalAdmin, cryptoTokenId, CAToken.SOFTPRIVATESIGNKEYALIAS, KeyGenParams.builder("RSA1024").build());
-                cryptoTokenManagementSession.createKeyPair(internalAdmin, cryptoTokenId, CAToken.SOFTPRIVATEDECKEYALIAS, KeyGenParams.builder("RSA1024").build());
+                cryptoTokenManagementSession.createKeyPair(internalAdmin, cryptoTokenId, CAToken.SOFTPRIVATESIGNKEYALIAS,
+                        KeyGenParams.builder().setKeySpecification("RSA1024").build());
+                cryptoTokenManagementSession.createKeyPair(internalAdmin, cryptoTokenId, CAToken.SOFTPRIVATEDECKEYALIAS,
+                        KeyGenParams.builder().setKeySpecification("RSA1024").build());
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

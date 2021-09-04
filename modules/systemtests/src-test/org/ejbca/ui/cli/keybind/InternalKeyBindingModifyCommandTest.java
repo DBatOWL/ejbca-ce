@@ -64,8 +64,8 @@ public class InternalKeyBindingModifyCommandTest {
         CryptoProviderTools.installBCProvider();
         x509ca = CryptoTokenTestUtils.createTestCAWithSoftCryptoToken(authenticationToken, "CN=" + TESTCLASS_NAME);
         cryptoTokenId = CryptoTokenTestUtils.createSoftCryptoToken(authenticationToken, TESTCLASS_NAME);
-        cryptoTokenManagementSession.createKeyPair(authenticationToken, cryptoTokenId, TESTCLASS_NAME, KeyGenParams.builder("RSA2048").build());
-        cryptoTokenManagementSession.createKeyPair(authenticationToken, cryptoTokenId, NEXT_KEYPAIR_NAME, KeyGenParams.builder("RSA2048").build());
+        cryptoTokenManagementSession.createKeyPair(authenticationToken, cryptoTokenId, TESTCLASS_NAME, KeyGenParams.builder().setKeySpecification("RSA2048").build());
+        cryptoTokenManagementSession.createKeyPair(authenticationToken, cryptoTokenId, NEXT_KEYPAIR_NAME, KeyGenParams.builder().setKeySpecification("RSA2048").build());
     }
 
     @AfterClass

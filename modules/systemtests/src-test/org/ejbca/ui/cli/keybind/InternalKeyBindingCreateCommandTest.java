@@ -12,8 +12,6 @@
  *************************************************************************/
 package org.ejbca.ui.cli.keybind;
 
-import java.util.Arrays;
-
 import org.cesecore.CaTestUtils;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
@@ -32,6 +30,8 @@ import org.ejbca.ui.cli.infrastructure.command.CommandResult;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -70,7 +70,7 @@ public class InternalKeyBindingCreateCommandTest {
         CryptoProviderTools.installBCProvider();
         x509ca = CryptoTokenTestUtils.createTestCAWithSoftCryptoToken(alwaysAllowToken, "CN=" + TESTCLASSNAME);
         cryptoTokenId = CryptoTokenTestUtils.createSoftCryptoToken(alwaysAllowToken, TESTCLASSNAME);
-        cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, KEY_PAIR_ALIAS, KeyGenParams.builder("RSA2048").build());
+        cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, KEY_PAIR_ALIAS, KeyGenParams.builder().setKeySpecification("RSA2048").build());
     }
 
     @AfterClass

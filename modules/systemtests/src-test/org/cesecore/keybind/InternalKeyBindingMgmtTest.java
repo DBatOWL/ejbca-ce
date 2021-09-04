@@ -12,13 +12,6 @@
  *************************************************************************/
 package org.cesecore.keybind;
 
-import java.io.Serializable;
-import java.security.PublicKey;
-import java.security.cert.X509Certificate;
-import java.util.LinkedHashMap;
-import java.util.Locale;
-import java.util.Map;
-
 import org.apache.log4j.Logger;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequest;
@@ -56,6 +49,13 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
+
+import java.io.Serializable;
+import java.security.PublicKey;
+import java.security.cert.X509Certificate;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -125,7 +125,7 @@ public class InternalKeyBindingMgmtTest {
         int internalKeyBindingId = 0;
         try {
             // First create a new CryptoToken
-            cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, KEY_PAIR_ALIAS, KeyGenParams.builder("RSA1024").build());
+            cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, KEY_PAIR_ALIAS, KeyGenParams.builder().setKeySpecification("RSA1024").build());
             // Create a new InternalKeyBinding with a implementation specific property and bind it to the previously generated key
             final Map<String, Serializable> dataMap = new LinkedHashMap<String, Serializable>();
             dataMap.put(PROPERTY_ALIAS, Boolean.FALSE);
@@ -161,7 +161,7 @@ public class InternalKeyBindingMgmtTest {
         String certFpToDelete = null;
         try {
             // First create a new CryptoToken
-            cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, KEY_PAIR_ALIAS, KeyGenParams.builder("RSA1024").build());
+            cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, KEY_PAIR_ALIAS, KeyGenParams.builder().setKeySpecification("RSA1024").build());
             // Create a new InternalKeyBinding with a implementation specific property and bind it to the previously generated key
             final Map<String, Serializable> dataMap = new LinkedHashMap<String, Serializable>();
             dataMap.put(PROPERTY_ALIAS, Boolean.FALSE);
@@ -215,7 +215,7 @@ public class InternalKeyBindingMgmtTest {
         String certFpToDelete = null;
         try {
             // First create a new CryptoToken
-            cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, KEY_PAIR_ALIAS, KeyGenParams.builder("RSA1024").build());
+            cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, KEY_PAIR_ALIAS, KeyGenParams.builder().setKeySpecification("RSA1024").build());
             // Create a new InternalKeyBinding with a implementation specific property and bind it to the previously generated key
             final Map<String, Serializable> dataMap = new LinkedHashMap<String, Serializable>();
             dataMap.put(PROPERTY_ALIAS, Boolean.FALSE);
@@ -277,7 +277,7 @@ public class InternalKeyBindingMgmtTest {
         String certFpToDelete = null;
         try {
             // First create a new CryptoToken
-            cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, KEY_PAIR_ALIAS, KeyGenParams.builder("RSA1024").build());
+            cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, KEY_PAIR_ALIAS, KeyGenParams.builder().setKeySpecification("RSA1024").build());
             internalKeyBindingId = internalKeyBindingMgmtSession.createInternalKeyBinding(alwaysAllowToken, KEYBINDING_TYPE_ALIAS,
                     KEY_BINDING_NAME, InternalKeyBindingStatus.ACTIVE, null, cryptoTokenId, KEY_PAIR_ALIAS, AlgorithmConstants.SIGALG_SHA1_WITH_RSA, null, null);
             log.debug("Created InternalKeyBinding with id " + internalKeyBindingId);

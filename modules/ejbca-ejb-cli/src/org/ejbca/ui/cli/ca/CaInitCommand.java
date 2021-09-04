@@ -13,24 +13,6 @@
 
 package org.ejbca.ui.cli.ca;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.cert.CertPathValidatorException;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -75,6 +57,24 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
 import org.ejbca.ui.cli.infrastructure.parameter.enums.MandatoryMode;
 import org.ejbca.ui.cli.infrastructure.parameter.enums.ParameterMode;
 import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.cert.CertPathValidatorException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 /**
  * CLI command for creating a CA and its first CRL. Publishes the CRL and CA certificate if it should.
@@ -541,7 +541,7 @@ public class CaInitCommand extends BaseCaAdminCommand {
                 final String signKeyAlias = caToken.getAliasFromPurpose(CATokenConstants.CAKEYPURPOSE_CERTSIGN);
                 final String signKeySpecification = "DSA".equals(keytype) ? "DSA" + keyspec : keyspec;
                 try {
-                    cryptoTokenManagementSession.createKeyPair(getAuthenticationToken(), cryptoTokenId, signKeyAlias, KeyGenParams.builder(signKeySpecification).build());
+                    cryptoTokenManagementSession.createKeyPair(getAuthenticationToken(), cryptoTokenId, signKeyAlias, KeyGenParams.builder().setKeySpecification(signKeySpecification).build());
                 } catch (InvalidAlgorithmParameterException e) {
                     log.error(signKeySpecification + " was not a valid alias: " + e.getMessage());
                     return CommandResult.FUNCTIONAL_FAILURE;
@@ -553,7 +553,7 @@ public class CaInitCommand extends BaseCaAdminCommand {
                 // Encryption key must be RSA
                 final String defaultKeySpecification = "RSA".equals(keytype) ? keyspec : "2048";
                 try {
-                    cryptoTokenManagementSession.createKeyPair(getAuthenticationToken(), cryptoTokenId, defaultKeyAlias, KeyGenParams.builder(defaultKeySpecification).build());
+                    cryptoTokenManagementSession.createKeyPair(getAuthenticationToken(), cryptoTokenId, defaultKeyAlias, KeyGenParams.builder().setKeySpecification(defaultKeySpecification).build());
                 } catch (InvalidAlgorithmParameterException e) {
                     log.error(defaultKeySpecification + " was not a valid alias: " + e.getMessage());
                     return CommandResult.FUNCTIONAL_FAILURE;

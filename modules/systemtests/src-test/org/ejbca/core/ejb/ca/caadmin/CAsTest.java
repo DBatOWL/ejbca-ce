@@ -13,29 +13,6 @@
 
 package org.ejbca.core.ejb.ca.caadmin;
 
-import java.lang.reflect.Field;
-import java.security.KeyPair;
-import java.security.Principal;
-import java.security.PublicKey;
-import java.security.cert.CRLException;
-import java.security.cert.CertPathValidatorException;
-import java.security.cert.Certificate;
-import java.security.cert.X509CRL;
-import java.security.cert.X509Certificate;
-import java.security.interfaces.DSAPublicKey;
-import java.security.interfaces.RSAPublicKey;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
-
-import javax.security.auth.x500.X500Principal;
-
 import org.apache.log4j.Logger;
 import org.bouncycastle.jcajce.provider.asymmetric.dstu.BCDSTU4145PublicKey;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
@@ -102,6 +79,28 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import javax.security.auth.x500.X500Principal;
+import java.lang.reflect.Field;
+import java.security.KeyPair;
+import java.security.Principal;
+import java.security.PublicKey;
+import java.security.cert.CRLException;
+import java.security.cert.CertPathValidatorException;
+import java.security.cert.Certificate;
+import java.security.cert.X509CRL;
+import java.security.cert.X509Certificate;
+import java.security.interfaces.DSAPublicKey;
+import java.security.interfaces.RSAPublicKey;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -171,8 +170,8 @@ public class CAsTest extends CaTestCase {
         final int cryptoTokenId;
         try {
             cryptoTokenId = cryptoTokenManagementSession.createCryptoToken(admin, this.getClass().getSimpleName() + "." + tokenName, SoftCryptoToken.class.getName(), cryptoTokenProperties, null, null);
-            cryptoTokenManagementSession.createKeyPair(admin, cryptoTokenId, CAToken.SOFTPRIVATESIGNKEYALIAS, KeyGenParams.builder(signKeySpec).build());
-            cryptoTokenManagementSession.createKeyPair(admin, cryptoTokenId, CAToken.SOFTPRIVATEDECKEYALIAS, KeyGenParams.builder("RSA1024").build());
+            cryptoTokenManagementSession.createKeyPair(admin, cryptoTokenId, CAToken.SOFTPRIVATESIGNKEYALIAS, KeyGenParams.builder().setKeySpecification(signKeySpec).build());
+            cryptoTokenManagementSession.createKeyPair(admin, cryptoTokenId, CAToken.SOFTPRIVATEDECKEYALIAS, KeyGenParams.builder().setKeySpecification("RSA1024").build());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -1315,21 +1314,21 @@ public class CAsTest extends CaTestCase {
        int cryptoTokenId = 0;
        try {
            cryptoTokenId = cryptoTokenManagementSession.createCryptoToken(admin, this.getClass().getSimpleName() + "." + "test22.IllegalKeyLengthRSA", SoftCryptoToken.class.getName(), cryptoTokenProperties, null, null);
-           cryptoTokenManagementSession.createKeyPair(admin, cryptoTokenId, CAToken.SOFTPRIVATESIGNKEYALIAS, KeyGenParams.builder("512").build());
+           cryptoTokenManagementSession.createKeyPair(admin, cryptoTokenId, CAToken.SOFTPRIVATESIGNKEYALIAS, KeyGenParams.builder().setKeySpecification("512").build());
            fail("It should not be possoble to create a keys with 512 bit RSA keys.");
        } catch (Exception e) {
            cryptoTokenManagementSession.deleteCryptoToken(admin, cryptoTokenId);
        }
        try {
            cryptoTokenId = cryptoTokenManagementSession.createCryptoToken(admin, this.getClass().getSimpleName() + "." + "test22.IllegalKeyLengthDSA", SoftCryptoToken.class.getName(), cryptoTokenProperties, null, null);
-           cryptoTokenManagementSession.createKeyPair(admin, cryptoTokenId, CAToken.SOFTPRIVATESIGNKEYALIAS, KeyGenParams.builder("DSA512").build());
+           cryptoTokenManagementSession.createKeyPair(admin, cryptoTokenId, CAToken.SOFTPRIVATESIGNKEYALIAS, KeyGenParams.builder().setKeySpecification("DSA512").build());
            fail("It should not be possoble to create a keys with 512 bit DSA keys.");
        } catch (Exception e) {
            cryptoTokenManagementSession.deleteCryptoToken(admin, cryptoTokenId);
        }
        try {
            cryptoTokenId = cryptoTokenManagementSession.createCryptoToken(admin, this.getClass().getSimpleName() + "." + "test22.IllegalKeyLengthECDSA", SoftCryptoToken.class.getName(), cryptoTokenProperties, null, null);
-           cryptoTokenManagementSession.createKeyPair(admin, cryptoTokenId, CAToken.SOFTPRIVATESIGNKEYALIAS, KeyGenParams.builder("prime192v1").build());
+           cryptoTokenManagementSession.createKeyPair(admin, cryptoTokenId, CAToken.SOFTPRIVATESIGNKEYALIAS, KeyGenParams.builder().setKeySpecification("prime192v1").build());
            fail("It should not be possoble to create a CA with 192 bit ECC keys.");
        } catch (Exception e) {
            cryptoTokenManagementSession.deleteCryptoToken(admin, cryptoTokenId);

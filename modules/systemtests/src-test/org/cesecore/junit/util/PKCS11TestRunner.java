@@ -12,11 +12,6 @@
  *************************************************************************/
 package org.cesecore.junit.util;
 
-import java.security.InvalidKeyException;
-import java.security.PublicKey;
-import java.security.cert.Certificate;
-import java.util.List;
-
 import org.bouncycastle.jce.X509KeyUsage;
 import org.cesecore.CaTestUtils;
 import org.cesecore.SystemTestsConfiguration;
@@ -49,6 +44,11 @@ import org.cesecore.mock.authentication.tokens.TestAlwaysAllowLocalAuthenticatio
 import org.cesecore.util.CertTools;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.core.ejb.ca.sign.SignSessionRemote;
+
+import java.security.InvalidKeyException;
+import java.security.PublicKey;
+import java.security.cert.Certificate;
+import java.util.List;
 
 /**
  * @version $Id$
@@ -87,7 +87,7 @@ public class PKCS11TestRunner extends CryptoTokenRunner {
         x509ca.setCAToken(caToken);
         caSession.addCA(alwaysAllowToken, x509ca);
         int cryptoTokenId = caToken.getCryptoTokenId();
-        cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, ALIAS, KeyGenParams.builder("RSA1024").build());
+        cryptoTokenManagementSession.createKeyPair(alwaysAllowToken, cryptoTokenId, ALIAS, KeyGenParams.builder().setKeySpecification("RSA1024").build());
         CAInfo info = caSession.getCAInfo(alwaysAllowToken, x509ca.getCAId());
         // We need the CA public key, since we activated the newly generated key, we know that it has a key purpose now
         PublicKey pk = cryptoTokenManagementSession.getPublicKey(alwaysAllowToken, cryptoTokenId, ALIAS).getPublicKey();
