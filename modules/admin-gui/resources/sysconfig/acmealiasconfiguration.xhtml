@@ -352,8 +352,8 @@
                     	<br />
                     	<h:outputText value="#{web.text.ACME_REQUIRE_EXTERNAL_ACCOUNT_BINDING_HELP}" styleClass="help" style="font-size: smaller"/>
                     </h:panelGroup>
-                    <h:selectBooleanCheckbox id="externalAccountBinding" value="#{acmeConfigMBean.currentAlias.requireExternalAccountBinding}" disabled="#{!acmeConfigMBean.currentAliasEditMode}">
-                    	<f:ajax listener="#{acmeConfigMBean.toggleCurrentEabEditMode}" render="@all"></f:ajax>
+                    <h:selectBooleanCheckbox id="externalAccountBinding" value="#{acmeConfigMBean.currentAlias.requireExternalAccountBinding}" disabled="#{!acmeConfigMBean.currentAliasEditMode}" immediate="false">
+                    	<f:ajax execute="@form" listener="#{acmeConfigMBean.toggleCurrentEabEditMode}" render="@form"></f:ajax>
                     </h:selectBooleanCheckbox>
                     
                     <h:outputLabel for="eabType" value="#{web.text.ACME_EAB_TYPE}" rendered="#{acmeConfigMBean.currentAlias.requireExternalAccountBinding}" styleClass="titles"/>
@@ -364,12 +364,12 @@
 						<f:selectItems value="#{acmeConfigMBean.availableEabs}" />
 					</h:selectOneMenu>	                    
                 </h:panelGrid>
-                <h:panelGrid binding="#{acmeConfigMBean.dataGrid}" columnClasses="fixEditColumn1,fixEditColumn2"
+                <h:panelGrid id="eabGrid" binding="#{acmeConfigMBean.dataGrid}" columnClasses="fixEditColumn1,fixEditColumn2" 
                 	rendered="#{acmeConfigMBean.currentAlias.requireExternalAccountBinding}" 
                 	disabled="#{!acmeConfigMBean.currentAliasEditMode}">
 				</h:panelGrid>
                 <h:panelGrid columns="1">
-                <h:panelGroup>
+                	<h:panelGroup>
                         <h:commandButton action="#{acmeConfigMBean.cancelCurrentAlias}" value="#{web.text.CANCEL}" rendered="#{acmeConfigMBean.currentAliasEditMode}" style="margin-right:3px;" immediate="true"/>
                         <h:commandButton action="#{acmeConfigMBean.saveCurrentAlias}" value="#{web.text.SAVE}" rendered="#{acmeConfigMBean.currentAliasEditMode}"
                         	disabled="#{acmeConfigMBean.saveCurrentAliasDisabled}"/>
