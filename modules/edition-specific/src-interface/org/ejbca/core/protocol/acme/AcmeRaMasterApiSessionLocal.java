@@ -16,6 +16,7 @@ package org.ejbca.core.protocol.acme;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.ejb.Local;
@@ -99,6 +100,9 @@ public interface AcmeRaMasterApiSessionLocal {
 
     /** @see  org.ejbca.core.protocol.acme.AcmeAuthorizationDataSessionBean#getAcmeAuthorizationsByAccountId(String) */
     List<AcmeAuthorization> getAcmeAuthorizationsByAccountId(String accountId);
+    
+    /** @see  org.ejbca.core.protocol.acme.AcmeAuthorizationDataSessionBean#getAcmeAuthorizations(String,Map<String,String>,List<String>) */
+    List<AcmeAuthorization> getAcmeAuthorizations(String accountId, Map<String,String> identifiers, List<String> status);
 
     /** @see org.ejbca.core.protocol.acme.AcmeAuthorizationDataSessionBean#createOrUpdate(AcmeAuthorization) */
     String persistAcmeAuthorizationData(AcmeAuthorization acmeAuthorization);

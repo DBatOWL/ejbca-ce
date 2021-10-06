@@ -3178,6 +3178,21 @@ public class RaMasterApiProxyBean implements RaMasterApiProxyBeanLocal {
     }
 
     @Override
+    public List<AcmeAuthorization> getAcmeAuthorizations(final String accountId, final Map<String, String> identifiers, final List<String> status) {
+        for (RaMasterApi raMasterApi : raMasterApisLocalFirst) {
+            // ECA-10060 Change to version 13.
+            if (raMasterApi.isBackendAvailable() && raMasterApi.getApiVersion() >= 12) {
+                try {
+                    return raMasterApi.getAcmeAuthorizations(accountId, identifiers, status);
+                }  catch (UnsupportedOperationException | RaMasterBackendUnavailableException e) {
+                    // Just try next implementation
+                }
+            }
+        }
+        return new ArrayList<AcmeAuthorization>();
+    }
+
+    @Override
     public Set<AcmeOrder> getAcmeOrdersByAccountId(final String accountId) {
         for (RaMasterApi raMasterApi : raMasterApisLocalFirst) {
             if (raMasterApi.isBackendAvailable() && raMasterApi.getApiVersion() >= 5) {

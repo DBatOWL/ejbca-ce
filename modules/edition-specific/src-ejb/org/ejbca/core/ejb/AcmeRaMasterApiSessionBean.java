@@ -15,6 +15,7 @@ package org.ejbca.core.ejb;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.ejb.Stateless;
@@ -145,6 +146,11 @@ public class AcmeRaMasterApiSessionBean implements AcmeRaMasterApiSessionLocal {
 
     @Override
     public List<AcmeAuthorization> getAcmeAuthorizationsByAccountId(String accountId) {
+        throw new UnsupportedOperationException("ACME calls are only supported in EJBCA Enterprise");
+    }
+
+    @Override
+    public List<AcmeAuthorization> getAcmeAuthorizations(String accountId, Map<String, String> identifiers, List<String> status) {
         throw new UnsupportedOperationException("ACME calls are only supported in EJBCA Enterprise");
     }
 

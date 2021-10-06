@@ -20,8 +20,6 @@ import org.ejbca.acme.AcmeAuthorizationData;
 
 /**
  * Local interface for AcmeAuthorizationDataSessionLocal
- *
- * @version $Id$
  */
 @Local
 public interface AcmeAuthorizationDataSessionLocal extends AcmeAuthorizationDataSession {
@@ -49,6 +47,8 @@ public interface AcmeAuthorizationDataSessionLocal extends AcmeAuthorizationData
 
     /**
      * Create or update the AcmeAuthorization.
+     * 
+     * The update operation only updates the orderId and status fields.
      *
      * @return the id of persisted version of the AcmeAuthorization.
      */

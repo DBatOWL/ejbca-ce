@@ -13,9 +13,12 @@
 package org.ejbca.core.protocol.acme;
 
 import java.util.List;
+import java.util.Map;
+
+import org.ejbca.core.protocol.acme.AcmeIdentifier.AcmeIdentifierTypes;
 
 /**
- * @version $Id$
+ * Interface for read operations related to {@link AcmeAuthorizationData}.
  */
 public interface AcmeAuthorizationDataSession {
     static final String ACME_MODULE = "acme";
@@ -41,5 +44,18 @@ public interface AcmeAuthorizationDataSession {
      * @return list of sought authorizations, or null if none exists
      */
     List<AcmeAuthorization> getAcmeAuthorizationsByAccountId(final String accountId);
+    
+    /**
+    * // ECA-10060 Consider identical identifiers of different types for future items.
+    * 
+    * Returns the list of ACME authorizations with the given criteria.
+    *  
+    * @param accountId the ID of the account.
+    * @param identifiers the map of identifier and identifier type (see {@link AcmeIdentifierTypes}) pairs.
+    * @param status the List of status (see {@link AcmeAuthorizationStatus}).
+    * 
+    * @return the list of authorization or an empty list.
+    */
+   List<AcmeAuthorization> getAcmeAuthorizations(String accountId, Map<String,String> identifiers, List<String> status);
 
 }

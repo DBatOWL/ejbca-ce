@@ -1440,6 +1440,17 @@ public interface RaMasterApi {
      * @return the list of sought AcmeAuthorizations or null if not found
      */
   List<AcmeAuthorization> getAcmeAuthorizationsByAccountId (final String accountId);
+  
+    /**
+     * Returns the list of ACME authorizations with the given criteria.
+     *  
+     * @param accountId the ID of the account.
+     * @param identifiers the map of identifier and identifier type (see AcmeIdentifierTypes) pairs.
+     * @param status the List of status (see AcmeAuthorizationStatus).
+     * 
+     * @return the list of AcmeAuthorizations or an empty list.
+     */
+    List<AcmeAuthorization> getAcmeAuthorizations(String accountId, final Map<String,String> identifiers, final List<String> status);
 
     /**
      * Create or update the AcmeAuthorization.

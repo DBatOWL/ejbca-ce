@@ -2771,6 +2771,11 @@ public class RaMasterApiSessionBean implements RaMasterApiSessionLocal {
     }
 
     @Override
+    public List<AcmeAuthorization> getAcmeAuthorizations(String accountId, Map<String, String> identifiers, List<String> status) {
+        return acmeAuthorizationDataSession.getAcmeAuthorizations(accountId, identifiers, status);
+    }
+
+    @Override
     public String persistAcmeAuthorization(AcmeAuthorization acmeAuthorization) {
         return acmeAuthorizationDataSession.createOrUpdate(acmeAuthorization);
     }
