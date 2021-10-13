@@ -5,7 +5,7 @@
 	  xmlns:h="http://xmlns.jcp.org/jsf/html"
 	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-	  xmlns:t="http://myfaces.apache.org/tomahawk" xmlns:p="http://java.sun.com/jsf/html">
+	  xmlns:t="http://myfaces.apache.org/tomahawk">
 <ui:remove>
 	<!--
     /*************************************************************************
@@ -1006,6 +1006,29 @@
             </h:panelGroup>
         </h:panelGrid>
     </h:form>
+
+	<!-- Hardware Security Modules -->
+
+	<h:form id="hsmForm" enctype="multipart/form-data" rendered="#{systemConfigMBean.selectedTab eq 'Hardware Security Modules'}">
+		<h:panelGrid columns="2" styleClass="edit-top" cellspacing="3" cellpadding="3" border="0" width="100%" rowClasses="Row1" columnClasses="editColumnSystem1,editColumn2">
+			<div/>
+			<h:outputText value="#{web.text.PKCS11_ATTRIBUTES_TITLE}" style="font-weight: bold; font-size:1.2em;" />
+			<h:panelGroup>
+				<h:outputText value="#{web.text.PKCS11_ATTRIBUTES}" style="font-weight: bold; font-size:1.2em;" />
+				<br/>
+				<h:outputText value="#{web.text.PKCS11_ATTRIBUTES_HELP}" styleClass="help"/>
+			</h:panelGroup>
+			<h:inputTextarea rows="30" cols="80" value="#{systemConfigMBean.currentConfig.hsmAttributes}"/>
+		</h:panelGrid>
+
+		<h:panelGrid columns="2" styleClass="edit-bottom" cellspacing="3" cellpadding="3" border="0" width="100%" rowClasses="Row0" columnClasses="editColumnSystem1,editColumn2">
+			<div />
+			<h:panelGroup>
+				<h:commandButton value="#{web.text.SAVE}" action="#{systemConfigMBean.saveCurrentConfig}" rendered="#{systemConfigMBean.allowedToEditSystemConfiguration}"/>
+				<h:commandButton value="#{web.text.CANCEL}" action="#{systemConfigMBean.flushCache}" rendered="#{systemConfigMBean.allowedToEditSystemConfiguration}" />
+			</h:panelGroup>
+		</h:panelGrid>
+	</h:form>
 
     <!-- Global validator settings -->
 

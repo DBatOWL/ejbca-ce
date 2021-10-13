@@ -13,14 +13,6 @@
 
 package org.ejbca.config;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.cesecore.certificates.certificatetransparency.CTLogInfo;
@@ -30,6 +22,14 @@ import org.cesecore.config.ExternalScriptsConfiguration;
 import org.cesecore.configuration.ConfigurationBase;
 import org.cesecore.util.StringTools;
 import org.ejbca.util.URIUtil;
+
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -212,6 +212,7 @@ public class GlobalConfiguration extends ConfigurationBase implements ExternalSc
     private static final String ENABLESESSIONTIMEOUT = "use_session_timeout";
     private static final String SESSIONTIMEOUTTIME = "session_timeout_time";
     private static final String VA_STATUS_TIME_CONSTRAINT_KEY = "va_status_time_constraint";
+    private static final String HSM_ATTRIBUTES = "hsm_attributes";
 
     /** Creates a new instance of GlobalConfiguration */
     public GlobalConfiguration()  {
@@ -586,6 +587,18 @@ public class GlobalConfiguration extends ConfigurationBase implements ExternalSc
    
     public void setVaStatusTimeConstraint(final int vaStatusTimeConstraint) {
         data.put(VA_STATUS_TIME_CONSTRAINT_KEY, vaStatusTimeConstraint);
+    }
+
+    public String getHsmAttributes() {
+        if (data.get(HSM_ATTRIBUTES) == null) {
+            return "";
+        } else {
+            return (String) data.get(HSM_ATTRIBUTES);
+        }
+    }
+
+    public void setHsmAttributes(final String value) {
+        data.put(HSM_ATTRIBUTES, value);
     }
 
     @SuppressWarnings("unchecked")

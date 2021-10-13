@@ -13,12 +13,12 @@
 
 package org.cesecore.configuration;
 
+import org.cesecore.internal.UpgradeableDataHashMap;
+import org.cesecore.util.StringTools;
+
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import org.cesecore.internal.UpgradeableDataHashMap;
-import org.cesecore.util.StringTools;
 
 /**
  *
@@ -75,5 +75,4 @@ public abstract class ConfigurationBase extends UpgradeableDataHashMap {
     public void filterDiffMapForLogging(Map<Object,Object> diff) {
         // Do nothing
     }
-
 }
