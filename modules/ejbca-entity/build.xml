@@ -12,8 +12,6 @@
  *  See terms of license at gnu.org.                                     *
  *                                                                       *
  *************************************************************************/
-
- version: $Id$
  -->
 <project name="ejbca-entity" default="build">
     <description>
@@ -23,7 +21,7 @@
 	<dirname property="ejbca-entity.dir" file="${ant.file.ejbca-entity}"/>
 
     <import file="${ejbca-entity.dir}/../build-helpers.xml"/>
-	
+
 	<property name="ejbca-entity.build.dir" location="${ejbca-entity.dir}/build"/>
 	<property name="ejbca-entity.build-test.dir" location="${ejbca-entity.dir}/build-test"/>
 	<property name="ejbca-entity.build-cli.dir" location="${ejbca-entity.dir}/build-cli"/>
@@ -57,12 +55,12 @@
 		<path refid="lib.junit.classpath"/>
 		<path refid="lib.xstream.classpath"/>
 	</path>
-	
+
 	<path id="compile-cli.classpath">
 		<path refid="cli.classpath"/>
 		<path refid="lib.javaxejb.classpath"/>
 	</path>
-	
+
 	<path id="jdbc-jars.classpath">
 		<fileset dir="${jdbc.driver.dir}" includes="*.jar"/>
 	</path>
@@ -103,12 +101,20 @@
 		<delete file="${mod.ejbca-entity.lib}" />
 		<delete dir="${mod.ejbca-db-cli.dist}" />
     </target>
-	
+
     <target name="build" description="Build this module" depends="compile, handlepersistence, handleorm">
-    	<jar destfile="${mod.ejbca-entity.lib}" basedir="${ejbca-entity.build.dir}" includes="**/*.class **/*.xml" excludes="org/ejbca/util/DatabaseSchemaScriptCreator.class"/>
+		<jar destfile="${mod.ejbca-entity.lib}">
+			<manifest>
+				<attribute name="Implementation-Version" value="${app.version}"/>
+			</manifest>
+			<fileset dir="${ejbca-entity.build.dir}" includes="**/*.class,META-INF/**/*" excludes="org/ejbca/util/DatabaseSchemaScriptCreator.class"/>
+			<fileset dir="${ejbca-entity.src.dir}">
+				<include name="META-INF/services/*"/>
+			</fileset>
+		</jar>
     </target>
 
-    <target name="handlepersistence">
+	<target name="handlepersistence">
     	<mkdir dir="${ejbca-entity.build.dir}/META-INF"/>
     	<copy file="${ejbca-entity.resources.dir}/persistence-ds-template.xml" tofile="${ejbca-entity.build.dir}/META-INF/persistence.xml" failonerror="true" overwrite="true">
     		<filterchain>
@@ -130,7 +136,9 @@
     </target>
 
     <target name="handleorm">
-		<copy file="${ejbca-entity.resources.dir}/orm-ejbca-${database.name}.xml" todir="${ejbca-entity.build.dir}/META-INF/" failonerror="true" overwrite="true"/>
+		<copy todir="${ejbca-entity.build.dir}/META-INF/" failonerror="true" overwrite="true">
+			<fileset dir="${ejbca-entity.resources.dir}" includes="orm-*.xml"/>
+		</copy>
 		<copy todir="${ejbca-entity.build-test.dir}/META-INF/" failonerror="true" overwrite="true">
 			<fileset dir="${ejbca-entity.resources.dir}" includes="orm-*.xml"/>
     	</copy>
@@ -165,9 +173,9 @@
     	<condition property="databaseschemarest.ok" value="true"><not><isset property="databaseschemarest.failed"/></not></condition>
     	<echo message="If your test runs out of memory (for example during the CRL write), you might want to consider using ANT_OPTS like '-Xms1024m -Xmx2048m'." />
     </target>
-	
+
 	<target name="test-cli-commands" description="Test Database CLI commands." depends="compile-test, build-cli-conditional">
-		
+
 	</target>
 
     <target name="test-ocspmon" description="Test OCSP monitoring." depends="compile-test, handlepersistence, handleorm">
@@ -242,7 +250,7 @@
 		    		<available file="${ejbca-entity.src-cli.dir}/org" type="dir"/>
 		    	</not>
 		    </condition>
-		</fail>	
+		</fail>
     	<mkdir dir="${ejbca-entity.build-cli.dir}/META-INF"/>
     	<!--
     	<fail unless="jdbc.driver.dir" message="Use -Djdbc.driver.dir=/path-to-jdbc-jars/ to specify the directory with the JDBC driver JARs."/>
@@ -263,7 +271,7 @@
     	<mkdir dir="${mod.ejbca-db-cli.dist}/META-INF"/>
     	<mkdir dir="${mod.ejbca-db-cli.dist}/lib"/>
     	<mkdir dir="${mod.ejbca-db-cli.dist}/endorsed"/>
-    		
+
     	<pathconvert property="cli.classpath.property" pathsep=" ">
     	    <path refid="cli.classpath" />
     		<map from="${ejbca.home}/" to=""/>
@@ -285,6 +293,7 @@
             </manifest>
 		</jar>
         <copy file="${ejbca-entity.resources.dir}/log4j-cli.xml" tofile="${mod.ejbca-db-cli.dist}/log4j.xml"/>
+		<!-- TODO ECA-7687: Check here -->
         <copy file="${ejbca-entity.build-cli.dir}/META-INF/persistence.xml" tofile="${mod.ejbca-db-cli.dist}/META-INF/persistence.xml" failonerror="true"/>
     	<copy todir="${mod.ejbca-db-cli.dist}/conf" failonerror="false">
     		<fileset dir="${ejbca.home}/conf">

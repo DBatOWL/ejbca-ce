@@ -13,25 +13,57 @@
 
 package org.ejbca.config;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * Parses embedded or overridden database.properties for info.
- * 
- * @version $Id$
  */
 public class DatabaseConfiguration {
 
 	public static final String CONFIG_DATASOURCENAME = "datasource.jndi-name";
     public static final String CONFIG_DATABASENAME = "database.name";
+    public static final String PROPERTY_HIBERNATE_DIALECT = "hibernate.dialect";
 
-	public static String getFullDataSourceJndiName(){
+	public static String getFullDataSourceJndiName() {
 		return InternalConfiguration.getDataSourceJndiNamePrefix() + EjbcaConfigurationHolder.getString(CONFIG_DATASOURCENAME);
 	}
 
-    public static String getDatabaseName(){
-        final String ret = EjbcaConfigurationHolder.getString(CONFIG_DATABASENAME);
-        if (ret==null) {
+    /**
+     * Returns the database name in priority (higher to lower):
+     * <ul>
+     *     <li>database.name as environment variable;</li>
+     *     <li>database.name as property in database.properties;</li>
+     *     <li>otherwise - hsqldb.</li>
+     * </ul>
+     * @return the database name.
+     */
+    public static String getDatabaseName() {
+        final String databaseNameFromEnv = System.getProperty(CONFIG_DATABASENAME);
+        final String databaseNameFromProperties = EjbcaConfigurationHolder.getString(CONFIG_DATABASENAME);
+        if(StringUtils.isNotBlank(databaseNameFromEnv)) {
+            return databaseNameFromEnv;
+        }
+        if (StringUtils.isBlank(databaseNameFromProperties)) {
             return "hsqldb";
         }
-        return ret;
+        return databaseNameFromProperties;
+    }
+
+    /**
+     * Returns the hibernate dialect for database in priority (higher to lower):
+     * <ul>
+     *     <li>hibernate.dialect as environment variable;</li>
+     *     <li>hibernate.dialect as property in database.properties;</li>
+     *     <li>otherwise - null.</li>
+     * </ul>
+     * @return the hibernate dialect.
+     */
+    public static String getHibernateDialect() {
+        final String hibernateDialectFromEnv = System.getProperty(PROPERTY_HIBERNATE_DIALECT);
+        final String hibernateDialectFromProperties = EjbcaConfigurationHolder.getString(PROPERTY_HIBERNATE_DIALECT);
+        if(StringUtils.isNotBlank(hibernateDialectFromEnv)) {
+            return hibernateDialectFromEnv;
+        }
+        return hibernateDialectFromProperties;
     }
 }
