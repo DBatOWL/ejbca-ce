@@ -12,28 +12,35 @@
  *  See terms of license at gnu.org.                                     *
  *                                                                       *
  *************************************************************************/
-
- version: $Id$
  -->
 <persistence version="2.1"
     xmlns="http://xmlns.jcp.org/xml/ns/persistence"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
                         http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-                        
+
     <persistence-unit name="ejbca" transaction-type="JTA">
+        <!-- Provider to support runtime configuration -->
+        <provider>org.ejbca.config.RuntimePersistenceProvider</provider>
         <jta-data-source>${datasource.jndi-name-prefix}${datasource.jndi-name}</jta-data-source>
-        <mapping-file>META-INF/orm-ejbca-${database.name}.xml</mapping-file>
+        <!--
+        <mapping-file/>:
+        mapping file's reference populated at runtime using database.name (database.properties) or
+        system property database.name (-Ddatabase.name=db)
+        -->
         <properties>
+            <!-- This property can be overridden using system property -Dhibernate.dialect=dialect -->
             <property name="hibernate.dialect" value="${hibernate.dialect}"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- validate | update | create | create-drop -->
             <property name="hibernate.query.jpaql_strict_compliance" value="true"/>
             <!-- Debug options -->
-            <!-- 
+            <!--
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
-             -->
+            -->
+            <property name="hibernate.transaction.jta.platform"
+                      value="org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform" />
         </properties>
     </persistence-unit>
 </persistence>
