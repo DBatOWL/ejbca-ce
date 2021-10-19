@@ -467,12 +467,18 @@ public final class StringTools {
      *  <code>false</code> otherwise.
      */
     public static boolean isIpAddress(String ipAddress) {
-      Matcher m1 = StringTools.VALID_IPV4_PATTERN.matcher(ipAddress);
-      if (m1.matches()) {
-        return true;
+      if (isIpV4Address(ipAddress)) {
+          return true;
       }
-      Matcher m2 = StringTools.VALID_IPV6_PATTERN.matcher(ipAddress);
-      return m2.matches();
+      return isIpV6Address(ipAddress);
+    }
+    
+    public static boolean isIpV4Address(String ipAddress) {
+        return StringTools.VALID_IPV4_PATTERN.matcher(ipAddress).matches();
+    }
+    
+    public static boolean isIpV6Address(String ipAddress) {
+        return StringTools.VALID_IPV6_PATTERN.matcher(ipAddress).matches();
     }
 
     /**
@@ -1328,6 +1334,5 @@ public final class StringTools {
         final String whiteList = "[a-zA-Z0-9-_\\s\\.]+";
         return Pattern.matches(whiteList, value);
     }
-
 
 }
