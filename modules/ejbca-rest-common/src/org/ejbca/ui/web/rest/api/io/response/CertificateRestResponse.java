@@ -28,12 +28,15 @@ public class CertificateRestResponse {
     private String responseFormat;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<byte[]> certificateChain;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String certProfileName;
 
     private CertificateRestResponse(final CertificateRestResponseBuilder builder) {
         this.certificate = builder.certificate;
         this.serialNumber = builder.serialNumber;
         this.responseFormat = builder.responseFormat;
         this.certificateChain = builder.certificateChain;
+        this.certProfileName = builder.certProfileName;
     }
 
     /**
@@ -66,6 +69,10 @@ public class CertificateRestResponse {
     public String getResponseFormat() {
         return responseFormat;
     }
+    
+    public String getCertProfileName() {
+        return certProfileName;
+    }
 
     public List<byte[]> getCertificateChain() { return certificateChain; }
     
@@ -74,6 +81,7 @@ public class CertificateRestResponse {
         private String serialNumber;
         private String responseFormat;
         private List<byte[]> certificateChain;
+        private String certProfileName;
         
         private CertificateRestResponseBuilder() {
         }
@@ -90,6 +98,11 @@ public class CertificateRestResponse {
 
         public CertificateRestResponseBuilder setResponseFormat(String responseFormat) {
             this.responseFormat = responseFormat;
+            return this;
+        }
+        
+        public CertificateRestResponseBuilder setCertificateProfileName(String certProfileName) {
+            this.certProfileName = certProfileName;
             return this;
         }
 

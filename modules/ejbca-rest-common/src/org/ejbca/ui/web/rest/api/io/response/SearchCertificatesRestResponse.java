@@ -9,15 +9,16 @@
  *************************************************************************/
 package org.ejbca.ui.web.rest.api.io.response;
 
-import org.cesecore.certificates.certificate.CertificateDataWrapper;
-import org.cesecore.util.Base64;
-import org.cesecore.util.CertTools;
-import org.ejbca.core.model.era.RaCertificateSearchResponse;
-
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.cesecore.certificates.certificate.CertificateDataWrapper;
+import org.cesecore.certificates.certificateprofile.CertificateProfileSession;
+import org.cesecore.util.Base64;
+import org.cesecore.util.CertTools;
+import org.ejbca.core.model.era.RaCertificateSearchResponse;
 
 /**
  * JSON output for certificate search.
@@ -93,7 +94,8 @@ public class SearchCertificatesRestResponse {
 
     public static class SearchCertificatesRestResponseConverter {
 
-        public SearchCertificatesRestResponse toRestResponse(final RaCertificateSearchResponse raCertificateSearchResponse) throws CertificateEncodingException {
+        public SearchCertificatesRestResponse toRestResponse(final RaCertificateSearchResponse raCertificateSearchResponse, 
+                final CertificateProfileSession certificateProfileSession) throws CertificateEncodingException {
             final SearchCertificatesRestResponse searchCertificatesRestResponse = new SearchCertificatesRestResponse();
             searchCertificatesRestResponse.setMoreResults(raCertificateSearchResponse.isMightHaveMoreResults());
             for(final CertificateDataWrapper certificateDataWrapper : raCertificateSearchResponse.getCdws()) {
@@ -104,6 +106,7 @@ public class SearchCertificatesRestResponse {
                             .setSerialNumber(CertTools.getSerialNumberAsString(certificate))
                             .setCertificate(Base64.encode(certificate.getEncoded()))
                             .setResponseFormat("DER")
+                            .setCertificateProfileName(certificateProfileSession.getCertificateProfileName(certificateDataWrapper.getCertificateData().getCertificateProfileId()))
                             .build();
                     searchCertificatesRestResponse.getCertificates().add(certificateRestResponse);
                 }
