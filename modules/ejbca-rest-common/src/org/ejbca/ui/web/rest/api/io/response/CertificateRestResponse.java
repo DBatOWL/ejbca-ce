@@ -30,13 +30,16 @@ public class CertificateRestResponse {
     private List<byte[]> certificateChain;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String certProfileName;
-
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String endEntityProfileName;
+    
     private CertificateRestResponse(final CertificateRestResponseBuilder builder) {
         this.certificate = builder.certificate;
         this.serialNumber = builder.serialNumber;
         this.responseFormat = builder.responseFormat;
         this.certificateChain = builder.certificateChain;
         this.certProfileName = builder.certProfileName;
+        this.endEntityProfileName = builder.endEntityProfileName;
     }
 
     /**
@@ -74,6 +77,10 @@ public class CertificateRestResponse {
         return certProfileName;
     }
 
+    public String getEndEntityProfileName() {
+        return endEntityProfileName;
+    }
+    
     public List<byte[]> getCertificateChain() { return certificateChain; }
     
     public static class CertificateRestResponseBuilder {
@@ -82,6 +89,8 @@ public class CertificateRestResponse {
         private String responseFormat;
         private List<byte[]> certificateChain;
         private String certProfileName;
+        private String endEntityProfileName;
+
         
         private CertificateRestResponseBuilder() {
         }
@@ -105,14 +114,30 @@ public class CertificateRestResponse {
             this.certProfileName = certProfileName;
             return this;
         }
+        
+        public CertificateRestResponseBuilder setEndEntityProfileName(String endEntityProfileName) {
+            this.endEntityProfileName = endEntityProfileName;
+            return this;
+        }
 
         public CertificateRestResponseBuilder setResponseFormat(int keystoreType) {
-            this.responseFormat =
-                    keystoreType == SecConst.TOKEN_SOFT_JKS ? "JKS" :
-                    keystoreType == SecConst.TOKEN_SOFT_PEM ? "PEM" :
-                    keystoreType == SecConst.TOKEN_SOFT_P12 ? "PKCS12" :
-                    keystoreType == SecConst.TOKEN_SOFT_BCFKS ? "BCFKS" :
-                            "UNKNOWN";
+            switch (keystoreType) {
+            case SecConst.TOKEN_SOFT_JKS:
+                this.responseFormat = "JKS";
+                break;
+            case SecConst.TOKEN_SOFT_PEM:
+                this.responseFormat = "PEM";
+                break;
+            case SecConst.TOKEN_SOFT_P12:
+                this.responseFormat = "PKCS12";
+                break;
+            case SecConst.TOKEN_SOFT_BCFKS:
+                this.responseFormat = "BCFKS";
+                break;
+            default:
+                this.responseFormat = "UNKNOWN";
+                break;
+            }
             return this;
         }
 
@@ -141,7 +166,7 @@ public class CertificateRestResponse {
                     .setSerialNumber(CertTools.getSerialNumberAsString(certificate))
                     .setCertificateChain(certificateChain == null ? null : certificateChain
                             .stream()
-                            .map(c -> getEncodedCertificate(c))
+                            .map(CertificateRestResponseConverter::getEncodedCertificate)
                             .collect(Collectors.toList()))
                     .setResponseFormat("DER")
                     .build();
@@ -154,7 +179,7 @@ public class CertificateRestResponse {
                     .build();
         }
 
-        private byte[] getEncodedCertificate(final Certificate certificate) {
+        private static byte[] getEncodedCertificate(final Certificate certificate) {
             try {
                 return certificate.getEncoded();
             } catch (CertificateEncodingException e) {
