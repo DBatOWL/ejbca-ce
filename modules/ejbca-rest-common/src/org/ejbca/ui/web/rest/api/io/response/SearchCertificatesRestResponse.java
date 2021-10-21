@@ -108,8 +108,8 @@ public class SearchCertificatesRestResponse {
                             .setSerialNumber(CertTools.getSerialNumberAsString(certificate))
                             .setCertificate(Base64.encode(certificate.getEncoded()))
                             .setResponseFormat("DER")
-                            .setCertificateProfileName(certificateProfileSession.getCertificateProfileName(certificateDataWrapper.getCertificateData().getCertificateProfileId()))
-                            .setEndEntityProfileName(endEntityProfileSession.getEndEntityProfileName(certificateDataWrapper.getCertificateData().getEndEntityProfileId()))
+                            .setCertificateProfile(certificateProfileSession.getCertificateProfileName(certificateDataWrapper.getCertificateData().getCertificateProfileId()))
+                            .setEndEntityProfile(endEntityProfileSession.getEndEntityProfileName(certificateDataWrapper.getCertificateData().getEndEntityProfileId()))
                             .build();
                     searchCertificatesRestResponse.getCertificates().add(certificateRestResponse);
                 }

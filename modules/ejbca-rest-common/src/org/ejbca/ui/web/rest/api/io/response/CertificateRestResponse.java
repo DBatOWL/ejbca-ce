@@ -29,17 +29,17 @@ public class CertificateRestResponse {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<byte[]> certificateChain;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String certProfileName;
+    private String certificateProfile;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String endEntityProfileName;
+    private String endEntityProfile;
     
     private CertificateRestResponse(final CertificateRestResponseBuilder builder) {
         this.certificate = builder.certificate;
         this.serialNumber = builder.serialNumber;
         this.responseFormat = builder.responseFormat;
         this.certificateChain = builder.certificateChain;
-        this.certProfileName = builder.certProfileName;
-        this.endEntityProfileName = builder.endEntityProfileName;
+        this.certificateProfile = builder.certificateProfile;
+        this.endEntityProfile = builder.endEntityProfile;
     }
 
     /**
@@ -73,12 +73,12 @@ public class CertificateRestResponse {
         return responseFormat;
     }
     
-    public String getCertProfileName() {
-        return certProfileName;
+    public String getCertificateProfile() {
+        return certificateProfile;
     }
 
-    public String getEndEntityProfileName() {
-        return endEntityProfileName;
+    public String getEndEntityProfile() {
+        return endEntityProfile;
     }
     
     public List<byte[]> getCertificateChain() { return certificateChain; }
@@ -88,8 +88,8 @@ public class CertificateRestResponse {
         private String serialNumber;
         private String responseFormat;
         private List<byte[]> certificateChain;
-        private String certProfileName;
-        private String endEntityProfileName;
+        private String certificateProfile;
+        private String endEntityProfile;
 
         
         private CertificateRestResponseBuilder() {
@@ -110,13 +110,13 @@ public class CertificateRestResponse {
             return this;
         }
         
-        public CertificateRestResponseBuilder setCertificateProfileName(String certProfileName) {
-            this.certProfileName = certProfileName;
+        public CertificateRestResponseBuilder setCertificateProfile(String certificateProfile) {
+            this.certificateProfile = certificateProfile;
             return this;
         }
         
-        public CertificateRestResponseBuilder setEndEntityProfileName(String endEntityProfileName) {
-            this.endEntityProfileName = endEntityProfileName;
+        public CertificateRestResponseBuilder setEndEntityProfile(String endEntityProfile) {
+            this.endEntityProfile = endEntityProfile;
             return this;
         }
 
