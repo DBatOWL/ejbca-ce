@@ -109,17 +109,9 @@
 		<delete dir="${mod.ejbca-db-cli.dist}" />
     </target>
 
-    <target name="build" description="Build this module" depends="compile, handlepersistence, handleorm">
-		<jar destfile="${mod.ejbca-entity.lib}">
-			<manifest>
-				<attribute name="Implementation-Version" value="${app.version}"/>
-			</manifest>
-			<fileset dir="${ejbca-entity.build.dir}" includes="**/*.class,META-INF/**/*" excludes="org/ejbca/util/DatabaseSchemaScriptCreator.class"/>
-			<fileset dir="${ejbca-entity.src.dir}">
-				<include name="META-INF/services/*"/>
-			</fileset>
-		</jar>
-    </target>
+	<target name="build" description="Build this module" depends="compile, handlepersistence, handleorm">
+		<jar destfile="${mod.ejbca-entity.lib}" basedir="${ejbca-entity.build.dir}" includes="**/*.class **/*.xml" excludes="org/ejbca/util/DatabaseSchemaScriptCreator.class"/>
+	</target>
 
 	<target name="handlepersistence">
     	<mkdir dir="${ejbca-entity.build.dir}/META-INF"/>
