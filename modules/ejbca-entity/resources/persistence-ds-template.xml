@@ -19,18 +19,27 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
                         http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 
-    <persistence-unit name="ejbca" transaction-type="JTA">
-        <!-- Provider to support runtime configuration -->
-        <provider>org.ejbca.config.RuntimePersistenceProvider</provider>
-        <jta-data-source>${datasource.jndi-name-prefix}${datasource.jndi-name}</jta-data-source>
-        <!--
-        <mapping-file/>:
-        mapping file's reference populated at runtime using database.name (database.properties) or
-        system property database.name (-Ddatabase.name=db)
-        -->
+    <!-- A default persistence unit to activate the default PersistenceProvider of the application server (HibernatePersistenceProvider) -->
+    <persistence-unit name="default" transaction-type="JTA">
+        <jta-data-source>java:/EjbcaDS</jta-data-source>
+        <mapping-file>META-INF/orm-default.xml</mapping-file>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
-            <!-- This property can be overridden using system property -Dhibernate.dialect=dialect -->
-            <property name="hibernate.dialect" value="${hibernate.dialect}"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.query.jpaql_strict_compliance" value="true"/>
+        </properties>
+    </persistence-unit>
+
+    <!-- Actual persistence unit -->
+    <persistence-unit name="ejbca" transaction-type="JTA">
+        <!-- Persistence provider to support runtime override with the default PersistenceProvider of the application server -->
+        <provider>org.cesecore.persistence.RuntimePersistenceProvider</provider>
+        <jta-data-source>${datasource.jndi-name-prefix}${datasource.jndi-name}</jta-data-source>
+        <!-- Specify variable here that can be substituted at runtime. -->
+        <!-- mapping-file>META-INF/orm-ejbca-h2.xml</mapping-file -->
+        <properties>
+            <!-- Specify variable here that can be substituted at runtime. -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- validate | update | create | create-drop -->
             <property name="hibernate.query.jpaql_strict_compliance" value="true"/>
             <!-- Debug options -->
@@ -39,8 +48,7 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             -->
-            <property name="hibernate.transaction.jta.platform"
-                      value="org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform" />
         </properties>
     </persistence-unit>
+
 </persistence>

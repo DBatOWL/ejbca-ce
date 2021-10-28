@@ -48,6 +48,9 @@
             </manifest>
 			<fileset dir="${cesecore-entity.build.dir}/classes/" excludes="**/*.java" />
 			<fileset dir="${cesecore-entity.dir}/src/" excludes="**/*.java" />
+			<fileset dir="${cesecore-entity.dir}/resources/">
+				<include name="META-INF/services/*"/>
+			</fileset>
 		</jar>
 	</target>
 

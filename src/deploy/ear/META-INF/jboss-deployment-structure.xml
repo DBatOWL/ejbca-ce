@@ -1,9 +1,9 @@
 <jboss-deployment-structure>
     <ear-subdeployments-isolated>true</ear-subdeployments-isolated>
-  
+
     <deployment>
 
-        <!-- Make sun/security/pkcs11/wrapper and sun/security/action exported, so we don't need to edit 
+        <!-- Make sun/security/pkcs11/wrapper and sun/security/action exported, so we don't need to edit
         modules/system/layers/base/sun/jdk/main/module.xml.
         pkcs11/wrapper is needed for HSM support and security/action is needed for CMP TCP (which is deprecated but still used) -->
         <dependencies>
@@ -14,13 +14,15 @@
                 </paths>
             </system>
             <module name="org.jboss.security.negotiation" export="true"/>
-        </dependencies> 
-        <!-- Using Oracle JDK and JBoss 7 signature verification on crypto providers do not work unless we specify to use-physical-code-source. 
+            <!-- Enable to support RuntimePersistenceProvider -->
+            <module name="org.jboss.jts" />
+        </dependencies>
+        <!-- Using Oracle JDK and JBoss 7 signature verification on crypto providers do not work unless we specify to use-physical-code-source.
         See https://issues.jboss.org/browse/WFLY-5 -->
         <resources>
             <resource-root path="lib/bcprov-jdk15on-168.jar" use-physical-code-source="true"/>
         </resources>
     </deployment>
-  
+
 </jboss-deployment-structure>
 

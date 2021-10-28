@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="propertyDefaults">
     <description>
-            This file sets the property defaults. Included from other files. 
+            This file sets the property defaults. Included from other files.
     </description>
 
 	<!-- Validate basic build requirements before we do anything else. -->
@@ -64,7 +64,7 @@
         </path>
     </pathconvert>
 
-	<!-- Load property files -->	
+	<!-- Load property files -->
     <property file="${ejbca.home}/conf/ejbca.properties" />
     <property file="${ejbca.home}/conf/install.properties"/>
     <property file="${ejbca.home}/conf/protection.properties" />
@@ -84,16 +84,16 @@
     <!-- httpsserver.hostname must be set cause it's used in preprocess. It will only be set here if not set in any property file -->
     <property name="httpsserver.hostname" value="localhost"/>
 
-    <!-- A little special something to handle backward compatibility with 
-         people using JBOSS_HOME. They can switch to APPSRV_HOME now, and both will work. 
-    -->        
+    <!-- A little special something to handle backward compatibility with
+         people using JBOSS_HOME. They can switch to APPSRV_HOME now, and both will work.
+    -->
     <condition property="jboss.home" value="${env.JBOSS_HOME}" >
         <equals arg1="${appserver.home}" arg2="${appserver.home}"/>
     </condition>
     <condition property="appserver.home" value="${env.APPSRV_HOME}" else="${jboss.home}">
         <contains string="${jboss.home}" substring="JBOSS_HOME"/>
     </condition>
-	
+
 	<!-- Auto-detect supported application server type -->
 	<available file="${appserver.home}/modules/org/jboss/as/standalone/main/module.xml" property="appserver.type" value="jboss"/>
 	<available file="${appserver.home}/modules/system/layers/base/org/jboss/as/standalone/main/module.xml" property="appserver.type" value="jboss"/>
@@ -107,14 +107,14 @@
 	<property name="appserver.type.detected.errormessage"
 		value="'appserver.type' could not be detected or is not configured. Glassfish 3.1, Glassfish 4.0, JBoss 7.1.1, JBoss EAP 6.1, 6.2, 6.3, 6.4, WildFly 8, 9, 10 can be detected. (Is 'appserver.home' configured?)"/>
 	<ant antfile="${ejbca.home}/echo.xml" target="appserver.error.message" inheritall="true" inheritrefs="true"/>
-	
+
 	<condition property="bundle-hibernate-jpa">
 		<or>
 			<matches pattern="glassfish" string="${appserver.type}"/>
 			<!-- ... -->
 		</or>
 	</condition>
-	
+
 	<condition property="exclude-slf4j">
 		<or>
 			<matches pattern="glassfish3" string="${appserver.subtype}"/>
@@ -141,7 +141,7 @@
     <property file="${ejbca.home}/src/java/defaultvalues.properties"/>
 
 	<!-- set some hard coded defaults, if they have not been set before -->
-	<!-- java.ver is used to select the correct version of bc libraries to include in ear -->   
+	<!-- java.ver is used to select the correct version of bc libraries to include in ear -->
 	<property name="java.ver" value="16" />
 	<property name="ca.tokentype" value="soft"/>
 	<property name="mail.from" value="ejbca-donotreply@domain.com" />
@@ -179,21 +179,7 @@
 	<property name="crlstore.enabled" value="true" />
     <property name="crlstore.contextroot" value="/ejbca/publicweb/crls" />
 	<property name="certstore.enabled" value="true" />
-	<property name="certstore.contextroot" value="/ejbca/publicweb/certificates" />	
-
-	<!-- set hibernate dialect -->
-	<condition property="hibernate.dialect" value="org.hibernate.dialect.DB2Dialect"><equals arg1="${database.name}" arg2="db2"/></condition>
-	<condition property="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"><equals arg1="${database.name}" arg2="derby"/></condition>
-	<condition property="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"><equals arg1="${database.name}" arg2="hsqldb"/></condition>
-	<condition property="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"><equals arg1="${database.name}" arg2="h2"/></condition>
-	<condition property="hibernate.dialect" value="org.hibernate.dialect.InformixDialect"><equals arg1="${database.name}" arg2="informix"/></condition>
-	<condition property="hibernate.dialect" value="org.hibernate.dialect.IngresDialect"><equals arg1="${database.name}" arg2="ingres"/></condition>
-	<condition property="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect"><equals arg1="${database.name}" arg2="mssql"/></condition>
-	<condition property="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"><equals arg1="${database.name}" arg2="mysql"/></condition>
-	<condition property="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"><equals arg1="${database.name}" arg2="oracle"/></condition>
-	<condition property="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"><equals arg1="${database.name}" arg2="postgres"/></condition>
-	<condition property="hibernate.dialect" value="org.hibernate.dialect.SybaseDialect"><equals arg1="${database.name}" arg2="sybase"/></condition>
-	<fail unless="hibernate.dialect" message="Unsupported database type '${database.name}'."/>
+	<property name="certstore.contextroot" value="/ejbca/publicweb/certificates" />
 
 	<!-- We use a valid connection sql to make JBoss auto-recreate destroyed database connections. This SQL is different on DB2 and Oracle -->
 	<condition property="database.valid.connection.sql" value="select 1 from sysibm.sysdummy1"><equals arg1="${database.name}" arg2="db2"/></condition>
@@ -209,7 +195,7 @@
 	<property name="externalra-database.valid.connection.sql" value="select 1" /> <!-- all other databases -->
 
 	<property name="unidfnr.enabled" value="false" /> <!-- by default unidfnr is not enabled, but can be in ocsp.properties -->
-	
+
     <target name="display-properties" description="Show current configuration">
         <echo>
 ---------- ${app.version} CONFIGURATION PROPERTIES ----------
@@ -260,5 +246,5 @@ unidfnr.enabled                 = ${unidfnr.enabled}
 		<echo message="appserver.subtype: ${appserver.subtype}"/>
 		<fail message="${appserver.type.detected.errormessage}" unless="appserver.type"/>
 	</target>
-	
+
 </project>
