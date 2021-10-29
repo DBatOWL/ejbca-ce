@@ -14,6 +14,8 @@ package org.cesecore.persistence;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceException;
 import javax.persistence.spi.PersistenceProvider;
@@ -23,6 +25,7 @@ import javax.persistence.spi.PersistenceUnitInfo;
 import javax.persistence.spi.ProviderUtil;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.log4j.Logger;
 
 /**
  * A persistence provider wrapper to configure the actual PersistenceProvider with runtime values.
@@ -45,7 +48,6 @@ import org.apache.commons.collections.CollectionUtils;
  *     HibernatePersistenceProvider) --&gt;
  *     &lt;persistence-unit name="default" transaction-type="JTA"&gt;
  *         &lt;jta-data-source&gt;java:/EjbcaDS&lt;/jta-data-source&gt;
- *         &lt;mapping-file&gt;META-INF/orm-default.xml&lt;/mapping-file&gt;
  *         &lt;exclude-unlisted-classes&gt;true&lt;/exclude-unlisted-classes&gt;
  *         &lt;properties&gt;
  *             &lt;property name="hibernate.hbm2ddl.auto" value="none"/&gt;
@@ -72,6 +74,7 @@ import org.apache.commons.collections.CollectionUtils;
  */
 public class RuntimePersistenceProvider implements PersistenceProvider {
 
+    private static final Logger log = Logger.getLogger(RuntimePersistenceProvider.class);
     private static final PersistenceProviderResolver resolver = PersistenceProviderResolverHolder.getPersistenceProviderResolver();
 
     @Override
@@ -110,15 +113,24 @@ public class RuntimePersistenceProvider implements PersistenceProvider {
      */
     private PersistenceProvider getPersistenceProvider() {
         final List<PersistenceProvider> providers = resolver.getPersistenceProviders();
-        if(CollectionUtils.isNotEmpty(providers)) {
-            final String thisProviderName = this.getClass().getName();
-            for (PersistenceProvider provider : providers) {
-                final String providerName = provider.getClass().getName();
-                if(!thisProviderName.equals(providerName)) {
-                    return provider;
-                }
-            }
+        final String thisProviderName = this.getClass().getName();
+        final Map<String, PersistenceProvider> nameToProviderMap = providers
+                .stream()
+                .filter(p -> !p.getClass().getName().equals(thisProviderName))
+                .collect(Collectors.toMap(p -> p.getClass().getName(), p -> p));
+        if (log.isDebugEnabled()) {
+            log.debug("Detected the following additional persistence providers: " + String.join(",", nameToProviderMap.keySet()));
         }
-        throw new PersistenceException("Cannot find the PersistenceProvider to use, check for PersistenceProvider activation.");
+        Optional<String> resultPersistenceProviderName = nameToProviderMap.keySet().stream().findFirst();
+        if(nameToProviderMap.size() > 1) {
+            log.warn("Misonfiguration in integration, will use " + resultPersistenceProviderName.get());
+        }
+        if(resultPersistenceProviderName.isPresent()) {
+            return nameToProviderMap.get(resultPersistenceProviderName.get());
+        }
+        else {
+            log.warn("Misonfiguration in integration, cannot find the persistence provider to use.");
+            throw new PersistenceException("Cannot find the PersistenceProvider to use, check for PersistenceProvider activation.");
+        }
     }
 }

@@ -22,10 +22,9 @@
     <!-- A default persistence unit to activate the default PersistenceProvider of the application server (HibernatePersistenceProvider) -->
     <persistence-unit name="default" transaction-type="JTA">
         <jta-data-source>java:/EjbcaDS</jta-data-source>
-        <mapping-file>META-INF/orm-default.xml</mapping-file>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
             <property name="hibernate.query.jpaql_strict_compliance" value="true"/>
         </properties>
     </persistence-unit>

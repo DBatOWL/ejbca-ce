@@ -275,7 +275,7 @@ public class RuntimePersistenceUnitInfoUnitTest {
     @Test
     public void shouldLeavePropertyHibernateDialect() {
         // given
-        System.setProperty(DatabaseConfiguration.ENV_RUNTIME_HIBERNATE_DIALECT, "");
+        System.setProperty(DatabaseConfiguration.CONFIG_HIBERNATE_DIALECT, "");
         // when
         final RuntimePersistenceUnitInfo actualPersistenceUnitInfo = new RuntimePersistenceUnitInfo(
                 PERSISTENCE_PROVIDER_NEW_CLASS_NAME, originalPersistenceUnitInfo
@@ -289,7 +289,7 @@ public class RuntimePersistenceUnitInfoUnitTest {
     @Test
     public void shouldOverridePropertyHibernateDialect() {
         // given
-        System.setProperty(DatabaseConfiguration.ENV_RUNTIME_HIBERNATE_DIALECT, "AwesomeDialect");
+        System.setProperty(DatabaseConfiguration.CONFIG_HIBERNATE_DIALECT, "AwesomeDialect");
         // when
         final RuntimePersistenceUnitInfo actualPersistenceUnitInfo = new RuntimePersistenceUnitInfo(
                 PERSISTENCE_PROVIDER_NEW_CLASS_NAME, originalPersistenceUnitInfo

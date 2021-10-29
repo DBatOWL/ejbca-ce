@@ -16,13 +16,13 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * Parses embedded or overridden database.properties for info.
+ * <b>NOTE:</b> please consider value of config/cesecore.properties#allow.external-dynamic.configuration
  */
 public class DatabaseConfiguration {
 
     public static final String CONFIG_DATABASE_NAME = "database.name";
-    public static final String ENV_RUNTIME_DATABASE_NAME = "runtime.database.name";
+    public static final String CONFIG_HIBERNATE_DIALECT = "hibernate.dialect";
     public static final String CONFIG_DEFAULT_HIBERNATE_DIALECT_PREFIX = "hibernate.dialect.";
-    public static final String ENV_RUNTIME_HIBERNATE_DIALECT = "runtime.hibernate.dialect";
 
     /**
      * Returns the database name in priority (higher to lower):
@@ -34,12 +34,7 @@ public class DatabaseConfiguration {
      * @return the database name.
      */
     public static String getDatabaseName() {
-        // get from -Druntime.database.name=
-        final String databaseNameFromEnv = System.getProperty(ENV_RUNTIME_DATABASE_NAME);
-        if(StringUtils.isNotBlank(databaseNameFromEnv)) {
-            return databaseNameFromEnv;
-        }
-        // get from database.properties or fallback to defaultvalues.properties
+        // get from -D, database.properties or fallback to defaultvalues.properties
         return ConfigurationHolder.getString(CONFIG_DATABASE_NAME);
     }
 
@@ -53,10 +48,10 @@ public class DatabaseConfiguration {
      * @return hibernate dialect.
      */
     public static String getHibernateDialect() {
-        // get from -Druntime.hibernate.dialect=
-        final String hibernateDialectFromEnv = System.getProperty(ENV_RUNTIME_HIBERNATE_DIALECT);
-        if(StringUtils.isNotBlank(hibernateDialectFromEnv)) {
-            return hibernateDialectFromEnv;
+        // get from -Dhibernate.dialect=
+        final String hibernateDialect = ConfigurationHolder.getConfiguredString(CONFIG_HIBERNATE_DIALECT);
+        if(StringUtils.isNotBlank(hibernateDialect)) {
+            return hibernateDialect;
         }
         // get from database.properties or fallback to defaultvalues.properties
         return ConfigurationHolder.getString(CONFIG_DEFAULT_HIBERNATE_DIALECT_PREFIX + getDatabaseName());
