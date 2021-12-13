@@ -137,6 +137,11 @@ public class SearchCertificatesRestResponseV2 {
                 
                 if (certificate != null && cd != null) {
                     final byte[] certificateBytes = certificate.getEncoded();
+                    final byte[] skid = CertTools.getSubjectKeyId(certificate);
+                    String skidHex = "";
+                    if (skid != null && skid.length != 0) {
+                        skidHex = new String(Hex.encode(skid));
+                    }
                     final CertificateRestResponseV2 response = CertificateRestResponseV2.builder()
                         .setFingerprint(CertTools.getFingerprintAsString(certificateBytes))
                         .setCAFingerprint(cd.getCaFingerprint())
@@ -151,7 +156,7 @@ public class SearchCertificatesRestResponseV2 {
                         .setStatus(cd.getStatus())
                         .setSubjectAltName(cd.getSubjectAltName())
                         .setSubjectDN(cd.getSubjectDN())
-                        .setSubjectKeyId(new String(Hex.encode(CertTools.getSubjectKeyId(certificate))))
+                        .setSubjectKeyId(skidHex)
                         .setTag(cd.getTag())
                         .setType(cd.getType())
                         .setUpdateTime(cd.getUpdateTime())
