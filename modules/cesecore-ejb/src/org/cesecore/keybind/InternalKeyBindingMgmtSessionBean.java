@@ -85,6 +85,7 @@ import org.cesecore.config.AvailableExtendedKeyUsagesConfiguration;
 import org.cesecore.configuration.GlobalConfigurationSessionLocal;
 import org.cesecore.internal.InternalResources;
 import org.cesecore.jndi.JndiConstants;
+import org.cesecore.keybind.impl.OcspKeyBinding;
 import org.cesecore.keys.token.CryptoToken;
 import org.cesecore.keys.token.CryptoTokenManagementSessionLocal;
 import org.cesecore.keys.token.CryptoTokenOfflineException;
@@ -479,7 +480,12 @@ public class InternalKeyBindingMgmtSessionBean implements InternalKeyBindingMgmt
         putDelta("signatureAlgorithm", originalInternalKeyBinding.getSignatureAlgorithm(), internalKeyBinding.getSignatureAlgorithm(), details);
         putDelta("cryptoTokenId", String.valueOf(originalInternalKeyBinding.getCryptoTokenId()), String.valueOf(internalKeyBinding.getCryptoTokenId()), details);
         putDelta("status", originalInternalKeyBinding.getStatus().name(), internalKeyBinding.getStatus().name(), details);
-        putDelta("trustedCertificateReferences", Arrays.toString(originalInternalKeyBinding.getTrustedCertificateReferences().toArray()), Arrays.toString(internalKeyBinding.getTrustedCertificateReferences().toArray()), details);
+        putDelta("trustedCertificateReferences", 
+                Arrays.toString(originalInternalKeyBinding.getTrustedCertificateReferences().toArray()), 
+                Arrays.toString(internalKeyBinding.getTrustedCertificateReferences().toArray()), details);
+        putDelta("signOcspResponseOnBehalf", 
+                Arrays.toString(originalInternalKeyBinding.getSignOcspResponseOnBehalf().toArray()), 
+                Arrays.toString(internalKeyBinding.getTrustedCertificateReferences().toArray()), details);
         putDelta(originalInternalKeyBinding.getCopyOfProperties(), internalKeyBinding.getCopyOfProperties(), details);
         securityEventsLoggerSession.log(EventTypes.INTERNALKEYBINDING_EDIT, EventStatus.SUCCESS, ModuleTypes.INTERNALKEYBINDING, ServiceTypes.CORE,
                 authenticationToken.toString(), String.valueOf(internalKeyBinding.getId()), null, null, details);

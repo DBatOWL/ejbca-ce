@@ -189,6 +189,77 @@
 					</f:facet>
 				</h:column>
 			</h:dataTable>
+			
+			<h:panelGroup id="ocspOnBehalf"
+					rendered="#{internalKeyBindingMBean.inEditMode and internalKeyBindingMBean.ocspKeyBinding}">
+				<h:outputText rendered="#{internalKeyBindingMBean.ocspRecipientGrouping == 0}" 
+						value="#{web.text.INTERNALKEYBINDING_OCSP_RESPONSES_BEHALF_OF_OTHERS}"/>
+				<h:selectBooleanCheckbox value="#{web.text.INTERNALKEYBINDING_OCSPKEYBINDING_RESPONSES_BEHALF_OF_OTHERS}"/>
+				<h:outputLabel for="signOcspResponseForOtherCas"
+					value="#{web.text.INTERNALKEYBINDING_OCSPKEYBINDING_RESPONSES_BEHALF_OF_OTHERS}"/>
+				<h:selectBooleanCheckbox id="signOcspResponseForOtherCas"
+					value="#{internalKeyBindingMBean.signOcspResponseForOtherCas}">
+				</h:selectBooleanCheckbox>
+			</h:panelGroup>
+			
+						
+			<h:panelGroup rendered="#{not internalKeyBindingMBean.inEditMode and internalKeyBindingMBean.ocspKeyBinding}">
+				<h:outputText rendered="#{internalKeyBindingMBean.ocspRecipientGrouping == 0}" 
+								value="#{web.text.INTERNALKEYBINDING_OCSP_RESPONSES_ONLY_SELF}"/>
+				
+			</h:panelGroup>	
+					
+			<h:panelGroup>
+				<h:dataTable id="signOcspResponseForCaList" value="#{internalKeyBindingMBean.signOcspResponseForCas}" var="otherCa"
+						 rendered="#{internalKeyBindingMBean.ocspKeyBinding and 
+						 (internalKeyBindingMBean.signOcspResponseForCas.rowCount != 0 or internalKeyBindingMBean.inEditMode)}">
+				<h:column>
+					<f:facet name="header"><h:outputText value="#{web.text.INTERNALKEYBINDING_CA}"/></f:facet>
+					<h:outputText value="#{internalKeyBindingMBean.trustedCertificatesCaName}" title="#{otherCa.caId}"/>
+					<f:facet name="footer">
+						<h:selectOneMenu rendered="#{internalKeyBindingMBean.inEditMode}"
+										 value="#{internalKeyBindingMBean.currentCertificateAuthority}">
+							<f:selectItems value="#{internalKeyBindingMBean.availableCertificateAuthoritiesForOcspSign}"/>
+						</h:selectOneMenu>
+					</f:facet>
+				</h:column>
+				<h:column>
+					<f:facet name="header"><h:outputText value="#{web.text.INTERNALKEYBINDING_SERIALNUMER}"/></f:facet>
+					<h:outputText rendered="#{!empty otherCa.certificateSerialNumberDecimal}" 
+								value="#{internalKeyBindingMBean.signOcspResponseForCasSerialNumberHex}"/>
+					<h:outputText rendered="#{empty otherCa.certificateSerialNumberDecimal}" value="ANY"/>
+					<f:facet name="footer">
+						<h:inputText id="certificateSerialNumber" rendered="#{internalKeyBindingMBean.inEditMode}" required="false"
+									 value="#{internalKeyBindingMBean.currentCertificateSerialNumberOcspRespToSign}"
+									 size="26" maxlength="255"
+									 title="#{web.text.INTERNALKEYBINDING_EMPTYFORANY}">
+							<f:validator validatorId="optionalHexSerialNumberValidator"/>
+						</h:inputText>
+						<h:message for="certificateSerialNumber" rendered="#{internalKeyBindingMBean.inEditMode}"/>
+					</f:facet>
+				</h:column>
+				<h:column>
+					<f:facet name="header"><h:outputText value="#{web.text.INTERNALKEYBINDING_TRUSTENTRY_DESCRIPTION}"/></f:facet>
+					<h:outputText value="#{otherCa.trustEntryDescriptionOcspRespToSign}"/>
+					<f:facet name="footer">
+						<h:inputText id="trustEntryDescription" rendered="#{internalKeyBindingMBean.inEditMode}" required="false"
+									 value="#{internalKeyBindingMBean.currentTrustEntryDescriptionOcspRespToSign}"
+									 size="18" maxlength="255"
+									 title="#{web.text.INTERNALKEYBINDING_TRUSTENTRY_TITLE}">
+						</h:inputText>
+						<h:message for="trustEntryDescription" rendered="#{internalKeyBindingMBean.inEditMode}"/>
+					</f:facet>
+				</h:column>
+				<h:column>
+					<f:facet name="header"><h:outputText value="#{web.text.INTERNALKEYBINDING_ACTIONS}"/></f:facet>
+					<h:commandButton value="#{web.text.REMOVE}" action="#{internalKeyBindingMBean.removeCaToSignOcspResponse}" rendered="#{internalKeyBindingMBean.inEditMode}"/>
+					<f:facet name="footer">
+						<h:commandButton  rendered="#{internalKeyBindingMBean.inEditMode}" action="#{internalKeyBindingMBean.addCaToSignOcspResponse}"
+										  value="#{web.text.ADD}"/>
+					</f:facet>
+				</h:column>
+				</h:dataTable>
+			</h:panelGroup>		
 
 			<h3><h:outputText value="#{web.text.INTERNALKEYBINDING_PROPERTIES}"/></h3>
 			<h:dataTable value="#{internalKeyBindingMBean.internalKeyBindingPropertyList}" var="property" styleClass="propertyTable">

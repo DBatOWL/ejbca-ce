@@ -33,6 +33,7 @@ import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequestBuilder;
 import org.cesecore.config.AvailableExtendedKeyUsagesConfiguration;
 import org.cesecore.keybind.CertificateImportException;
 import org.cesecore.keybind.InternalKeyBindingBase;
+import org.cesecore.keybind.InternalKeyBindingTrustEntry;
 import org.cesecore.util.CertTools;
 import org.cesecore.util.SimpleTime;
 import org.cesecore.util.ui.DynamicUiProperty;
@@ -43,8 +44,10 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateParsingException;
 import java.security.cert.X509Certificate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -55,6 +58,7 @@ import java.util.Map;
 public class OcspKeyBinding extends InternalKeyBindingBase {
   
     private static final long serialVersionUID = 1L;
+    private static final float OCSP_IMPL_VERSION = 2.0f;
     private static final Logger log = Logger.getLogger(OcspKeyBinding.class);
 
     public enum ResponderIdType {
@@ -131,14 +135,16 @@ public class OcspKeyBinding extends InternalKeyBindingBase {
     
     @Override
     public float getLatestVersion() {
-        return serialVersionUID;
+        return OCSP_IMPL_VERSION;
     }
 
     @Override
     protected void upgrade(float latestVersion, float currentVersion) {
-        // Nothing to do
+        if(currentVersion < 2.0f) {
+            this.setSignOcspResponseOnBehalf(new ArrayList<>());
+        }
     }
-    
+        
     @Override
     public void assertCertificateCompatability(final Certificate certificate, final AvailableExtendedKeyUsagesConfiguration ekuConfig) throws CertificateImportException {
         assertCertificateCompatabilityInternal(certificate, ekuConfig);
@@ -340,4 +346,5 @@ public class OcspKeyBinding extends InternalKeyBindingBase {
         final PKCS10CertificationRequest csr = pkcs10CertificationRequestBuilder.build(contentSigner);
         return csr.getEncoded();
     }
+    
 }
