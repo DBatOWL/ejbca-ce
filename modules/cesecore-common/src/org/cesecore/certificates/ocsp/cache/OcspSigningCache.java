@@ -75,9 +75,16 @@ public enum OcspSigningCache {
     }
 
     public void stagingAdd(OcspSigningCacheEntry ocspSigningCacheEntry) {
-        List<CertificateID> certIDs = ocspSigningCacheEntry.getCertificateID();
-        for (CertificateID certID : certIDs) {
+        for (CertificateID certID : ocspSigningCacheEntry.getCertificateID()) {
             staging.put(getCacheIdFromCertificateID(certID), ocspSigningCacheEntry);            
+        }
+        for (CertificateID certID : ocspSigningCacheEntry.getSignedBehalfOfCaIds()) {
+            // override cache only if no OCSP key binding present or the entry is a placeholder
+            int cacheId = getCacheIdFromCertificateID(certID);
+            if(!staging.containsKey(cacheId) || staging.get(cacheId).isPlaceholder() 
+                            || staging.get(cacheId).getOcspKeyBinding()==null ) {
+                staging.put(cacheId, ocspSigningCacheEntry);
+            }      
         }
     }
 
@@ -135,6 +142,17 @@ public enum OcspSigningCache {
                 if (entry.getOcspKeyBinding() != null) {
                     log.debug("   keyPairAlias: " + entry.getOcspKeyBinding().getKeyPairAlias());
                 }
+            }
+        }
+        log.info("Committing the following to OCSP cache:");
+        for (final Integer key : staging.keySet()) {
+            final OcspSigningCacheEntry entry = staging.get(key);
+            log.info(" KeyBindingId: " + key + ", SubjectDN '" + CertTools.getSubjectDN(entry.getFullCertificateChain().get(0))
+                    + "', IssuerDN '" + CertTools.getIssuerDN(entry.getFullCertificateChain().get(0)) + "', SerialNumber "
+                    + entry.getFullCertificateChain().get(0).getSerialNumber().toString() + "/"
+                    + entry.getFullCertificateChain().get(0).getSerialNumber().toString(16));
+            if (entry.getOcspKeyBinding() != null) {
+                log.info("   keyPairAlias: " + entry.getOcspKeyBinding().getKeyPairAlias());
             }
         }
     }

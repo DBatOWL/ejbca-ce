@@ -36,7 +36,7 @@ public abstract class InternalKeyBindingBase extends UpgradeableDataHashMap impl
     private static final Logger log = Logger.getLogger(InternalKeyBindingBase.class);
     public static final String PROP_NEXT_KEY_PAIR_ALIAS = "nextKeyPairAlias";
     public static final String PROP_TRUSTED_CERTIFICATE_REFERENCES = "trustedCertificateReferences";
-    public static final String PROPERTY_SIGN_RESPONSE_ON_BEHALF = "signOcspResponseOnBehalf";
+    public static final String PROP_SIGN_RESPONSE_ON_BEHALF = "signOcspResponseOnBehalf";
     public static final String PROP_SIGNATURE_ALGORITHM = "signatureAlgorithm";
     public static final String PROP_OCSP_EXTENSION = "ocspExtensions";
     public static final String BASECLASS_PREFIX = "BASECLASS_";
@@ -220,8 +220,8 @@ public abstract class InternalKeyBindingBase extends UpgradeableDataHashMap impl
     }
     
     public List<InternalKeyBindingTrustEntry> getSignOcspResponseOnBehalf() {
-        if(getProperty(PROPERTY_SIGN_RESPONSE_ON_BEHALF) == null) {
-            this.signOcspResponseOnBehalf = getData(PROPERTY_SIGN_RESPONSE_ON_BEHALF, new ArrayList<InternalKeyBindingTrustEntry>());
+        if(signOcspResponseOnBehalf == null) {
+            this.signOcspResponseOnBehalf = getDataInternal(PROP_SIGN_RESPONSE_ON_BEHALF, new ArrayList<InternalKeyBindingTrustEntry>());
         }
         return new ArrayList<>(signOcspResponseOnBehalf);
     }
@@ -231,7 +231,7 @@ public abstract class InternalKeyBindingBase extends UpgradeableDataHashMap impl
         // Always save it as an ArrayList that we know is Serializable
         final ArrayList<InternalKeyBindingTrustEntry> arrayList = new ArrayList<>(signOcspResponseOnBehalf.size());
         arrayList.addAll(signOcspResponseOnBehalf);
-        putData(PROPERTY_SIGN_RESPONSE_ON_BEHALF, arrayList);
+        putDataInternal(PROP_SIGN_RESPONSE_ON_BEHALF, arrayList);
     }
 
     @Override

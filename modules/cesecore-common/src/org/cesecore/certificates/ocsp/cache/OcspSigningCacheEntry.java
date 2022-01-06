@@ -15,13 +15,19 @@ package org.cesecore.certificates.ocsp.cache;
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
 import org.bouncycastle.cert.ocsp.CertificateID;
 import org.bouncycastle.cert.ocsp.OCSPException;
 import org.bouncycastle.cert.ocsp.RespID;
 import org.bouncycastle.cert.ocsp.jcajce.JcaRespID;
+import org.bouncycastle.operator.bc.BcDigestCalculatorProvider;
 import org.cesecore.certificates.certificate.CertificateStatus;
 import org.cesecore.certificates.ocsp.SHA1DigestCalculator;
 import org.cesecore.config.OcspConfiguration;
@@ -54,6 +60,11 @@ public class OcspSigningCacheEntry {
     private RespID respId;
     private final X509Certificate[] responseCertChain;
     private final boolean signingCertificateForOcspSigning;
+    
+    // we flatten the CertificateIds SHA1 and SHA256 for simpler/faster lookup
+    private Set<CertificateID> signedBehalfOfCaIds;
+    private Map<CertificateID, X509Certificate> signedBehalfOfCaCerticates;
+    private Map<CertificateID, CertificateStatus> signedBehalfOfCaStatus;
 
     public OcspSigningCacheEntry(X509Certificate issuerCaCertificate, CertificateStatus issuerCaCertificateStatus,
             List<X509Certificate> signingCaCertificateChain, X509Certificate ocspSigningCertificate, PrivateKey privateKey,
@@ -114,6 +125,8 @@ public class OcspSigningCacheEntry {
         } else {
             responseCertChain = getResponseCertChain(fullCertificateChain.toArray(new X509Certificate[0]));
         }
+        signedBehalfOfCaIds = new HashSet<>();
+        signedBehalfOfCaCerticates = new HashMap<>();
     }
 
     /** @return certificate of the CA that we want to respond for */
@@ -229,4 +242,37 @@ public class OcspSigningCacheEntry {
         }
         return chain;
     }
+
+    public Set<CertificateID> getSignedBehalfOfCaIds() {
+        return signedBehalfOfCaIds;
+    }
+
+    public void setSignedBehalfOfCaIds(Set<CertificateID> signedBehalfOfCaIds) {
+        this.signedBehalfOfCaIds = signedBehalfOfCaIds;
+    }
+
+    public Map<CertificateID, X509Certificate> getSignedBehalfOfCaCerticates() {
+        return signedBehalfOfCaCerticates;
+    }
+
+    public void setSignedBehalfOfCaCerticates(Map<CertificateID, X509Certificate> signedBehalfOfCaCerticates) {
+        this.signedBehalfOfCaCerticates = signedBehalfOfCaCerticates;
+    }
+    
+    public boolean shouldSignBehalfOf(CertificateID certId) {
+        return this.signedBehalfOfCaIds.contains(certId);
+    }
+    
+    public X509Certificate getSignBehalfOfCaCertificate(CertificateID certId) {
+        return this.signedBehalfOfCaCerticates.get(certId); 
+    }
+
+    public Map<CertificateID, CertificateStatus> getSignedBehalfOfCaStatus() {
+        return signedBehalfOfCaStatus;
+    }
+
+    public void setSignedBehalfOfCaStatus(Map<CertificateID, CertificateStatus> signedBehalfOfCaStatus) {
+        this.signedBehalfOfCaStatus = signedBehalfOfCaStatus;
+    }
+    
 }
