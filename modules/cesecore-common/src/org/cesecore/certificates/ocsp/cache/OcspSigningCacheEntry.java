@@ -12,6 +12,7 @@
  *************************************************************************/
 package org.cesecore.certificates.ocsp.cache;
 
+import java.security.Principal;
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
@@ -19,15 +20,14 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
 import org.bouncycastle.cert.ocsp.CertificateID;
 import org.bouncycastle.cert.ocsp.OCSPException;
 import org.bouncycastle.cert.ocsp.RespID;
 import org.bouncycastle.cert.ocsp.jcajce.JcaRespID;
-import org.bouncycastle.operator.bc.BcDigestCalculatorProvider;
 import org.cesecore.certificates.certificate.CertificateStatus;
 import org.cesecore.certificates.ocsp.SHA1DigestCalculator;
 import org.cesecore.config.OcspConfiguration;
@@ -65,6 +65,9 @@ public class OcspSigningCacheEntry {
     private Set<CertificateID> signedBehalfOfCaIds;
     private Map<CertificateID, X509Certificate> signedBehalfOfCaCerticates;
     private Map<CertificateID, CertificateStatus> signedBehalfOfCaStatus;
+    
+    // reverse look up table for faster operation, expected OCSP request frequency is lot higher than cache reloads
+    private Map<Principal, CertificateID> issuerNameToCertIdMap;
 
     public OcspSigningCacheEntry(X509Certificate issuerCaCertificate, CertificateStatus issuerCaCertificateStatus,
             List<X509Certificate> signingCaCertificateChain, X509Certificate ocspSigningCertificate, PrivateKey privateKey,
@@ -127,6 +130,7 @@ public class OcspSigningCacheEntry {
         }
         signedBehalfOfCaIds = new HashSet<>();
         signedBehalfOfCaCerticates = new HashMap<>();
+        issuerNameToCertIdMap = new HashMap<>();
     }
 
     /** @return certificate of the CA that we want to respond for */
@@ -256,6 +260,11 @@ public class OcspSigningCacheEntry {
     }
 
     public void setSignedBehalfOfCaCerticates(Map<CertificateID, X509Certificate> signedBehalfOfCaCerticates) {
+        
+        for(Entry<CertificateID, X509Certificate> entry: signedBehalfOfCaCerticates.entrySet()) {
+            issuerNameToCertIdMap.put(entry.getValue().getIssuerDN(), entry.getKey());
+        }
+
         this.signedBehalfOfCaCerticates = signedBehalfOfCaCerticates;
     }
     
@@ -265,6 +274,11 @@ public class OcspSigningCacheEntry {
     
     public X509Certificate getSignBehalfOfCaCertificate(CertificateID certId) {
         return this.signedBehalfOfCaCerticates.get(certId); 
+    }
+    
+    public CertificateID getSignBehalfOfCaCertId(X509Certificate issuedCertificate) {
+        Principal issuer = issuedCertificate.getIssuerDN();
+        return this.issuerNameToCertIdMap.get(issuer); 
     }
 
     public Map<CertificateID, CertificateStatus> getSignedBehalfOfCaStatus() {

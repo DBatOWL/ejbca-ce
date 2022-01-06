@@ -1578,25 +1578,22 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                 
                 X509Certificate shouldSignOnBehalfCaCert = null;
                 List<CertificateDataWrapper> certificateWrappers = certificateStoreSession.getCertificateDataBySerno(certId.getSerialNumber());
-
+                log.info("retrieved certificate wrappers: " + certificateWrappers.size());
                 for(CertificateDataWrapper certificateWrapper: certificateWrappers) {
                     if(certificateWrapper.getCertificateData().getIssuerDN().equals(caCertificateSubjectDn)) {
+                        log.info("ocsp issuer is signing CA.");
                         break;
                     } else {
-                        List<CertificateID> certIds = OcspSigningCache.getCertificateIDFromCertificate(
-                                                    (X509Certificate) certificateWrapper.getCertificate());
-                        for(CertificateID cid: certIds) {
-                            if(ocspSigningCacheEntry.shouldSignBehalfOf(cid)) {
-                                shouldSignOnBehalfCaCert = ocspSigningCacheEntry.getSignBehalfOfCaCertificate(cid);
-                                signedBehalfOfCaSubjectDn = CertTools.getSubjectDN(shouldSignOnBehalfCaCert);
-                                onBehalfOfCaStatus = ocspSigningCacheEntry.getSignedBehalfOfCaStatus().get(cid);
-                                break;
-                            }
-                        }
-                        
-                        if(shouldSignOnBehalfCaCert!=null) {
+                        CertificateID issuerCertId = ocspSigningCacheEntry.getSignBehalfOfCaCertId(
+                                                        (X509Certificate) certificateWrapper.getCertificate());
+                        if(issuerCertId!=null) {
+                            shouldSignOnBehalfCaCert = ocspSigningCacheEntry.getSignBehalfOfCaCertificate(issuerCertId);
+                            signedBehalfOfCaSubjectDn = CertTools.getSubjectDN(shouldSignOnBehalfCaCert);
+                            onBehalfOfCaStatus = ocspSigningCacheEntry.getSignedBehalfOfCaStatus().get(issuerCertId);
+                            log.info("ocsp will be signed behalf of:" + signedBehalfOfCaSubjectDn);
                             break;
                         }
+                        
                     }
                 }
                 
@@ -1635,7 +1632,7 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                      */
                     CertificateStatus status;
                     String issuerDnOcspRequest = caCertificateSubjectDn;
-                    if(signedBehalfOfCaSubjectDn==null) {
+                    if(signedBehalfOfCaSubjectDn!=null) {
                         issuerDnOcspRequest = signedBehalfOfCaSubjectDn;
                         // we will also use certificate profile settings for issuing certificate
                     }
