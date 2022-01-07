@@ -1972,14 +1972,14 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                 if (hasErrorHandlerFailedSince(startTime)) {
                     log.info("ProbableErrorhandler reported error, cannot answer request");
                     // RFC 2560: responseBytes are not set on error.
-                    ocspResponse = responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null);
+                    ocspResponse = responseGenerator.build(3, null);
 
                 }
                 // See if the Appender has reported any problems
                 if (!CanLogCache.INSTANCE.canLog()) {
                     log.info("SaferDailyRollingFileAppender reported error, cannot answer request");
                     // RFC 2560: responseBytes are not set on error.
-                    ocspResponse = responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null);
+                    ocspResponse = responseGenerator.build(3, null);
                 }
             }
         } catch (IOException e) {
