@@ -783,7 +783,7 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
         if (!isPresigning && auditLogger.isEnabled()) {
             auditLogger.paramPut(AuditLogger.STATUS, OCSPRespBuilder.INTERNAL_ERROR);
         }
-        return responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null); // RFC 2560: responseBytes are not set on error.
+        return responseGenerator.build(4, null); // RFC 2560: responseBytes are not set on error.
     }
 
     /**
