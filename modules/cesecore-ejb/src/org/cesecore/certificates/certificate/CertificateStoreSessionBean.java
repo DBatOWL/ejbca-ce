@@ -1330,14 +1330,11 @@ public class CertificateStoreSessionBean implements CertificateStoreSessionRemot
                 if (log.isTraceEnabled()) {
                     log.trace("<getStatus() returned " + result + " for cert number " + serno.toString(16));
                 }
-                log.info("<getStatus() returned " + result + " for cert number " + serno.toString(16));
                 return result;
             }
             if (log.isTraceEnabled()) {
                 log.trace("<getStatus() did not find certificate with dn " + dn + " and serno " + serno.toString(16));
             }
-            log.info("<getStatus() did not find certificate with dn " + dn + " and serno " + serno.toString(16));
-
         } catch (Exception e) {
             throw new EJBException(e);
         }
@@ -1361,14 +1358,11 @@ public class CertificateStoreSessionBean implements CertificateStoreSessionRemot
             if (log.isTraceEnabled()) {
                 log.trace("<getStatus() returned " + result + " for cert number " + serno.toString(16));
             }
-            log.info("<getStatus() returned " + result + " for cert number " + serno.toString(16));
             return new CertificateStatusHolder(data.getCertificate(entityManager), result);
         }
         if (log.isTraceEnabled()) {
             log.trace("<getCertificateAndStatus() did not find certificate with dn " + dn + " and serno " + serno.toString(16));
         }
-        log.info("<getCertificateAndStatus() did not find certificate with dn " + dn + " and serno " + serno.toString(16));
-
         return new CertificateStatusHolder(null, CertificateStatus.NOT_AVAILABLE);
     }
 

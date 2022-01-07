@@ -186,6 +186,34 @@ public class InternalKeyBindingMgmtSessionBean implements InternalKeyBindingMgmt
         }
         return internalKeyBindingInfos;
     }
+    
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
+    @Override
+    public Map<Integer, String> getAllCaWithoutOcspKeyBinding() {
+        final List<InternalKeyBindingInfo> allOcspKeyBindings = 
+                getAllInternalKeyBindingInfos(OcspKeyBinding.IMPLEMENTATION_ALIAS);
+        List<Integer> internalKeyBoundCas = new ArrayList<Integer>();
+        for(InternalKeyBindingInfo keyBindingInfo: allOcspKeyBindings) {
+            if(keyBindingInfo.getStatus()==null 
+                    || (keyBindingInfo.getStatus()==InternalKeyBindingStatus.DISABLED && 
+                            keyBindingInfo.getCertificateId()!=null) ) {
+                // this allows an Admin to disable an OCspKeyBinding and create new one with signOnBehalf entry
+                // instead of deleting the old entry 
+                // while taking in account for the period before signed CSR is uploaded 
+                continue;
+            }
+            for(InternalKeyBindingTrustEntry signOnBehalfEntry : keyBindingInfo.getSignOcspResponseOnBehalf()) {
+                internalKeyBoundCas.add(signOnBehalfEntry.getCaId());
+            }
+        }
+        
+        final Map<Integer, String> caIdToNameMap = caSession.getCAIdToNameMap();        
+        for(Integer internalKeyBoundCa: internalKeyBoundCas) {
+            caIdToNameMap.remove(internalKeyBoundCa);
+        }
+        
+        return caIdToNameMap;
+    }
 
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     @Override

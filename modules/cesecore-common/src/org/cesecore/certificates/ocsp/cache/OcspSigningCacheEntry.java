@@ -61,13 +61,17 @@ public class OcspSigningCacheEntry {
     private final X509Certificate[] responseCertChain;
     private final boolean signingCertificateForOcspSigning;
     
-    // we flatten the CertificateIds SHA1 and SHA256 for simpler/faster lookup
+    // we flatten the CertificateIds SHA1 and SHA256 for simpler lookup
     private Set<CertificateID> signedBehalfOfCaIds;
     private Map<CertificateID, X509Certificate> signedBehalfOfCaCerticates;
     private Map<CertificateID, CertificateStatus> signedBehalfOfCaStatus;
     
-    // reverse look up table for faster operation, expected OCSP request frequency is lot higher than cache reloads
-    private Map<Principal, CertificateID> issuerNameToCertIdMap;
+    /*
+     * reverse look up table for faster operation, expected OCSP request frequency is lot higher than cache reloads
+     * we need 2 maps for SHA1 and SHA256, see OcspSigningCache.getCertificateIDFromCertificate for reference
+     */
+    private Map<Principal, CertificateID> issuerNameToCertIdMap1;
+    private Map<Principal, CertificateID> issuerNameToCertIdMap2;
 
     public OcspSigningCacheEntry(X509Certificate issuerCaCertificate, CertificateStatus issuerCaCertificateStatus,
             List<X509Certificate> signingCaCertificateChain, X509Certificate ocspSigningCertificate, PrivateKey privateKey,
@@ -128,9 +132,14 @@ public class OcspSigningCacheEntry {
         } else {
             responseCertChain = getResponseCertChain(fullCertificateChain.toArray(new X509Certificate[0]));
         }
+        
+        // on behalf of CA entries
         signedBehalfOfCaIds = new HashSet<>();
         signedBehalfOfCaCerticates = new HashMap<>();
-        issuerNameToCertIdMap = new HashMap<>();
+        signedBehalfOfCaStatus = new HashMap<>();
+        
+        issuerNameToCertIdMap1 = new HashMap<>();
+        issuerNameToCertIdMap2 = new HashMap<>();
     }
 
     /** @return certificate of the CA that we want to respond for */
@@ -251,21 +260,22 @@ public class OcspSigningCacheEntry {
         return signedBehalfOfCaIds;
     }
 
-    public void setSignedBehalfOfCaIds(Set<CertificateID> signedBehalfOfCaIds) {
-        this.signedBehalfOfCaIds = signedBehalfOfCaIds;
-    }
-
     public Map<CertificateID, X509Certificate> getSignedBehalfOfCaCerticates() {
         return signedBehalfOfCaCerticates;
     }
-
-    public void setSignedBehalfOfCaCerticates(Map<CertificateID, X509Certificate> signedBehalfOfCaCerticates) {
-        
+    
+    public void refreshInternalMappings() {
+        issuerNameToCertIdMap1.clear();
+        issuerNameToCertIdMap2.clear();
+        Principal issuerDn;
         for(Entry<CertificateID, X509Certificate> entry: signedBehalfOfCaCerticates.entrySet()) {
-            issuerNameToCertIdMap.put(entry.getValue().getIssuerDN(), entry.getKey());
+            issuerDn = entry.getValue().getIssuerDN();
+            if(issuerNameToCertIdMap1.containsKey(issuerDn)) {
+                issuerNameToCertIdMap1.put(issuerDn, entry.getKey());
+            } else {
+                issuerNameToCertIdMap2.put(issuerDn, entry.getKey());
+            }
         }
-
-        this.signedBehalfOfCaCerticates = signedBehalfOfCaCerticates;
     }
     
     public boolean shouldSignBehalfOf(CertificateID certId) {
@@ -278,15 +288,16 @@ public class OcspSigningCacheEntry {
     
     public CertificateID getSignBehalfOfCaCertId(X509Certificate issuedCertificate) {
         Principal issuer = issuedCertificate.getIssuerDN();
-        return this.issuerNameToCertIdMap.get(issuer); 
+        CertificateID certId = this.issuerNameToCertIdMap1.get(issuer);
+        if(certId!=null) {
+            return certId;
+        } else {
+            return this.issuerNameToCertIdMap2.get(issuer);
+        }
     }
 
     public Map<CertificateID, CertificateStatus> getSignedBehalfOfCaStatus() {
         return signedBehalfOfCaStatus;
     }
 
-    public void setSignedBehalfOfCaStatus(Map<CertificateID, CertificateStatus> signedBehalfOfCaStatus) {
-        this.signedBehalfOfCaStatus = signedBehalfOfCaStatus;
-    }
-    
 }

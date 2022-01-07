@@ -898,6 +898,8 @@ public class InternalKeyBindingMBean extends BaseManagedBean implements Serializ
             transactionLogger.paramPut(TransactionLogger.ISSUER_NAME_DN, "(Issuer-Name-Dn -> String");
             transactionLogger.paramPut(TransactionLogger.ISSUER_NAME_DN_RAW, "(Issuer-Name-Dn-Raw) -> String");
             transactionLogger.paramPut(PatternLogger.ISSUER_NAME_HASH, "(Issuer-Name-Hash -> String)");
+            transactionLogger.paramPut(TransactionLogger.OCSP_CERT_ISSUER_NAME_DN, "(OCSP-Issuer-Name-Dn -> String");
+            transactionLogger.paramPut(TransactionLogger.OCSP_CERT_ISSUER_NAME_DN_RAW, "(OCSP-Issuer-Name-Dn-Raw) -> String");
             transactionLogger.paramPut(PatternLogger.ISSUER_KEY, "(Issuer-Key -> String)");
             transactionLogger.paramPut(TransactionLogger.DIGEST_ALGOR, "(Digest-Algorithm -> String)");
             transactionLogger.paramPut(PatternLogger.SERIAL_NOHEX, "(Certificate-Serial-No -> String)");
@@ -1471,31 +1473,14 @@ public class InternalKeyBindingMBean extends BaseManagedBean implements Serializ
     
     /** @return a list of all CAs without (active and inactive) OCSP key binding */
     public List<SelectItem/*<Integer,String>*/> getAvailableCertificateAuthoritiesForOcspSign() {
-        final List<InternalKeyBindingInfo> allOcspKeyBindings = 
-                internalKeyBindingSession.getAllInternalKeyBindingInfos(OcspKeyBinding.IMPLEMENTATION_ALIAS);
-        Set<Integer> internalKeyBoundCas = new HashSet<Integer>();
-        for(InternalKeyBindingInfo keyBindingInfo: allOcspKeyBindings) {
-            if(keyBindingInfo.getStatus()==null 
-                    || (keyBindingInfo.getStatus()==InternalKeyBindingStatus.DISABLED && 
-                            keyBindingInfo.getCertificateId()!=null) ) {
-                // this allows an Admin to disable an OCspKeyBinding and create new one with signOnBehalf entry
-                // instead of deleting the old entry 
-                // while taking in account for the period before signed CSR is uploaded 
-                continue;
-            }
-            for(InternalKeyBindingTrustEntry signOnBehalfEntry : keyBindingInfo.getSignOcspResponseOnBehalf()) {
-                internalKeyBoundCas.add(signOnBehalfEntry.getCaId());
-            }
-        }
         
-        final Map<Integer, String> caIdToNameMap = caSession.getCAIdToNameMap();
-        final List<SelectItem> availableCertificateAuthorities = new ArrayList<>(caIdToNameMap.size());
+        final Map<Integer, String> caIdToNameMap = 
+                                    internalKeyBindingSession.getAllCaWithoutOcspKeyBinding();
+        final List<SelectItem> availableCertificateAuthorities = new ArrayList<>();
+                                
         for (final Entry<Integer, String> caIdToNameMapEntry : caIdToNameMap.entrySet()) {
-            // we still allow CAs which issue certificates for other OCSP key bindings 
-            if(!internalKeyBoundCas.contains(caIdToNameMapEntry.getKey())) {
                 availableCertificateAuthorities.add(new SelectItem(caIdToNameMapEntry.getKey(), 
                                                                         caIdToNameMapEntry.getValue()));
-            }
         }
         if (currentCertificateAuthorityOcspRespToSign == null && !availableCertificateAuthorities.isEmpty()) {
             currentCertificateAuthorityOcspRespToSign = (Integer) availableCertificateAuthorities.get(0).getValue();

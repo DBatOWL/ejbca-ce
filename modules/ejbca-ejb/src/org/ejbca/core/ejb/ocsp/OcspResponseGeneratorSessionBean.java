@@ -495,9 +495,11 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
     
     private void addSignResponseOnBehalfCasToCacheEntry(OcspSigningCacheEntry ocspSigningCacheEntry, 
                                                                             OcspKeyBinding ocspKeyBinding) {
-        Set<CertificateID> signedBehalfOfCaIds = new HashSet<>();
-        Map<CertificateID, X509Certificate> signedBehalfOfCaCerticates = new HashMap<>();
-        Map<CertificateID, CertificateStatus> signedBehalfOfCaStatus = new HashMap<>();
+        Set<CertificateID> signedBehalfOfCaIds = ocspSigningCacheEntry.getSignedBehalfOfCaIds();
+        Map<CertificateID, X509Certificate> signedBehalfOfCaCerticates = 
+                                                        ocspSigningCacheEntry.getSignedBehalfOfCaCerticates();
+        Map<CertificateID, CertificateStatus> signedBehalfOfCaStatus = 
+                                                            ocspSigningCacheEntry.getSignedBehalfOfCaStatus();
         
         List<CertificateID> willSignForCaId;
         for(InternalKeyBindingTrustEntry signOnBehalfEntry: ocspKeyBinding.getSignOcspResponseOnBehalf()) {
@@ -525,9 +527,7 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
         }
         
         if(!signedBehalfOfCaIds.isEmpty()) {
-            ocspSigningCacheEntry.setSignedBehalfOfCaIds(signedBehalfOfCaIds);
-            ocspSigningCacheEntry.setSignedBehalfOfCaCerticates(signedBehalfOfCaCerticates);
-            ocspSigningCacheEntry.setSignedBehalfOfCaStatus(signedBehalfOfCaStatus);
+            ocspSigningCacheEntry.refreshInternalMappings();
         }
     }
     
@@ -1402,6 +1402,7 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
 
                     }
                 }
+                                
                 // We only store pre-produced single responses
                 if (ocspRequests.length == 1 && ocspDataConfig != null && ocspDataConfig.isPreProductionEnabled()) {
                     
@@ -1433,10 +1434,11 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
 
                             if (transactionLogger.isEnabled()) {
                                 if (ocspSigningCacheEntry != null) {
-                                    transactionLogger.paramPut(TransactionLogger.ISSUER_NAME_DN,
+                                    transactionLogger.paramPut(TransactionLogger.OCSP_CERT_ISSUER_NAME_DN,
                                             ocspSigningCacheEntry.getSigningCertificateIssuerDn());
-                                    transactionLogger.paramPut(TransactionLogger.ISSUER_NAME_DN_RAW,
+                                    transactionLogger.paramPut(TransactionLogger.OCSP_CERT_ISSUER_NAME_DN_RAW,
                                             ocspSigningCacheEntry.getSigningCertificateIssuerDnRaw());
+                                    // Issuer of the requested certificate is not logged to save database lookup
                                 }
                                 org.bouncycastle.cert.ocsp.CertificateStatus status = ((BasicOCSPResp) ocspResp.getResponseObject()).getResponses()[0]
                                         .getCertStatus();
@@ -1487,8 +1489,10 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                 if (ocspSigningCacheEntry != null) {
                     if (!isPreSigning && transactionLogger.isEnabled()) {
                         // This will be the issuer DN of the signing certificate, whether an OCSP responder or an internal CA  
-                        transactionLogger.paramPut(TransactionLogger.ISSUER_NAME_DN, ocspSigningCacheEntry.getSigningCertificateIssuerDn());
-                        transactionLogger.paramPut(TransactionLogger.ISSUER_NAME_DN_RAW, ocspSigningCacheEntry.getSigningCertificateIssuerDnRaw());
+                        transactionLogger.paramPut(TransactionLogger.OCSP_CERT_ISSUER_NAME_DN,
+                                ocspSigningCacheEntry.getSigningCertificateIssuerDn());
+                        transactionLogger.paramPut(TransactionLogger.OCSP_CERT_ISSUER_NAME_DN_RAW,
+                                ocspSigningCacheEntry.getSigningCertificateIssuerDnRaw());
                     }
                 } else {
                     log.info("OCSP request from unknown CA going for default responder.");
@@ -1554,16 +1558,6 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                         continue;
                     }
                 }
-
-                final List<String> extensionOids = ocspSigningCacheEntry.getOcspKeyBinding() != null
-                        ? ocspSigningCacheEntry.getOcspKeyBinding().getOcspExtensions()
-                        : new ArrayList<>();
-                
-                // Intended for debugging. Will usually be null
-                String alwaysUseOid = OcspConfiguration.getAlwaysSendCustomOCSPExtension();
-                if (alwaysUseOid != null && !extensionOids.contains(alwaysUseOid)) {
-                    extensionOids.add(alwaysUseOid);
-                }
                 
                 final org.bouncycastle.cert.ocsp.CertificateStatus certStatus;
                 // Check if the cacert (or the default responderid) is revoked
@@ -1593,13 +1587,32 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                             log.info("ocsp will be signed behalf of:" + signedBehalfOfCaSubjectDn);
                             break;
                         }
-                        
                     }
                 }
                 
-                // TODO: handle unrevoked in behalf of CA
-                if (signerIssuerCertStatus.equals(CertificateStatus.REVOKED) || 
-                        onBehalfOfCaStatus.equals(CertificateStatus.REVOKED) ) {
+                if(shouldSignOnBehalfCaCert!=null) {
+                    transactionLogger.paramPut(TransactionLogger.ISSUER_NAME_DN,
+                            CertTools.getIssuerDN(shouldSignOnBehalfCaCert));
+                    transactionLogger.paramPut(TransactionLogger.ISSUER_NAME_DN_RAW,
+                            shouldSignOnBehalfCaCert.getIssuerDN().getName());
+                } else {
+                    transactionLogger.paramPut(TransactionLogger.ISSUER_NAME_DN,
+                            ocspSigningCacheEntry.getSigningCertificateIssuerDn());
+                    transactionLogger.paramPut(TransactionLogger.ISSUER_NAME_DN_RAW,
+                            ocspSigningCacheEntry.getSigningCertificateIssuerDnRaw());
+                }
+
+                final List<String> extensionOids = ocspSigningCacheEntry.getOcspKeyBinding() != null
+                        ? ocspSigningCacheEntry.getOcspKeyBinding().getOcspExtensions()
+                        : new ArrayList<>();
+                
+                // Intended for debugging. Will usually be null
+                String alwaysUseOid = OcspConfiguration.getAlwaysSendCustomOCSPExtension();
+                if (alwaysUseOid != null && !extensionOids.contains(alwaysUseOid)) {
+                    extensionOids.add(alwaysUseOid);
+                }
+                                
+                if (signerIssuerCertStatus.equals(CertificateStatus.REVOKED)) {
                     /*
                      * According to chapter 2.7 in RFC2560:
                      * 
@@ -1607,22 +1620,25 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                      * state for all certificates issued by that CA.
                      */
                     // If we've ended up here it's because the OCSP key binding signer or issuer CA or following request was revoked. 
-                    if(onBehalfOfCaStatus.equals(CertificateStatus.REVOKED)) {
-                        // assuming revocation of CA which issued the request certificate is important 
-                        certStatus = new RevokedStatus(new RevokedInfo(new ASN1GeneralizedTime(onBehalfOfCaStatus.revocationDate),
-                                CRLReason.lookup(signerIssuerCertStatus.revocationReason)));
-                        log.info(intres.getLocalizedMessage("ocsp.signcertissuerrevoked", CertTools.getSerialNumberAsString(caCertificate),
-                                CertTools.getSubjectDN(shouldSignOnBehalfCaCert)));
-                    } else {
-                        certStatus = new RevokedStatus(new RevokedInfo(new ASN1GeneralizedTime(signerIssuerCertStatus.revocationDate),
-                                CRLReason.lookup(signerIssuerCertStatus.revocationReason)));
-                        log.info(intres.getLocalizedMessage("ocsp.signcertissuerrevoked", CertTools.getSerialNumberAsString(caCertificate),
-                                CertTools.getSubjectDN(caCertificate)));
-                    }
+                    
+                    certStatus = new RevokedStatus(new RevokedInfo(new ASN1GeneralizedTime(signerIssuerCertStatus.revocationDate),
+                            CRLReason.lookup(signerIssuerCertStatus.revocationReason)));
+                    log.info(intres.getLocalizedMessage("ocsp.signcertissuerrevoked", CertTools.getSerialNumberAsString(caCertificate),
+                            CertTools.getSubjectDN(caCertificate)));
                     respItem = new OCSPResponseItem(certId, certStatus, nextUpdate);
                     if (!isPreSigning && transactionLogger.isEnabled()) {
                         transactionLogger.paramPut(TransactionLogger.CERT_STATUS, OCSPResponseItem.OCSP_REVOKED);
                         transactionLogger.paramPut(TransactionLogger.REV_REASON, signerIssuerCertStatus.revocationReason);
+                    }
+                } else if(onBehalfOfCaStatus.equals(CertificateStatus.REVOKED)) {
+                    certStatus = new UnknownStatus();
+                    // allow persist responses with 'unknown' if issuer CA is revoked
+                    log.info(intres.getLocalizedMessage("ocsp.issuerrevoked", CertTools.getSerialNumberAsString(shouldSignOnBehalfCaCert),
+                            CertTools.getSubjectDN(shouldSignOnBehalfCaCert)));
+                    respItem = new OCSPResponseItem(certId, certStatus, nextUpdate);
+                    if (!isPreSigning && transactionLogger.isEnabled()) {
+                        transactionLogger.paramPut(TransactionLogger.CERT_STATUS, OCSPResponseItem.OCSP_UNKNOWN);
+                        transactionLogger.paramPut(TransactionLogger.REV_REASON, onBehalfOfCaStatus.revocationReason);
                     }
                 } else {
                     /**
