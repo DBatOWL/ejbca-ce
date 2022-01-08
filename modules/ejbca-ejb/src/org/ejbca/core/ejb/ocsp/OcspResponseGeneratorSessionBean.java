@@ -783,7 +783,7 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
         if (!isPresigning && auditLogger.isEnabled()) {
             auditLogger.paramPut(AuditLogger.STATUS, OCSPRespBuilder.INTERNAL_ERROR);
         }
-        return responseGenerator.build(4, null); // RFC 2560: responseBytes are not set on error.
+        return responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null); // RFC 2560: responseBytes are not set on error.
     }
 
     /**
@@ -1571,21 +1571,28 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                 OCSPResponseItem respItem;
                 
                 X509Certificate shouldSignOnBehalfCaCert = null;
-                List<CertificateDataWrapper> certificateWrappers = certificateStoreSession.getCertificateDataBySerno(certId.getSerialNumber());
-                log.info("retrieved certificate wrappers: " + certificateWrappers.size());
-                for(CertificateDataWrapper certificateWrapper: certificateWrappers) {
-                    if(certificateWrapper.getCertificateData().getIssuerDN().equals(caCertificateSubjectDn)) {
-                        log.info("ocsp issuer is signing CA.");
-                        break;
-                    } else {
-                        CertificateID issuerCertId = ocspSigningCacheEntry.getSignBehalfOfCaCertId(
-                                                        (X509Certificate) certificateWrapper.getCertificate());
-                        if(issuerCertId!=null) {
-                            shouldSignOnBehalfCaCert = ocspSigningCacheEntry.getSignBehalfOfCaCertificate(issuerCertId);
-                            signedBehalfOfCaSubjectDn = CertTools.getSubjectDN(shouldSignOnBehalfCaCert);
-                            onBehalfOfCaStatus = ocspSigningCacheEntry.getSignedBehalfOfCaStatus().get(issuerCertId);
-                            log.info("ocsp will be signed behalf of:" + signedBehalfOfCaSubjectDn);
+                List<CertificateDataWrapper> certificateWrappers = null;
+                try {
+                    certificateWrappers = certificateStoreSession.getCertificateDataBySerno(certId.getSerialNumber());
+                } catch(Exception e) {
+                    
+                }
+                if(certificateWrappers!=null) {
+                    log.info("retrieved certificate wrappers: " + certificateWrappers.size());
+                    for(CertificateDataWrapper certificateWrapper: certificateWrappers) {
+                        if(certificateWrapper.getCertificateData().getIssuerDN().equals(caCertificateSubjectDn)) {
+                            log.info("ocsp issuer is signing CA.");
                             break;
+                        } else {
+                            CertificateID issuerCertId = ocspSigningCacheEntry.getSignBehalfOfCaCertId(
+                                                            (X509Certificate) certificateWrapper.getCertificate());
+                            if(issuerCertId!=null) {
+                                shouldSignOnBehalfCaCert = ocspSigningCacheEntry.getSignBehalfOfCaCertificate(issuerCertId);
+                                signedBehalfOfCaSubjectDn = CertTools.getSubjectDN(shouldSignOnBehalfCaCert);
+                                onBehalfOfCaStatus = ocspSigningCacheEntry.getSignedBehalfOfCaStatus().get(issuerCertId);
+                                log.info("ocsp will be signed behalf of:" + signedBehalfOfCaSubjectDn);
+                                break;
+                            }
                         }
                     }
                 }
@@ -1972,14 +1979,14 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                 if (hasErrorHandlerFailedSince(startTime)) {
                     log.info("ProbableErrorhandler reported error, cannot answer request");
                     // RFC 2560: responseBytes are not set on error.
-                    ocspResponse = responseGenerator.build(3, null);
+                    ocspResponse = responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null);
 
                 }
                 // See if the Appender has reported any problems
                 if (!CanLogCache.INSTANCE.canLog()) {
                     log.info("SaferDailyRollingFileAppender reported error, cannot answer request");
                     // RFC 2560: responseBytes are not set on error.
-                    ocspResponse = responseGenerator.build(3, null);
+                    ocspResponse = responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null);
                 }
             }
         } catch (IOException e) {
