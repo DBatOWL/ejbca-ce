@@ -292,7 +292,7 @@ public class OCSPServlet extends HttpServlet {
 
                 // RFC 2560: responseBytes are not set on error.
                 ocspResponseInformation = new OcspResponseInformation(
-                    responseGenerator.build(3, null),
+                    responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null),
                     OcspConfiguration.getMaxAge(CertificateProfileConstants.CERTPROFILE_NO_PROFILE),
                     null
                 );

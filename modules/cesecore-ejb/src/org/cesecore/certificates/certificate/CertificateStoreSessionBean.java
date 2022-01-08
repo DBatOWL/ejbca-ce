@@ -908,6 +908,9 @@ public class CertificateStoreSessionBean implements CertificateStoreSessionRemot
         }
         final List<CertificateDataWrapper> ret = new ArrayList<>();
         final List<CertificateData> coll = certificateDataSession.findBySerialNumber(serno.toString());
+        if(coll==null) {
+            return ret;
+        }
         for (final CertificateData certificateData : coll) {
             ret.add(new CertificateDataWrapper(certificateData, Base64CertData.findByFingerprint(entityManager, certificateData.getFingerprint())));
         }
