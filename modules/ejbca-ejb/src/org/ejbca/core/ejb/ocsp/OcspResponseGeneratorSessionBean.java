@@ -198,8 +198,6 @@ import org.cesecore.util.log.SaferDailyRollingFileAppender;
 import org.cesecore.util.provider.EkuPKIXCertPathChecker;
 import org.ejbca.core.ejb.ca.publisher.PublisherSessionLocal;
 import org.ejbca.core.model.ca.publisher.PublisherException;
-import org.ejbca.cvc.CardVerifiableCertificate;
-
 
 /**
  * This SSB generates OCSP responses. 
