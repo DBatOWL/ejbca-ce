@@ -198,6 +198,7 @@ import org.cesecore.util.log.SaferDailyRollingFileAppender;
 import org.cesecore.util.provider.EkuPKIXCertPathChecker;
 import org.ejbca.core.ejb.ca.publisher.PublisherSessionLocal;
 import org.ejbca.core.model.ca.publisher.PublisherException;
+import org.ejbca.cvc.CardVerifiableCertificate;
 
 
 /**
@@ -1549,7 +1550,6 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                         String defaultResponder = ocspConfiguration.getOcspDefaultResponderReference();
                         String errMsg = intres.getLocalizedMessage("ocsp.errorfindcacert", StringTools.hex(certId.getIssuerNameHash()),
                                 defaultResponder);
-                        //TODO
                         log.error(errMsg);
                         // If we are responding to multiple requests, the last found ocspSigningCacheEntry will be used in the end
                         // so even if there are not any one now, it might be later when it is time to sign the responses.
@@ -1572,31 +1572,31 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                 OCSPResponseItem respItem;
                 
                 X509Certificate shouldSignOnBehalfCaCert = null;
-                List<CertificateDataWrapper> certificateWrappers = null;
-                try {
-                    certificateWrappers = certificateStoreSession.getCertificateDataBySerno(certId.getSerialNumber());
-                } catch(Exception e) {
-                    log.info("wrong cert serial num: " + e.getClass(), e );
-                }
-                if(certificateWrappers!=null) {
-                    log.info("retrieved certificate wrappers: " + certificateWrappers.size());
-                    for(CertificateDataWrapper certificateWrapper: certificateWrappers) {
-                        if(certificateWrapper.getCertificateData()==null || certificateWrapper.getCertificate()==null) {
+                List<CertificateDataWrapper> certificateWrappers = 
+                        certificateStoreSession.getCertificateDataBySerno(certId.getSerialNumber());
+                
+                log.info("retrieved certificate wrappers: " + certificateWrappers.size());
+                for(CertificateDataWrapper certificateWrapper: certificateWrappers) {
+                    if(certificateWrapper.getCertificateData()==null || certificateWrapper.getCertificate()==null) {
+                        continue;
+                    }
+                    if(certificateWrapper.getCertificateData().getIssuerDN().equals(caCertificateSubjectDn)) {
+                        log.info("ocsp issuer is signing CA.");
+                        break;
+                    } else {
+                        Certificate fetchedCertificate = certificateWrapper.getCertificate();
+                        if(!(fetchedCertificate instanceof X509Certificate)) {
                             continue;
                         }
-                        if(certificateWrapper.getCertificateData().getIssuerDN().equals(caCertificateSubjectDn)) {
-                            log.info("ocsp issuer is signing CA.");
+                        CertificateID issuerCertId = ocspSigningCacheEntry.getSignBehalfOfCaCertId(
+                                                        (X509Certificate) fetchedCertificate);
+
+                        if(issuerCertId!=null) {
+                            shouldSignOnBehalfCaCert = ocspSigningCacheEntry.getSignBehalfOfCaCertificate(issuerCertId);
+                            signedBehalfOfCaSubjectDn = CertTools.getSubjectDN(shouldSignOnBehalfCaCert);
+                            onBehalfOfCaStatus = ocspSigningCacheEntry.getSignedBehalfOfCaStatus().get(issuerCertId);
+                            log.info("ocsp will be signed behalf of:" + signedBehalfOfCaSubjectDn);
                             break;
-                        } else {
-                            CertificateID issuerCertId = ocspSigningCacheEntry.getSignBehalfOfCaCertId(
-                                                            (X509Certificate) certificateWrapper.getCertificate());
-                            if(issuerCertId!=null) {
-                                shouldSignOnBehalfCaCert = ocspSigningCacheEntry.getSignBehalfOfCaCertificate(issuerCertId);
-                                signedBehalfOfCaSubjectDn = CertTools.getSubjectDN(shouldSignOnBehalfCaCert);
-                                onBehalfOfCaStatus = ocspSigningCacheEntry.getSignedBehalfOfCaStatus().get(issuerCertId);
-                                log.info("ocsp will be signed behalf of:" + signedBehalfOfCaSubjectDn);
-                                break;
-                            }
                         }
                     }
                 }
