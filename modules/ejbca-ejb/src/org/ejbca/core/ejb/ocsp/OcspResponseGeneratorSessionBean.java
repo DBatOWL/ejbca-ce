@@ -1572,17 +1572,17 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                 
                 X509Certificate shouldSignOnBehalfCaCert = null;
                 List<CertificateDataWrapper> certificateWrappers = null;
-//                try {
+                try {
                     certificateWrappers = certificateStoreSession.getCertificateDataBySerno(certId.getSerialNumber());
-//                } catch(Exception e) {
-//                    log.error("wrong cert serial num: " + e.getClass(), e );
-//                }
-//                if(certificateWrappers!=null) {
-//                    log.info("retrieved certificate wrappers: " + certificateWrappers.size());
+                } catch(Exception e) {
+                    log.info("wrong cert serial num: " + e.getClass(), e );
+                }
+                if(certificateWrappers!=null) {
+                    log.info("retrieved certificate wrappers: " + certificateWrappers.size());
                     for(CertificateDataWrapper certificateWrapper: certificateWrappers) {
-//                        if(certificateWrapper.getCertificateData()==null || certificateWrapper.getCertificate()==null) {
-//                            continue;
-//                        }
+                        if(certificateWrapper.getCertificateData()==null || certificateWrapper.getCertificate()==null) {
+                            continue;
+                        }
                         if(certificateWrapper.getCertificateData().getIssuerDN().equals(caCertificateSubjectDn)) {
                             log.info("ocsp issuer is signing CA.");
                             break;
@@ -1598,7 +1598,7 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                             }
                         }
                     }
-//                }
+                }
                 
                 if(shouldSignOnBehalfCaCert!=null) {
                     transactionLogger.paramPut(TransactionLogger.ISSUER_NAME_DN,
@@ -1982,14 +1982,14 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                 if (hasErrorHandlerFailedSince(startTime)) {
                     log.info("ProbableErrorhandler reported error, cannot answer request");
                     // RFC 2560: responseBytes are not set on error.
-                    ocspResponse = responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null);
+                    ocspResponse = responseGenerator.build(4, null);
 
                 }
                 // See if the Appender has reported any problems
                 if (!CanLogCache.INSTANCE.canLog()) {
                     log.info("SaferDailyRollingFileAppender reported error, cannot answer request");
                     // RFC 2560: responseBytes are not set on error.
-                    ocspResponse = responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null);
+                    ocspResponse = responseGenerator.build(5, null);
                 }
             }
         } catch (IOException e) {
