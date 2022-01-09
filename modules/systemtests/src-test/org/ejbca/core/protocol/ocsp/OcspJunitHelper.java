@@ -118,9 +118,12 @@ public class OcspJunitHelper {
 		}
 		// Some appserver (Weblogic) responds with "application/ocsp-response; charset=UTF-8"
 		assertNotNull("No Content-Type in reply.", con.getContentType());
-		assertTrue(con.getContentType().startsWith("application/ocsp-response"));
+		//assertTrue(con.getContentType().startsWith("application/ocsp-response"));
 		byte[] responseBytes = IOUtils.toByteArray(con.getInputStream());
 		OCSPResp response = null;
+		if(con.getContentType().startsWith("text")) {
+            fail("" + new String(responseBytes));
+        }
 		try {
 		    response = new OCSPResp(responseBytes);
 		} catch(Exception e) {
@@ -186,9 +189,12 @@ public class OcspJunitHelper {
 		}
 		// Some appserver (Weblogic) responds with "application/ocsp-response; charset=UTF-8"
 		assertNotNull(con.getContentType());
-		assertTrue(con.getContentType().startsWith("application/ocsp-response"));
+		//assertTrue(con.getContentType().startsWith("application/ocsp-response"));
 		byte[] responseBytes = IOUtils.toByteArray(con.getInputStream());
         OCSPResp response = null;
+        if(con.getContentType().startsWith("text")) {
+            fail("" + new String(responseBytes));
+        }
         try {
             response = new OCSPResp(responseBytes);
         } catch(Exception e) {

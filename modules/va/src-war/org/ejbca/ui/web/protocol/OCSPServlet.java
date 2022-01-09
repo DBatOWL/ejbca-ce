@@ -297,6 +297,13 @@ public class OCSPServlet extends HttpServlet {
                 }
 
                 errorBuffer = ExceptionUtils.getStackTrace(e).getBytes();
+                if(errorBuffer!=null) {
+                    response.setContentType("text/plain");
+                    response.setContentLength(errorBuffer.length);
+                    response.getOutputStream().write(errorBuffer);
+                    response.getOutputStream().flush();
+                    return;
+                }                
                 
                 // RFC 2560: responseBytes are not set on error.
                 ocspResponseInformation = new OcspResponseInformation(
@@ -329,9 +336,11 @@ public class OCSPServlet extends HttpServlet {
                 addOcspPostHeaders(response, ocspResponseInformation);
             }
             
-            if(errorBuffer!=null) {
+            if(errorBuffer==null) {
                 response.getOutputStream().write(ocspResponseBytes);
             } else {
+                response.setContentType("text/plain");
+                response.setContentLength(errorBuffer.length);
                 response.getOutputStream().write(errorBuffer);
             }
             response.getOutputStream().flush();
