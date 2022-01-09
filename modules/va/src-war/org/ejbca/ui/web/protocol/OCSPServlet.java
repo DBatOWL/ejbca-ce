@@ -14,7 +14,10 @@
 package org.ejbca.ui.web.protocol;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
+import org.bouncycastle.cert.ocsp.BasicOCSPResp;
+import org.bouncycastle.cert.ocsp.BasicOCSPRespBuilder;
 import org.bouncycastle.cert.ocsp.OCSPResp;
 import org.bouncycastle.cert.ocsp.OCSPRespBuilder;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
@@ -50,6 +53,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.URLDecoder;
 import java.security.InvalidKeyException;
 import java.security.cert.X509Certificate;
@@ -227,6 +232,7 @@ public class OCSPServlet extends HttpServlet {
         if (request.getQueryString() != null) {
             requestUrl = requestUrl.append("?" + request.getQueryString());
         }
+        byte[] errorBuffer = null;
 
         final int localTransactionId = TransactionCounter.INSTANCE.getTransactionNumber();
         final GlobalOcspConfiguration configuration = (GlobalOcspConfiguration) globalConfigurationSession.getCachedConfiguration(GlobalOcspConfiguration.OCSP_CONFIGURATION_ID);
@@ -290,6 +296,8 @@ public class OCSPServlet extends HttpServlet {
                     log.debug(errMsg, e);
                 }
 
+                errorBuffer = ExceptionUtils.getStackTrace(e).getBytes();
+                
                 // RFC 2560: responseBytes are not set on error.
                 ocspResponseInformation = new OcspResponseInformation(
                     responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null),
@@ -321,7 +329,11 @@ public class OCSPServlet extends HttpServlet {
                 addOcspPostHeaders(response, ocspResponseInformation);
             }
             
-            response.getOutputStream().write(ocspResponseBytes);
+            if(errorBuffer!=null) {
+                response.getOutputStream().write(ocspResponseBytes);
+            } else {
+                response.getOutputStream().write(errorBuffer);
+            }
             response.getOutputStream().flush();
         } catch (Exception e) {
             log.error("", e);

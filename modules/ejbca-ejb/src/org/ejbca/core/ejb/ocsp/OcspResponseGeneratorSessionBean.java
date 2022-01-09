@@ -1549,6 +1549,7 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                         String defaultResponder = ocspConfiguration.getOcspDefaultResponderReference();
                         String errMsg = intres.getLocalizedMessage("ocsp.errorfindcacert", StringTools.hex(certId.getIssuerNameHash()),
                                 defaultResponder);
+                        //TODO
                         log.error(errMsg);
                         // If we are responding to multiple requests, the last found ocspSigningCacheEntry will be used in the end
                         // so even if there are not any one now, it might be later when it is time to sign the responses.
@@ -1982,14 +1983,14 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                 if (hasErrorHandlerFailedSince(startTime)) {
                     log.info("ProbableErrorhandler reported error, cannot answer request");
                     // RFC 2560: responseBytes are not set on error.
-                    ocspResponse = responseGenerator.build(4, null);
+                    ocspResponse = responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null);
 
                 }
                 // See if the Appender has reported any problems
                 if (!CanLogCache.INSTANCE.canLog()) {
                     log.info("SaferDailyRollingFileAppender reported error, cannot answer request");
                     // RFC 2560: responseBytes are not set on error.
-                    ocspResponse = responseGenerator.build(5, null);
+                    ocspResponse = responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null);
                 }
             }
         } catch (IOException e) {

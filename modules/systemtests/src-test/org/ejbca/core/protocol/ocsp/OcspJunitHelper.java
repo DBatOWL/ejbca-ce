@@ -17,6 +17,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -118,7 +119,13 @@ public class OcspJunitHelper {
 		// Some appserver (Weblogic) responds with "application/ocsp-response; charset=UTF-8"
 		assertNotNull("No Content-Type in reply.", con.getContentType());
 		assertTrue(con.getContentType().startsWith("application/ocsp-response"));
-		OCSPResp response = new OCSPResp(IOUtils.toByteArray(con.getInputStream()));
+		byte[] responseBytes = IOUtils.toByteArray(con.getInputStream());
+		OCSPResp response = null;
+		try {
+		    response = new OCSPResp(responseBytes);
+		} catch(Exception e) {
+		    fail("" + new String(responseBytes));
+		}
 		assertEquals("Response status not the expected.", respCode, response.getStatus());
 		if (respCode != 0) {
 			assertNull("According to RFC 2560, responseBytes are not set on error.", response.getResponseObject());
@@ -180,7 +187,13 @@ public class OcspJunitHelper {
 		// Some appserver (Weblogic) responds with "application/ocsp-response; charset=UTF-8"
 		assertNotNull(con.getContentType());
 		assertTrue(con.getContentType().startsWith("application/ocsp-response"));
-		OCSPResp response = new OCSPResp(IOUtils.toByteArray(con.getInputStream()));
+		byte[] responseBytes = IOUtils.toByteArray(con.getInputStream());
+        OCSPResp response = null;
+        try {
+            response = new OCSPResp(responseBytes);
+        } catch(Exception e) {
+            fail("" + new String(responseBytes));
+        }
 		assertNotNull("Response should not be null.", response);
 		assertEquals("Response status not the expected.", respCode, response.getStatus());
 		if (respCode != 0) {
