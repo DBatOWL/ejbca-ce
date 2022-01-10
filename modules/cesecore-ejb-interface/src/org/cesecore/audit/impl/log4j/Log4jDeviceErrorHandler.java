@@ -74,8 +74,9 @@ public class Log4jDeviceErrorHandler implements ErrorHandler {
 		errorHandler.setLogger(arg0);
 	}
 
-	@Override
+	// EJBCAINTER-323 Removed.
+//	@Override
 	public void activateOptions() {
-		errorHandler.activateOptions();
+//		errorHandler.activateOptions();
 	}
 }

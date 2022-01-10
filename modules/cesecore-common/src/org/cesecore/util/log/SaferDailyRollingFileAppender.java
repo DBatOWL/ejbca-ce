@@ -17,36 +17,33 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.apache.log4j.DailyRollingFileAppender;
-import org.apache.log4j.helpers.LogLog;
-import org.apache.log4j.spi.LoggingEvent;
-
 /**
  * The purpose of this extension is to notify the client of the this log appender that it isn't possible to log anymore.
  * 
  * @version $Id$
  */
-public class SaferDailyRollingFileAppender extends DailyRollingFileAppender {
+public class SaferDailyRollingFileAppender { // extends DailyRollingFileAppender 
     private static SaferAppenderListener subscriber;
 
-    @Override
-    public void append(LoggingEvent evt) {
-        super.append(evt);
-        File logfile;
-        try {
-            logfile = new File(super.getFile());
-            if (subscriber != null) {
-                if (logfile.canWrite()) {
-                    subscriber.setCanlog(true);
-                } else {
-                    subscriber.setCanlog(false);
-                }
-            }
-        } catch (Exception e) {
-            if (subscriber != null) {
-                subscriber.setCanlog(false);
-            }
-        }
+ // EJBCAINTER-323 Removed.
+//    @Override
+    public void append(Object evt) {
+//        super.append(evt);
+//        File logfile;
+//        try {
+//            logfile = new File(super.getFile());
+//            if (subscriber != null) {
+//                if (logfile.canWrite()) {
+//                    subscriber.setCanlog(true);
+//                } else {
+//                    subscriber.setCanlog(false);
+//                }
+//            }
+//        } catch (Exception e) {
+//            if (subscriber != null) {
+//                subscriber.setCanlog(false);
+//            }
+//        }
     }
 
     /** Sets the SaferAppenderListener that will be informed if a logging error occurs. */
@@ -54,10 +51,11 @@ public class SaferDailyRollingFileAppender extends DailyRollingFileAppender {
         subscriber = pSubscriber;
     }
 
-    @Override
+ // EJBCAINTER-323 Removed.
+//    @Override
     public void setFile(final String filename) {
         constructPath(filename);
-        super.setFile(filename);
+//        super.setFile(filename);
     }
 
     private void constructPath(final String filename) {
@@ -71,7 +69,8 @@ public class SaferDailyRollingFileAppender extends DailyRollingFileAppender {
         if (!dir.exists()) {
             boolean success = dir.mkdirs();
             if (!success) {
-                LogLog.error("Failed to create directory structure: " + dir);
+            	// EJBCAINTER-323 Removed.
+//                LogLog.error("Failed to create directory structure: " + dir);
             }
         }
     }
