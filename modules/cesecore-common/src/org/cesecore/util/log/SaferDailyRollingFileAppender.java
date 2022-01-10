@@ -14,48 +14,76 @@
 package org.cesecore.util.log;
 
 import java.io.File;
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Logger;
+
+import org.apache.logging.log4j.core.Appender;
+import org.apache.logging.log4j.core.Core;
+import org.apache.logging.log4j.core.Filter;
+import org.apache.logging.log4j.core.Layout;
+import org.apache.logging.log4j.core.LogEvent;
+import org.apache.logging.log4j.core.appender.rolling.RollingFileManager;
+import org.apache.logging.log4j.core.config.Property;
+import org.apache.logging.log4j.core.config.plugins.Plugin;
+import org.apache.logging.log4j.core.net.Advertiser;
 
 /**
  * The purpose of this extension is to notify the client of the this log appender that it isn't possible to log anymore.
- * 
- * @version $Id$
  */
-public class SaferDailyRollingFileAppender { // extends DailyRollingFileAppender 
-    private static SaferAppenderListener subscriber;
+@Plugin(name = SaferDailyRollingFileAppender.PLUGIN_NAME, category = Core.CATEGORY_NAME, elementType = Appender.ELEMENT_TYPE, printObject = true)
+public class SaferDailyRollingFileAppender extends NonFinalRollingFileAppender {
+    
+    public static final String PLUGIN_NAME = "SaferDailyRollingFileAppender";
 
- // EJBCAINTER-323 Removed.
-//    @Override
-    public void append(Object evt) {
-//        super.append(evt);
-//        File logfile;
-//        try {
-//            logfile = new File(super.getFile());
-//            if (subscriber != null) {
-//                if (logfile.canWrite()) {
-//                    subscriber.setCanlog(true);
-//                } else {
-//                    subscriber.setCanlog(false);
-//                }
-//            }
-//        } catch (Exception e) {
-//            if (subscriber != null) {
-//                subscriber.setCanlog(false);
-//            }
-//        }
-    }
+    private final static Logger LOGGER = Logger.getLogger(SaferDailyRollingFileAppender.class.getName());
+    
+    private static SaferAppenderListener subscriber;
 
     /** Sets the SaferAppenderListener that will be informed if a logging error occurs. */
     public static void addSubscriber(SaferAppenderListener pSubscriber) {
         subscriber = pSubscriber;
     }
+    
+    /** Constructor from superclass. */ 
+    public SaferDailyRollingFileAppender(
+            final String name, 
+            final Layout<? extends Serializable> layout, 
+            final Filter filter,
+            final RollingFileManager manager, 
+            final String fileName, 
+            final String filePattern,
+            final boolean ignoreExceptions, 
+            final boolean immediateFlush, 
+            final Advertiser advertiser,
+            final Property[] properties) {
+        super(name, layout, filter, manager, fileName, filePattern, ignoreExceptions, immediateFlush, advertiser, properties);
+    }
+    
+    @Override
+    public void append(final LogEvent event) {
+        super.append(event);
+        File logfile;
+          try {
+              logfile = new File(super.getFileName());
+              if (subscriber != null) {
+                  if (logfile.canWrite()) {
+                      subscriber.setCanlog(true);
+                  } else {
+                      subscriber.setCanlog(false);
+                  }
+              }
+          } catch (Exception e) {
+              if (subscriber != null) {
+                  subscriber.setCanlog(false);
+              }
+          }
+    }
 
- // EJBCAINTER-323 Removed.
-//    @Override
+ // EJBCAINTER-323 Invoked by config.
     public void setFile(final String filename) {
         constructPath(filename);
-//        super.setFile(filename);
     }
 
     private void constructPath(final String filename) {
@@ -69,8 +97,7 @@ public class SaferDailyRollingFileAppender { // extends DailyRollingFileAppender
         if (!dir.exists()) {
             boolean success = dir.mkdirs();
             if (!success) {
-            	// EJBCAINTER-323 Removed.
-//                LogLog.error("Failed to create directory structure: " + dir);
+                LOGGER.info("Failed to create directory structure: '" + dir + "'.");
             }
         }
     }
