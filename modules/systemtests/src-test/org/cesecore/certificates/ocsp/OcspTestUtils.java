@@ -36,10 +36,14 @@ import org.cesecore.certificates.ca.IllegalValidityException;
 import org.cesecore.certificates.ca.InvalidAlgorithmException;
 import org.cesecore.certificates.ca.SignRequestSignatureException;
 import org.cesecore.certificates.ca.X509CA;
+import org.cesecore.certificates.certificate.CertificateConstants;
 import org.cesecore.certificates.certificate.CertificateCreateException;
 import org.cesecore.certificates.certificate.CertificateCreateSessionRemote;
+import org.cesecore.certificates.certificate.CertificateDataWrapper;
 import org.cesecore.certificates.certificate.CertificateRevokeException;
+import org.cesecore.certificates.certificate.CertificateStoreSessionRemote;
 import org.cesecore.certificates.certificate.IllegalKeyException;
+import org.cesecore.certificates.certificate.InternalCertificateStoreSessionRemote;
 import org.cesecore.certificates.certificate.certextensions.CertificateExtensionException;
 import org.cesecore.certificates.certificate.exception.CertificateSerialNumberException;
 import org.cesecore.certificates.certificate.exception.CustomCertificateSerialNumberException;
@@ -47,13 +51,16 @@ import org.cesecore.certificates.certificate.request.RequestMessage;
 import org.cesecore.certificates.certificate.request.SimpleRequestMessage;
 import org.cesecore.certificates.certificate.request.X509ResponseMessage;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
+import org.cesecore.certificates.crl.RevokedCertInfo;
 import org.cesecore.certificates.endentity.EndEntityConstants;
 import org.cesecore.certificates.endentity.EndEntityInformation;
 import org.cesecore.certificates.endentity.EndEntityTypes;
 import org.cesecore.keybind.CertificateImportException;
+import org.cesecore.keybind.InternalKeyBinding;
 import org.cesecore.keybind.InternalKeyBindingMgmtSessionRemote;
 import org.cesecore.keybind.InternalKeyBindingNameInUseException;
 import org.cesecore.keybind.InternalKeyBindingStatus;
+import org.cesecore.keybind.InternalKeyBindingTrustEntry;
 import org.cesecore.keybind.impl.OcspKeyBinding;
 import org.cesecore.keys.token.CryptoTokenManagementSessionRemote;
 import org.cesecore.keys.token.CryptoTokenOfflineException;
@@ -111,9 +118,27 @@ public class OcspTestUtils {
         // Create a new InternalKeyBinding with a implementation specific property and bind it to the previously generated key
         final Map<String, Serializable> dataMap = new LinkedHashMap<>();
         dataMap.put(PROPERTY_ALIAS, Boolean.FALSE);
-        return internalKeyBindingMgmtSession.createInternalKeyBinding(authenticationToken, type,
+        int internalKeyBindinId = internalKeyBindingMgmtSession.createInternalKeyBinding(authenticationToken, type,
                 testName, InternalKeyBindingStatus.ACTIVE, null, cryptoTokenId, testName, signAlg, dataMap, null);
+        
+        return internalKeyBindinId;
     }
+    
+    /** Adds signOnBehalfEntries to a previously created OCSP key binding */
+    public static void addSignOnBehalfEntries(AuthenticationToken authenticationToken, int internalKeyBindinId, 
+            List<InternalKeyBindingTrustEntry> signOcspResponseOnBehalf) throws Exception {
+        InternalKeyBindingMgmtSessionRemote internalKeyBindingMgmtSession = EjbRemoteHelper.INSTANCE
+                .getRemoteSession(InternalKeyBindingMgmtSessionRemote.class);
+        InternalKeyBinding keyBinding = 
+                internalKeyBindingMgmtSession.getInternalKeyBinding(authenticationToken, internalKeyBindinId);
+        if(!keyBinding.getImplementationAlias().equalsIgnoreCase(OcspKeyBinding.IMPLEMENTATION_ALIAS)) {
+            return;
+        }
+        keyBinding.setSignOcspResponseOnBehalf(signOcspResponseOnBehalf);
+        internalKeyBindingMgmtSession.persistInternalKeyBinding(authenticationToken, keyBinding);
+        return;
+    }
+                                    
     
     /** @return the certificate fingerprint if an update was made */
     public static String updateInternalKeyBindingCertificate(AuthenticationToken authenticationToken, int internalKeyBindingId)
@@ -228,6 +253,32 @@ public class OcspTestUtils {
         RequestMessage req = new SimpleRequestMessage(publicKey, user.getUsername(), user.getPassword());
         return (X509Certificate) (certificateCreateSession.createCertificate(
                 authenticationToken, user, req, X509ResponseMessage.class, new CertificateGenerationParams()).getCertificate());
+    }
+    
+    public static X509Certificate createUserCertificate(AuthenticationToken authenticationToken, int caId,
+                                    String userName, String userDn) throws Exception {
+        CertificateCreateSessionRemote certificateCreateSession = EjbRemoteHelper.INSTANCE.getRemoteSession(CertificateCreateSessionRemote.class);
+        // Get the public key for the key pair currently used in the binding
+        PublicKey publicKey = KeyTools.genKeys("2048", "RSA").getPublic();
+        // Issue a certificate in EJBCA for the public key
+        final EndEntityInformation user = new EndEntityInformation(userName, userDn, caId, null, null,
+                EndEntityTypes.ENDUSER.toEndEntityType(), 1, CertificateProfileConstants.CERTPROFILE_FIXED_ENDUSER,
+                EndEntityConstants.TOKEN_USERGEN, null);
+        user.setPassword("foo123");
+        RequestMessage req = new SimpleRequestMessage(publicKey, user.getUsername(), user.getPassword());
+        return (X509Certificate) (certificateCreateSession.createCertificate(
+                authenticationToken, user, req, X509ResponseMessage.class, new CertificateGenerationParams()).getCertificate());
+    }
+    
+    public static void revokeUserCertificate(AuthenticationToken authenticationToken, X509Certificate certificate)
+            throws Exception {
+        InternalCertificateStoreSessionRemote internalCertificateStoreSession = EjbRemoteHelper.INSTANCE.getRemoteSession(
+                InternalCertificateStoreSessionRemote.class);
+        
+        internalCertificateStoreSession.setRevokeStatus(authenticationToken, certificate, 
+                new Date(), RevokedCertInfo.REVOCATION_REASON_SUPERSEDED);
+
+        return;
     }
 
     public static void removeInternalKeyBinding(AuthenticationToken alwaysAllowtoken, String keyBindingName) throws AuthorizationDeniedException {

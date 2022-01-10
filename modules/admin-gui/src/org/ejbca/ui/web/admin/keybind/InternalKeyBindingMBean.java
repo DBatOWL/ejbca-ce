@@ -1668,7 +1668,7 @@ public class InternalKeyBindingMBean extends BaseManagedBean implements Serializ
         final List<InternalKeyBindingTrustEntry> caIssuedCertsToSign = 
                 (List<InternalKeyBindingTrustEntry>) getSignOcspResponseForCas().getWrappedData();
         caIssuedCertsToSign.add(new InternalKeyBindingTrustEntry(getCurrentCertificateAuthorityOcspRespToSign(), 
-                                                    null, currentTrustEntryDescriptionOcspRespToSign));
+                                                  null, currentTrustEntryDescriptionOcspRespToSign));
         signOcspResponseForCas.setWrappedData(caIssuedCertsToSign);
         currentTrustEntryDescriptionOcspRespToSign="";
     }
