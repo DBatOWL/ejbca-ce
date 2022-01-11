@@ -1588,10 +1588,6 @@ public class InternalKeyBindingMBean extends BaseManagedBean implements Serializ
         return trustedCertificates.getRowData().fetchCertificateSerialNumber().toString(16);
     }
     
-    public String getSignOcspResponseForCasSerialNumberHex() {
-        return signOcspResponseForCas.getRowData().fetchCertificateSerialNumber().toString(16);
-    }
-    
     public ListDataModel<InternalKeyBindingTrustEntry> getSignOcspResponseForCas() {
         if (signOcspResponseForCas == null) {
             final int internalKeyBindingId = Integer.parseInt(currentInternalKeyBindingId);

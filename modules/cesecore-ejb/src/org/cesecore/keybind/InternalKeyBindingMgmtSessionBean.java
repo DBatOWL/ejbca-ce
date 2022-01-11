@@ -513,7 +513,7 @@ public class InternalKeyBindingMgmtSessionBean implements InternalKeyBindingMgmt
                 Arrays.toString(internalKeyBinding.getTrustedCertificateReferences().toArray()), details);
         putDelta("signOcspResponseOnBehalf", 
                 Arrays.toString(originalInternalKeyBinding.getSignOcspResponseOnBehalf().toArray()), 
-                Arrays.toString(internalKeyBinding.getTrustedCertificateReferences().toArray()), details);
+                Arrays.toString(internalKeyBinding.getSignOcspResponseOnBehalf().toArray()), details);
         putDelta(originalInternalKeyBinding.getCopyOfProperties(), internalKeyBinding.getCopyOfProperties(), details);
         securityEventsLoggerSession.log(EventTypes.INTERNALKEYBINDING_EDIT, EventStatus.SUCCESS, ModuleTypes.INTERNALKEYBINDING, ServiceTypes.CORE,
                 authenticationToken.toString(), String.valueOf(internalKeyBinding.getId()), null, null, details);

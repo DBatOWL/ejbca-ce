@@ -144,17 +144,6 @@ public enum OcspSigningCache {
                 }
             }
         }
-        log.info("Committing the following to OCSP cache:");
-        for (final Integer key : staging.keySet()) {
-            final OcspSigningCacheEntry entry = staging.get(key);
-            log.info(" KeyBindingId: " + key + ", SubjectDN '" + CertTools.getSubjectDN(entry.getFullCertificateChain().get(0))
-                    + "', IssuerDN '" + CertTools.getIssuerDN(entry.getFullCertificateChain().get(0)) + "', SerialNumber "
-                    + entry.getFullCertificateChain().get(0).getSerialNumber().toString() + "/"
-                    + entry.getFullCertificateChain().get(0).getSerialNumber().toString(16));
-            if (entry.getOcspKeyBinding() != null) {
-                log.info("   keyPairAlias: " + entry.getOcspKeyBinding().getKeyPairAlias());
-            }
-        }
     }
 
     public void stagingRelease() {

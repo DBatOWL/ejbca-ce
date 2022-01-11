@@ -87,7 +87,7 @@ public class InternalKeyBindingListCommand extends EjbcaCliUserCommandBase {
                             + "KeyPairAlias, NextKeyPairAlias, SignatureAlgorithm, "
                             + "properties={Implementations specific properties}, "
                             + "trust={list of trusted CAs and certificates}, "
-                            + "signOcspResponsesOnBehalf");
+                            + "signOcspResponsesOnBehalf={list of other CAs for which responses are signed}");
         }
         final Date now = new Date();
         for (final InternalKeyBindingInfo internalKeyBinding : internalKeyBindings) {

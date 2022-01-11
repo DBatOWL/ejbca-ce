@@ -504,7 +504,7 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
         for(InternalKeyBindingTrustEntry signOnBehalfEntry: ocspKeyBinding.getSignOcspResponseOnBehalf()) {
             CAData caData = caSession.findById(signOnBehalfEntry.getCaId());
             if(caData==null) {
-                log.info("CA with id might have been deleted (caId): " + signOnBehalfEntry.getCaId());
+                log.debug("CA with id might have been deleted (caId): " + signOnBehalfEntry.getCaId());
                 continue;
             }
             
@@ -517,7 +517,7 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
             
             if(caData.getStatus()!=CAConstants.CA_ACTIVE && caData.getStatus()!=CAConstants.CA_EXTERNAL && 
                     !(caData.getStatus() == CAConstants.CA_EXPIRED && preProduceOcspResponse)) {
-                log.info("OCSP sign on behalf is allowed only for active, "
+                log.debug("OCSP sign on behalf is allowed only for active, "
                         + "external CAs or expired CAs with preproduced OCSP response (caId): "
                                                                         + signOnBehalfEntry.getCaId());
                 continue;
@@ -1380,13 +1380,6 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                 
                 ocspSigningCacheEntry = OcspSigningCache.INSTANCE.getEntry(certId);
                 OcspDataConfigCacheEntry ocspDataConfig = OcspDataConfigCache.INSTANCE.getEntry(certId);
-                log.info("OCSP response certid is: " + certId + ", " + certId.getSerialNumber());
-                log.info("OCSP response cache entry is null: " + Objects.isNull(ocspSigningCacheEntry));
-                log.info("OCSP data cache entry is null: " + Objects.isNull(ocspSigningCacheEntry));
-                if(!Objects.isNull(ocspSigningCacheEntry) && ocspSigningCacheEntry.getOcspSigningCertificate()!=null)
-                    log.info("OCSP signing cache entry signkey is: " + ocspSigningCacheEntry.getOcspSigningCertificate().getSubjectDN().toString());
-                if(!Objects.isNull(ocspSigningCacheEntry) && ocspSigningCacheEntry.getOcspKeyBinding()!=null)
-                    log.info("OCSP signing cache entry binding certId is: " + ocspSigningCacheEntry.getOcspKeyBinding().getCertificateId());
                 
                 // Locate the CA which gave out the certificate
                 if (Objects.isNull(ocspSigningCacheEntry)) {
@@ -1504,7 +1497,6 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                                 ocspSigningCacheEntry.getSigningCertificateIssuerDnRaw());
                     }
                 } else {
-                    log.info("OCSP request from unknown CA going for default responder.");
                     /*
                      * if the certId was issued by an unknown CA 
                      * 
@@ -1515,7 +1507,6 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                      */                
                     // We could not find certificate for this request so get certificate for default responder
                     ocspSigningCacheEntry = OcspSigningCache.INSTANCE.getDefaultEntry();
-                    log.info("OCSP cached entry found for default responder: " + Objects.isNull(ocspSigningCacheEntry));
                     if (ocspSigningCacheEntry != null) {
                         // We could not find the CA
                         final OcspKeyBinding defaultKeyBind = OcspSigningCache.INSTANCE.getDefaultEntry().getOcspKeyBinding();
@@ -1571,7 +1562,6 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                 final org.bouncycastle.cert.ocsp.CertificateStatus certStatus;
                 // Check if the cacert (or the default responderid) is revoked
                 X509Certificate caCertificate = ocspSigningCacheEntry.getIssuerCaCertificate();
-                log.info("checking isuer cert: " + caCertificate.getSerialNumber());
                 final CertificateStatus signerIssuerCertStatus = ocspSigningCacheEntry.getIssuerCaCertificateStatus();
                 final String caCertificateSubjectDn = CertTools.getSubjectDN(caCertificate);
                 String signedBehalfOfCaSubjectDn = null;
@@ -1586,13 +1576,12 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                     List<CertificateDataWrapper> certificateWrappers = 
                             certificateStoreSession.getCertificateDataBySerno(certId.getSerialNumber());
                     
-                    log.info("retrieved certificate wrappers: " + certificateWrappers.size());
                     for(CertificateDataWrapper certificateWrapper: certificateWrappers) {
                         if(certificateWrapper.getCertificateData()==null || certificateWrapper.getCertificate()==null) {
                             continue;
                         }
                         if(certificateWrapper.getCertificateData().getIssuerDN().equals(caCertificateSubjectDn)) {
-                            log.info("ocsp issuer is signing CA.");
+                            log.debug("ocsp issuer is signing CA.");
                             break;
                         } else {
                             Certificate fetchedCertificate = certificateWrapper.getCertificate();
@@ -1606,7 +1595,8 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                                 shouldSignOnBehalfCaCert = ocspSigningCacheEntry.getSignBehalfOfCaCertificate(issuerCertId);
                                 signedBehalfOfCaSubjectDn = CertTools.getSubjectDN(shouldSignOnBehalfCaCert);
                                 onBehalfOfCaStatus = ocspSigningCacheEntry.getSignedBehalfOfCaStatus().get(issuerCertId);
-                                log.info("ocsp will be signed behalf of:" + signedBehalfOfCaSubjectDn);
+                                log.debug("ocsp will be signed behalf of: \"" + signedBehalfOfCaSubjectDn 
+                                                    + "\" by:\"" + caCertificateSubjectDn + "\"");
                                 break;
                             }
                         }
@@ -1642,8 +1632,7 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                      * 2.7 CA Key Compromise If an OCSP responder knows that a particular CA's private key has been compromised, it MAY return the revoked
                      * state for all certificates issued by that CA.
                      */
-                    // If we've ended up here it's because the OCSP key binding signer or issuer CA or following request was revoked. 
-                    
+                    // If we've ended up here it's because the signer issuer certificate was revoked.                    
                     certStatus = new RevokedStatus(new RevokedInfo(new ASN1GeneralizedTime(signerIssuerCertStatus.revocationDate),
                             CRLReason.lookup(signerIssuerCertStatus.revocationReason)));
                     log.info(intres.getLocalizedMessage("ocsp.signcertissuerrevoked", CertTools.getSerialNumberAsString(caCertificate),
@@ -2254,9 +2243,6 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
                 }
             }
         }
-        if(ocspSigningCacheEntry!=null) {
-            log.info("formed missing response for: " + certId);
-        }
         return ocspSigningCacheEntry;
     }
     
@@ -2305,7 +2291,6 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
         final String sigAlg = getSigAlg(req, ocspSigningCacheEntry, signerCert);
         if (log.isDebugEnabled()) {
             log.debug("Signing algorithm: " + sigAlg);
-            log.debug("Signing certificate: " + signerCert.getSubjectDN().getName().toString());
         }
         try {
             // Now we can use the returned OCSPServiceResponse to get private key and certificate chain to sign the ocsp response

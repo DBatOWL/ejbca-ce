@@ -381,20 +381,7 @@ public class StandaloneOcspResponseGeneratorSessionTest {
         assertEquals("Response status not zero.", OCSPResp.SUCCESSFUL, response.getStatus());
         validateSuccessfulResponse((BasicOCSPResp) response.getResponseObject(), ocspSigningCertificate.getPublicKey());
     }
-    
-    @Test
-    public void testStandAloneOcspResponseExternalCaUnknownCert() throws Exception {
-        //Now delete the original CA, making this test completely standalone.
-        OcspTestUtils.deleteCa(authenticationToken, x509ca);
-        activateKeyBinding(internalKeyBindingId);
-        ocspResponseGeneratorSession.reloadOcspSigningCache();
-        // Do the OCSP request
-        final OCSPReq ocspRequest = buildOcspRequest(null, null, caCertificate, externalCaUserCert.getSerialNumber());
-        final OCSPResp response = sendRequest(ocspRequest);
-        assertEquals("Response status not zero.", OCSPResp.SUCCESSFUL, response.getStatus());
-        validateSuccessfulResponse((BasicOCSPResp) response.getResponseObject(), ocspSigningCertificate.getPublicKey(), externalCaUserCert, "unknown");
-    }
-    
+        
     @Test
     public void testStandAloneOcspResponseExternalCa() throws Exception {
         //Now delete the original CA, making this test completely standalone.
@@ -405,7 +392,7 @@ public class StandaloneOcspResponseGeneratorSessionTest {
         final OCSPReq ocspRequest = buildOcspRequest(null, null, caCertificate, externalCaUserCert.getSerialNumber());
         final OCSPResp response = sendRequest(ocspRequest);
         assertEquals("Response status not zero.", OCSPResp.SUCCESSFUL, response.getStatus());
-        validateSuccessfulResponse((BasicOCSPResp) response.getResponseObject(), ocspSigningCertificate.getPublicKey(), externalCaUserCert, "unknown");
+        validateOcspResponse((BasicOCSPResp) response.getResponseObject(), ocspSigningCertificate.getPublicKey(), externalCaUserCert, "unknown");
     }
         
     /** Tests the basic case of a standalone OCSP installation, i.e where this is a classic VA */
@@ -419,7 +406,7 @@ public class StandaloneOcspResponseGeneratorSessionTest {
         final OCSPReq ocspRequest = buildOcspRequest(null, null, caSignBehalfCertificate, userSignBehalfCertificate.getSerialNumber());
         final OCSPResp response = sendRequest(ocspRequest);
         assertEquals("Response status not zero.", OCSPResp.SUCCESSFUL, response.getStatus());
-        validateSuccessfulResponse((BasicOCSPResp) response.getResponseObject(), ocspSigningCertificate.getPublicKey(), userSignBehalfCertificate, null);
+        validateOcspResponse((BasicOCSPResp) response.getResponseObject(), ocspSigningCertificate.getPublicKey(), userSignBehalfCertificate, null);
     }
     
     @Test
@@ -435,7 +422,7 @@ public class StandaloneOcspResponseGeneratorSessionTest {
         final OCSPResp response = sendRequest(ocspRequest);
         assertEquals("Response status not zero.", OCSPResp.SUCCESSFUL, response.getStatus());
         
-        validateSuccessfulResponse((BasicOCSPResp) response.getResponseObject(), ocspSigningCertificate.getPublicKey(), userSignBehalfCertificate, "unknown");
+        validateOcspResponse((BasicOCSPResp) response.getResponseObject(), ocspSigningCertificate.getPublicKey(), userSignBehalfCertificate, "unknown");
     }
     
     @Test
@@ -451,7 +438,7 @@ public class StandaloneOcspResponseGeneratorSessionTest {
         final OCSPResp response = sendRequest(ocspRequest);
         assertEquals("Response status not zero.", OCSPResp.SUCCESSFUL, response.getStatus());
         
-        validateSuccessfulResponse((BasicOCSPResp) response.getResponseObject(), ocspSigningCertificate.getPublicKey(), userSignBehalfCertificate, "unknown");
+        validateOcspResponse((BasicOCSPResp) response.getResponseObject(), ocspSigningCertificate.getPublicKey(), userSignBehalfCertificate, "unknown");
     }
     
     @Test
@@ -467,7 +454,7 @@ public class StandaloneOcspResponseGeneratorSessionTest {
         final OCSPResp response = sendRequest(ocspRequest);
         assertEquals("Response status not zero.", OCSPResp.SUCCESSFUL, response.getStatus());
         
-        validateSuccessfulResponse((BasicOCSPResp) response.getResponseObject(), ocspSigningCertificate.getPublicKey(), userSignBehalfCertificate, "revoked");
+        validateOcspResponse((BasicOCSPResp) response.getResponseObject(), ocspSigningCertificate.getPublicKey(), userSignBehalfCertificate, "revoked");
     }
 
     /** nextUpdateDate for final response should be replaced with specific timestamp // 99991231235959Z */
@@ -1660,10 +1647,10 @@ public class StandaloneOcspResponseGeneratorSessionTest {
     }
     
     private void validateSuccessfulResponse(final BasicOCSPResp basicOcspResponse, final PublicKey publicKey) throws Exception {
-        validateSuccessfulResponse(basicOcspResponse, publicKey, ocspSigningCertificate, null);
+        validateOcspResponse(basicOcspResponse, publicKey, ocspSigningCertificate, null);
     }
     
-    private void validateSuccessfulResponse(final BasicOCSPResp basicOcspResponse, final PublicKey publicKey,
+    private void validateOcspResponse(final BasicOCSPResp basicOcspResponse, final PublicKey publicKey,
             X509Certificate requestCert, String status) throws Exception {
         assertNotNull("Signed request generated null-response.", basicOcspResponse);
         assertTrue("OCSP response was not signed correctly.", basicOcspResponse.isSignatureValid(new JcaContentVerifierProviderBuilder().setProvider(BouncyCastleProvider.PROVIDER_NAME).build(publicKey)));
