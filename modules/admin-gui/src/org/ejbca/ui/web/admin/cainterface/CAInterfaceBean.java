@@ -13,33 +13,6 @@
 
 package org.ejbca.ui.web.admin.cainterface;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-import java.security.cert.Certificate;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.AbstractMap;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Properties;
-import java.util.ServiceLoader;
-import java.util.Set;
-
-import javax.ejb.EJBException;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -114,6 +87,32 @@ import org.ejbca.ui.web.RevokedInfoView;
 import org.ejbca.ui.web.admin.ca.EditCaUtil;
 import org.ejbca.ui.web.jsf.configuration.EjbcaWebBean;
 import org.ejbca.util.cert.OID;
+
+import javax.ejb.EJBException;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.cert.Certificate;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.AbstractMap;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Properties;
+import java.util.ServiceLoader;
+import java.util.Set;
 
 /**
  * A class used as an interface between CA jsp pages and CA ejbca functions.
@@ -542,6 +541,7 @@ public class CAInterfaceBean implements Serializable {
                             .setCrlOverlapTime(caInfoDto.getcrlOverlapTime())
                             .setDeltaCrlPeriod(caInfoDto.getDeltaCrlPeriod())
                             .setGenerateCrlUponRevocation(caInfoDto.isGenerateCrlUponRevocation())
+                            .setRetractRevocationReason(caInfoDto.isRetractRevocationReason())
                             .setCrlPublishers(crlPublishers)
                             .setValidators(keyValidators)
                             .setUseAuthorityKeyIdentifier(caInfoDto.isUseAuthorityKeyIdentifier())
@@ -933,6 +933,7 @@ public class CAInterfaceBean implements Serializable {
                        .setCrlOverlapTime(caInfoDto.getcrlOverlapTime())
                        .setDeltaCrlPeriod(caInfoDto.getDeltaCrlPeriod())
                        .setGenerateCrlUponRevocation(caInfoDto.isGenerateCrlUponRevocation())
+                       .setRetractRevocationReason(caInfoDto.isRetractRevocationReason())
                        .setCrlPublishers(crlpublishers)
                        .setValidators(keyValidators)
                        .setUseAuthorityKeyIdentifier(caInfoDto.isUseAuthorityKeyIdentifier())

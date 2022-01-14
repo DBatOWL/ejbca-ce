@@ -86,6 +86,7 @@ public class CaInfoDto {
     private String crlCaOverlapTime;
     private String crlCaDeltaCrlPeriod;
     private boolean generateCrlUponRevocation = false;
+    private boolean retractRevocationReason = false;
     private String requestPreProcessor;
 
     long getDeltaCrlPeriod() {
@@ -634,6 +635,14 @@ public class CaInfoDto {
     
     public void setGenerateCrlUponRevocation(boolean generate) {
         generateCrlUponRevocation = generate;
+    }
+
+    public boolean isRetractRevocationReason() {
+        return retractRevocationReason;
+    }
+
+    public void setRetractRevocationReason(final boolean retractRevocationReason) {
+        this.retractRevocationReason = retractRevocationReason;
     }
 
     public String getRequestPreProcessor() {

@@ -12,16 +12,6 @@
  *************************************************************************/
 package org.cesecore.certificates.ca;
 
-import java.io.Serializable;
-import java.security.cert.Certificate;
-import java.security.cert.X509CRL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.commons.lang.math.IntRange;
 import org.cesecore.certificates.ca.catoken.CAToken;
 import org.cesecore.certificates.ca.extendedservices.ExtendedCAServiceInfo;
@@ -32,6 +22,16 @@ import org.cesecore.util.CertTools;
 import org.cesecore.util.EJBTools;
 import org.cesecore.util.SimpleTime;
 import org.cesecore.util.StringTools;
+
+import java.io.Serializable;
+import java.security.cert.Certificate;
+import java.security.cert.X509CRL;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Holds non sensitive information about a CA.
@@ -89,6 +89,7 @@ public abstract class CAInfo implements Serializable {
     /** Default value 0 = disabled */
     protected long deltacrlperiod = 0;
     protected boolean generateCrlUponRevocation = false;
+    protected boolean retractRevocationReason = false;
     protected Collection<Integer> crlpublishers;
     protected Collection<Integer> validators;
     protected boolean keepExpiredCertsOnCRL = false;
@@ -348,6 +349,10 @@ public abstract class CAInfo implements Serializable {
     
     public boolean isGenerateCrlUponRevocation() {
         return generateCrlUponRevocation;
+    }
+
+    public boolean isRevocationReasonRetracted() {
+        return retractRevocationReason;
     }
 
     public void setGenerateCrlUponRevocation(boolean generate) {
