@@ -35,21 +35,25 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.apache.commons.codec.binary.StringUtils;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.config.Configuration;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
  * Unit tests for {@link CaHierarchy}.
  * 
- * @version $Id$
  */
 public class CaHierarchyTest {
 
     @BeforeClass
     public static void enableTrace() {
-        Logger.getRootLogger().setLevel(Level.TRACE);
+        final LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
+        final Configuration config = ctx.getConfiguration();
+        config.getRootLogger().setLevel(Level.TRACE);
+        ctx.updateLoggers();
     }
 
     /**

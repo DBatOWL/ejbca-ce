@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
 import org.cesecore.authentication.tokens.AuthenticationSubject;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -55,11 +54,10 @@ import static org.junit.Assert.assertTrue;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({JndiHelper.class})
-@PowerMockIgnore(value = {"com.sun.org.apache.xerces.*" })
 public class CaImportProfilesCommandUnitTest {
 
     @Rule
-    public TestLogAppenderResource testLog = new TestLogAppenderResource(Logger.getLogger(CaImportProfilesCommand.class));
+    public TestLogAppenderResource testLog = new TestLogAppenderResource(CaImportProfilesCommand.class);
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 

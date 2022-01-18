@@ -22,7 +22,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
@@ -59,7 +60,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class ServiceServiceTest extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(ServiceServiceTest.class);
+    private static final Logger log = LogManager.getLogger(ServiceServiceTest.class);
     private static final AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("ServiceServiceTest"));
 
     private static final String NOT_THIS_HOST1 = "notthishost.nodomain";

@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.cesecore.certificates.crl;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.CertificateConstants;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectedData;
@@ -45,7 +46,7 @@ public class CRLData extends ProtectedData implements Serializable {
 
     private static final long serialVersionUID = 5542295476157001912L;
 
-    private static final Logger log = Logger.getLogger(CRLData.class);
+    private static final Logger log = LogManager.getLogger(CRLData.class);
 
     private static final int LATEST_PROTECT_VERSON = 2;
 

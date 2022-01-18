@@ -71,7 +71,8 @@ import org.apache.cxf.configuration.jsse.TLSClientParameters;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.frontend.ClientProxy;
 import org.apache.cxf.transport.http.HTTPConduit;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.util.CertTools;
 import org.ejbca.core.protocol.ws.client.gen.EjbcaWS;
@@ -87,7 +88,7 @@ public class ConnectDialog extends JDialog {
     private static final long serialVersionUID = -6727893196486472985L;
 
     /** Logger for this class. */
-    private static final Logger LOG = Logger.getLogger(ConnectDialog.class);
+    private static final Logger LOG = LogManager.getLogger(ConnectDialog.class);
 
     private static final String DEFAULT_URL = "https://localhost:8443/ejbca";
     private static final String WS_PATH = "/ejbcaws/ejbcaws?wsdl";

@@ -14,7 +14,8 @@ package org.cesecore.certificates.ca;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.ASN1Sequence;
 import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
@@ -33,7 +34,7 @@ import java.util.Locale;
  * Constants for CAs.
  */
 public final class CAConstants {
-    public static final Logger log = Logger.getLogger(CAConstants.class);
+    public static final Logger log = LogManager.getLogger(CAConstants.class);
 
     /**
      * The state of a node-local CA with a keypair which is neither expired nor revoked.

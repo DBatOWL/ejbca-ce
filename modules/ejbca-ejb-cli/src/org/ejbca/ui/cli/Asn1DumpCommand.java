@@ -20,7 +20,7 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateParsingException;
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1Primitive;
 import org.bouncycastle.asn1.util.ASN1Dump;
@@ -41,7 +41,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class Asn1DumpCommand extends EjbcaCommandBase {
 
-    private static final Logger log = Logger.getLogger(Asn1DumpCommand.class);
+    private static final Logger log = LogManager.getLogger(Asn1DumpCommand.class);
     private static final String FILENAME_KEY = "-f";
 
     //Register all parameters

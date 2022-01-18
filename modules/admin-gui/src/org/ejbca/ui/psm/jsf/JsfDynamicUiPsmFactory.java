@@ -42,7 +42,8 @@ import javax.faces.model.SelectItem;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.myfaces.custom.fileupload.HtmlInputFileUpload;
 import org.cesecore.util.ui.DynamicUiModel;
 import org.cesecore.util.ui.DynamicUiModelException;
@@ -56,7 +57,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
 public class JsfDynamicUiPsmFactory {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(JsfDynamicUiPsmFactory.class);
+    private static final Logger log = LogManager.getLogger(JsfDynamicUiPsmFactory.class);
 
     /**
      * Initializes the dynamic UI properties on a grid panel with two columns, label on the left, UI component on the right,

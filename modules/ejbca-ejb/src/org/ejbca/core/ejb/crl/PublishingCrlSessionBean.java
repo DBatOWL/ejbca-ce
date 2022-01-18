@@ -35,7 +35,8 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
 import org.apache.commons.lang.math.IntRange;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CesecoreException;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
@@ -82,7 +83,7 @@ import org.ejbca.core.ejb.ca.publisher.PublisherSessionLocal;
 @TransactionAttribute(TransactionAttributeType.SUPPORTS) // CRLs may be huge and should not be created inside a transaction if it can be avoided
 public class PublishingCrlSessionBean implements PublishingCrlSessionLocal, PublishingCrlSessionRemote {
 
-    private static final Logger log = Logger.getLogger(PublishingCrlSessionBean.class);
+    private static final Logger log = LogManager.getLogger(PublishingCrlSessionBean.class);
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();
 

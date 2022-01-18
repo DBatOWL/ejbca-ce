@@ -14,7 +14,7 @@
 package org.ejbca.ui.cli.batch;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.CaSessionRemote;
 import org.cesecore.certificates.certificate.IllegalKeyException;
 import org.cesecore.certificates.endentity.EndEntityConstants;
@@ -71,7 +71,7 @@ public class BatchMakeP12Command extends EjbcaCliUserCommandBase {
     private static final String END_ENTITY_KEY_SPEC = "--keyspec";
     private static final String DIRECTORY_KEY = "-dir";
 
-    private static final Logger log = Logger.getLogger(BatchMakeP12Command.class);
+    private static final Logger log = LogManager.getLogger(BatchMakeP12Command.class);
 
     {
         registerParameter(new Parameter(END_ENTITY_USERNAME_KEY, "End entity username", MandatoryMode.OPTIONAL, StandaloneMode.ALLOW,

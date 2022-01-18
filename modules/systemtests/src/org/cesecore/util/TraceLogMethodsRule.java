@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.cesecore.util;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 
@@ -30,7 +31,7 @@ public class TraceLogMethodsRule extends TestWatcher {
 
     @Override
     protected void starting(Description description) {
-        final Logger log = Logger.getLogger(description.getClassName());
+        final Logger log = LogManager.getLogger(description.getClassName());
         if (log.isTraceEnabled()) {
             log.trace(">" + description.getMethodName());
         }
@@ -39,7 +40,7 @@ public class TraceLogMethodsRule extends TestWatcher {
 
     @Override
     protected void finished(Description description) {
-        final Logger log = Logger.getLogger(description.getClassName());
+        final Logger log = LogManager.getLogger(description.getClassName());
         if (log.isTraceEnabled()) {
             log.trace("<" + description.getMethodName());
         }

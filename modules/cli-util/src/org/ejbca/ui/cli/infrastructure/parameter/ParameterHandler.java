@@ -19,7 +19,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ui.cli.infrastructure.command.CommandBase;
 import org.ejbca.ui.cli.infrastructure.parameter.enums.ParameterMode;
 
@@ -34,7 +35,7 @@ public class ParameterHandler {
     public static final String HELP_KEY = "--help";
     public static final String VERBOSE_KEY = "--verbose";
 
-    private static final Logger log = Logger.getLogger(ParameterHandler.class);
+    private static final Logger log = LogManager.getLogger(ParameterHandler.class);
 
     private static final String TAB = "    ";
     private static final String CR = "\n";

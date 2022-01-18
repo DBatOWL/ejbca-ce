@@ -30,7 +30,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.DecoderException;
 import org.cesecore.ErrorCode;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
@@ -87,7 +88,7 @@ import org.ejbca.util.HTMLTools;
  */
 public class RequestInstance {
 
-	private static final Logger log = Logger.getLogger(RequestInstance.class);
+	private static final Logger log = LogManager.getLogger(RequestInstance.class);
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 
     /** Max size of request parameters that we will receive */

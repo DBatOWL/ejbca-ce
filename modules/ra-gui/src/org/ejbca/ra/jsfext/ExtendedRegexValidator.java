@@ -21,7 +21,8 @@ import javax.faces.validator.RegexValidator;
 import javax.faces.validator.ValidatorException;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Extended variant of RegexValidator handy to be used when regex pattern value is going to be evaluated during
@@ -52,7 +53,7 @@ import org.apache.log4j.Logger;
 @FacesValidator("extendedRegexValidator")
 public class ExtendedRegexValidator extends RegexValidator {
     
-    private static final Logger log = Logger.getLogger(ExtendedRegexValidator.class);
+    private static final Logger log = LogManager.getLogger(ExtendedRegexValidator.class);
 
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {

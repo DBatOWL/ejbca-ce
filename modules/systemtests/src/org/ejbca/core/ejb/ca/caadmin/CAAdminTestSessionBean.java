@@ -27,7 +27,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.certificates.ca.CACommon;
 import org.cesecore.certificates.ca.CAData;
@@ -55,7 +56,7 @@ import org.cesecore.util.CertTools;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class CAAdminTestSessionBean implements CAAdminTestSessionRemote {
 
-    private static final Logger log = Logger.getLogger(CAAdminTestSessionBean.class);
+    private static final Logger log = LogManager.getLogger(CAAdminTestSessionBean.class);
     
     @EJB
     private CaSessionLocal caSession;

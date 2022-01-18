@@ -16,7 +16,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.cesecore.certificates.ocsp.exception.MalformedRequestException;
 import org.ejbca.core.model.InternalEjbcaResources;
@@ -35,7 +36,7 @@ import org.ejbca.core.model.InternalEjbcaResources;
  */
 public class LimitLengthASN1Reader extends ASN1InputStream {
 
-	private static final Logger m_log = Logger.getLogger(LimitLengthASN1Reader.class);
+	private static final Logger m_log = LogManager.getLogger(LimitLengthASN1Reader.class);
 	/** Internal localization of logs and errors */
 	private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

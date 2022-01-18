@@ -22,7 +22,8 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Base64;
 import org.cesecore.certificates.certificate.certextensions.standard.QcStatement;
 import org.cesecore.internal.UpgradeableDataHashMap;
@@ -39,7 +40,7 @@ import static org.junit.Assert.assertNull;
  */
 public class ExtendedInformationTest {
 
-    private final static Logger log = Logger.getLogger(ExtendedInformationTest.class);
+    private final static Logger log = LogManager.getLogger(ExtendedInformationTest.class);
 
     /** A test P10 encoded as a single line of Base64 */
     public static final String pkcs10 =

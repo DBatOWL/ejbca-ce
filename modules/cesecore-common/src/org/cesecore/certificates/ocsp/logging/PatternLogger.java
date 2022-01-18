@@ -15,7 +15,8 @@ package org.cesecore.certificates.ocsp.logging;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.FastDateFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Hex;
 
 import java.io.PrintWriter;
@@ -143,7 +144,7 @@ public abstract class PatternLogger implements Serializable {
         if (this.logger == null) {
             // We have to instantiate the logger in the class and can not have it as an instance variable.
             // This is because we are sending this object to a remote EJB (at least in system tests) and org.apache.log4j.Logger is not serializable.
-            this.logger = Logger.getLogger(loggerClass);
+            this.logger = LogManager.getLogger(loggerClass);
         }
         return this.logger;
     }

@@ -16,7 +16,8 @@ import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ra.RaAuthenticationBean;
 
 /**
@@ -27,7 +28,7 @@ import org.ejbca.ra.RaAuthenticationBean;
 @WebListener
 public class RaHttpSessionListener implements HttpSessionListener {
 
-    private static final Logger log = Logger.getLogger(RaHttpSessionListener.class);
+    private static final Logger log = LogManager.getLogger(RaHttpSessionListener.class);
 
     @Override
     public void sessionCreated(final HttpSessionEvent httpSessionEvent) {

@@ -14,7 +14,8 @@ package org.cesecore.keys.token;
 
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.X509KeyUsage;
 import org.cesecore.CaTestUtils;
 import org.cesecore.SystemTestsConfiguration;
@@ -42,7 +43,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class CryptoTokenTestUtils {
 
-    private static final Logger log = Logger.getLogger(CryptoTokenTestUtils.class);
+    private static final Logger log = LogManager.getLogger(CryptoTokenTestUtils.class);
 
     private static final AuthenticationToken alwaysAllowToken = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal(
             CryptoTokenTestUtils.class.getSimpleName()));

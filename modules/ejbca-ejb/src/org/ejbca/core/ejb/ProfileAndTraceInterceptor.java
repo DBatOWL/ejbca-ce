@@ -17,7 +17,8 @@ import java.util.Arrays;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * EJB Interceptor that is normally enabled for all EJBs when EJBCA is running in non-production mode.
@@ -30,7 +31,7 @@ import org.apache.log4j.Logger;
  */
 public class ProfileAndTraceInterceptor {
 
-    private static final Logger log = Logger.getLogger(ProfileAndTraceInterceptor.class);
+    private static final Logger log = LogManager.getLogger(ProfileAndTraceInterceptor.class);
     
     @AroundInvoke
     public Object logger(final InvocationContext invocationContext) throws Exception {
@@ -40,7 +41,7 @@ public class ProfileAndTraceInterceptor {
         long invocationStartTime = 0;
         final String targetMethodName = invocationContext.getMethod().getName();
         final Class<?> targetMethodClass = invocationContext.getTarget().getClass();
-        final Logger targetLogger = Logger.getLogger(targetMethodClass);
+        final Logger targetLogger = LogManager.getLogger(targetMethodClass);
         invocationStartTime = System.currentTimeMillis();
         if (targetLogger.isTraceEnabled()) {
             StringBuilder sb = new StringBuilder("(");

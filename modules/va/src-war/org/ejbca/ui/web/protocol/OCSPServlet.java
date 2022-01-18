@@ -14,7 +14,8 @@
 package org.ejbca.ui.web.protocol;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.cert.ocsp.OCSPResp;
 import org.bouncycastle.cert.ocsp.OCSPRespBuilder;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
@@ -62,7 +63,7 @@ import java.util.Set;
 public class OCSPServlet extends HttpServlet {
 
     private static final long serialVersionUID = 8081630219584820112L;
-    private static final Logger log = Logger.getLogger(OCSPServlet.class);
+    private static final Logger log = LogManager.getLogger(OCSPServlet.class);
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
     
     private final String sessionID = GUIDGenerator.generateGUID(this);

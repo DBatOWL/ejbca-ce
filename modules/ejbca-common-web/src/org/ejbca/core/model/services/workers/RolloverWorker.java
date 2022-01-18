@@ -20,7 +20,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CACommon;
 import org.cesecore.certificates.ca.CAConstants;
@@ -44,7 +45,7 @@ import org.ejbca.core.model.services.ServiceExecutionResult.Result;
  */
 public class RolloverWorker extends BaseWorker {
 
-	private static final Logger log = Logger.getLogger(RolloverWorker.class);
+	private static final Logger log = LogManager.getLogger(RolloverWorker.class);
     /** Internal localization of logs and errors */
 
     @Override

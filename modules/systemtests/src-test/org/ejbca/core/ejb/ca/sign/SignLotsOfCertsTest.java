@@ -21,7 +21,8 @@ import java.security.cert.X509Certificate;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.certificates.ca.CAInfo;
@@ -63,7 +64,7 @@ public class SignLotsOfCertsTest extends CaTestCase {
 
     private static final String USERNAME_PREFIX = "SignLotsOfCertsTest";
     
-	private static final Logger log = Logger.getLogger(SignLotsOfCertsTest.class);
+	private static final Logger log = LogManager.getLogger(SignLotsOfCertsTest.class);
 
     private static final String CANAME = "TESTPERF1";
     private int caid = getTestCAId(CANAME);

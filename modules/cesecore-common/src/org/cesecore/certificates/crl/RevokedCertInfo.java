@@ -19,7 +19,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.CompressedCollection;
 
 /**
@@ -34,7 +35,7 @@ public class RevokedCertInfo implements Serializable {
 	/** Version number for serialization */
 	private static final long serialVersionUID = 1L;
 	
-	private static final Logger log = Logger.getLogger(RevokedCertInfo.class);
+	private static final Logger log = LogManager.getLogger(RevokedCertInfo.class);
 
 	/** Constants defining different revocation reasons. */
     public static final int NOT_REVOKED                            = RevocationReasons.NOT_REVOKED.getDatabaseValue();

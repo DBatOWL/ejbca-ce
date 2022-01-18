@@ -73,7 +73,7 @@
         <mkdir dir="${cesecore-x509ca.build-test.dir}" />
         <javac srcdir="${cesecore-x509ca.src-test.dir}" destdir="${cesecore-x509ca.build-test.dir}" debug="on" includeantruntime="no"
                 encoding="UTF-8" target="${java.target.version}" classpathref="test.classpath"/>
-        <copy file="${log4j.test.file}" tofile="${cesecore-x509ca.build-test.dir}/log4j.xml" failonerror="true"/>
+        <copy file="${log4j2.test.file}" tofile="${cesecore-x509ca.build-test.dir}/log4j2.xml" failonerror="true"/>
         <copy todir="${cesecore-x509ca.build-test.dir}" failonerror="true">
             <fileset dir="${ejbca.home}/src" includes="intresources/**"/>
             <fileset dir="${ejbca.home}/src/java/" includes="defaultvalues.properties"/>

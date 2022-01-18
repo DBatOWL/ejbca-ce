@@ -20,7 +20,8 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.RequiredValidator;
 import javax.faces.validator.ValidatorException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Extended variant of RequiredValidator that requires request parameter "validationRequiredFromRequest" set to true to
@@ -51,7 +52,7 @@ import org.apache.log4j.Logger;
 @FacesValidator("extendedRequiredValidator")
 public class ExtendedRequiredValidator extends RequiredValidator {
     
-    private static final Logger log = Logger.getLogger(ExtendedRequiredValidator.class);
+    private static final Logger log = LogManager.getLogger(ExtendedRequiredValidator.class);
 
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {

@@ -14,7 +14,8 @@ package org.cesecore.certificates.ca;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1Encoding;
@@ -147,7 +148,7 @@ import static org.junit.Assume.assumeTrue;
  */
 public class X509CAUnitTest extends X509CAUnitTestBase {
 
-    private static final Logger log = Logger.getLogger(X509CAUnitTest.class);
+    private static final Logger log = LogManager.getLogger(X509CAUnitTest.class);
 
     // We define this here for compilation, since CT jar is not always available. This is the same as org.certificatetransparency.ctlog.serialization.CTConstants.POISON_EXTENSION_OID
 

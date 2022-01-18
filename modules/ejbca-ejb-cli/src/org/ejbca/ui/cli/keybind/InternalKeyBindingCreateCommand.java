@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.InvalidAlgorithmException;
 import org.cesecore.keybind.InternalKeyBindingFactory;
@@ -44,7 +44,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class InternalKeyBindingCreateCommand extends BaseInternalKeyBindingCommand {
 
-    private static final Logger log = Logger.getLogger(InternalKeyBindingCreateCommand.class);
+    private static final Logger log = LogManager.getLogger(InternalKeyBindingCreateCommand.class);
 
     private static final String TYPE_KEY = "--type";
     private static final String STATUS_KEY = "--status";

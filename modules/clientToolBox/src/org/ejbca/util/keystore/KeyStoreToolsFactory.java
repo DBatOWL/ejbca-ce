@@ -21,7 +21,8 @@ import java.security.KeyStore.CallbackHandlerProtection;
 
 import javax.security.auth.callback.CallbackHandler;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.keys.token.CachingKeyStoreWrapper;
 import org.cesecore.keys.token.p11.Pkcs11SlotLabel;
@@ -32,7 +33,7 @@ import org.cesecore.keys.util.KeyStoreTools;
  * @version $Id$
  */
 public class KeyStoreToolsFactory {
-    private static final Logger log = Logger.getLogger(KeyStoreToolsFactory.class);
+    private static final Logger log = LogManager.getLogger(KeyStoreToolsFactory.class);
 
     private static KeyStoreTools getInstance(final String slot, final Pkcs11SlotLabelType slotLabelType, final String libName,
             final String attributesFile, final KeyStore.ProtectionParameter protectionParameter, final String privateKeyLabel) throws Exception {

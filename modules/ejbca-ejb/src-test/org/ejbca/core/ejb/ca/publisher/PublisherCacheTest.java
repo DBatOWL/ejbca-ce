@@ -17,7 +17,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.config.EjbcaConfigurationHolder;
 import org.ejbca.core.model.ca.publisher.BasePublisher;
 import org.ejbca.core.model.ca.publisher.LdapPublisher;
@@ -31,7 +32,7 @@ import org.junit.Test;
  */
 public class PublisherCacheTest {
     
-    private static final transient Logger log = Logger.getLogger(PublisherCacheTest.class);
+    private static final transient Logger log = LogManager.getLogger(PublisherCacheTest.class);
 
     @BeforeClass
     public static void beforeClass() {

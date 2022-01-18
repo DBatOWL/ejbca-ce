@@ -36,7 +36,8 @@ import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.ECKeyUtil;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.util.encoders.Hex;
@@ -56,7 +57,7 @@ public abstract class BaseCryptoToken implements CryptoToken {
     private static final long serialVersionUID = 2133644669863292622L;
 
     /** Log4j instance */
-    private static final Logger log = Logger.getLogger(BaseCryptoToken.class);
+    private static final Logger log = LogManager.getLogger(BaseCryptoToken.class);
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();
 

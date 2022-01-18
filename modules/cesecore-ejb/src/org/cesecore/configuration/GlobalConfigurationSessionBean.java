@@ -27,7 +27,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
 import org.cesecore.audit.enums.ModuleTypes;
@@ -54,7 +55,7 @@ import org.cesecore.jndi.JndiConstants;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class GlobalConfigurationSessionBean implements GlobalConfigurationSessionLocal, GlobalConfigurationSessionRemote {
 
-    private static final Logger log = Logger.getLogger(GlobalConfigurationSessionBean.class);
+    private static final Logger log = LogManager.getLogger(GlobalConfigurationSessionBean.class);
 
     /**
      * Internal localization of logs and errors

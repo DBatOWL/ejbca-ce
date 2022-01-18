@@ -21,7 +21,8 @@ import java.io.Serializable;
 import java.util.Locale;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.CesecoreConfiguration;
 
 /**
@@ -35,7 +36,7 @@ import org.cesecore.config.CesecoreConfiguration;
  */
 public class InternalResources implements Serializable {
 
-    private static final Logger log = Logger.getLogger(InternalResources.class);
+    private static final Logger log = LogManager.getLogger(InternalResources.class);
 
     /**
      * Determines if a de-serialized file is compatible with this class.

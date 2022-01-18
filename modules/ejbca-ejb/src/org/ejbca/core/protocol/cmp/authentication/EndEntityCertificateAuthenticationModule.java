@@ -33,7 +33,8 @@ import java.util.Set;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.DEROctetString;
 import org.bouncycastle.asn1.cmp.CMPCertificate;
@@ -90,7 +91,7 @@ import org.ejbca.util.passgen.PasswordGeneratorFactory;
  */
 public class EndEntityCertificateAuthenticationModule implements ICMPAuthenticationModule {
 
-    private static final Logger log = Logger.getLogger(EndEntityCertificateAuthenticationModule.class);
+    private static final Logger log = LogManager.getLogger(EndEntityCertificateAuthenticationModule.class);
 
     private String authenticationparameter;
     private String password;

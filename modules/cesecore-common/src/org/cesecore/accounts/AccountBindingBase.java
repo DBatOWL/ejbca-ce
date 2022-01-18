@@ -14,7 +14,8 @@ package org.cesecore.accounts;
 
 import java.io.Serializable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.internal.InternalResources;
 import org.cesecore.internal.UpgradeableDataHashMap;
 import org.cesecore.profiles.ProfileBase;
@@ -27,7 +28,7 @@ public abstract class AccountBindingBase extends ProfileBase implements Serializ
     private static final long serialVersionUID = -971069235766052280L;
     
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(AccountBindingBase.class);
+    private static final Logger log = LogManager.getLogger(AccountBindingBase.class);
 
     /** Message resources. */
     protected static final InternalResources intres = InternalResources.getInstance();

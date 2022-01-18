@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.core.ejb.upgrade;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.cesecore.CaTestUtils;
@@ -131,7 +132,7 @@ import static org.junit.Assert.assertTrue;
 @SuppressWarnings("deprecation")
 public class UpgradeSessionBeanTest {
 
-    private static final Logger log = Logger.getLogger(UpgradeSessionBeanTest.class);
+    private static final Logger log = LogManager.getLogger(UpgradeSessionBeanTest.class);
     private static final String TESTCLASS = UpgradeSessionBeanTest.class.getSimpleName();
     private static final String TEST_ENDENTITY1 = UpgradeSessionBeanTest.class.getSimpleName() + "1";
     private static final String TEST_ENDENTITY2 = UpgradeSessionBeanTest.class.getSimpleName() + "2";

@@ -38,7 +38,8 @@ import java.util.Set;
 import javax.security.auth.x500.X500Principal;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1Primitive;
 import org.bouncycastle.asn1.DEROctetString;
@@ -142,7 +143,7 @@ import static org.junit.Assert.assertTrue;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AuthenticationModulesTest extends CmpTestCase {
 
-    private static final Logger log = Logger.getLogger(AuthenticationModulesTest.class);
+    private static final Logger log = LogManager.getLogger(AuthenticationModulesTest.class);
 
     private static final String USERNAME = "authModuleTestUser";
     private static final X500Name USER_DN = new X500Name("CN=" + USERNAME + ",O=PrimeKey Solutions AB,C=SE,UID=foo123");

@@ -19,7 +19,8 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.certificate.CertificateConstants;
 import org.cesecore.oscp.OcspResponseData;
@@ -35,7 +36,7 @@ import org.ejbca.core.model.InternalEjbcaResources;
  * @see SamplingMethod
  */
 public class CertificateSamplerCustomPublisher implements ICustomPublisher {
-    private static final Logger LOG = Logger.getLogger(CertificateSamplerCustomPublisher.class);
+    private static final Logger LOG = LogManager.getLogger(CertificateSamplerCustomPublisher.class);
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 
     private static final String PROPERTY_OUTPUTFOLDER = "outputfolder";
@@ -69,7 +70,7 @@ public class CertificateSamplerCustomPublisher implements ICustomPublisher {
         try {
             outputFolder = getOutputFolder();
         } catch (PublisherException ex) {
-            LOG.error(null, ex);
+            LOG.error(ex);
             throw new PublisherConnectionException(ex.getLocalizedMessage());
         }
         if (!outputFolder.exists() || !outputFolder.isDirectory()) {

@@ -26,7 +26,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.internal.CaCertificateCache;
 import org.cesecore.certificates.certificate.CertificateStoreSessionLocal;
 import org.cesecore.certificates.certificate.HashID;
@@ -43,7 +44,7 @@ public abstract class StoreServletBase extends HttpServlet {
     
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger log = Logger.getLogger(StoreServletBase.class);
+	private static final Logger log = LogManager.getLogger(StoreServletBase.class);
 
 	protected CaCertificateCache certCache;
 	

@@ -22,7 +22,8 @@ import javax.naming.NameNotFoundException;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * A simple implementation of the ServiceLocator/HomeFactory J2EE Pattern.
@@ -33,7 +34,7 @@ import org.apache.log4j.Logger;
  */
 public class ServiceLocator {
 
-    private static final Logger log = Logger.getLogger(ServiceLocator.class);
+    private static final Logger log = LogManager.getLogger(ServiceLocator.class);
     		
     /** the jndi context */
     private transient Context ctx;

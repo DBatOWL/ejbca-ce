@@ -22,7 +22,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.internal.UpgradeableDataHashMap;
 import org.cesecore.util.ui.DynamicUiProperty;
 
@@ -33,7 +34,7 @@ import org.cesecore.util.ui.DynamicUiProperty;
  */
 public abstract class InternalKeyBindingBase extends UpgradeableDataHashMap implements InternalKeyBinding {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(InternalKeyBindingBase.class);
+    private static final Logger log = LogManager.getLogger(InternalKeyBindingBase.class);
     public static final String PROP_NEXT_KEY_PAIR_ALIAS = "nextKeyPairAlias";
     public static final String PROP_TRUSTED_CERTIFICATE_REFERENCES = "trustedCertificateReferences";
     public static final String PROP_SIGNATURE_ALGORITHM = "signatureAlgorithm";

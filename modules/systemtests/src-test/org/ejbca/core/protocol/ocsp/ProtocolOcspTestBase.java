@@ -36,7 +36,8 @@ import java.util.List;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.http.HttpResponse;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.DEROctetString;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.bouncycastle.asn1.x509.Extension;
@@ -96,7 +97,7 @@ import org.junit.After;
  */
 public abstract class ProtocolOcspTestBase {
 
-    private static final Logger log = Logger.getLogger(ProtocolOcspTestBase.class);
+    private static final Logger log = LogManager.getLogger(ProtocolOcspTestBase.class);
 
     protected static final String CERTIFICATE_USERNAME = "ocspTest";
     protected static final String CERTIFICATE_WITH_NO_REVOKE_REASON_USERNAME = "ocspTestNoRevokeReason";

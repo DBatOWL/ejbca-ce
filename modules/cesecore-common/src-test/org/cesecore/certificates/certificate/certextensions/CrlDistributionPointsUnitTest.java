@@ -22,7 +22,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Primitive;
 import org.cesecore.certificates.ca.X509CAImpl;
 import org.cesecore.certificates.ca.X509CAInfo;
@@ -39,7 +40,7 @@ import org.junit.Test;
  */
 public class CrlDistributionPointsUnitTest {
 
-    private static final Logger log = Logger.getLogger(CrlDistributionPointsUnitTest.class);
+    private static final Logger log = LogManager.getLogger(CrlDistributionPointsUnitTest.class);
 
     private static final String TEST_SUBJECTDN = "CN=User,O=Org";
     private static final String TEST_URL = "http://example.com/CA.crl";

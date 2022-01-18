@@ -18,7 +18,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Objects;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.ejbca.config.AvailableProtocolsConfiguration;
 import org.ejbca.config.AvailableProtocolsConfiguration.AvailableProtocols;
 import org.ejbca.ui.cli.config.ConfigBaseCommand;
@@ -30,7 +30,7 @@ import org.ejbca.ui.cli.config.ConfigBaseCommand;
  */
 public abstract class BaseProtocolsConfigCommand extends ConfigBaseCommand {
 
-    protected final Logger log = Logger.getLogger(this.getClass());
+    protected final Logger log = LogManager.getLogger(this.getClass());
 
     protected static final String KEY_NAME = "--name";
 

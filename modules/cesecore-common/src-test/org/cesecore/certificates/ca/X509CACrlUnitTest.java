@@ -24,7 +24,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.DERIA5String;
@@ -47,7 +48,7 @@ import org.junit.Test;
  */
 public class X509CACrlUnitTest extends X509CAUnitTestBase {
 
-    private static final Logger log = Logger.getLogger(X509CACrlUnitTest.class);
+    private static final Logger log = LogManager.getLogger(X509CACrlUnitTest.class);
 
     /**
      * Tests the extension CRL Distribution Point on CRLs

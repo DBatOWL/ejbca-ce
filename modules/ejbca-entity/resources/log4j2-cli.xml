@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.cesecore.keys.token.CryptoTokenFactory"
+			level="warn" />
+
+		<Logger name="org.ejbca" level="info" />
+
+		<!-- When one of these errors is printed an exception is thrown and also printed elsewhere when caught. -->
+		<Logger name="org.cesecore.dbprotection.ProtectedData"
+			level="fatal" />
+
+		<!-- The CLI is a simple single threaded CLI application, so ignore this 
+			warning about the connection pool: "HHH10001002: Using Hibernate built-in 
+			connection pool (not for production use!)" -->
+		<Logger name="org.hibernate.orm.connections.pooling"
+			level="error" />
+
+		<!-- When generating schemas for other databases than the current one, 
+			this class complains about missing SequenceInformation for some databases. 
+			This happens because Hibernate still establishes a connection to the database, 
+			and expects database type specific tables to be present. This does not appear 
+			to cause any problems, but generates the following error message with an 
+			exception: "Could not fetch the SequenceInformation from the database" -->
+		<Logger
+			name="org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentImpl"
+			level="fatal" />
+
+		<!-- Hibernate attempts to create foreign key constraints for the legacy 
+			AccessRulesData and AdminEntityData. This causes the warning below, which 
+			is harmless, since these tables are not written to. ECA-7772 exists to fix 
+			this properly at a later time, perhaps by disabling foreign key generation. 
+			"GenerationTarget encountered exception accepting command : Error executing 
+			DDL "alter table AdminEntityData add constraint FKgxaatpstfnr3sx8frhueq9q2d 
+			foreign key (AdminGroupData_adminEntities) references AdminGroupData (pK)" 
+			via JDBC Statement" -->
+		<Logger
+			name="org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl"
+			level="error" />
+
+		<Logger name="org.hibernate" level="warn" />
+
+		<Root level="info">
+			<!-- Set basic limit for console -->
+			<AppenderRef ref="console" />
+		</Root>
+	</Loggers>
+</Configuration>
+
+
+
+
+
+
+

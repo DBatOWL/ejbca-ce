@@ -28,7 +28,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.CertificateDataSessionLocal;
 import org.cesecore.certificates.certificate.CertificateInfo;
 import org.cesecore.certificates.endentity.EndEntityInformation;
@@ -47,7 +48,7 @@ import org.ejbca.core.model.ca.store.CertReqHistory;
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class CertReqHistorySessionBean implements CertReqHistorySessionRemote, CertReqHistorySessionLocal {
 
-    private final static Logger log = Logger.getLogger(CertReqHistorySessionBean.class);
+    private final static Logger log = LogManager.getLogger(CertReqHistorySessionBean.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
     

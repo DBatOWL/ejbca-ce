@@ -19,7 +19,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.RoleUsingTestCase;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.X509CertificateAuthenticationToken;
@@ -49,7 +50,7 @@ import static org.junit.Assert.fail;
  * @version $Id$
  */
 public class CertificateProfileSessionTest extends RoleUsingTestCase {
-    private static final Logger log = Logger.getLogger(CertificateProfileSessionTest.class);
+    private static final Logger log = LogManager.getLogger(CertificateProfileSessionTest.class);
 
     private static KeyPair keys;
 

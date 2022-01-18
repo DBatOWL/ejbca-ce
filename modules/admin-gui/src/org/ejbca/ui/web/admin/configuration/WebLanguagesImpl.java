@@ -22,7 +22,8 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.config.GlobalConfiguration;
 import org.ejbca.core.model.InternalEjbcaResources;
 import org.ejbca.ui.web.configuration.WebLanguage;
@@ -38,7 +39,7 @@ import org.ejbca.ui.web.jsf.configuration.WebLanguages;
 public class WebLanguagesImpl implements Serializable, WebLanguages {
     private static final long serialVersionUID = -2381623760140383128L;
 
-    private static final Logger log = Logger.getLogger(WebLanguagesImpl.class);
+    private static final Logger log = LogManager.getLogger(WebLanguagesImpl.class);
 
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();

@@ -18,7 +18,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CADoesntExistsException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -41,7 +42,7 @@ import org.ejbca.core.model.services.ServiceExecutionResult.Result;
  */
 public class RenewCAWorker extends BaseWorker {
 
-	private static final Logger log = Logger.getLogger(RenewCAWorker.class);
+	private static final Logger log = LogManager.getLogger(RenewCAWorker.class);
 
 	/** Flag is keys should be regenerated or not */
 	public static final String PROP_RENEWKEYS           = "worker.renewkeys";

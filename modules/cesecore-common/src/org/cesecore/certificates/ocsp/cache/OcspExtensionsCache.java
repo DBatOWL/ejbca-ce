@@ -16,7 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ServiceLoader;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ocsp.extension.OCSPExtension;
 
 /**
@@ -41,7 +42,7 @@ public enum OcspExtensionsCache {
     
     /** Helper method to assign the log, which can't be done directly from the constructor */
     private static void initializeLogger() {
-        log = Logger.getLogger(OcspExtensionsCache.class);
+        log = LogManager.getLogger(OcspExtensionsCache.class);
     }
 
     /**

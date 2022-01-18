@@ -18,7 +18,8 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Helper methods for basic network interactions.
@@ -26,7 +27,7 @@ import org.apache.log4j.Logger;
  * @version $Id$
  */
 public abstract class NetworkTools {
-    private static final Logger log = Logger.getLogger(NetworkTools.class);
+    private static final Logger log = LogManager.getLogger(NetworkTools.class);
 
     /** @return the URL object of the provided CDP if it is well formed and uses the HTTP protocol. null otherwise */
     public static URL getValidHttpUrl(final String cdp) {

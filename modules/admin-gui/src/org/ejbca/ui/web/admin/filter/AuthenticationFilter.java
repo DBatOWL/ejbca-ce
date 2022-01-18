@@ -24,7 +24,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.control.CryptoTokenRules;
@@ -41,7 +42,7 @@ import org.ejbca.util.HttpTools;
  */
 public class AuthenticationFilter implements Filter {
 
-    private static final Logger log = Logger.getLogger(AuthenticationFilter.class);
+    private static final Logger log = LogManager.getLogger(AuthenticationFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

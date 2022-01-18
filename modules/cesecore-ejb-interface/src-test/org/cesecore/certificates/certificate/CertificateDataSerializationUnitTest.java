@@ -23,7 +23,8 @@ import java.util.Date;
 
 import org.apache.commons.codec.binary.Base64InputStream;
 import org.apache.commons.codec.binary.Base64OutputStream;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
 import org.cesecore.certificates.endentity.EndEntityConstants;
 import org.cesecore.keys.util.KeyTools;
@@ -43,7 +44,7 @@ import static org.junit.Assert.assertNull;
  */
 public class CertificateDataSerializationUnitTest {
 
-    private static final Logger log = Logger.getLogger(CertificateDataSerializationUnitTest.class);
+    private static final Logger log = LogManager.getLogger(CertificateDataSerializationUnitTest.class);
 
     /** CertificateData object that's intentionally missing the endEntityProfileId column */
     private static final String OLD_DATA =

@@ -20,7 +20,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -40,7 +41,7 @@ import org.junit.Test;
 
 public class ApprovalProfileSessionTest {
 
-    private static final Logger LOG = Logger.getLogger(ApprovalProfileSessionTest.class);
+    private static final Logger LOG = LogManager.getLogger(ApprovalProfileSessionTest.class);
 
     private final AuthenticationToken alwaysAllowToken = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("ApprovalProfileTest"));
 

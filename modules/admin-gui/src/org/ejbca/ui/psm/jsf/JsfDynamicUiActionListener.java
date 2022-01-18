@@ -21,7 +21,8 @@ import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ActionListener;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CesecoreException;
 import org.cesecore.util.ui.DynamicUiActionCallback;
 import org.cesecore.util.ui.DynamicUiCallbackException;
@@ -41,7 +42,7 @@ public class JsfDynamicUiActionListener implements Serializable, ActionListener 
     private static final long serialVersionUID = -1L;
 
 	/** Class logger. */
-    private static final Logger log = Logger.getLogger(JsfDynamicUiActionListener.class);
+    private static final Logger log = LogManager.getLogger(JsfDynamicUiActionListener.class);
 
     /** DynamicUIProperty reference. */
     private DynamicUiProperty<?> dynamicUiProperty;

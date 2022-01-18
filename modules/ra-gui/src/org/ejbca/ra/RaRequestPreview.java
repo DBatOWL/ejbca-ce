@@ -28,7 +28,7 @@ import org.ejbca.core.model.ra.raadmin.EndEntityProfile;
  */
 public class RaRequestPreview {
     
-    //private static final Logger log = Logger.getLogger(RaRequestPreview.class);
+    //private static final Logger log = LogManager.getLogger(RaRequestPreview.class);
     private String issuerDn = "";
     private String subjectDn = "";
     private String publicKeyAlgorithm = "";

@@ -20,7 +20,7 @@ import org.apache.commons.configuration.CompositeConfiguration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.ejbca.config.EstConfiguration;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
@@ -39,7 +39,7 @@ public class UploadFileCommand extends BaseEstConfigCommand {
     private static final String ALIAS_KEY = "--alias";
     private static final String FILE_KEY = "--file";
 
-    private static final Logger log = Logger.getLogger(UploadFileCommand.class);
+    private static final Logger log = LogManager.getLogger(UploadFileCommand.class);
 
     {
         registerParameter(new Parameter(ALIAS_KEY, "Alias", MandatoryMode.MANDATORY, StandaloneMode.ALLOW, ParameterMode.ARGUMENT,

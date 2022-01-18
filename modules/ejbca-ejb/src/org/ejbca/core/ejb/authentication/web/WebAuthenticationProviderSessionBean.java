@@ -34,7 +34,8 @@ import javax.ejb.TransactionAttributeType;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
@@ -88,7 +89,7 @@ public class WebAuthenticationProviderSessionBean implements WebAuthenticationPr
 
     private static final long serialVersionUID = 1524951666783567785L;
 
-    private final static Logger LOG = Logger.getLogger(WebAuthenticationProviderSessionBean.class);
+    private final static Logger LOG = LogManager.getLogger(WebAuthenticationProviderSessionBean.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

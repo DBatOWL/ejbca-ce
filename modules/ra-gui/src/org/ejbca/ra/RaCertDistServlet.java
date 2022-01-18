@@ -38,7 +38,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.binary.Hex;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.cms.CMSException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.ca.CAInfo;
@@ -61,7 +62,7 @@ import org.yaml.snakeyaml.Yaml;
 public class RaCertDistServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RaCertDistServlet.class);
+    private static final Logger log = LogManager.getLogger(RaCertDistServlet.class);
     private static final String PARAMETER_FINGERPRINTSHEET = "fpsheet";
     private static final String PARAMETER_CERT_BUNDLE = "certbundle";
     private static final String PARAMETER_CAID = "caid";

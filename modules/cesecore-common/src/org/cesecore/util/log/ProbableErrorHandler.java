@@ -16,23 +16,18 @@ package org.cesecore.util.log;
 import java.io.PrintStream;
 import java.util.Date;
 
-import org.apache.log4j.Appender;
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.ErrorHandler;
-import org.apache.log4j.spi.LoggingEvent;
+import org.apache.logging.log4j.core.ErrorHandler;
+import org.apache.logging.log4j.core.LogEvent;
 
 /**
  * The purpose of this errorhandler is that we can still respond with InternalServer error if and error occurs, but repeated errors will only be
  * logged once.
  * 
- * @version $Id$
  */
-
 public class ProbableErrorHandler implements ErrorHandler {
     private static Date lastFailure = null;
 
-    final String WARN_PREFIX = "log4j warning: ";
-    final String ERROR_PREFIX = "log4j error: ";
+    private static final String ERROR_PREFIX = "log4j error: ";
 
     boolean firstTime = true;
 
@@ -47,22 +42,6 @@ public class ProbableErrorHandler implements ErrorHandler {
         lastFailure = new Date();
     }
 
-    @Override
-    public void error(String arg0, Exception arg1, int arg2) {
-        error(arg0, arg1, arg2, null);
-        lastFailure = new Date();
-    }
-
-    @Override
-    public void error(String arg0, Exception arg1, int arg2, LoggingEvent arg3) {
-        if (firstTime) {
-            output.println(ERROR_PREFIX + arg0);
-            arg1.printStackTrace(output);
-            firstTime = false;
-        }
-        lastFailure = new Date();
-    }
-
     /**
      * Returns true if an error writing to the log files have happened since 'date'.
      * 
@@ -70,32 +49,23 @@ public class ProbableErrorHandler implements ErrorHandler {
      * @return true if an error has happened, false if logging works fine.
      */
     public static boolean hasFailedSince(Date date) {
-        if (lastFailure != null) {
-            if (lastFailure.after(date)) {
-                return true;
-            }
+        return (lastFailure != null && lastFailure.after(date));
+    }
+
+    @Override
+    public void error(String msg, Throwable t) {
+        error(msg, t);
+        lastFailure = new Date();          
+    }
+
+    @Override
+    public void error(String msg, LogEvent event, Throwable t) {
+        if (firstTime) {
+            output.println(ERROR_PREFIX + msg);
+            t.printStackTrace(output);
+            firstTime = false;
         }
-        return false;
-    }
-
-    /** Does not do anything. */
-    @Override
-    public void setLogger(Logger logger) {
-    }
-
-    /** No options to activate. */
-    // EJBCAINTER-323 Removed.
-//    @Override
-    public void activateOptions() {
-    }
-    
-    /** Does not do anything. */
-    @Override
-    public void setAppender(Appender appender) {
-    }
-
-    /** Does not do anything. */
-    @Override
-    public void setBackupAppender(Appender appender) {
+        error(msg, event, t);
+        lastFailure = new Date();        
     }
 }

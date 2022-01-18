@@ -29,7 +29,8 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 
 import org.apache.commons.lang.StringEscapeUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.ConfigurationHolder;
 import org.junit.Test;
 
@@ -37,7 +38,7 @@ import org.junit.Test;
  * Tests the StringTools class.
  */
 public class StringToolsTest {
-    private static Logger log = Logger.getLogger(StringToolsTest.class);
+    private static Logger log = LogManager.getLogger(StringToolsTest.class);
     
     @Test
     public void testStripLog() throws Exception{

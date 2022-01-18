@@ -30,7 +30,8 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.core.model.era.RaApprovalRequestInfo;
 import org.ejbca.core.model.era.RaMasterApiProxyBeanLocal;
 import org.ejbca.core.model.era.RaRequestsSearchRequest;
@@ -47,7 +48,7 @@ import org.ejbca.core.model.era.RaRequestsSearchResponse;
 public class RaManageRequestsBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RaManageRequestsBean.class);
+    private static final Logger log = LogManager.getLogger(RaManageRequestsBean.class);
 
     @EJB
     private RaMasterApiProxyBeanLocal raMasterApiProxyBean;

@@ -10,7 +10,8 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.DEROctetString;
@@ -53,7 +54,7 @@ import org.cesecore.util.CertTools;
 /** Class used to generate SCEP messages. Used for SCEP clients and testing
  */
 public class ScepRequestGenerator {
-    private static Logger log = Logger.getLogger(ScepRequestGenerator.class);
+    private static Logger log = LogManager.getLogger(ScepRequestGenerator.class);
 
     private X509Certificate cacert = null;
     private String reqdn = null;

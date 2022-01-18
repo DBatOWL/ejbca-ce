@@ -30,7 +30,7 @@ import javax.faces.bean.ViewScoped;
 public class RaExampleBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    //private static final Logger log = Logger.getLogger(RaExampleBean.class);
+    //private static final Logger log = LogManager.getLogger(RaExampleBean.class);
 
     @ManagedProperty(value="#{raAuthenticationBean}")
     private RaAuthenticationBean raAuthenticationBean;

@@ -13,7 +13,8 @@
 
 package org.cesecore.certificates.util;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.cms.CMSSignedGenerator;
 import org.bouncycastle.jce.ECGOST3410NamedCurveTable;
@@ -60,7 +61,7 @@ import static org.junit.Assume.assumeTrue;
  * Tests for AlgorithmTools. Mostly tests border cases.
  */
 public class AlgorithmToolsTest {
-    private static final Logger log = Logger.getLogger(AlgorithmToolsTest.class);
+    private static final Logger log = LogManager.getLogger(AlgorithmToolsTest.class);
 
     @Before
     public void setUp() throws Exception {

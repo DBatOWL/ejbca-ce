@@ -28,7 +28,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * A concurrent cache allows multiple threads to cache data. Only one thread
@@ -42,7 +43,7 @@ import org.apache.log4j.Logger;
  */
 public final class ConcurrentCache<K,V> {
 
-    private static final Logger log = Logger.getLogger(ConcurrentCache.class);
+    private static final Logger log = LogManager.getLogger(ConcurrentCache.class);
     
     /**
      * Internal entries are stored in the ConcurrentMap

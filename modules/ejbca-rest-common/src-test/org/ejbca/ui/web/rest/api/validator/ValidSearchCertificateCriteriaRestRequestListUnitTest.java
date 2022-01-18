@@ -17,7 +17,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ui.web.rest.api.builder.SearchCertificatesRestRequestTestBuilder;
 import org.ejbca.ui.web.rest.api.io.request.SearchCertificateCriteriaRestRequest;
 import org.ejbca.ui.web.rest.api.io.request.SearchCertificatesRestRequest;
@@ -33,7 +34,7 @@ import static org.junit.Assert.assertEquals;
  * @version $Id: ValidSearchCertificateCriteriaRestRequestListUnitTest.java 29504 2018-07-17 17:55:12Z andrey_s_helmes $
  */
 public class ValidSearchCertificateCriteriaRestRequestListUnitTest {
-    private static Logger log = Logger.getLogger(ValidSearchCertificateCriteriaRestRequestListUnitTest.class);
+    private static Logger log = LogManager.getLogger(ValidSearchCertificateCriteriaRestRequestListUnitTest.class);
 
     private static final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 

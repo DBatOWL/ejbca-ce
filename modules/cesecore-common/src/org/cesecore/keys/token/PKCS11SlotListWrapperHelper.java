@@ -15,14 +15,15 @@ package org.cesecore.keys.token;
 import java.io.File;
 import java.util.ServiceLoader;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Helper class to get, and initialize, the highest priority PKCS11SlotListWrapper.
  */
 public class PKCS11SlotListWrapperHelper {
     
-    private static final Logger log = Logger.getLogger(PKCS11SlotListWrapperHelper.class);
+    private static final Logger log = LogManager.getLogger(PKCS11SlotListWrapperHelper.class);
 
     public static PKCS11SlotListWrapper getSlotListWrapper(final File pkcs11Library) {
         // We create the META-INF/services file during build in EJBCA with:

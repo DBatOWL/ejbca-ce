@@ -21,7 +21,8 @@ import java.util.List;
 
 import javax.faces.model.SelectItem;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 
 /**
@@ -31,7 +32,7 @@ import org.junit.Test;
  */
 public class SelectItemComparatorTest {
     
-    private static final Logger log = Logger.getLogger(SelectItemComparatorTest.class);
+    private static final Logger log = LogManager.getLogger(SelectItemComparatorTest.class);
 
     @Test
     public void testBasic() {

@@ -33,7 +33,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.apache.commons.lang.time.FastDateFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.AuditDevicesConfig;
 import org.cesecore.audit.AuditLogEntry;
 import org.cesecore.audit.audit.AuditExporter;
@@ -73,7 +74,7 @@ import org.cesecore.util.query.QueryGenerator;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class IntegrityProtectedAuditorSessionBean implements IntegrityProtectedAuditorSessionLocal {
 
-	private static final Logger log = Logger.getLogger(IntegrityProtectedAuditorSessionBean.class);
+	private static final Logger log = LogManager.getLogger(IntegrityProtectedAuditorSessionBean.class);
 	
     @PersistenceContext(unitName = CesecoreConfiguration.PERSISTENCE_UNIT)
     private EntityManager entityManager;

@@ -24,7 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.UriBuilder;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.cesecore.authentication.oauth.TokenExpiredException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -41,7 +42,7 @@ import org.ejbca.util.HttpTools;
  *
  */
 public class LogOutServlet extends HttpServlet {
-    private static Logger logger = Logger.getLogger(LogOutServlet.class);
+    private static Logger logger = LogManager.getLogger(LogOutServlet.class);
 
     @EJB
     private GlobalConfigurationSessionLocal globalConfigurationSession;

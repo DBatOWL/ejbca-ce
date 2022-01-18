@@ -21,7 +21,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificateprofile.CertificateProfile;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
 import org.cesecore.certificates.certificateprofile.CertificateProfileSessionRemote;
@@ -44,7 +44,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaExportProfilesCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaExportProfilesCommand.class);
+    private static final Logger log = LogManager.getLogger(CaExportProfilesCommand.class);
 
     private static final String DIRECTORY_KEY = "-d";
 

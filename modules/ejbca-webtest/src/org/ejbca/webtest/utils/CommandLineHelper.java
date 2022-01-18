@@ -23,7 +23,8 @@ import java.util.function.Consumer;
 import static org.junit.Assert.assertTrue;
 
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Helper class used for command line stuff. 
@@ -33,7 +34,7 @@ import org.apache.log4j.Logger;
  */
 public class CommandLineHelper {
 
-    private static final Logger log = Logger.getLogger(CommandLineHelper.class);
+    private static final Logger log = LogManager.getLogger(CommandLineHelper.class);
 
     /**
      * Assert the existence of a file at a specific location

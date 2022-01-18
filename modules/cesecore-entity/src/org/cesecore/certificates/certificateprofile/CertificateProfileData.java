@@ -26,7 +26,8 @@ import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectedData;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
@@ -44,7 +45,7 @@ import org.cesecore.util.QueryResultWrapper;
 public class CertificateProfileData extends ProtectedData implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(CertificateProfileData.class); // NOPMD
+    private static final Logger log = LogManager.getLogger(CertificateProfileData.class); // NOPMD
 
     private Integer id;
     private String certificateProfileName; // NOPMD, this is what the database column is called.

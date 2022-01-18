@@ -20,7 +20,8 @@ import java.util.List;
 
 import javax.ejb.EJBException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.endentity.EndEntityConstants;
@@ -43,7 +44,7 @@ import org.ejbca.core.model.approval.profile.ApprovalProfile;
 public class ChangeStatusEndEntityApprovalRequest extends ApprovalRequest {
 
 	private static final long serialVersionUID = -1L;
-	private static final Logger log = Logger.getLogger(ChangeStatusEndEntityApprovalRequest.class);
+	private static final Logger log = LogManager.getLogger(ChangeStatusEndEntityApprovalRequest.class);
 	private static final int LATEST_VERSION = 1;
 
 	private String username;

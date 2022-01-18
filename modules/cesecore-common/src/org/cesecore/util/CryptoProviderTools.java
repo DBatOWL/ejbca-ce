@@ -20,7 +20,8 @@ import java.security.Security;
 
 import javax.crypto.Cipher;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.asn1.x509.X509Name;
 import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
@@ -37,7 +38,7 @@ import org.ejbca.cvc.CVCProvider;
  */
 public final class CryptoProviderTools {
 	
-	private static final Logger log = Logger.getLogger(CryptoProviderTools.class);
+	private static final Logger log = LogManager.getLogger(CryptoProviderTools.class);
 			
     private CryptoProviderTools() {} // Not for instantiation
 

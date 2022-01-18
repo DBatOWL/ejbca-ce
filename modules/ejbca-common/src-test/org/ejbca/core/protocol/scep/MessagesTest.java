@@ -36,7 +36,8 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
@@ -375,7 +376,7 @@ public class MessagesTest {
     
     private static PrivateKey privateKey = null;
     private static X509Certificate caCert = null;
-    private static final Logger log = Logger.getLogger(MessagesTest.class);
+    private static final Logger log = LogManager.getLogger(MessagesTest.class);
 
     @BeforeClass
     public static void beforeClass() throws Exception {
@@ -663,7 +664,7 @@ public class MessagesTest {
      *
      */
     private static class ScepRequestGenerator {
-        private static Logger log = Logger.getLogger(ScepRequestGenerator.class);
+        private static Logger log = LogManager.getLogger(ScepRequestGenerator.class);
 
         private X509Certificate cacert = null;
         private String reqdn = null;

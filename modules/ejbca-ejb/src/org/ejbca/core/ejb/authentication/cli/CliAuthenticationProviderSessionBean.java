@@ -26,7 +26,8 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
 import org.cesecore.audit.enums.ModuleTypes;
@@ -60,7 +61,7 @@ public class CliAuthenticationProviderSessionBean implements CliAuthenticationPr
 
     private static final long serialVersionUID = 3953734683130654792L;
 
-    private static final Logger log = Logger.getLogger(CliAuthenticationProviderSessionBean.class);
+    private static final Logger log = LogManager.getLogger(CliAuthenticationProviderSessionBean.class);
 
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();

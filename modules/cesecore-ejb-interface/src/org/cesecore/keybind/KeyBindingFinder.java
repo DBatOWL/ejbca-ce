@@ -5,7 +5,8 @@ import java.security.cert.X509Certificate;
 import java.util.Optional;
 
 import org.apache.commons.lang3.tuple.Pair;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.CertificateStoreSessionLocal;
 import org.cesecore.keybind.impl.AuthenticationKeyBinding;
 import org.cesecore.keys.token.CryptoToken;
@@ -17,7 +18,7 @@ import org.cesecore.keys.token.KeyAndCertFinder;
  * I implement a way to find keys and certs given a binding ID using EJBs.
  */
 public class KeyBindingFinder implements KeyAndCertFinder {
-    private static final Logger log = Logger.getLogger(KeyAndCertFinder.class);
+    private static final Logger log = LogManager.getLogger(KeyAndCertFinder.class);
     private InternalKeyBindingMgmtSessionLocal internalKeyBindings;
     private CertificateStoreSessionLocal certificateStoreSession;
     private CryptoTokenManagementSessionLocal cryptoToken;

@@ -17,7 +17,8 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Dialog for settings.
@@ -30,7 +31,7 @@ public class SettingsDialog extends javax.swing.JDialog {
     private static final long serialVersionUID = -1315993902451329011L;
 
     /** Logger for this class. */
-    private static final Logger LOG = Logger.getLogger(SettingsDialog.class);
+    private static final Logger LOG = LogManager.getLogger(SettingsDialog.class);
 
     private Settings settings;
     private Settings okSettings;

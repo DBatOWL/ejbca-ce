@@ -29,7 +29,8 @@ import java.util.SimpleTimeZone;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.certificate.CertificateConstants;
 import org.cesecore.certificates.endentity.ExtendedInformation;
@@ -136,7 +137,7 @@ import com.novell.ldap.LDAPSearchConstraints;
  */
 public class CustomerLdapPublisher1 implements ICustomPublisher {
 
-    private static final Logger log = Logger.getLogger(CustomerLdapPublisher1.class);
+    private static final Logger log = LogManager.getLogger(CustomerLdapPublisher1.class);
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
     
     // Object classes

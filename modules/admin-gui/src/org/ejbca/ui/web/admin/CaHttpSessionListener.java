@@ -22,7 +22,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -49,7 +50,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaWebBean;
  */
 public class CaHttpSessionListener implements HttpSessionListener {
 
-    private static final Logger log = Logger.getLogger(CaHttpSessionListener.class);
+    private static final Logger log = LogManager.getLogger(CaHttpSessionListener.class);
     private GlobalConfiguration globalConfiguration;
     
     @EJB

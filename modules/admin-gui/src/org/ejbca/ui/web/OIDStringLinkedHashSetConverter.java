@@ -25,7 +25,8 @@ import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 
 
@@ -42,7 +43,7 @@ import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 @FacesConverter(value="org.ejbca.OIDStringLinkedHashSetConverter")
 public class OIDStringLinkedHashSetConverter implements Converter<Object> {
     
-    private static final Logger log = Logger.getLogger(OIDStringLinkedHashSetConverter.class);
+    private static final Logger log = LogManager.getLogger(OIDStringLinkedHashSetConverter.class);
 
     
     /** Input in the JSF page, convert to LinkedHashSet, which is what is used in the CertificateProfile to store in the database

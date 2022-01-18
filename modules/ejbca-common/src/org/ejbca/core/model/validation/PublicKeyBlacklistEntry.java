@@ -22,7 +22,8 @@ import java.security.interfaces.RSAPublicKey;
 
 import javax.xml.bind.DatatypeConverter;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.internal.InternalResources;
 import org.cesecore.util.CertTools;
@@ -34,7 +35,7 @@ import org.cesecore.util.CertTools;
  */
 public class PublicKeyBlacklistEntry extends BlacklistEntry implements Serializable, Cloneable {
     private static final long serialVersionUID = -315759758359854900L;
-    private static final Logger log = Logger.getLogger(PublicKeyBlacklistEntry.class);
+    private static final Logger log = LogManager.getLogger(PublicKeyBlacklistEntry.class);
     public static final String TYPE="PUBLICKEY";
 
     protected static final InternalResources intres = InternalResources.getInstance();

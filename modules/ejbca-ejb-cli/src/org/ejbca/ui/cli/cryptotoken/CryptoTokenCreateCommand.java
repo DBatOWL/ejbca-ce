@@ -18,7 +18,7 @@ import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.keys.token.AzureCryptoToken;
 import org.cesecore.keys.token.BaseCryptoToken;
@@ -50,7 +50,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CryptoTokenCreateCommand extends EjbcaCliUserCommandBase {
 
-    private static final Logger log = Logger.getLogger(CryptoTokenCreateCommand.class);
+    private static final Logger log = LogManager.getLogger(CryptoTokenCreateCommand.class);
 
     private static final String CRYPTOTOKEN_NAME_KEY = "--token";
     private static final String PIN_KEY = "--pin";

@@ -20,7 +20,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.internal.InternalResources;
 
 
@@ -36,7 +37,7 @@ public class NoNegativeNumbersValidator implements Validator<Object> {
     private static final InternalResources intres = InternalResources.getInstance();
     
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(NoNegativeNumbersValidator.class);
+    private static final Logger log = LogManager.getLogger(NoNegativeNumbersValidator.class);
     
     @Override
     public void validate(FacesContext context, UIComponent component, Object object) throws ValidatorException {

@@ -26,7 +26,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.util.AlgorithmConstants;
 import org.cesecore.keys.util.KeyTools;
 import org.cesecore.keys.validation.ValidatorBase;
@@ -43,7 +44,7 @@ import org.junit.Test;
 public class PublicKeyBlacklistKeyValidatorTest {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(PublicKeyBlacklistKeyValidatorTest.class);
+    private static final Logger log = LogManager.getLogger(PublicKeyBlacklistKeyValidatorTest.class);
 
     @BeforeClass
     public static void setClassUp() throws Exception {

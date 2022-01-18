@@ -28,7 +28,8 @@ import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectedData;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
@@ -46,7 +47,7 @@ import org.ejbca.core.model.ra.raadmin.EndEntityProfile;
 public class EndEntityProfileData extends ProtectedData implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(EndEntityProfileData.class);
+	private static final Logger log = LogManager.getLogger(EndEntityProfileData.class);
 
 	private int id;
 	private String profileName;

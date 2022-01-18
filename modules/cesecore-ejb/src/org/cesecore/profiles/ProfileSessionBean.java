@@ -22,7 +22,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.CesecoreConfiguration;
 import org.cesecore.internal.InternalResources;
 import org.cesecore.util.ProfileID;
@@ -38,7 +39,7 @@ import org.cesecore.util.ProfileID;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class ProfileSessionBean implements ProfileSessionLocal {
 
-    private static final Logger log = Logger.getLogger(ProfileSessionBean.class);
+    private static final Logger log = LogManager.getLogger(ProfileSessionBean.class);
     
     @PersistenceContext(unitName = CesecoreConfiguration.PERSISTENCE_UNIT)
     private EntityManager entityManager;

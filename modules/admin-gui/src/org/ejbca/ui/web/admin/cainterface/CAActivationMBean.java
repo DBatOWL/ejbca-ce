@@ -24,7 +24,8 @@ import java.util.Properties;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.AuthorizationSessionLocal;
@@ -57,7 +58,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
 @SessionScoped
 public class CAActivationMBean extends BaseManagedBean implements Serializable {
 
-	private static final Logger log = Logger.getLogger(CAActivationMBean.class);
+	private static final Logger log = LogManager.getLogger(CAActivationMBean.class);
 
 	private static final long serialVersionUID = -2660384552215596717L;
 	

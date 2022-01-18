@@ -23,7 +23,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.util.CertTools;
@@ -45,7 +46,7 @@ import org.ejbca.core.model.ra.raadmin.EndEntityProfile;
 public class RaApprovalRequestInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RaApprovalRequestInfo.class);
+    private static final Logger log = LogManager.getLogger(RaApprovalRequestInfo.class);
 
     // Request information from ApprovalDataVO
     private final int id;

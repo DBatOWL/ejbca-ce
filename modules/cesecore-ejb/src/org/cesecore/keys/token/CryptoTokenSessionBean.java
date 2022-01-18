@@ -28,7 +28,8 @@ import javax.persistence.Query;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.CertificateStoreSessionLocal;
 import org.cesecore.config.CesecoreConfiguration;
 import org.cesecore.internal.InternalResources;
@@ -54,7 +55,7 @@ public class CryptoTokenSessionBean implements CryptoTokenSessionLocal, CryptoTo
     @EJB
     private CryptoTokenManagementSessionLocal cryptoTokenManagementSession;
 
-    private static final Logger log = Logger.getLogger(CryptoTokenSessionBean.class);
+    private static final Logger log = LogManager.getLogger(CryptoTokenSessionBean.class);
     private static final InternalResources intres = InternalResources.getInstance();
 
     @PersistenceContext(unitName = CesecoreConfiguration.PERSISTENCE_UNIT)

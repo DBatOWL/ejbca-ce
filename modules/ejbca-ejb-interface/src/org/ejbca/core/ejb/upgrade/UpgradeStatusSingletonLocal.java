@@ -16,10 +16,12 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import org.apache.logging.log4j.core.LogEvent;
+import org.apache.logging.log4j.core.Logger;
+
 /**
  * Local interface for UpgradeStatusSingletonBean.
  * 
- * @version $Id$
  */
 @Local
 public interface UpgradeStatusSingletonLocal {
@@ -28,7 +30,7 @@ public interface UpgradeStatusSingletonLocal {
     boolean isPostUpgradeInProgress();
 
     /** @return Log4J logging events from UpgradeSessionBean while post-upgrade background task is running */
-    List<org.apache.log4j.spi.LoggingEvent> getLogged();
+    List<LogEvent> getLogged();
 
     /** @return true if successfully claimed the node-local post-upgrade lock */
     boolean setPostUpgradeInProgressIfDifferent(boolean newValue);
@@ -37,9 +39,9 @@ public interface UpgradeStatusSingletonLocal {
     void resetPostUpgradeInProgress();
 
     /** Start listen to Log4J log events */
-    void logAppenderAttach(org.apache.log4j.Logger log);
+    void logAppenderAttach(Logger log);
 
     /** Stop listen to Log4J log events */
-    void logAppenderDetach(org.apache.log4j.Logger log);
+    void logAppenderDetach(Logger log);
 
 }

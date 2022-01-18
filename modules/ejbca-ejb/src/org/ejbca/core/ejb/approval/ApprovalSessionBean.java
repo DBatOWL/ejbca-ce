@@ -38,7 +38,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.ErrorCode;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
@@ -101,7 +102,7 @@ import org.ejbca.util.query.QueryWrapper;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class ApprovalSessionBean implements ApprovalSessionLocal, ApprovalSessionRemote {
 
-    private static final Logger log = Logger.getLogger(ApprovalSessionBean.class);
+    private static final Logger log = LogManager.getLogger(ApprovalSessionBean.class);
 
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();

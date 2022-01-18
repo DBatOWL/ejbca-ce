@@ -13,7 +13,8 @@
 
 package org.cesecore.certificates.ca;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.ASN1Sequence;
 import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
@@ -30,7 +31,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class CAConstantsTest {
-    private static final Logger log = Logger.getLogger(CAConstantsTest.class);
+    private static final Logger log = LogManager.getLogger(CAConstantsTest.class);
 
     @Before
     public void installBcProvider() {

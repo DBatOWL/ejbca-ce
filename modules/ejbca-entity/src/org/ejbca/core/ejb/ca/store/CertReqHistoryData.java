@@ -35,7 +35,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.TypedQuery;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.endentity.EndEntityInformation;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectedData;
@@ -62,7 +63,7 @@ import org.ejbca.util.FixEndOfBrokenXML;
 public class CertReqHistoryData extends ProtectedData implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(CertReqHistoryData.class);
+	private static final Logger log = LogManager.getLogger(CertReqHistoryData.class);
 
 	private String issuerDN;
 	private String fingerprint;

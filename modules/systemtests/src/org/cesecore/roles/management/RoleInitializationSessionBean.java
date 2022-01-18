@@ -27,7 +27,8 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.security.auth.x500.X500Principal;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationSubject;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -54,7 +55,7 @@ import org.cesecore.util.CertTools;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class RoleInitializationSessionBean implements RoleInitializationSessionRemote {
 
-    private static final Logger log = Logger.getLogger(RoleInitializationSessionBean.class);
+    private static final Logger log = LogManager.getLogger(RoleInitializationSessionBean.class);
     
     @EJB
     private RoleSessionLocal roleSession;

@@ -30,7 +30,8 @@ import java.util.Set;
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.namespace.QName;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationSubject;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
@@ -86,7 +87,7 @@ import static org.junit.Assert.fail;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EjbcaWSNonAdminTest extends CommonEjbcaWs {
 
-    private static final Logger log = Logger.getLogger(EjbcaWSNonAdminTest.class);
+    private static final Logger log = LogManager.getLogger(EjbcaWSNonAdminTest.class);
 
     private static final String WS_ADMIN_ROLENAME = "WsNonAdminTestRole";
     private static final String WS_APPROVAL_PROFILE_NAME = "WsApprovalProfile";

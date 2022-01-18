@@ -85,7 +85,8 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.cms.ContentInfo;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaCertStoreBuilder;
@@ -130,7 +131,7 @@ public class BatchEnrollmentGUIView extends FrameView {
 
     /** Logger for this class. */
     private static final Logger LOG
-            = Logger.getLogger(BatchEnrollmentGUIView.class);
+            = LogManager.getLogger(BatchEnrollmentGUIView.class);
 
     private JFileChooser openFileChooser;
 

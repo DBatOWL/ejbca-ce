@@ -15,7 +15,8 @@ package org.ejbca.ui.web.admin.ca;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.CaSessionLocal;
 import org.cesecore.certificates.certificate.CertificateDataSessionLocal;
 import org.cesecore.certificates.certificate.CertificateInfo;
@@ -57,7 +58,7 @@ import static java.util.stream.Collectors.toSet;
 @ManagedBean(name = "inspectPublisherQueue")
 @ViewScoped
 public class InspectPublisherQueueManagedBean extends BaseManagedBean {
-    private static final Logger log = Logger.getLogger(InspectPublisherQueueManagedBean.class);
+    private static final Logger log = LogManager.getLogger(InspectPublisherQueueManagedBean.class);
     private static final long serialVersionUID = 1L;
     private static final int MAX_RESULTS = 20;
     private static final int DESCRIPTION_MAX_LENGTH = 80;

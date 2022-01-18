@@ -41,7 +41,8 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicStatusLine;
 import org.apache.http.util.EntityUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.easymock.Capture;
 import org.easymock.EasyMock;
 import org.junit.Before;
@@ -52,7 +53,7 @@ import org.junit.Test;
  */
 public class OAuthTokenRequestUnitTest {
 
-    private static final Logger log = Logger.getLogger(OAuthTokenRequestUnitTest.class);
+    private static final Logger log = LogManager.getLogger(OAuthTokenRequestUnitTest.class);
 
     private static final String REDIRECT_URI = "https://app.test/redirecturi";
     private static final String CLIENTID = "Client123";

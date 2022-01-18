@@ -28,7 +28,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CaTestUtils;
 import org.cesecore.SystemTestsConfiguration;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -88,7 +89,7 @@ public class OcspKeyRenewalTest {
     
     private static final String TESTCLASSNAME = OcspKeyRenewalTest.class.getSimpleName();
     private static final AuthenticationToken authenticationToken = new TestAlwaysAllowLocalAuthenticationToken(TESTCLASSNAME);
-    private static final Logger log = Logger.getLogger(OcspKeyRenewalTest.class);
+    private static final Logger log = LogManager.getLogger(OcspKeyRenewalTest.class);
     
     private static final String ECC_CRYPTOTOKEN_NAME = TESTCLASSNAME+"ECC";
 

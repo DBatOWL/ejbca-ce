@@ -21,7 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import com.example.ejb.MySimpleBeanLocal;
 import com.example.entity.MyCounterData;
@@ -33,7 +34,7 @@ import com.example.entity.MyCounterData;
 public class Counter extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(Counter.class);
+    private static final Logger log = LogManager.getLogger(Counter.class);
     
     private static final String UPDATE = "update";
     private static final String CLEAR  = "clear";

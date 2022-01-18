@@ -22,7 +22,8 @@ import java.security.spec.RSAPublicKeySpec;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.certificates.util.AlgorithmConstants;
 import org.cesecore.util.Base64;
@@ -44,7 +45,7 @@ import static org.junit.Assert.assertEquals;
 public class RsaKeyValidatorTest {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(RsaKeyValidatorTest.class);
+    private static final Logger log = LogManager.getLogger(RsaKeyValidatorTest.class);
 
     private static byte[] noRocaCert = Base64
             .decode(("MIIEdDCCA1ygAwIBAgIIVjkVCQFZomowDQYJKoZIhvcNAQEFBQAwNTEWMBQGA1UE"

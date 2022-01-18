@@ -20,7 +20,8 @@ import java.security.cert.X509CRLEntry;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Enumerated;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1OctetString;
@@ -41,7 +42,7 @@ import org.cesecore.certificates.crl.RevokedCertInfo;
  * @version $Id$
  */
 public class CrlExtensions {
-    private static Logger log = Logger.getLogger(CrlExtensions.class);
+    private static Logger log = LogManager.getLogger(CrlExtensions.class);
 
     /** Returns the CRL number if it exists as a CRL extension
      * 

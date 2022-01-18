@@ -63,7 +63,8 @@ import javax.xml.bind.DatatypeConverter;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.IntRange;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.X509KeyUsage;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.operator.OperatorCreationException;
@@ -219,7 +220,7 @@ import org.ejbca.util.CAIdTools;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class CAAdminSessionBean implements CAAdminSessionLocal, CAAdminSessionRemote {
 
-    private static final Logger log = Logger.getLogger(CAAdminSessionBean.class);
+    private static final Logger log = LogManager.getLogger(CAAdminSessionBean.class);
 
     @PersistenceContext(unitName = "ejbca")
     private EntityManager entityManager;

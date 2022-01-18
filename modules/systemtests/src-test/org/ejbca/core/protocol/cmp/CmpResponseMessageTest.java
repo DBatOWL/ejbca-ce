@@ -22,7 +22,8 @@ import java.security.KeyPair;
 import java.security.cert.X509Certificate;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1OutputStream;
 import org.bouncycastle.asn1.cmp.PKIMessage;
@@ -57,7 +58,7 @@ import org.junit.runners.MethodSorters;
 @RunWith(CryptoTokenTestRunner.class)
 public class CmpResponseMessageTest extends CmpTestCase {
 
-    private static final Logger log = Logger.getLogger(CmpResponseMessageTest.class);
+    private static final Logger log = LogManager.getLogger(CmpResponseMessageTest.class);
 
     private static final String user = "CmpTestUser";
     private static final String userPwd = "foo123";

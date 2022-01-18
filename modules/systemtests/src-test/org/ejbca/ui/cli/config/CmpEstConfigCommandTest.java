@@ -20,7 +20,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.configuration.GlobalConfigurationSessionRemote;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.config.CmpConfiguration;
@@ -36,7 +37,7 @@ import org.junit.Test;
  */
 public class CmpEstConfigCommandTest {
 
-    private static final Logger log = Logger.getLogger(CmpEstConfigCommandTest.class);
+    private static final Logger log = LogManager.getLogger(CmpEstConfigCommandTest.class);
     
     private final GlobalConfigurationSessionRemote globalConfigurationSession = EjbRemoteHelper.INSTANCE
             .getRemoteSession(GlobalConfigurationSessionRemote.class);

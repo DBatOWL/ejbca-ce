@@ -23,7 +23,8 @@ import java.security.cert.X509Certificate;
 import java.util.Date;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.cms.Attribute;
 import org.bouncycastle.asn1.cms.CMSAttributes;
@@ -55,7 +56,7 @@ import org.cesecore.certificates.util.AlgorithmTools;
  *
  */
 public class CMS {
-    final static private Logger log = Logger.getLogger(CMS.class);
+    final static private Logger log = LogManager.getLogger(CMS.class);
     final static private int bufferSize = 0x20000;
     private static void fromInToOut( InputStream in, OutputStream out) throws IOException {
         byte[] buf = new byte[bufferSize];

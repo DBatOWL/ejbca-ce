@@ -27,7 +27,8 @@ import java.util.Map;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.ListUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.CA;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.profiles.Profile;
@@ -50,7 +51,7 @@ public class ExternalCommandCertificateValidator extends CertificateValidatorBas
     private static final long serialVersionUID = -135859158339811678L;
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(ExternalCommandCertificateValidator.class);
+    private static final Logger log = LogManager.getLogger(ExternalCommandCertificateValidator.class);
 
     public static final float LATEST_VERSION = 4F;
 

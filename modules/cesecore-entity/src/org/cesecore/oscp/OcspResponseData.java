@@ -29,7 +29,8 @@ import javax.persistence.SqlResultSetMapping;
 import javax.persistence.ConstructorResult;
 import javax.persistence.ColumnResult;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectedData;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
@@ -102,7 +103,7 @@ public class OcspResponseData extends ProtectedData implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private static final Logger log = Logger.getLogger(OcspResponseData.class);
+    private static final Logger log = LogManager.getLogger(OcspResponseData.class);
 
     private static final int LATEST_PROTECT_VERSON = 1;
 

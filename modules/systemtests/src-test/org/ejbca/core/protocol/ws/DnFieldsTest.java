@@ -21,7 +21,8 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.DERSet;
 import org.cesecore.CaTestUtils;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -60,7 +61,7 @@ import org.junit.Test;
  */
 public class DnFieldsTest extends CommonEjbcaWs {
 
-    private static final Logger log = Logger.getLogger(DnFieldsTest.class);
+    private static final Logger log = LogManager.getLogger(DnFieldsTest.class);
     
     private static final String PROFILE_NAME = "TW";
     private static final String TEST_USERNAME = "tester";

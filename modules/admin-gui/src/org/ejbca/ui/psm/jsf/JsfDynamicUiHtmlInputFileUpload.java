@@ -7,7 +7,8 @@ import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.event.ValueChangeListener;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.myfaces.custom.fileupload.HtmlInputFileUpload;
 import org.cesecore.util.ui.DynamicUiComponent;
 import org.cesecore.util.ui.DynamicUiProperty;
@@ -15,7 +16,7 @@ import org.cesecore.util.ui.DynamicUiProperty;
 public class JsfDynamicUiHtmlInputFileUpload extends HtmlInputFileUpload implements DynamicUiComponent, PropertyChangeListener {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(JsfDynamicUiHtmlInputFileUpload.class);
+    private static final Logger log = LogManager.getLogger(JsfDynamicUiHtmlInputFileUpload.class);
 
     /** DynamicUIProperty reference. */
     private DynamicUiProperty<?> dynamicUiProperty;

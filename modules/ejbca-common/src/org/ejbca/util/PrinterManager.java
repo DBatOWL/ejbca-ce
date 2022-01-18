@@ -25,7 +25,8 @@ import javax.print.PrintServiceLookup;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.endentity.EndEntityInformation;
 
 /**
@@ -36,7 +37,7 @@ import org.cesecore.certificates.endentity.EndEntityInformation;
  */
 public class PrinterManager {
 	
-	private static Logger log = Logger.getLogger(PrinterManager.class);
+	private static Logger log = LogManager.getLogger(PrinterManager.class);
 
 	private static transient PrintService currentService = null;	
 	private static transient String currentPrinterName = null;

@@ -18,7 +18,8 @@ import static org.junit.Assert.assertFalse;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,7 +30,7 @@ import org.junit.Test;
  */
 public class SameRequestRateLimiterTest {
     
-    private static final Logger log = Logger.getLogger(SameRequestRateLimiterTest.class);
+    private static final Logger log = LogManager.getLogger(SameRequestRateLimiterTest.class);
 
     private int nextValue = 0;
     SameRequestRateLimiter<Integer> srrl = null;

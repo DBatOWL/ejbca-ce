@@ -25,7 +25,8 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.HashID;
 import org.cesecore.util.Base64;
 import org.cesecore.util.CertTools;
@@ -37,7 +38,7 @@ import org.junit.Test;
  * @version $Id$
  */
 public class CaCertificateCacheTest {
-	private static final Logger log = Logger.getLogger(CaCertificateCacheTest.class);
+	private static final Logger log = LogManager.getLogger(CaCertificateCacheTest.class);
 
 	private static byte[] testroot = Base64
 	        .decode(("MIICPDCCAaWgAwIBAgIIV++ss+Mrw5MwDQYJKoZIhvcNAQEFBQAwLjERMA8GA1UE"+

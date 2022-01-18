@@ -22,7 +22,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.CaSessionLocal;
 import org.cesecore.certificates.certificate.CertificateStoreSessionLocal;
 import org.cesecore.certificates.certificateprofile.CertificateProfileSessionLocal;
@@ -62,7 +63,7 @@ import org.ejbca.core.model.InternalEjbcaResources;
 public class CertReqServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(CertReqServlet.class);
+	private static final Logger log = LogManager.getLogger(CertReqServlet.class);
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 
     // This injection has been verified on JBoss

@@ -19,7 +19,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Collections;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationSubject;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.OAuth2AuthenticationToken;
@@ -43,7 +44,7 @@ import org.junit.Test;
  * Tests the admin preference entity bean.
  */
 public class AdminPreferenceTest extends CaTestCase {
-    private static Logger log = Logger.getLogger(AdminPreferenceTest.class);
+    private static Logger log = LogManager.getLogger(AdminPreferenceTest.class);
 
     private static final AuthenticationToken internalToken = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("AdminPreferenceTest"));
 

@@ -24,7 +24,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.AuthorizationSessionLocal;
 import org.cesecore.certificates.ca.CAInfo;
@@ -55,7 +56,7 @@ import org.ejbca.ui.web.admin.configuration.SortableSelectItem;
 public class ListPublishersManagedBean extends BaseManagedBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(ListPublishersManagedBean.class);
+    private static final Logger log = LogManager.getLogger(ListPublishersManagedBean.class);
 
     @EJB
     private PublisherSessionLocal publisherSession;

@@ -21,7 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.authentication.oauth.OAuthGrantResponseInfo;
 import org.cesecore.authentication.oauth.TokenExpiredException;
@@ -42,7 +43,7 @@ public class RaAuthenticationHelper implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private static final Logger log = Logger.getLogger(RaAuthenticationHelper.class);
+    private static final Logger log = LogManager.getLogger(RaAuthenticationHelper.class);
     private static final String HTTP_HEADER_SET_COOKIE = "Set-Cookie";
     private static final String HTTP_HEADER_X_POWERED_BY = "X-Powered-By";
 

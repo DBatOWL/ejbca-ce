@@ -33,7 +33,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.cmp.PKIHeader;
 import org.bouncycastle.asn1.cmp.PKIMessage;
 import org.bouncycastle.asn1.x500.X500Name;
@@ -51,7 +52,7 @@ public class NestedMessageContent extends BaseCmpMessage implements RequestMessa
   
     private static final long serialVersionUID = 1L;
     
-    private static final Logger log = Logger.getLogger(NestedMessageContent.class);
+    private static final Logger log = LogManager.getLogger(NestedMessageContent.class);
     
     private PKIMessage raSignedMessage;
     private String confAlias;

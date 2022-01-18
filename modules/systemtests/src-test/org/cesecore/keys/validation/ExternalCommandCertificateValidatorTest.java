@@ -24,7 +24,8 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.SystemUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.util.AlgorithmConstants;
 import org.cesecore.internal.UpgradeableDataHashMap;
 import org.cesecore.keys.util.KeyTools;
@@ -50,7 +51,7 @@ import org.junit.Test;
 public class ExternalCommandCertificateValidatorTest {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(ExternalCommandCertificateValidatorTest.class);
+    private static final Logger log = LogManager.getLogger(ExternalCommandCertificateValidatorTest.class);
 
     @Before
     public void setUp() throws Exception {

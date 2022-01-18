@@ -42,7 +42,8 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.DERBitString;
 import org.bouncycastle.asn1.x509.Extensions;
 import org.bouncycastle.asn1.x509.KeyUsage;
@@ -118,7 +119,7 @@ import org.cesecore.util.EJBTools;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class CertificateCreateSessionBean implements CertificateCreateSessionLocal, CertificateCreateSessionRemote {
 
-    private static final Logger log = Logger.getLogger(CertificateCreateSessionBean.class);
+    private static final Logger log = LogManager.getLogger(CertificateCreateSessionBean.class);
 
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();

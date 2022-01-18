@@ -13,7 +13,8 @@
 
 package org.ejbca.core.ejb.ra;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
@@ -57,7 +58,7 @@ import static org.junit.Assert.fail;
  */
 public class EndEntityManagementTest extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(EndEntityManagementTest.class);
+    private static final Logger log = LogManager.getLogger(EndEntityManagementTest.class);
     private static final AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("UserDataTest"));
 
     private static final String PROFILE_CACHE_NAME_1 = "TESTEEPROFCACHE1";

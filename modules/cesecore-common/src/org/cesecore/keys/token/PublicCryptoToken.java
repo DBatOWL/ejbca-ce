@@ -34,7 +34,8 @@ import java.util.Properties;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.keys.util.KeyTools;
 import org.cesecore.util.CertTools;
@@ -52,7 +53,7 @@ public class PublicCryptoToken implements CryptoToken {
 
 	private static final long serialVersionUID = 1L;
 	private int id;
-	private static final Logger log = Logger.getLogger(PublicCryptoToken.class);
+	private static final Logger log = LogManager.getLogger(PublicCryptoToken.class);
 	private PublicKey pk;
 	private final static String providerName = BouncyCastleProvider.PROVIDER_NAME;
 	private String tokenName = "not available";

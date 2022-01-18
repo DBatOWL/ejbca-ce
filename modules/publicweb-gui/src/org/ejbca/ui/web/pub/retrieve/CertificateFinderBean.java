@@ -23,7 +23,8 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.DecoderException;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.certificates.ca.CAInfo;
@@ -50,7 +51,7 @@ import org.ejbca.ui.web.CertificateView;
  */
 public class CertificateFinderBean {
 
-	private static final Logger log = Logger.getLogger(CertificateFinderBean.class);
+	private static final Logger log = LogManager.getLogger(CertificateFinderBean.class);
 
 	private EjbLocalHelper ejb = new EjbLocalHelper();
 	private SignSession mSignSession = ejb.getSignSession();

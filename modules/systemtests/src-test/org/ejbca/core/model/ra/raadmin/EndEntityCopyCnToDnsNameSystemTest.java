@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.core.model.ra.raadmin;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -56,7 +57,7 @@ import static org.junit.Assert.assertTrue;
 public class EndEntityCopyCnToDnsNameSystemTest extends CaTestCase {
 
 
-    private static final Logger log = Logger.getLogger(EndEntityCopyCnToDnsNameSystemTest.class);
+    private static final Logger log = LogManager.getLogger(EndEntityCopyCnToDnsNameSystemTest.class);
 
 
     private static final String TEST_CERTIFICATEPROFILE = "EndEntityCopyCnToDnsNameSystemTest_CP";

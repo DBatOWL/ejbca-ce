@@ -27,7 +27,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.CMSSignedData;
 import org.cesecore.CesecoreException;
@@ -58,7 +59,7 @@ import org.ejbca.util.HTMLTools;
  * Helper class for handling certificate request from browsers or general PKCS#10
  */
 public class RequestHelper {
-    private static Logger log = Logger.getLogger(RequestHelper.class);
+    private static Logger log = LogManager.getLogger(RequestHelper.class);
     private AuthenticationToken administrator;
     private ServletDebug debug;
     

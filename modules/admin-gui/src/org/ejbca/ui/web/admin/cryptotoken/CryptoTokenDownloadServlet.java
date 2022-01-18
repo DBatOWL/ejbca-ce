@@ -22,7 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.math.NumberUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.keys.token.CryptoTokenManagementSessionLocal;
@@ -40,7 +41,7 @@ import org.ejbca.ui.web.admin.cainterface.BaseAdminServlet;
 public class CryptoTokenDownloadServlet extends BaseAdminServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(CryptoTokenDownloadServlet.class);
+    private static final Logger log = LogManager.getLogger(CryptoTokenDownloadServlet.class);
 
     @EJB
     private CryptoTokenManagementSessionLocal cryptoTokenManagementSession;

@@ -29,7 +29,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.CesecoreConfiguration;
 
 /**
@@ -51,7 +52,7 @@ import org.cesecore.config.CesecoreConfiguration;
 @ConcurrencyManagement(ConcurrencyManagementType.BEAN)
 public class CaIDCacheBean {
 
-    private final Logger log = Logger.getLogger(CaIDCacheBean.class);
+    private final Logger log = LogManager.getLogger(CaIDCacheBean.class);
 
     @PersistenceContext(unitName = CesecoreConfiguration.PERSISTENCE_UNIT)
     private EntityManager entityManager;

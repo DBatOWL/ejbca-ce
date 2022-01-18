@@ -22,7 +22,8 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificatetransparency.CTLogInfo;
 import org.cesecore.certificates.certificatetransparency.GoogleCtPolicy;
 import org.cesecore.config.CesecoreConfiguration;
@@ -39,7 +40,7 @@ public class GlobalConfiguration extends ConfigurationBase implements ExternalSc
 
     private static final long serialVersionUID = -2051789798029184421L;
 
-    private static final Logger LOG = Logger.getLogger(GlobalConfiguration.class);
+    private static final Logger LOG = LogManager.getLogger(GlobalConfiguration.class);
 
     // Default Values
     public static final float LATEST_VERSION = 3f;

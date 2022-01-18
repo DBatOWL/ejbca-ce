@@ -19,7 +19,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.access.AuthorizationCacheReload;
@@ -40,7 +41,7 @@ public enum AuthorizationCache {
     INSTANCE, RAINSTANCE;
     
     // Logger is not static since static initializers run after the constructor for enums.
-    private final Logger log = Logger.getLogger(AuthorizationCache.class);
+    private final Logger log = LogManager.getLogger(AuthorizationCache.class);
 
     /** The access available to an authentication token and corresponding version of the authorization systems updateNumber */
     public static class AuthorizationResult {

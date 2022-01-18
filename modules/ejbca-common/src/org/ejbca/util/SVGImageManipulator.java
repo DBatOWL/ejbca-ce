@@ -42,7 +42,8 @@ import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.print.PrintTranscoder;
 import org.apache.batik.util.XMLResourceDescriptor;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.endentity.EndEntityInformation;
 import org.cesecore.certificates.util.DNFieldExtractor;
 import org.w3c.dom.Document;
@@ -67,7 +68,7 @@ public class SVGImageManipulator {
 	/**
 	 * For logging
 	 */
-	private static final Logger log = Logger.getLogger(SVGImageManipulator.class);
+	private static final Logger log = LogManager.getLogger(SVGImageManipulator.class);
 	
 	/**
      * Available variables used to replace text in a printlayout

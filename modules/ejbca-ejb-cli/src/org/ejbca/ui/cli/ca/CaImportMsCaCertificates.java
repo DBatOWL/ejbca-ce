@@ -30,7 +30,7 @@ import java.util.Arrays;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.CertificateStoreSessionRemote;
 import org.cesecore.util.CertTools;
 import org.cesecore.util.EjbRemoteHelper;
@@ -191,7 +191,7 @@ public class CaImportMsCaCertificates extends BaseCaAdminCommand {
 
     @Override
     protected Logger getLogger() {
-        return Logger.getLogger(CaImportMsCaCertificates.class);
+        return LogManager.getLogger(CaImportMsCaCertificates.class);
     }
 
     @Override

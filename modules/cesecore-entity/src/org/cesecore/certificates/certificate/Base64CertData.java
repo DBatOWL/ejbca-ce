@@ -26,7 +26,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectedData;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
@@ -47,7 +48,7 @@ public class Base64CertData extends ProtectedData implements Serializable {
 
     private static final long serialVersionUID = 4132839902195978822L;
 
-    private static final Logger log = Logger.getLogger(Base64CertData.class);
+    private static final Logger log = LogManager.getLogger(Base64CertData.class);
 
     private String fingerprint = "";
     private String base64Cert;

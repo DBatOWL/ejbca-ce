@@ -27,7 +27,8 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.control.StandardRules;
 import org.cesecore.util.CertTools;
 import org.cesecore.util.EJBTools;
@@ -38,7 +39,7 @@ import org.ejbca.core.ejb.ca.caadmin.CAAdminSessionLocal;
 public class InitExistingPkiMBean extends BaseManagedBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(InitExistingPkiMBean.class);
+    private static final Logger log = LogManager.getLogger(InitExistingPkiMBean.class);
     
     private Part uploadFile;
     private String importedCaName;

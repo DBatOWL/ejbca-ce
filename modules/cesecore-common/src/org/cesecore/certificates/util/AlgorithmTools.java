@@ -14,7 +14,8 @@ package org.cesecore.certificates.util;
 
 import org.apache.commons.collections.ListUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.anssi.ANSSINamedCurves;
 import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
@@ -96,7 +97,7 @@ import java.util.TreeSet;
 public abstract class AlgorithmTools {
 
     /** Log4j instance */
-    private static final Logger log = Logger.getLogger(AlgorithmTools.class);
+    private static final Logger log = LogManager.getLogger(AlgorithmTools.class);
 
     /** String used for an unknown keyspec in CA token properties */
     public static final String KEYSPEC_UNKNOWN = "unknown";

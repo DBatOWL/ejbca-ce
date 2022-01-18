@@ -42,7 +42,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.certificate.BaseCertificateData;
 import org.cesecore.certificates.certificate.CertificateDataWrapper;
@@ -72,7 +73,7 @@ import org.ejbca.core.model.ca.publisher.PublisherQueueVolatileInformation;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class PublisherQueueSessionBean implements PublisherQueueSessionLocal {
 
-    private static final Logger log = Logger.getLogger(PublisherQueueSessionBean.class);
+    private static final Logger log = LogManager.getLogger(PublisherQueueSessionBean.class);
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
     private static final ReentrantLock executorServiceLock = new ReentrantLock(false);
     private static final AtomicInteger beanInstanceCount = new AtomicInteger(0);

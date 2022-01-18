@@ -21,7 +21,8 @@ import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.CertificateConstants;
 import org.cesecore.certificates.crl.RevokedCertInfo;
 import org.junit.Test;
@@ -33,7 +34,7 @@ import org.junit.Test;
  */
 public class CompressedCollectionTest {
 
-    private static final Logger log = Logger.getLogger(CompressedCollectionTest.class);
+    private static final Logger log = LogManager.getLogger(CompressedCollectionTest.class);
 
     @Test
     public void testCompression() {

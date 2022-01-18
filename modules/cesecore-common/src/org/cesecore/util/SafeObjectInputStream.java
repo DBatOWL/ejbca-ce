@@ -13,7 +13,8 @@
 
 package org.cesecore.util;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,7 +40,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @see <a href="https://wiki.sei.cmu.edu/confluence/display/java/SER12-J.+Prevent+deserialization+of+untrusted+data">SEI CERT Oracle Coding Standard for Java SER12-J</a>
  */
 public final class SafeObjectInputStream extends ObjectInputStream {
-    private final static Logger log = Logger.getLogger(SafeObjectInputStream.class);
+    private final static Logger log = LogManager.getLogger(SafeObjectInputStream.class);
     private final List<Class> allowedClasses;
     private final List<String> allowedPackagePrefixes;
     private final int maxNumberOfObjects;

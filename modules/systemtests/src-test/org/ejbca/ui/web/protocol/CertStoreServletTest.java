@@ -30,7 +30,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -57,7 +58,7 @@ import static org.junit.Assert.assertTrue;
  * 
  */
 public class CertStoreServletTest extends CaTestCase {
-    private final static Logger log = Logger.getLogger(CertStoreServletTest.class);
+    private final static Logger log = LogManager.getLogger(CertStoreServletTest.class);
     
     private static final InternalCertificateStoreSessionRemote internalCertificateStoreSession = EjbRemoteHelper.INSTANCE.getRemoteSession(
             InternalCertificateStoreSessionRemote.class, EjbRemoteHelper.MODULE_TEST);

@@ -21,7 +21,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 
 /** Tests SecurityFilterInputStream class that can be used to prevent java heap-overflow during
@@ -31,7 +32,7 @@ import org.junit.Test;
  */
 public class SecurityFilterInputStreamTest {
 
-    private static final Logger log = Logger.getLogger(SecurityFilterInputStreamTest.class);
+    private static final Logger log = LogManager.getLogger(SecurityFilterInputStreamTest.class);
 
     /**
      * Prepares output stream with exploit string

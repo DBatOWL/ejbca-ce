@@ -20,7 +20,8 @@ import java.nio.charset.StandardCharsets;
 import java.security.cert.Certificate;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.DecoderException;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +32,7 @@ import org.junit.Test;
  * @version $Id$
  */
 public class Base64Test {
-    private static final Logger log = Logger.getLogger(Base64Test.class);
+    private static final Logger log = LogManager.getLogger(Base64Test.class);
 
     private static final String testcert_oneline = ("MIIDATCCAmqgAwIBAgIIczEoghAwc3EwDQYJKoZIhvcNAQEFBQAwLzEPMA0GA1UE"
             + "AxMGVGVzdENBMQ8wDQYDVQQKEwZBbmFUb20xCzAJBgNVBAYTAlNFMB4XDTAzMDky" + "NDA2NDgwNFoXDTA1MDkyMzA2NTgwNFowMzEQMA4GA1UEAxMHcDEydGVzdDESMBAG"

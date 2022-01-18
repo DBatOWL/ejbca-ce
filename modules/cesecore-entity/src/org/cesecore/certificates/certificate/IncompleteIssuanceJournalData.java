@@ -30,7 +30,8 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectedData;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
@@ -50,7 +51,7 @@ public class IncompleteIssuanceJournalData extends ProtectedData implements Seri
     private static final long serialVersionUID = 1L;
     private static final int LATEST_PROTECT_VERSON = 1;
 
-    private static final Logger log = Logger.getLogger(IncompleteIssuanceJournalData.class);
+    private static final Logger log = LogManager.getLogger(IncompleteIssuanceJournalData.class);
 
     // We merge the serial number and CA ID, because primary keys with a single column have more
     // consistent and reliable behavior in different database softwares, than primary keys with multiple columns

@@ -23,7 +23,8 @@ import java.security.cert.X509Certificate;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.crmf.CertReqMessages;
 import org.bouncycastle.asn1.crmf.CertReqMsg;
 import org.bouncycastle.asn1.x500.X500Name;
@@ -71,7 +72,7 @@ import org.ejbca.core.protocol.cmp.authentication.EndEntityCertificateAuthentica
  */
 public class CrmfKeyUpdateHandler extends BaseCmpMessageHandler implements ICmpMessageHandler {
     
-    private static final Logger LOG = Logger.getLogger(CrmfKeyUpdateHandler.class);
+    private static final Logger LOG = LogManager.getLogger(CrmfKeyUpdateHandler.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources INTRES = InternalEjbcaResources.getInstance();
 

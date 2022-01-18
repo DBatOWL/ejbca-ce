@@ -45,7 +45,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.control.StandardRules;
 import org.cesecore.certificates.ca.CAConstants;
@@ -107,7 +108,7 @@ public class InitNewPkiMBean extends BaseManagedBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    private static final Logger log = Logger.getLogger(InitNewPkiMBean.class);
+    private static final Logger log = LogManager.getLogger(InitNewPkiMBean.class);
     
     private static final String APPLICATION_X_PKCS12 = "application/x-pkcs12";
     private static final String CREATE_NEW_CRYPTO_TOKEN = "createNewToken";

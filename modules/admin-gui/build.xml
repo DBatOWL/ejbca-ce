@@ -97,7 +97,7 @@
 	     <mkdir dir="${admin-gui.build-test.dir}" />
 	     <javac srcdir="${admin-gui.src-test.dir}" destdir="${admin-gui.build-test.dir}" debug="on" includeantruntime="no"
 	         encoding="UTF-8" target="${java.target.version}" classpathref="test.classpath"/>
-	     <copy file="${log4j.test.file}" tofile="${admin-gui.build-test.dir}/log4j.xml" failonerror="true"/>
+	     <copy file="${log4j2.test.file}" tofile="${admin-gui.build-test.dir}/log4j2.xml" failonerror="true"/>
 	</target>
 
 	<target name="test:unit" depends="compile-tests">

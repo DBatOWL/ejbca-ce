@@ -30,7 +30,8 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificateprofile.PKIDisclosureStatement;
 import org.cesecore.certificates.endentity.EndEntityApprovalRequest;
 import org.cesecore.certificates.endentity.EndEntityInformation;
@@ -49,7 +50,7 @@ import static org.junit.Assert.fail;
  */
 public class XmlSerializerUnitTest {
 	
-	private static final Logger log = Logger.getLogger(XmlSerializerUnitTest.class);
+	private static final Logger log = LogManager.getLogger(XmlSerializerUnitTest.class);
 
 	@Rule
     public ExpectedException expectedException = ExpectedException.none();

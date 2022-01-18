@@ -22,7 +22,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.configuration.GlobalConfigurationSessionLocal;
 import org.ejbca.config.ConfigurationCheckerConfiguration;
@@ -37,7 +38,7 @@ import org.ejbca.ui.web.admin.BaseManagedBean;
 @ManagedBean(name = "configurationCheckerSettings")
 @ViewScoped
 public class ConfigurationCheckerSettingsManagedBean extends BaseManagedBean {
-    private static final Logger log = Logger.getLogger(ConfigurationCheckerSettingsManagedBean.class);
+    private static final Logger log = LogManager.getLogger(ConfigurationCheckerSettingsManagedBean.class);
     private static final long serialVersionUID = 1L;
     private boolean isConfigurationCheckerEnabled;
     private List<ConfigurationIssueSetStatus> allConfigurationIssueSetsAndTheirStatus;

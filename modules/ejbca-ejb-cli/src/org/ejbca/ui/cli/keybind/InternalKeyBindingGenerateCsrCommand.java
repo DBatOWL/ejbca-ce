@@ -18,7 +18,7 @@ import java.io.OutputStream;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.keybind.InternalKeyBinding;
@@ -40,7 +40,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class InternalKeyBindingGenerateCsrCommand extends RudInternalKeyBindingCommand {
 
-    private static final Logger log = Logger.getLogger(InternalKeyBindingGenerateCsrCommand.class);
+    private static final Logger log = LogManager.getLogger(InternalKeyBindingGenerateCsrCommand.class);
 
     private static final String GENKEYPAIR_KEY = "--genkeypair";
     private static final String CSR_FILE_KEY = "-f";

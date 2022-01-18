@@ -32,7 +32,8 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Use this filter to synchronize requests to your web application and
@@ -71,7 +72,7 @@ import org.apache.log4j.Logger;
 })
 public class RequestControlFilter implements Filter {
 
-    private static final Logger log = Logger.getLogger(RequestControlFilter.class);
+    private static final Logger log = LogManager.getLogger(RequestControlFilter.class);
 
     /**
      * Initialize this filter by reading its configuration parameters

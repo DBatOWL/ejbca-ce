@@ -16,7 +16,8 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.ClassUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang3.reflect.MethodUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificateprofile.CertificatePolicy;
 import org.cesecore.certificates.certificateprofile.PKIDisclosureStatement;
 import org.cesecore.certificates.endentity.EndEntityInformation;
@@ -69,7 +70,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class SecureXMLDecoder implements AutoCloseable {
 
-    private static final Logger log = Logger.getLogger(SecureXMLDecoder.class);
+    private static final Logger log = LogManager.getLogger(SecureXMLDecoder.class);
 
     private final InputStream is;
     private final boolean ignoreErrors;

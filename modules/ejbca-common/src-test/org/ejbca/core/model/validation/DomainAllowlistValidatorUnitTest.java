@@ -11,14 +11,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.cesecore.util.CryptoProviderTools;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class DomainAllowlistValidatorUnitTest {
     
-    private static final Logger log = Logger.getLogger(DomainAllowlistValidatorUnitTest.class);
+    private static final Logger log = LogManager.getLogger(DomainAllowlistValidatorUnitTest.class);
 
     private static final byte[] WHITELIST = ("permit.com\n" + 
             "permit.example.com\n" + 

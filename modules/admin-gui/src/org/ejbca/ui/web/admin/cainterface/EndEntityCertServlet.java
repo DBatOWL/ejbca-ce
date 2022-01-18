@@ -22,7 +22,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.CertTools;
 import org.ejbca.core.model.ra.NotFoundException;
 import org.ejbca.ui.web.CertificateView;
@@ -48,7 +49,7 @@ import org.ejbca.ui.web.pub.ServletUtils;
 public class EndEntityCertServlet extends BaseAdminServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(EndEntityCertServlet.class);
+	private static final Logger log = LogManager.getLogger(EndEntityCertServlet.class);
 
     private static final String COMMAND_PROPERTY_NAME = "cmd";
     private static final String COMMAND_NSCERT = "nscert";

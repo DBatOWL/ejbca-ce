@@ -23,7 +23,8 @@ import java.util.Map.Entry;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.configuration.ConfigurationBase;
 
 /**
@@ -33,7 +34,7 @@ import org.cesecore.configuration.ConfigurationBase;
  */
 public class AvailableCustomCertificateExtensionsConfiguration extends ConfigurationBase implements Serializable {
     private static final long serialVersionUID = 7798273820046510706L;
-    private static final Logger log = Logger.getLogger(AvailableCustomCertificateExtensionsConfiguration.class);
+    private static final Logger log = LogManager.getLogger(AvailableCustomCertificateExtensionsConfiguration.class);
     
     public static final String CONFIGURATION_ID = "AVAILABLE_CUSTOM_CERT_EXTENSIONS";
     

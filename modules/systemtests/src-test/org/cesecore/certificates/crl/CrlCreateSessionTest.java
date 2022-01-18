@@ -32,7 +32,8 @@ import java.util.Set;
 
 import javax.ejb.EJBException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.x509.AuthorityKeyIdentifier;
@@ -104,7 +105,7 @@ import static org.junit.Assert.fail;
  */
 public class CrlCreateSessionTest {
 
-    private static final Logger log = Logger.getLogger(CrlCreateSessionTest.class);
+    private static final Logger log = LogManager.getLogger(CrlCreateSessionTest.class);
 
     private final CaSessionRemote caSession = EjbRemoteHelper.INSTANCE.getRemoteSession(CaSessionRemote.class);
     private final CaTestSessionRemote caTestSessionRemote = EjbRemoteHelper.INSTANCE.getRemoteSession(CaTestSessionRemote.class, EjbRemoteHelper.MODULE_TEST);

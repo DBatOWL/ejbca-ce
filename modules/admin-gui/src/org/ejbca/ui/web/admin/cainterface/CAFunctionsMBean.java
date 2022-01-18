@@ -33,7 +33,8 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.control.StandardRules;
@@ -64,7 +65,7 @@ import org.ejbca.ui.web.admin.BaseManagedBean;
 @ViewScoped
 public class CAFunctionsMBean extends BaseManagedBean implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(CAFunctionsMBean.class);
+    private static final Logger log = LogManager.getLogger(CAFunctionsMBean.class);
 
     @EJB
     private CaSessionLocal caSession;

@@ -31,7 +31,8 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.SystemConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * This is a singleton. Used to configure common-configuration with our sources.
@@ -46,7 +47,7 @@ import org.apache.log4j.Logger;
  */
 public final class ConfigurationHolder {
 
-    private static final Logger log = Logger.getLogger(ConfigurationHolder.class);
+    private static final Logger log = LogManager.getLogger(ConfigurationHolder.class);
 
     private static volatile CompositeConfiguration defaultValues;
 

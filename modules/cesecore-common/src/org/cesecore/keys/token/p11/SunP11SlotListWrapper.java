@@ -18,7 +18,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.keys.token.PKCS11SlotListWrapper;
 
 /**
@@ -33,7 +34,7 @@ import org.cesecore.keys.token.PKCS11SlotListWrapper;
  * The {@link #getInstance(File)} method must be called before any SunPKCS#11 provider is created.
  */
 public class SunP11SlotListWrapper implements PKCS11SlotListWrapper {
-    private static final Logger log = Logger.getLogger(SunP11SlotListWrapper.class);
+    private static final Logger log = LogManager.getLogger(SunP11SlotListWrapper.class);
 
     private final HashMap<Long, char[]> labelMap;
     private final Method getSlotListMethod;

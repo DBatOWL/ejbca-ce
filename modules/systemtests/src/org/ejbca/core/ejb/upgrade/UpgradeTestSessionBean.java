@@ -39,7 +39,7 @@ import org.cesecore.roles.RoleExistsException;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class UpgradeTestSessionBean implements UpgradeTestSessionRemote {
 
-    //private static final Logger log = Logger.getLogger(UpgradeTestSessionBean.class);
+    //private static final Logger log = LogManager.getLogger(UpgradeTestSessionBean.class);
     private AuthenticationToken alwaysAllowToken = new AlwaysAllowLocalAuthenticationToken(UpgradeTestSessionBean.class.getSimpleName());
 
     @EJB

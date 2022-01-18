@@ -25,7 +25,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.asn1.x509.Extensions;
 import org.bouncycastle.cms.CMSSignedGenerator;
@@ -55,7 +56,7 @@ public class CVCRequestMessage implements RequestMessage {
      */
     static final long serialVersionUID = 1L;
 
-    private static final Logger log = Logger.getLogger(CVCRequestMessage.class);
+    private static final Logger log = LogManager.getLogger(CVCRequestMessage.class);
 
     /** Raw form of the CVC message */
     protected byte[] cvcmsg;

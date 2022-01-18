@@ -23,7 +23,8 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.internal.InternalResources;
 import org.cesecore.internal.UpgradeableDataHashMap;
@@ -44,7 +45,7 @@ public abstract class ValidatorBase extends ProfileBase implements Serializable,
     private static final long serialVersionUID = -335459158399850925L;
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(ValidatorBase.class);
+    private static final Logger log = LogManager.getLogger(ValidatorBase.class);
 
     protected static final InternalResources intres = InternalResources.getInstance();
 

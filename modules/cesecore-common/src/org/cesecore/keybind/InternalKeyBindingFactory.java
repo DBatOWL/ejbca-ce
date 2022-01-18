@@ -21,7 +21,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.keybind.impl.AuthenticationKeyBinding;
 import org.cesecore.keybind.impl.OcspKeyBinding;
 import org.cesecore.util.ui.DynamicUiProperty;
@@ -35,7 +36,7 @@ public enum InternalKeyBindingFactory {
     INSTANCE;
 
     // Logger is not static since static initializers run after the constructor for enums.
-    private final Logger log = Logger.getLogger(InternalKeyBindingFactory.class);
+    private final Logger log = LogManager.getLogger(InternalKeyBindingFactory.class);
     private final Map<String, String> aliasToImplementationMap = new HashMap<>();
     private final Map<String, String> implementationToAliasMap = new HashMap<>();
     private final Map<String, Map<String, DynamicUiProperty<? extends Serializable>>> implementationPropertiesMap = new HashMap<>();

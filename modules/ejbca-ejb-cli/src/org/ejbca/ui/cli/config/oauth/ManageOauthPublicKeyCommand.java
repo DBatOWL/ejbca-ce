@@ -12,17 +12,21 @@
  *************************************************************************/
 package org.ejbca.ui.cli.config.oauth;
 
-import com.nimbusds.jose.JOSEException;
-import com.nimbusds.jose.jwk.JWK;
-import com.nimbusds.jose.jwk.JWKSet;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.security.PublicKey;
 import java.security.cert.CertificateParsingException;
+import java.text.ParseException;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
-import org.cesecore.keys.util.KeyTools;
 import org.cesecore.authentication.oauth.OAuthPublicKey;
 import org.cesecore.config.OAuthConfiguration;
+import org.cesecore.keys.util.KeyTools;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
 import org.ejbca.ui.cli.infrastructure.parameter.Parameter;
 import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
@@ -30,19 +34,16 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.MandatoryMode;
 import org.ejbca.ui.cli.infrastructure.parameter.enums.ParameterMode;
 import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.security.PublicKey;
-import java.text.ParseException;
+import com.nimbusds.jose.JOSEException;
+import com.nimbusds.jose.jwk.JWK;
+import com.nimbusds.jose.jwk.JWKSet;
 
 /**
  * Adds or removes public keys to/from already existing Trusted OAuth Provider
  *
  */
 public class ManageOauthPublicKeyCommand extends BaseOAuthConfigCommand{
-    private static final Logger log = Logger.getLogger(ManageOauthPublicKeyCommand.class);
+    private static final Logger log = LogManager.getLogger(ManageOauthPublicKeyCommand.class);
 
     private static final String LABEL = "--label";
     private static final String ACTION = "--action";

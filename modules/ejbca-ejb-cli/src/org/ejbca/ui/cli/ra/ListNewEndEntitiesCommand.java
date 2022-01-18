@@ -16,7 +16,7 @@ package org.ejbca.ui.cli.ra;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.endentity.EndEntityConstants;
 import org.cesecore.certificates.endentity.EndEntityInformation;
 import org.cesecore.util.EjbRemoteHelper;
@@ -33,7 +33,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class ListNewEndEntitiesCommand extends BaseRaCommand {
 
-    private static final Logger log = Logger.getLogger(ListNewEndEntitiesCommand.class);
+    private static final Logger log = LogManager.getLogger(ListNewEndEntitiesCommand.class);
 
     private static final String COMMAND = "listnewendentities";
     private static final String OLD_COMMAND = "listnewusers";

@@ -19,7 +19,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.bouncycastle.asn1.x509.Extension;
@@ -70,7 +71,7 @@ import org.cesecore.util.CertTools;
  * @version $Id$
  */
 public class OcspArchiveCutoffExtension implements OCSPExtension {
-    private static final Logger log = Logger.getLogger(OcspArchiveCutoffExtension.class);
+    private static final Logger log = LogManager.getLogger(OcspArchiveCutoffExtension.class);
     public static final String EXTENSION_NAME = "Archive Cutoff";
 
     @Override

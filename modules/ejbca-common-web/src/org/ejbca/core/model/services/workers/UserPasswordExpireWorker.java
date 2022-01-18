@@ -17,7 +17,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CADoesntExistsException;
 import org.cesecore.certificates.ca.IllegalNameException;
@@ -49,7 +50,7 @@ import org.ejbca.core.model.services.actions.MailActionInfo;
  */
 public class UserPasswordExpireWorker extends EmailSendingWorker {
 
-    private static final Logger log = Logger.getLogger(UserPasswordExpireWorker.class);
+    private static final Logger log = LogManager.getLogger(UserPasswordExpireWorker.class);
 
     @Override
     public void canWorkerRun(Map<Class<?>, Object> ejbs) throws ServiceExecutionFailedException {

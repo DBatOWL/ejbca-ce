@@ -22,7 +22,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Client to send message to CMP server over TCP.
@@ -31,7 +32,7 @@ import org.apache.log4j.Logger;
  *
  */
 public class CMPSendTCP {
-	private static final Logger log = Logger.getLogger(CMPSendTCP.class.getName());
+	private static final Logger log = LogManager.getLogger(CMPSendTCP.class.getName());
 	public final int version;
 	public final int msgType;
 	public final int flags;

@@ -50,7 +50,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.cesecore.authentication.tokens.OAuth2AuthenticationToken;
@@ -119,7 +120,7 @@ import com.nimbusds.jwt.SignedJWT;
 public class SystemConfigMBean extends BaseManagedBean implements Serializable {
 
     private static final long serialVersionUID = -6653610614851741905L;
-    private static final Logger log = Logger.getLogger(SystemConfigMBean.class);
+    private static final Logger log = LogManager.getLogger(SystemConfigMBean.class);
 
     public class GuiInfo {
         private String title;

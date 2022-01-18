@@ -16,7 +16,8 @@ import java.util.Collections;
 import java.util.Objects;
 
 import org.apache.commons.codec.binary.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 import org.cesecore.authorization.user.AccessUserAspect;
 import org.cesecore.authorization.user.matchvalues.OAuth2AccessMatchValue;
@@ -28,7 +29,7 @@ public class OAuth2AuthenticationToken extends NestableAuthenticationToken {
 
     public static final OAuth2AuthenticationTokenMetaData metaData = new OAuth2AuthenticationTokenMetaData();
 
-    private static final Logger log = Logger.getLogger(OAuth2AuthenticationToken.class);
+    private static final Logger log = LogManager.getLogger(OAuth2AuthenticationToken.class);
     private static final long serialVersionUID = 1L; 
 
     private final OAuth2Principal principal;

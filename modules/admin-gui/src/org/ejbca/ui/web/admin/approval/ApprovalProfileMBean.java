@@ -29,7 +29,8 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.control.StandardRules;
 import org.cesecore.configuration.GlobalConfigurationSessionLocal;
@@ -67,7 +68,7 @@ public class ApprovalProfileMBean extends BaseManagedBean implements Serializabl
 
     private static final long serialVersionUID = -3751383340600251434L;
     private static final InternalResources intres = InternalResources.getInstance();
-    private static final Logger log = Logger.getLogger(ApprovalProfileMBean.class);
+    private static final Logger log = LogManager.getLogger(ApprovalProfileMBean.class);
 
     /**
      * This enum field represents the types of data fields that can be added to an approval partition dynamically.

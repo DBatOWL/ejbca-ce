@@ -26,7 +26,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ui.web.RequestHelper;
 
 /**
@@ -41,7 +42,7 @@ import org.ejbca.ui.web.RequestHelper;
 */
 public class EncodingFilter implements Filter {
 
-    private static final Logger log = Logger.getLogger(EncodingFilter.class.getName());
+    private static final Logger log = LogManager.getLogger(EncodingFilter.class.getName());
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException,IOException {

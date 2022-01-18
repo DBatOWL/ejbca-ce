@@ -15,7 +15,8 @@ package org.ejbca.webtest.util;
 import java.text.DecimalFormat;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.webtest.util.ram.RamMemorySnapshot;
 
 /**
@@ -25,7 +26,7 @@ import org.ejbca.webtest.util.ram.RamMemorySnapshot;
  */
 public class RuntimeUtil {
 
-    private static final Logger log = Logger.getLogger(RuntimeUtil.class);
+    private static final Logger log = LogManager.getLogger(RuntimeUtil.class);
 
     private static final DecimalFormat megabytesDecimalFormat = new DecimalFormat("0000.00");
 

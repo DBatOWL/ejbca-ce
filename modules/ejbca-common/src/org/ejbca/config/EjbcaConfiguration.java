@@ -14,7 +14,8 @@
 package org.ejbca.config;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,7 +28,7 @@ import java.util.Date;
  */
 public final class EjbcaConfiguration {
 
-    private static final Logger log = Logger.getLogger(EjbcaConfiguration.class);
+    private static final Logger log = LogManager.getLogger(EjbcaConfiguration.class);
 
     // This is a singleton with on static methods
     private EjbcaConfiguration() {

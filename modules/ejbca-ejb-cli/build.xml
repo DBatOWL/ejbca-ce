@@ -132,7 +132,7 @@
     		<fileset dir="${ejbca.home}/src" includes="intresources/*resources.*.properties"/>
     		<fileset dir="${ejbca.home}/conf" includes="batchtool.properties"/>
     	</copy>
-        <copy file="${log4j.cli.file}" tofile="${mod.ejbca-ejb-cli.dist}/log4j.xml" failonerror="true"/>
+        <copy file="${log4j2.cli.file}" tofile="${mod.ejbca-ejb-cli.dist}/log4j2.xml" failonerror="true"/>
 		<copy file="${jndi.properties.file}" tofile="${mod.ejbca-ejb-cli.dist}/jndi.properties" failonerror="true"/>
 		<copy file="${jboss-ejb-client.properties}" todir="${mod.ejbca-ejb-cli.dist}" failonerror="false"/>
     </target>
@@ -166,7 +166,8 @@
 
     <target name="runone" depends="compile-unit-tests">
         <fail message="'test.runone' is not set. Example -Dtest.runone=Test . You can also use -Dtest.showoutput=true to send test output to console." unless="test.runone" />
-        <junit printsummary="yes" haltonfailure="no" showoutput="${test.showoutput}">
+        <copy file="${log4j2.test.file}" tofile="${ejbca-ejb-cli.build-test.dir}/log4j2.xml" failonerror="true"/>
+    	<junit printsummary="yes" haltonfailure="no" showoutput="${test.showoutput}">
             <classpath>
                 <path refid="test.classpath"/>
             </classpath>

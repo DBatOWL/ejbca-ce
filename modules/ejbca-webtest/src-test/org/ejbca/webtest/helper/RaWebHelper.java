@@ -15,7 +15,8 @@ package org.ejbca.webtest.helper;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -34,7 +35,7 @@ import static org.junit.Assert.fail;
  */
 public class RaWebHelper extends BaseHelper {
 
-    private static final Logger log = Logger.getLogger(RaWebHelper.class);
+    private static final Logger log = LogManager.getLogger(RaWebHelper.class);
 
     public RaWebHelper(final WebDriver webDriver) {
         super(webDriver);

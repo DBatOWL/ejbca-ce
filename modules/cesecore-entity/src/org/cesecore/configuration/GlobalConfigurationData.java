@@ -34,7 +34,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.cesecore.authentication.oauth.OAuthPublicKey;
 import org.cesecore.certificates.certificate.certextensions.BasicCertificateExtension;
@@ -65,7 +66,7 @@ import org.cesecore.util.StringTools;
 public class GlobalConfigurationData extends ProtectedData implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(GlobalConfigurationData.class);
+    private static final Logger log = LogManager.getLogger(GlobalConfigurationData.class);
     private static final HashSet<Class<? extends Serializable>> ACCEPTED_SERIALIZATION_CLASSES_SET = new HashSet<>(Arrays.asList(
             ArrayList.class,
             Base64GetHashMap.class,

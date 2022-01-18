@@ -13,7 +13,8 @@
 
 package org.cesecore.legacy;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificateprofile.CertificateProfileData;
 
 /**
@@ -36,7 +37,7 @@ import org.cesecore.certificates.certificateprofile.CertificateProfileData;
 @SuppressWarnings("serial")
 @Deprecated
 public class Eca7277CertificateProfileData extends CertificateProfileData {
-    private final static Logger log = Logger.getLogger(Eca7277CertificateProfileData.class);
+    private final static Logger log = LogManager.getLogger(Eca7277CertificateProfileData.class);
 
     public Eca7277CertificateProfileData(final CertificateProfileData data) {
         // We cannot use the standard constructor, since it performs upgrades,

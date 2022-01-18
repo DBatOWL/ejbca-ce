@@ -19,7 +19,8 @@ import java.security.cert.CertificateParsingException;
 import java.security.cert.X509Certificate;
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.DERSet;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.asn1.x509.KeyPurposeId;
@@ -39,7 +40,7 @@ import org.cesecore.util.ui.DynamicUiProperty;
 public class AuthenticationKeyBinding extends InternalKeyBindingBase {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(AuthenticationKeyBinding.class);
+    private static final Logger log = LogManager.getLogger(AuthenticationKeyBinding.class);
 
     public static final String IMPLEMENTATION_ALIAS = "AuthenticationKeyBinding"; // This should not change, even if we rename the class in EJBCA 5.3+..
     public static final String PROPERTY_PROTOCOL_AND_CIPHER_SUITE = "protocolAndCipherSuite";

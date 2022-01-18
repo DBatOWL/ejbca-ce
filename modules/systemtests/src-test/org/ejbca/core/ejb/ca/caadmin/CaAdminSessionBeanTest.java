@@ -26,7 +26,8 @@ import java.util.Set;
 
 import javax.ejb.EJBException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.cesecore.CaTestUtils;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -87,7 +88,7 @@ import static org.junit.Assert.fail;
  */
 public class CaAdminSessionBeanTest {
 
-    private static final Logger log = Logger.getLogger(CaAdminSessionBeanTest.class);
+    private static final Logger log = LogManager.getLogger(CaAdminSessionBeanTest.class);
 
     private CAAdminSessionRemote caAdminSession = EjbRemoteHelper.INSTANCE.getRemoteSession(CAAdminSessionRemote.class);
     private CaSessionRemote caSession = EjbRemoteHelper.INSTANCE.getRemoteSession(CaSessionRemote.class);

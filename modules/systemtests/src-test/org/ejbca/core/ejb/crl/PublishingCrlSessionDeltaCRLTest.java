@@ -28,7 +28,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CaTestUtils;
 import org.cesecore.RoleUsingTestCase;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -72,7 +73,7 @@ import org.junit.Test;
  */
 public class PublishingCrlSessionDeltaCRLTest extends RoleUsingTestCase {
 
-    private static final Logger log = Logger.getLogger(PublishingCrlSessionDeltaCRLTest.class);
+    private static final Logger log = LogManager.getLogger(PublishingCrlSessionDeltaCRLTest.class);
     
     private static final String X509CADN = "CN=" + PublishingCrlSessionDeltaCRLTest.class.getSimpleName();
     private static CA testx509ca;

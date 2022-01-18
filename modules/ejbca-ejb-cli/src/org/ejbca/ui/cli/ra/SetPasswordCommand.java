@@ -13,7 +13,7 @@
 
 package org.ejbca.ui.cli.ra;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.core.ejb.ra.EndEntityManagementSessionRemote;
@@ -33,7 +33,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class SetPasswordCommand extends BaseRaCommand {
 
-    private static final Logger log = Logger.getLogger(SetPasswordCommand.class);
+    private static final Logger log = LogManager.getLogger(SetPasswordCommand.class);
 
     private static final String USERNAME_KEY = "--username";
     private static final String PASSWORD_KEY = "--password";

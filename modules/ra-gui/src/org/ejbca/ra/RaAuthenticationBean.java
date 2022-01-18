@@ -29,7 +29,8 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.ws.rs.core.UriBuilder;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.OAuth2AuthenticationToken;
@@ -53,7 +54,7 @@ import org.ejbca.core.model.era.RaMasterApiProxyBeanLocal;
 public class RaAuthenticationBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RaAuthenticationBean.class);
+    private static final Logger log = LogManager.getLogger(RaAuthenticationBean.class);
 
     // JavaServlet Specification 2.5 Section 7.1.1: "...The name of the session tracking cookie must be JSESSIONID".
     private static final String SESSIONCOOKIENAME = "JSESSIONID";

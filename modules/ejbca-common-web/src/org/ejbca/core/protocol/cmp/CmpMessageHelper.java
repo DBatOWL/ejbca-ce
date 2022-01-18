@@ -39,7 +39,8 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1Encoding;
@@ -101,7 +102,7 @@ import org.ejbca.core.model.InternalEjbcaResources;
  * @version $Id$
  */
 public class CmpMessageHelper {
-    private static Logger LOG = Logger.getLogger(CmpMessageHelper.class);
+    private static Logger LOG = LogManager.getLogger(CmpMessageHelper.class);
     private static final InternalEjbcaResources INTRES = InternalEjbcaResources.getInstance();
     private static final SecureRandom secureRandom = new SecureRandom();
 

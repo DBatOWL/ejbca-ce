@@ -20,7 +20,8 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationSessionLocal;
 import org.cesecore.certificates.ca.CaSessionLocal;
 import org.cesecore.certificates.certificate.CertificateStoreSessionLocal;
@@ -53,7 +54,7 @@ import org.ejbca.core.ejb.ra.raadmin.EndEntityProfileSessionLocal;
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class ClearCacheSessionBean implements ClearCacheSessionLocal {
 
-    private final static Logger log = Logger.getLogger(ClearCacheSessionBean.class);
+    private final static Logger log = LogManager.getLogger(ClearCacheSessionBean.class);
     
     @EJB
     private ApprovalProfileSessionLocal approvalprofilesession;

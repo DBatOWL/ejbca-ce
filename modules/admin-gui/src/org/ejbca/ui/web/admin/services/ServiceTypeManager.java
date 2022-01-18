@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ui.web.admin.services.servicetypes.CRLDownloadWorkerType;
 import org.ejbca.ui.web.admin.services.servicetypes.CRLUpdateWorkerType;
 import org.ejbca.ui.web.admin.services.servicetypes.CertificateExpirationNotifierWorkerType;
@@ -49,7 +50,7 @@ import org.ejbca.ui.web.admin.services.servicetypes.WorkerType;
  */
 public class ServiceTypeManager implements Serializable {
 
-    private static final Logger log = Logger.getLogger(ServiceTypeManager.class);
+    private static final Logger log = LogManager.getLogger(ServiceTypeManager.class);
 
 	private static final long serialVersionUID = -7328709803784066077L;
 

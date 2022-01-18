@@ -19,7 +19,8 @@ import java.security.SignatureException;
 import java.security.cert.X509Certificate;
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cms.CMSSignedData;
 import org.bouncycastle.pkcs.PKCS10CertificationRequest;
@@ -63,7 +64,7 @@ import static org.junit.Assume.assumeTrue;
  */
 public class EstRAModeBasicTest extends EstTestCase {
 
-    private static final Logger log = Logger.getLogger(EstRAModeBasicTest.class);
+    private static final Logger log = LogManager.getLogger(EstRAModeBasicTest.class);
 
     private static final String TESTCA_NAME = EstRAModeBasicTest.class.getSimpleName();
     private static boolean isESTEnabled = false; // if EST was enabled or not before running test 

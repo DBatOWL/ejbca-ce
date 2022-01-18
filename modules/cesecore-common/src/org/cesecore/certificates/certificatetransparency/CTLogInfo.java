@@ -21,7 +21,8 @@ import java.util.Date;
 import java.util.Random;
 import java.util.TimeZone;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Base64;
 import org.cesecore.keys.util.KeyTools;
 
@@ -32,7 +33,7 @@ import org.cesecore.keys.util.KeyTools;
  */
 public final class CTLogInfo implements Serializable {
 
-    private static final Logger log = Logger.getLogger(CTLogInfo.class);
+    private static final Logger log = LogManager.getLogger(CTLogInfo.class);
     private static final long serialVersionUID = 1L;
 
     private final int logId;

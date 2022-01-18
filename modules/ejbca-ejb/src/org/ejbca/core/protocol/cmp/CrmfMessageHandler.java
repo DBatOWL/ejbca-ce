@@ -25,7 +25,8 @@ import java.util.List;
 import javax.ejb.EJBException;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.asn1.x500.X500Name;
@@ -88,7 +89,7 @@ import org.ejbca.util.passgen.PasswordGeneratorFactory;
  */
 public class CrmfMessageHandler extends BaseCmpMessageHandler implements ICmpMessageHandler {
 	
-	private static final Logger LOG = Logger.getLogger(CrmfMessageHandler.class);
+	private static final Logger LOG = LogManager.getLogger(CrmfMessageHandler.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources INTRES = InternalEjbcaResources.getInstance();
 

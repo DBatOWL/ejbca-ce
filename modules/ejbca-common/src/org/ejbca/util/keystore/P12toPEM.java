@@ -31,7 +31,8 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Enumeration;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.keys.util.KeyTools;
 import org.cesecore.util.Base64;
@@ -47,7 +48,7 @@ import org.cesecore.util.CryptoProviderTools;
  * @version $Id$
  */
 public class P12toPEM {
-    private static Logger log = Logger.getLogger(P12toPEM.class);
+    private static Logger log = LogManager.getLogger(P12toPEM.class);
     String exportpath = "./p12/pem/";
     String p12File;
     String password;

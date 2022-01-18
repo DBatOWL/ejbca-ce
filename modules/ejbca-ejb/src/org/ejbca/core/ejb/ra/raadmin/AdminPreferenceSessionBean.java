@@ -27,7 +27,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -51,7 +52,7 @@ public class AdminPreferenceSessionBean extends AdminPreferenceSessionDefault im
 
     private static final String DEFAULTUSERPREFERENCE = "default";
 
-    private static final Logger log = Logger.getLogger(AdminPreferenceSessionBean.class);
+    private static final Logger log = LogManager.getLogger(AdminPreferenceSessionBean.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

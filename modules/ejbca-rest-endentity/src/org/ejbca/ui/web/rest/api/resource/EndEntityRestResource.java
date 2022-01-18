@@ -33,7 +33,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.ErrorCode;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -79,7 +80,7 @@ public class EndEntityRestResource extends BaseRestResource {
 
     @EJB
     private RaMasterApiProxyBeanLocal raMasterApiProxy;
-    private static final Logger log = Logger.getLogger(EndEntityRestResource.class);
+    private static final Logger log = LogManager.getLogger(EndEntityRestResource.class);
 
     @GET
     @Path("/status")

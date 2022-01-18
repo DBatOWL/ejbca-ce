@@ -31,7 +31,8 @@ import javax.faces.event.ActionEvent;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.myfaces.renderkit.html.util.AddResource;
 import org.apache.myfaces.renderkit.html.util.AddResourceFactory;
 import org.cesecore.authentication.AuthenticationFailedException;
@@ -84,7 +85,7 @@ import org.ejbca.util.query.Query;
 @ManagedBean(name="approvalActionManagedBean")
 public class ApproveActionManagedBean extends BaseManagedBean {
     private static final long serialVersionUID = 1940920496104779323L;
-    private static final Logger log = Logger.getLogger(ApproveActionManagedBean.class);
+    private static final Logger log = LogManager.getLogger(ApproveActionManagedBean.class);
     private static final InternalResources intres = InternalResources.getInstance();
 
     private enum Action {

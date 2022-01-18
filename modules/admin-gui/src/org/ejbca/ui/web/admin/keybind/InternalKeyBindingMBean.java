@@ -14,7 +14,8 @@ package org.ejbca.ui.web.admin.keybind;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.bouncycastle.cert.ocsp.OCSPReqBuilder;
@@ -116,7 +117,7 @@ import java.util.Set;
 public class InternalKeyBindingMBean extends BaseManagedBean implements Serializable {
 
     private static final String OCSP_KEY_BINDING = "OcspKeyBinding";
-    protected static final Logger log = Logger.getLogger(InternalKeyBindingMBean.class);
+    protected static final Logger log = LogManager.getLogger(InternalKeyBindingMBean.class);
 
     @EJB(description = "Used to reload ocsp signing cache when user disables the internal ocsp key binding.")
     private OcspResponseGeneratorSessionLocal ocspResponseGeneratorSession;

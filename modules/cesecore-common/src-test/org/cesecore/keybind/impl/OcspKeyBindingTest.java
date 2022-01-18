@@ -25,7 +25,8 @@ import java.security.cert.X509Certificate;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1Sequence;
 import org.bouncycastle.asn1.DERSequence;
@@ -63,7 +64,7 @@ public class OcspKeyBindingTest {
     public TestRule traceLogMethodsRule = new TestWatcher() {
         @Override
         protected void starting(Description description) {
-            final Logger log = Logger.getLogger(description.getClassName());
+            final Logger log = LogManager.getLogger(description.getClassName());
             if (log.isTraceEnabled()) {
                 log.trace(">" + description.getMethodName());
             }
@@ -71,7 +72,7 @@ public class OcspKeyBindingTest {
         };
         @Override
         protected void finished(Description description) {
-            final Logger log = Logger.getLogger(description.getClassName());
+            final Logger log = LogManager.getLogger(description.getClassName());
             if (log.isTraceEnabled()) {
                 log.trace("<" + description.getMethodName());
             }

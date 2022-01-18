@@ -29,7 +29,8 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.certificateprofile.CertificateProfile;
@@ -68,7 +69,7 @@ import org.ejbca.util.KeyValuePair;
 @ViewScoped
 public class RaManageRequestBean implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RaManageRequestBean.class);
+    private static final Logger log = LogManager.getLogger(RaManageRequestBean.class);
 
     @EJB
     private RaMasterApiProxyBeanLocal raMasterApiProxyBean;

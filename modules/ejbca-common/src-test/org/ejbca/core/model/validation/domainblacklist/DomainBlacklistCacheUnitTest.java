@@ -21,7 +21,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.keys.validation.KeyValidationFailedActions;
 import org.cesecore.profiles.ProfileData;
 import org.ejbca.core.model.validation.DomainBlacklistValidator;
@@ -34,7 +35,7 @@ import org.junit.Test;
  */
 public class DomainBlacklistCacheUnitTest {
 
-    private static final Logger log = Logger.getLogger(DomainBlacklistCacheUnitTest.class);
+    private static final Logger log = LogManager.getLogger(DomainBlacklistCacheUnitTest.class);
 
     /** Checks that the transient internal cache in DomainBlacklistValidators is built even in validators from the validator cache. */
     @Test

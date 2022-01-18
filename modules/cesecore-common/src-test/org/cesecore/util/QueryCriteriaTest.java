@@ -15,7 +15,8 @@ package org.cesecore.util;
 import java.util.Date;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.impl.integrityprotected.AuditRecordData;
 import org.cesecore.util.query.Criteria;
 import org.cesecore.util.query.QueryCriteria;
@@ -30,7 +31,7 @@ import org.junit.Test;
  */
 public class QueryCriteriaTest {
 
-    private static Logger log = Logger.getLogger(QueryCriteriaTest.class);
+    private static Logger log = LogManager.getLogger(QueryCriteriaTest.class);
 
 	private static final String BAD_QUERY_GENERATED = "Invalid query generated.";
 	private static final String BAD_QUERY_PARAMTERS = "Invalid paramter values stored in query.";

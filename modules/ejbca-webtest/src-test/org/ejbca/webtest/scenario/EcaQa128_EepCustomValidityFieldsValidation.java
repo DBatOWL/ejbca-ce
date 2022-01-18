@@ -14,7 +14,8 @@ package org.ejbca.webtest.scenario;
 
 import static org.junit.Assert.assertEquals;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.webtest.WebTestBase;
 import org.ejbca.webtest.helper.EndEntityProfileHelper;
 import org.junit.AfterClass;
@@ -35,7 +36,7 @@ import org.openqa.selenium.WebDriver;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EcaQa128_EepCustomValidityFieldsValidation extends WebTestBase {
 
-    private static final Logger log = Logger.getLogger(EcaQa128_EepCustomValidityFieldsValidation.class);
+    private static final Logger log = LogManager.getLogger(EcaQa128_EepCustomValidityFieldsValidation.class);
 
     // Helpers
     private static EndEntityProfileHelper endEntityProfileHelper;

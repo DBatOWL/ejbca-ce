@@ -1,7 +1,8 @@
 package org.ejbca.core.protocol.config;
 
 import org.apache.http.HttpResponse;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.SystemTestsConfiguration;
 import org.cesecore.WebTestUtils;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -33,7 +34,7 @@ import java.io.IOException;
  */
 public class ProtocolConfigTest {
 
-    private static final Logger log = Logger.getLogger(ProtocolConfigTest.class);
+    private static final Logger log = LogManager.getLogger(ProtocolConfigTest.class);
     private static final String EXPECTED_403_REASON = "Forbidden";
     private static final String EXPECTED_WS_MESSAGE = "Web Services not enabled";
     

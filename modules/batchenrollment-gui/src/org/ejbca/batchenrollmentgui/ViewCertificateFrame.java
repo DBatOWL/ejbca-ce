@@ -27,7 +27,8 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Hex;
 
 /**
@@ -41,7 +42,7 @@ public class ViewCertificateFrame extends javax.swing.JFrame {
 
     /** Logger for this class. */
     private static final Logger LOG = 
-            Logger.getLogger(ViewCertificateFrame.class);
+            LogManager.getLogger(ViewCertificateFrame.class);
 
     private X509Certificate certificate;
 

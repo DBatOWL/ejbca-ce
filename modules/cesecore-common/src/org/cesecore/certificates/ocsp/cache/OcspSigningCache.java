@@ -24,7 +24,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
@@ -48,7 +49,7 @@ public enum OcspSigningCache {
     private Map<Integer, OcspSigningCacheEntry> staging = new HashMap<>();
     private OcspSigningCacheEntry defaultResponderCacheEntry = null;
     private final ReentrantLock lock = new ReentrantLock(false);
-    private final static Logger log = Logger.getLogger(OcspSigningCache.class);
+    private final static Logger log = LogManager.getLogger(OcspSigningCache.class);
     /** Flag to detect and log non-existence of a default responder once. */
     private boolean logDefaultHasRunOnce = false;
 

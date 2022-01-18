@@ -15,7 +15,8 @@ package org.cesecore.certificates.certificate.certextensions.standard;
 import java.security.PublicKey;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.x509.Extension;
 import org.bouncycastle.asn1.x509.GeneralNames;
@@ -35,7 +36,7 @@ import org.cesecore.util.CertTools;
  */
 public class IssuerAltNames extends StandardCertificateExtension {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(IssuerAltNames.class);
+    private static final Logger log = LogManager.getLogger(IssuerAltNames.class);
 
     @Override
     public void init(final CertificateProfile certProf) {

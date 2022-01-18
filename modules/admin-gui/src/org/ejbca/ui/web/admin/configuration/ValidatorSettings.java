@@ -18,7 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.util.ExternalScriptsAllowlist;
 import org.ejbca.config.GlobalConfiguration;
@@ -36,7 +37,7 @@ public class ValidatorSettings {
         void persistConfiguration(final GlobalConfiguration globalConfiguration) throws AuthorizationDeniedException;
     }
 
-    private final static Logger log = Logger.getLogger(ValidatorSettings.class);
+    private final static Logger log = LogManager.getLogger(ValidatorSettings.class);
     private final ValidatorSettingsHelper validatorSettingsHelper;
     private ArrayList<String> validationResult = new ArrayList<>();
     private String externalScriptsWhitelist;

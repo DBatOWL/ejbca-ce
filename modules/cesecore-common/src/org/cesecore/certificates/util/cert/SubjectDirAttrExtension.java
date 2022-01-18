@@ -22,7 +22,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1GeneralizedTime;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
@@ -45,7 +46,7 @@ import org.cesecore.util.CertTools;
  */
 public class SubjectDirAttrExtension extends CertTools {
 
-    private static final Logger log = Logger.getLogger(SubjectDirAttrExtension.class);
+    private static final Logger log = LogManager.getLogger(SubjectDirAttrExtension.class);
     
     /**
      * inhibits creation of new SubjectDirAttrExtension

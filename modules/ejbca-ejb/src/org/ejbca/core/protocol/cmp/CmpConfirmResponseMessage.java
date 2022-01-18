@@ -24,7 +24,8 @@ import java.util.Collection;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.DERNull;
 import org.bouncycastle.asn1.cmp.PKIBody;
@@ -56,7 +57,7 @@ public class CmpConfirmResponseMessage extends BaseCmpMessage implements Respons
 	 */
 	static final long serialVersionUID = 10003L;
 
-	private static final Logger log = Logger.getLogger(CmpConfirmResponseMessage.class);
+	private static final Logger log = LogManager.getLogger(CmpConfirmResponseMessage.class);
 	
     /** Default digest algorithm for CMP response message, can be overridden */
 	private String digestAlg = CMSSignedGenerator.DIGEST_SHA256;

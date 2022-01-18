@@ -24,7 +24,8 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.configuration.ConfigurationBase;
 import org.ejbca.core.model.ra.UsernameGeneratorParams;
 
@@ -35,7 +36,7 @@ public class ScepConfiguration extends ConfigurationBase implements Serializable
     
     private static final long serialVersionUID = -2051789798029184421L;
 
-    private static final Logger log = Logger.getLogger(ScepConfiguration.class);
+    private static final Logger log = LogManager.getLogger(ScepConfiguration.class);
     
     public enum Mode {
         CA("CA"), RA("RA");

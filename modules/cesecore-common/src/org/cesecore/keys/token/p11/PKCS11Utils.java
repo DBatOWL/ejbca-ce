@@ -15,7 +15,8 @@ package org.cesecore.keys.token.p11;
 import java.lang.reflect.Method;
 import java.security.Key;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.keys.token.p11.exception.P11RuntimeException;
 
 /**
@@ -49,7 +50,7 @@ import org.cesecore.keys.token.p11.exception.P11RuntimeException;
  * @version $Id$
  */
 public class PKCS11Utils {
-    private static final Logger log = Logger.getLogger(PKCS11Utils.class);
+    private static final Logger log = LogManager.getLogger(PKCS11Utils.class);
     private static PKCS11Utils p11utils = null;
     private final Method makeKeyUnmodifiable;
     private final Method isKeyModifiable;

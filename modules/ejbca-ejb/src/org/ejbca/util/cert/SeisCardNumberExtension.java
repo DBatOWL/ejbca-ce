@@ -16,7 +16,8 @@ package org.ejbca.util.cert;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Primitive;
 import org.bouncycastle.asn1.DERPrintableString;
 import org.cesecore.certificates.certificate.certextensions.standard.SeisCardNumber;
@@ -30,7 +31,7 @@ import org.cesecore.util.CertTools;
  */
 public class SeisCardNumberExtension extends CertTools {
 
-    private static Logger log = Logger.getLogger(SeisCardNumberExtension.class);
+    private static Logger log = LogManager.getLogger(SeisCardNumberExtension.class);
     
     /**
      * inhibits creation of new SubjectDirAttrExtension

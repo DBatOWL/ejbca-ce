@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.ejbca.issuechecker.Ticket;
 import org.ejbca.issuechecker.db.TicketRequest;
@@ -97,16 +97,16 @@ public class ConfigurationCheckerSessionBeanTest {
     @Test
     public void filterByTicketLevel() {
         final ConfigurationCheckerSessionLocal configurationCheckerSession = new ConfigurationCheckerSessionBeanPartialMock.Builder()
-                .withAvailableConfigurationIssues(ImmutableSet.of(new GreenIssue(2, Level.DEBUG), new RedIssue(1, Level.ERROR)))
+                .withAvailableConfigurationIssues(ImmutableSet.of(new GreenIssue(1, Level.DEBUG), new RedIssue(2, Level.ERROR)))
                 .withEnabledConfigurationSets(ImmutableSet.of(new GreenIssueSet(), new RedIssueSet()))
                 .buildLocal();
         final List<Ticket> tickets = configurationCheckerSession.getTickets(TicketRequest
                     .builder(getAuthenticationToken())
-                    .filterByLevel(Level.ERROR)
+                    .filterByLevel(Level.DEBUG)
                     .build())
                 .collect(Collectors.toList());
         assertEquals(1, tickets.size());
-        assertEquals("Red Ticket 1", tickets.get(0).getTicketDescription().toString());
+        assertEquals("Green Ticket 1", tickets.get(0).getTicketDescription().toString());
     }
     
     @Test

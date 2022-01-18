@@ -24,7 +24,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.keys.validation.KeyValidationFailedActions;
 import org.cesecore.util.CryptoProviderTools;
 import org.ejbca.core.model.validation.domainblacklist.DomainBlacklistAsciiLookalikeNormalizer;
@@ -37,7 +38,7 @@ import org.junit.Test;
  */
 public class DomainBlacklistValidatorUnitTest {
 
-    private static final Logger log = Logger.getLogger(DomainBlacklistValidatorUnitTest.class);
+    private static final Logger log = LogManager.getLogger(DomainBlacklistValidatorUnitTest.class);
 
     private static final byte[] BLACKLIST = ("bank\n" + 
             "forbidden.example.com\n" + 

@@ -20,7 +20,8 @@ import java.util.Set;
 import java.util.LinkedHashMap;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Methods for performing validation against of an end entity against validators
@@ -29,7 +30,7 @@ import org.apache.log4j.Logger;
  */
 public final class EndEntityValidationHelper {
 
-    private static final Logger log = Logger.getLogger(EndEntityValidationHelper.class);
+    private static final Logger log = LogManager.getLogger(EndEntityValidationHelper.class);
     
     private static Map<String,EndEntityFieldValidator> validatorCache = new HashMap<>();
     private static Set<String> nonExistentValidatorsCache = new HashSet<>();

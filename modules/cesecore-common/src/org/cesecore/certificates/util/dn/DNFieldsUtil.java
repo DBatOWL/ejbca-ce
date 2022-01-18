@@ -18,7 +18,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.CeSecoreNameStyle;
 
 /**
@@ -33,7 +34,7 @@ import org.cesecore.util.CeSecoreNameStyle;
  */
 public abstract class DNFieldsUtil {
 
-	private static final Logger LOG = Logger.getLogger(DNFieldsUtil.class);
+	private static final Logger LOG = LogManager.getLogger(DNFieldsUtil.class);
 	private static final int EMPTY = -1;
 	private static final String MSG_ERROR_MISSING_EQUAL = "DN field definition is missing the '=': ";
 	private static final String ATTRIBUTE_SEPARATOR = ",";

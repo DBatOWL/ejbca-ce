@@ -15,7 +15,8 @@ package org.cesecore.certificates.certificate.certextensions.standard;
 import java.security.PublicKey;
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.ASN1Sequence;
@@ -35,7 +36,7 @@ import org.cesecore.certificates.endentity.EndEntityInformation;
  */
 public class ExtendedKeyUsage extends StandardCertificateExtension {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(ExtendedKeyUsage.class);
+    private static final Logger log = LogManager.getLogger(ExtendedKeyUsage.class);
 
     @Override
 	public void init(final CertificateProfile certProf) {

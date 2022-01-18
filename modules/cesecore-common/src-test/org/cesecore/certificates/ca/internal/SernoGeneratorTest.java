@@ -19,7 +19,8 @@ import java.security.SecureRandom;
 import java.util.Date;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Integer;
 import org.junit.After;
 import org.junit.Before;
@@ -35,7 +36,7 @@ import static org.junit.Assume.assumeTrue;
  * Tests generation of serial numbers.
  */
 public class SernoGeneratorTest {
-    private static final Logger log = Logger.getLogger(SernoGeneratorTest.class);
+    private static final Logger log = LogManager.getLogger(SernoGeneratorTest.class);
 
     @Before
     public void before() { cleanup(); }

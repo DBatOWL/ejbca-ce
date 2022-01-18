@@ -28,7 +28,7 @@ import java.util.Date;
 import java.util.Enumeration;
 
 import org.apache.commons.lang.RandomStringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAConstants;
@@ -80,7 +80,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class KeyRecoveryImportCommand extends BaseRaCommand {
 
-    private static final Logger log = Logger.getLogger(KeyRecoveryImportCommand.class);
+    private static final Logger log = LogManager.getLogger(KeyRecoveryImportCommand.class);
 
     private static final String FILE_KEY = "-f";
     private static final String EE_PROFILE_KEY = "--eeprofile";

@@ -16,7 +16,8 @@ package org.ejbca.core.ejb.ca.caadmin;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assume.assumeTrue;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -37,7 +38,7 @@ import org.junit.Test;
  * @version $Id$
  */
 public class RemoveCATest extends CaTestCase {
-    private static final Logger log = Logger.getLogger(RemoveCATest.class);
+    private static final Logger log = LogManager.getLogger(RemoveCATest.class);
     private static final AuthenticationToken alwaysAllowAuthenticationToken = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal(RemoveCATest.class.getSimpleName()));
 
     private CaSessionRemote caSession = EjbRemoteHelper.INSTANCE.getRemoteSession(CaSessionRemote.class);

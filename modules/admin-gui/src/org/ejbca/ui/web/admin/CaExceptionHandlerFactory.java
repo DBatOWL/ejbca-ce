@@ -29,7 +29,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ExceptionQueuedEvent;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 
 /**
@@ -44,7 +45,7 @@ import org.cesecore.authentication.AuthenticationFailedException;
  */
 public class CaExceptionHandlerFactory extends ExceptionHandlerFactory {
 
-    private static final Logger log = Logger.getLogger(CaExceptionHandler.class);
+    private static final Logger log = LogManager.getLogger(CaExceptionHandler.class);
     public static final String REQUESTMAP_KEY = "org.ejbca.ui.web.admin.throwables";
     private static final String ERROR_PAGE = "/error.xhtml";
     private static final String LOGIN_PAGE = "/login.xhtml";

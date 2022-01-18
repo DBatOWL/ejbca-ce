@@ -74,7 +74,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 import org.bouncycastle.jce.ECNamedCurveTable;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -102,7 +103,7 @@ public class AzureCryptoToken extends BaseCryptoToken {
 
     private static final long serialVersionUID = 7719014139640717867L;
 
-    private static final Logger log = Logger.getLogger(AzureCryptoToken.class);
+    private static final Logger log = LogManager.getLogger(AzureCryptoToken.class);
     /**
      * Internal localization of logs and errors
      */

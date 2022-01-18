@@ -25,7 +25,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 
 /**
@@ -39,7 +40,7 @@ import org.junit.Test;
  */
 public class RaMasterApiTest {
     
-    private static final Logger log = Logger.getLogger(RaMasterApiTest.class);
+    private static final Logger log = LogManager.getLogger(RaMasterApiTest.class);
 
     @Test
     public void testUniqueMethodNames() {

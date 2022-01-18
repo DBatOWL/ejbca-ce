@@ -23,7 +23,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CesecoreException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -68,7 +69,7 @@ public class CADataHandler implements Serializable {
   
     private static final long serialVersionUID = 2132603037548273013L;
 
-    private static final Logger log = Logger.getLogger(CADataHandler.class);
+    private static final Logger log = LogManager.getLogger(CADataHandler.class);
 
     private AuthenticationToken administrator;
     

@@ -28,7 +28,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ExceptionQueuedEvent;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Custom ExceptionHandlerFactory to be able to process and present Exceptions in an orderly fashion.
@@ -42,7 +43,7 @@ import org.apache.log4j.Logger;
  */
 public class RaExceptionHandlerFactory extends ExceptionHandlerFactory {
 
-    private static final Logger log = Logger.getLogger(RaExceptionHandler.class);
+    private static final Logger log = LogManager.getLogger(RaExceptionHandler.class);
     public static final String REQUESTMAP_KEY = "org.ejbca.ra.jsfext.throwables";
     private static final String ERROR_PAGE = "/error.xhtml";
 

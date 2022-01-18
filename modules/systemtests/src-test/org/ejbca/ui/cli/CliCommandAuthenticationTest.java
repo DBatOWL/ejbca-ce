@@ -26,7 +26,8 @@ import java.util.Set;
 
 import javax.ejb.EJBException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.cesecore.authentication.tokens.AuthenticationSubject;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
@@ -53,12 +54,11 @@ import org.junit.Test;
  * This test class tests different aspects of cli authentication using a mock
  * cli command.
  * 
- * @version $Id$
  * 
  */
 public class CliCommandAuthenticationTest {
 
-    private static final Logger log = Logger.getLogger(CliCommandAuthenticationTest.class);
+    private static final Logger log = LogManager.getLogger(CliCommandAuthenticationTest.class);
 
     private MockCliCommand mockCliCommand;
     private EndEntityAccessSessionRemote endEntityAccessSession = EjbRemoteHelper.INSTANCE.getRemoteSession(EndEntityAccessSessionRemote.class);

@@ -20,7 +20,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.user.matchvalues.X500PrincipalAccessMatchValue;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.core.ejb.authentication.cli.CliUserAccessMatchValue;
@@ -33,7 +33,7 @@ import org.ejbca.ui.cli.infrastructure.command.EjbcaCliUserCommandBase;
  */
 public abstract class BaseRolesCommand extends EjbcaCliUserCommandBase {
 
-    private static final Logger log = Logger.getLogger(BaseRolesCommand.class);
+    private static final Logger log = LogManager.getLogger(BaseRolesCommand.class);
 
     private Map<String,String> resourceNameToResourceMap = null;
     private Map<String,String> resourceToResourceNameMap = null;

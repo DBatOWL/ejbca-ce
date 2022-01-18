@@ -29,7 +29,8 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CaSessionLocal;
@@ -60,7 +61,7 @@ public class MSAutoEnrollmentSettingsManagedBean extends BaseManagedBean {
     @ManagedProperty(value = "#{autoenrollmentConfigMBean}")
     private AutoenrollmentConfigMBean autoenrollmentConfigMBean;
     
-    private static final Logger log = Logger.getLogger(MSAutoEnrollmentSettingsManagedBean.class);
+    private static final Logger log = LogManager.getLogger(MSAutoEnrollmentSettingsManagedBean.class);
     private static final long serialVersionUID = 1L;
 
     private static final String HIDDEN_PWD = "**********";

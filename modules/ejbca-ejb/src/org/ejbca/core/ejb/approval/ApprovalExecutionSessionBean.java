@@ -23,7 +23,8 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.ErrorCode;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
@@ -73,7 +74,7 @@ import org.ejbca.core.model.authorization.AccessRulesConstants;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class ApprovalExecutionSessionBean implements ApprovalExecutionSessionLocal, ApprovalExecutionSessionRemote {
 
-	private static final Logger log = Logger.getLogger(ApprovalExecutionSessionBean.class);
+	private static final Logger log = LogManager.getLogger(ApprovalExecutionSessionBean.class);
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 
     @EJB

@@ -31,8 +31,9 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.bouncycastle.asn1.ASN1BitString;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1Integer;
@@ -77,7 +78,7 @@ import org.ejbca.core.protocol.cmp.authentication.RegTokenPasswordExtractor;
  */
 public class CrmfRequestMessage extends BaseCmpMessage implements ICrmfRequestMessage {
 	
-	private static final Logger log = Logger.getLogger(CrmfRequestMessage.class);
+	private static final Logger log = LogManager.getLogger(CrmfRequestMessage.class);
 	
     /**
      * Determines if a de-serialized file is compatible with this class.

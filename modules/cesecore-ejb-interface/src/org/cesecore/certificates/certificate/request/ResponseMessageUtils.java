@@ -18,7 +18,8 @@ import java.security.cert.Certificate;
 import java.util.Collection;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.Base64;
 
 /**
@@ -26,7 +27,7 @@ import org.cesecore.util.Base64;
  */
 public abstract class ResponseMessageUtils {
 
-    private static final Logger log = Logger.getLogger(ResponseMessageUtils.class);
+    private static final Logger log = LogManager.getLogger(ResponseMessageUtils.class);
     
     public static CertificateResponseMessage createResponseMessage(Class<? extends ResponseMessage> responseClass, RequestMessage req,
             Collection<Certificate> certs, PrivateKey signPriv, String provider) {

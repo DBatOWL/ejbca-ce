@@ -19,7 +19,8 @@ import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 import java.security.interfaces.RSAPublicKey;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1OutputStream;
 import org.bouncycastle.asn1.DERSet;
@@ -57,7 +58,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class SignSessionWithMfg1Test extends SignSessionCommon {
 
-    private static final Logger log = Logger.getLogger(SignSessionWithMfg1Test.class);
+    private static final Logger log = LogManager.getLogger(SignSessionWithMfg1Test.class);
 
     private static final AuthenticationToken internalAdmin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("Mfg1SignSessionTest"));
 

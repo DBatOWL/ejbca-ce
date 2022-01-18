@@ -17,7 +17,8 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.ejbca.config.GlobalConfiguration;
@@ -36,7 +37,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaWebBean;
  */
 public class EjbcaJSFHelperImpl implements EjbcaJSFHelper {
 
-	private static final Logger log = Logger.getLogger(EjbcaJSFHelperImpl.class);
+	private static final Logger log = LogManager.getLogger(EjbcaJSFHelperImpl.class);
 		
 	private org.ejbca.ui.web.jsf.configuration.EjbcaJSFLanguageResource text = null;
 	private EjbcaJSFImageResource image = null;

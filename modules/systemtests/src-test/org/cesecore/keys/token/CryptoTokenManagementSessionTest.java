@@ -22,7 +22,8 @@ import java.security.InvalidKeyException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.RoleUsingTestCase;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.control.CryptoTokenRules;
@@ -43,7 +44,7 @@ public class CryptoTokenManagementSessionTest extends RoleUsingTestCase {
 
     private static final CryptoTokenManagementSessionRemote cryptoTokenManagementSession = EjbRemoteHelper.INSTANCE.getRemoteSession(CryptoTokenManagementSessionRemote.class);
     private static final AuthenticationToken alwaysAllowToken = new TestAlwaysAllowLocalAuthenticationToken(CryptoTokenManagementSessionTest.class.getSimpleName());
-    private static final Logger log = Logger.getLogger(CryptoTokenManagementSessionTest.class);
+    private static final Logger log = LogManager.getLogger(CryptoTokenManagementSessionTest.class);
     
     @BeforeClass
     public static void setUpProviderAndCreateCA() throws Exception {

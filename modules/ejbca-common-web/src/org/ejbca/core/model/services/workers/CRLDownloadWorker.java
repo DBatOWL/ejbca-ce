@@ -23,7 +23,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.math.IntRange;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAConstants;
 import org.cesecore.certificates.ca.CAInfo;
@@ -55,7 +56,7 @@ import org.ejbca.core.model.services.ServiceExecutionResult.Result;
  * @version $Id$
  */
 public class CRLDownloadWorker extends BaseWorker {
-    private static final Logger log = Logger.getLogger(CRLDownloadWorker.class);
+    private static final Logger log = LogManager.getLogger(CRLDownloadWorker.class);
 
     public static final String PROP_IGNORE_NEXT_UPDATE = "ignoreNextUpdate";
     public static final String PROP_MAX_DOWNLOAD_SIZE = "maxDownloadSize";

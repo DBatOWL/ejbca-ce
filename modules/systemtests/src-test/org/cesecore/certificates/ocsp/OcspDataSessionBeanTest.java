@@ -19,7 +19,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.oscp.OcspResponseData;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.core.ejb.ocsp.OcspDataSessionRemote;
@@ -33,7 +34,7 @@ import org.junit.Test;
  *
  */
 public class OcspDataSessionBeanTest {
-    private static final Logger log = Logger.getLogger(OcspDataSessionBeanTest.class);
+    private static final Logger log = LogManager.getLogger(OcspDataSessionBeanTest.class);
 
     private final static EjbRemoteHelper ejbRemoteHelper = EjbRemoteHelper.INSTANCE;
     private final static OcspDataSessionRemote ocspDataSessionRemote = ejbRemoteHelper.getRemoteSession(OcspDataSessionRemote.class);

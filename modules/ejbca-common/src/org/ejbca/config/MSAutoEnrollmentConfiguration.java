@@ -26,7 +26,8 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.MSAutoEnrollmentSettingsTemplate;
 import org.cesecore.configuration.ConfigurationBase;
 
@@ -37,7 +38,7 @@ public class MSAutoEnrollmentConfiguration extends ConfigurationBase implements 
     private static final long serialVersionUID = 1L;
     public static final String CONFIGURATION_ID = "MS_AUTO_ENROLLMENT";
 
-    private static final Logger log = Logger.getLogger(MSAutoEnrollmentConfiguration.class);
+    private static final Logger log = LogManager.getLogger(MSAutoEnrollmentConfiguration.class);
     
     // Aliases 
     private final String ALIAS_LIST = "aliaslist";

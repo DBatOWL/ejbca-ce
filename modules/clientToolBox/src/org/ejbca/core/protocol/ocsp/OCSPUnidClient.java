@@ -53,7 +53,8 @@ import javax.net.ssl.TrustManagerFactory;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.ASN1TaggedObject;
@@ -109,7 +110,7 @@ public class OCSPUnidClient {
     final private X509Certificate[] certChain;
     final private Extensions extensions;
     final private byte nonce[];
-    private static final Logger m_log = Logger.getLogger(OCSPUnidClient.class);
+    private static final Logger m_log = LogManager.getLogger(OCSPUnidClient.class);
 	
 	/**
 	 * @param keystore KeyStore client keystore used to authenticate TLS client authentication, or null if TLS is not used

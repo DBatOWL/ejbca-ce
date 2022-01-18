@@ -15,7 +15,7 @@ package org.ejbca.ui.cli.config.est;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.ejbca.config.EstConfiguration;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
@@ -27,7 +27,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class DumpAllConfigCommand extends BaseEstConfigCommand {
 
-    private static final Logger log = Logger.getLogger(DumpAllConfigCommand.class);
+    private static final Logger log = LogManager.getLogger(DumpAllConfigCommand.class);
     
     @Override
     public String getMainCommand() {

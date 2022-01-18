@@ -29,7 +29,8 @@ import java.security.cert.CertificateException;
 import java.util.HashMap;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.util.AlgorithmConstants;
 import org.cesecore.certificates.util.AlgorithmTools;
 import org.cesecore.internal.InternalResources;
@@ -48,7 +49,7 @@ import org.cesecore.util.StringTools;
  */
 public abstract class CATokenTestBase {
 
-	private static final Logger log = Logger.getLogger(CATokenTestBase.class);
+	private static final Logger log = LogManager.getLogger(CATokenTestBase.class);
 	public static final String TOKEN_PIN = PKCS11TestUtils.getPkcs11SlotPin();
 	private static final String DEFAULT_KEY = "defaultKey ÅaÄÖbåäöc«»©“”nµA";
 	protected static final String ENCRYPTION_KEY = "encryptionKey ÅaÄbbÖcccäâãêëẽć©A";

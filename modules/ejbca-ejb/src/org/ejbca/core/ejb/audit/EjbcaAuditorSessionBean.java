@@ -26,7 +26,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.AuditLogEntry;
 import org.cesecore.audit.enums.ModuleTypes;
 import org.cesecore.audit.impl.integrityprotected.AuditRecordData;
@@ -47,7 +48,7 @@ import org.cesecore.config.CesecoreConfiguration;
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class EjbcaAuditorSessionBean implements EjbcaAuditorSessionLocal {
 
-    private static final Logger LOG = Logger.getLogger(EjbcaAuditorSessionBean.class);
+    private static final Logger LOG = LogManager.getLogger(EjbcaAuditorSessionBean.class);
     
     @PersistenceContext(unitName = CesecoreConfiguration.PERSISTENCE_UNIT)
     private EntityManager entityManager;

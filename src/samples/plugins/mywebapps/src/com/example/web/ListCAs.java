@@ -21,7 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -37,7 +38,7 @@ import org.ejbca.util.HTMLTools;
 public class ListCAs extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private final static Logger log = Logger.getLogger(ListCAs.class);
+    private final static Logger log = LogManager.getLogger(ListCAs.class);
 
     @EJB
     private CaSessionLocal caSession;

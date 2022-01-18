@@ -26,7 +26,8 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.AuditDevicesConfig;
 import org.cesecore.audit.AuditLogEntry;
 import org.cesecore.audit.impl.integrityprotected.IntegrityProtectedAuditorSessionLocal;
@@ -50,7 +51,7 @@ import org.cesecore.util.query.QueryCriteria;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class SecurityEventsAuditorSessionBean implements SecurityEventsAuditorSessionLocal, SecurityEventsAuditorSessionRemote {
 	
-	private static final Logger LOG = Logger.getLogger(SecurityEventsAuditorSessionBean.class);
+	private static final Logger LOG = LogManager.getLogger(SecurityEventsAuditorSessionBean.class);
 
     @EJB
     private AuthorizationSessionLocal authorizationSession;

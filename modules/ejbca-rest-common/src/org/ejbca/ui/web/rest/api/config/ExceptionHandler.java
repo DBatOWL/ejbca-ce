@@ -18,7 +18,8 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CesecoreException;
 import org.ejbca.core.EjbcaException;
 import org.ejbca.core.model.InternalEjbcaResources;
@@ -39,7 +40,7 @@ import org.ejbca.ui.web.rest.api.io.response.ExceptionInfoRestResponse.Exception
 @Provider
 public class ExceptionHandler implements ExceptionMapper<Exception> {
 
-    private static final Logger logger = Logger.getLogger(ExceptionHandler.class);
+    private static final Logger logger = LogManager.getLogger(ExceptionHandler.class);
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
     
     public static final int DEFAULT_ERROR_CODE = Status.INTERNAL_SERVER_ERROR.getStatusCode();

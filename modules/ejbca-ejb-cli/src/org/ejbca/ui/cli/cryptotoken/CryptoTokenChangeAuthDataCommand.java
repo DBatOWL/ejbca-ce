@@ -9,7 +9,7 @@
  *************************************************************************/
 package org.ejbca.ui.cli.cryptotoken;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.keys.token.CryptoTokenManagementSessionRemote;
 import org.cesecore.keys.token.CryptoTokenOfflineException;
@@ -29,7 +29,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CryptoTokenChangeAuthDataCommand extends BaseCryptoTokenCommand {
 
-    private static final Logger log = Logger.getLogger(CryptoTokenChangeAuthDataCommand.class);
+    private static final Logger log = LogManager.getLogger(CryptoTokenChangeAuthDataCommand.class);
 
     private static final String ALIAS = "--alias";
     private static final String CURRENT_KAK_TOKEN = "--current-kak-token";

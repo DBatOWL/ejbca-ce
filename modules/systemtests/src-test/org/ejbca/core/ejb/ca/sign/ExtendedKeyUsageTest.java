@@ -18,7 +18,8 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -68,7 +69,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class ExtendedKeyUsageTest extends CaTestCase {
       
-    private static final Logger log = Logger.getLogger(ExtendedKeyUsageTest.class);
+    private static final Logger log = LogManager.getLogger(ExtendedKeyUsageTest.class);
     
     private static final String CERT_PROFILE_NAME = "EXTKEYUSAGECERTPROFILE";
     private static final String EE_PROFILE_NAME = "EXTKEYUSAGEEEPROFILE";

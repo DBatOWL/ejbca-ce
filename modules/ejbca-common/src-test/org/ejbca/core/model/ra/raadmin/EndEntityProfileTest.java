@@ -20,7 +20,8 @@ import static org.junit.Assert.fail;
 import java.util.Collections;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificateprofile.CertificateProfile;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
 import org.cesecore.certificates.crl.RevokedCertInfo;
@@ -39,7 +40,7 @@ import org.junit.Test;
  */
 public class EndEntityProfileTest {
 
-    private static final Logger log = Logger.getLogger(EndEntityProfileTest.class);
+    private static final Logger log = LogManager.getLogger(EndEntityProfileTest.class);
 
     /** Dummy certificate profile */
     private static final CertificateProfile certProfile = new CertificateProfile(CertificateProfileConstants.CERTPROFILE_FIXED_ENDUSER);

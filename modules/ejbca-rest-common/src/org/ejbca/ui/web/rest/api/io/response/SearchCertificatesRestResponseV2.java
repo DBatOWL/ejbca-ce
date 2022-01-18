@@ -15,7 +15,8 @@ import java.security.cert.CertificateParsingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.certificates.certificate.Base64CertData;
 import org.cesecore.certificates.certificate.CertificateData;
@@ -31,7 +32,7 @@ import org.ejbca.ui.web.rest.api.io.request.PaginationSummary;
  */
 public class SearchCertificatesRestResponseV2 {
 
-    private static final Logger log = Logger.getLogger(SearchCertificatesRestResponseV2.class);
+    private static final Logger log = LogManager.getLogger(SearchCertificatesRestResponseV2.class);
     
     private List<CertificateRestResponseV2> certificates = new ArrayList<>();
     

@@ -21,6 +21,8 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectedData;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
@@ -35,6 +37,8 @@ import org.cesecore.util.GUIDGenerator;
 @Entity
 @Table(name = "SctData")
 public class SctData extends ProtectedData implements Serializable {
+    private static final Logger log = LogManager.getLogger(SctData.class);
+
     private static final long serialVersionUID = 1L;
 
     private static final int LATEST_PROTECT_VERSON = 1;

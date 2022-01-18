@@ -13,7 +13,8 @@
 
 package org.ejbca.core.ejb.ca.auth;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.ErrorCode;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
@@ -61,7 +62,7 @@ import java.util.Map;
 @Stateless(mappedName = JndiConstants.APP_JNDI_PREFIX + "EndEntityAuthenticationSessionRemote")
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class EndEntityAuthenticationSessionBean implements EndEntityAuthenticationSessionLocal, EndEntityAuthenticationSessionRemote {
-    private static final Logger log = Logger.getLogger(EndEntityAuthenticationSessionBean.class);
+    private static final Logger log = LogManager.getLogger(EndEntityAuthenticationSessionBean.class);
     @PersistenceContext(unitName="ejbca")
     private EntityManager entityManager;
     @EJB

@@ -32,7 +32,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.X509KeyUsage;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -63,7 +64,7 @@ import org.junit.Test;
 public class CertificateValidityTest {
 
     /** Class logger */
-    private static final Logger LOG = Logger.getLogger(CertificateValidityTest.class);
+    private static final Logger LOG = LogManager.getLogger(CertificateValidityTest.class);
 
     private static String CA_SUBJECT_DN = "CN=cacert";
    

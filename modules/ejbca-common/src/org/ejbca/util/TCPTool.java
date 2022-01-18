@@ -16,7 +16,8 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import com.novell.ldap.LDAPException;
 
@@ -25,7 +26,7 @@ import com.novell.ldap.LDAPException;
  * @version $Id$
  */
 public class TCPTool {
-    private static final Logger log = Logger.getLogger(TCPTool.class);
+    private static final Logger log = LogManager.getLogger(TCPTool.class);
 
 	/**
 	 * Probe a TCP port connection at hostname:port.  

@@ -25,7 +25,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Filter that prevents a browser to cache everything except resources like java script, css and images.
@@ -36,7 +37,7 @@ import org.apache.log4j.Logger;
 @WebFilter(filterName = "NoCacheFilter", urlPatterns = {"/*"})
 public class NoCacheFilter implements Filter {
 
-    private static final Logger log = Logger.getLogger(NoCacheFilter.class);
+    private static final Logger log = LogManager.getLogger(NoCacheFilter.class);
 
     @Override
     public void destroy() {

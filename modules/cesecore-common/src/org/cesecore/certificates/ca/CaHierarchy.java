@@ -27,7 +27,8 @@ import java.util.Set;
 import java.util.function.BiPredicate;
 import java.util.stream.Collectors;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * This class represents a CA hierarchy as an immutable graph. Each node in the graph contains
@@ -75,7 +76,7 @@ import org.apache.log4j.Logger;
  * @version $Id$
  */
 public class CaHierarchy<T> implements Comparable<CaHierarchy<T>>, Iterable<T> {
-    private static final Logger log = Logger.getLogger(CaHierarchy.class);
+    private static final Logger log = LogManager.getLogger(CaHierarchy.class);
 
     /**
      * The maximum permitted depth of a CA hierarchy.

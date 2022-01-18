@@ -23,11 +23,10 @@ import java.util.logging.Logger;
 /**
  * Use {@link #add()} to add a handler to {@link java.util.logging.Logger} that logs to {@link org.apache.log4j.Logger}
  * 
- * @version $Id$
  *
  */
 public class Log4jHandler extends Handler {
-	static private boolean isStarted = false;
+	private static boolean isStarted = false;
 	/**
 	 * Add handler to java sun logging that logs to log4j
 	 */
@@ -38,7 +37,7 @@ public class Log4jHandler extends Handler {
 		isStarted = true;
 		final Level logLevel = Level.FINEST;
 		final Logger rootLogger = Logger.getLogger("");
-		final Handler handlers[] = rootLogger.getHandlers();
+		final Handler[] handlers = rootLogger.getHandlers();
 		for ( int i=0; i<handlers.length; i++ ) {
 			rootLogger.removeHandler(handlers[i]);
 		}
@@ -61,43 +60,40 @@ public class Log4jHandler extends Handler {
 	public void flush() {
 		// do nothing
 	}
-	private org.apache.log4j.Level translateLevel( Level level ) {
+	private org.apache.logging.log4j.Level translateLevel( Level level ) {
 		if ( level.intValue() < Level.FINEST.intValue() ) {
-			return org.apache.log4j.Level.ALL;
+			return org.apache.logging.log4j.Level.ALL;
 		} else if ( level.intValue() <= Level.FINEST.intValue() ) {
-			return org.apache.log4j.Level.TRACE;
+			return org.apache.logging.log4j.Level.TRACE;
 		} else if ( level.intValue() <= Level.FINER.intValue() ) {
-			return org.apache.log4j.Level.DEBUG;
+			return org.apache.logging.log4j.Level.DEBUG;
 		} else if ( level.intValue() <= Level.FINE.intValue() ) {
-			return org.apache.log4j.Level.DEBUG;
+			return org.apache.logging.log4j.Level.DEBUG;
 		} else if ( level.intValue() <= Level.INFO.intValue() ) {
-			return org.apache.log4j.Level.INFO;
+			return org.apache.logging.log4j.Level.INFO;
 		} else if ( level.intValue() <= Level.WARNING.intValue() ) {
-			return org.apache.log4j.Level.WARN;
+			return org.apache.logging.log4j.Level.WARN;
 		} else if ( level.intValue() <= Level.SEVERE.intValue() ) {
-			return org.apache.log4j.Level.FATAL;
+			return org.apache.logging.log4j.Level.FATAL;
 		} else {
-			return org.apache.log4j.Level.OFF;
+			return org.apache.logging.log4j.Level.OFF;
 		}
 	}
 	/* (non-Javadoc)
 	 * @see java.util.logging.Handler#publish(java.util.logging.LogRecord)
 	 */
-	public void publish(LogRecord record) {
-		final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger( record.getSourceClassName() );
-		StringWriter stringWriter = new StringWriter();
-		PrintWriter printWriter = new PrintWriter(stringWriter);
-		printWriter.print(record.getSourceMethodName());
-		printWriter.print(": ");
-		printWriter.print(record.getMessage());
-		Object parameters[] = record.getParameters();
-		for ( int i=0; parameters!=null && i<parameters.length; i++ ) {
-			printWriter.println();
-			printWriter.print("{" + i +"} = " + parameters[i] );
-		}
-		logger.log( Log4jHandler.class.getCanonicalName(),
-		            translateLevel(record.getLevel()),
-		            stringWriter.toString(),
-		            record.getThrown() );
-	}
+    public void publish(LogRecord logRecord) {
+        final org.apache.logging.log4j.Logger logger = org.apache.logging.log4j.LogManager.getLogger(logRecord.getSourceClassName());
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter printWriter = new PrintWriter(stringWriter);
+        printWriter.print(logRecord.getSourceMethodName());
+        printWriter.print(": ");
+        printWriter.print(logRecord.getMessage());
+        Object[] parameters = logRecord.getParameters();
+        for (int i = 0; parameters != null && i < parameters.length; i++) {
+            printWriter.println();
+            printWriter.print("{" + i + "} = " + parameters[i]);
+        }
+        logger.log(translateLevel(logRecord.getLevel()), Log4jHandler.class.getCanonicalName(), stringWriter.toString(), logRecord.getThrown());
+    }
 }

@@ -23,7 +23,8 @@ import java.util.Iterator;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.RandomUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1OutputStream;
 import org.bouncycastle.asn1.cmp.PKIFailureInfo;
@@ -57,7 +58,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class CrmfRARequestCustomSerialNoTest extends CmpTestCase {
 
-    final private static Logger log = Logger.getLogger(CrmfRARequestCustomSerialNoTest.class);
+    final private static Logger log = LogManager.getLogger(CrmfRARequestCustomSerialNoTest.class);
 
     final private static String PBEPASSWORD = "password";
     final private String issuerDN;

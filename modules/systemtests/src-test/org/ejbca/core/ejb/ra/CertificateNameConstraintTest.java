@@ -9,7 +9,8 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.ASN1OctetString;
@@ -66,7 +67,7 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CertificateNameConstraintTest extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(CertificateNameConstraintTest.class);
+    private static final Logger log = LogManager.getLogger(CertificateNameConstraintTest.class);
 
     private static final String REPLACABLE_TAG = "$TAG$";
 

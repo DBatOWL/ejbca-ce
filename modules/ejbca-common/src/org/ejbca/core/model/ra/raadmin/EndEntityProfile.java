@@ -16,7 +16,8 @@ package org.ejbca.core.model.ra.raadmin;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.lang.time.FastDateFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.CAConstants;
 import org.cesecore.certificates.certificate.ssh.SshEndEntityProfileFields;
 import org.cesecore.certificates.certificateprofile.CertificateProfile;
@@ -98,7 +99,7 @@ import static org.cesecore.certificates.certificate.ssh.SshEndEntityProfileField
  */
 public class EndEntityProfile extends UpgradeableDataHashMap implements Serializable, Cloneable {
 
-    private static final Logger log = Logger.getLogger(EndEntityProfile.class);
+    private static final Logger log = LogManager.getLogger(EndEntityProfile.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

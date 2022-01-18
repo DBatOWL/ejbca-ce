@@ -13,7 +13,8 @@
 package org.ejbca.core.model.ra;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.endentity.EndEntityInformation;
 import org.cesecore.certificates.endentity.EndEntityType;
 import org.cesecore.certificates.endentity.EndEntityTypes;
@@ -39,7 +40,7 @@ import java.util.Map;
 public class EndEntityInformationFiller {
 
     /** For log purpose. */
-    private static final Logger log = Logger.getLogger(EndEntityInformationFiller.class.getName());
+    private static final Logger log = LogManager.getLogger(EndEntityInformationFiller.class.getName());
 
     /** This method fill user data with the default values from the specified profile.
      *

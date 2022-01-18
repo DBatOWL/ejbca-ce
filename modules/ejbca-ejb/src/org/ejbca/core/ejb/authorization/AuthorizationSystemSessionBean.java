@@ -30,7 +30,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.X509CertificateAuthenticationTokenMetaData;
@@ -74,7 +75,7 @@ import org.ejbca.core.model.authorization.AccessRulesConstants;
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class AuthorizationSystemSessionBean implements AuthorizationSystemSessionLocal, AuthorizationSystemSessionRemote {
 
-    private static final Logger log = Logger.getLogger(AuthorizationSystemSessionBean.class);
+    private static final Logger log = LogManager.getLogger(AuthorizationSystemSessionBean.class);
 
     @EJB
     private AuthorizationSessionLocal authorizationSession;

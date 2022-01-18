@@ -13,7 +13,7 @@
 
 package org.ejbca.ui.cli.ca;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.certificates.ca.CaSessionRemote;
@@ -34,7 +34,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaListFieldsCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaListFieldsCommand.class);
+    private static final Logger log = LogManager.getLogger(CaListFieldsCommand.class);
 
     private static final String CA_NAME_KEY = "--caname";
 

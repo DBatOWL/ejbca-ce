@@ -20,7 +20,8 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.ConfigurationHolder;
 import org.cesecore.config.OcspConfiguration;
 import org.cesecore.jndi.JndiConstants;
@@ -36,7 +37,7 @@ import org.ejbca.core.ejb.ocsp.OcspKeyRenewalSessionLocal;
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class OcspKeyRenewalProxySessionBean implements OcspKeyRenewalProxySessionRemote, OcspKeyRenewalProxySessionLocal {
 
-    private static final Logger log = Logger.getLogger(OcspKeyRenewalProxySessionBean.class);
+    private static final Logger log = LogManager.getLogger(OcspKeyRenewalProxySessionBean.class);
 
     @EJB
     private OcspKeyRenewalSessionLocal ocspKeyRenewalSession; 

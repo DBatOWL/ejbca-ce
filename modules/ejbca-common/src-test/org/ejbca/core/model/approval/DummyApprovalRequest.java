@@ -18,7 +18,8 @@ import java.io.ObjectOutput;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.util.CertTools;
 import org.ejbca.core.model.approval.profile.ApprovalProfile;
@@ -31,7 +32,7 @@ import org.ejbca.core.model.approval.profile.ApprovalProfile;
 public class DummyApprovalRequest extends ApprovalRequest {
 
 	private static final long serialVersionUID = -2L;
-	private static final Logger log = Logger.getLogger(DummyApprovalRequest.class);
+	private static final Logger log = LogManager.getLogger(DummyApprovalRequest.class);
 	private static final int LATEST_VERSION = 1;
 
 	private boolean executable = false;

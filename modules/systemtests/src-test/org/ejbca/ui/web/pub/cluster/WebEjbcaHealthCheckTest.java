@@ -25,7 +25,8 @@ import java.security.cert.X509Certificate;
 import java.util.Date;
 
 import org.apache.commons.fileupload.util.Streams;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.SystemTestsConfiguration;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.ca.X509CA;
@@ -59,7 +60,7 @@ import org.junit.Test;
  */
 public class WebEjbcaHealthCheckTest extends WebHealthTestAbstract {
 
-    private static final Logger log = Logger.getLogger(WebEjbcaHealthCheckTest.class);
+    private static final Logger log = LogManager.getLogger(WebEjbcaHealthCheckTest.class);
 
     private static final String CA_DN = "CN=WebEjbcaHealthCheckTestCA";
     private static final String SIGNER_DN = "CN=WebEjbcaHealthCheckTestOcspSigner";

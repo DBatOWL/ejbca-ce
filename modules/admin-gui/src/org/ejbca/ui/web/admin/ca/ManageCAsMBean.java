@@ -13,7 +13,8 @@
 package org.ejbca.ui.web.admin.ca;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.control.StandardRules;
 import org.cesecore.authorization.user.matchvalues.AccessMatchValue;
@@ -90,7 +91,7 @@ import java.util.zip.ZipInputStream;
 @ManagedBean
 @ViewScoped
 public class ManageCAsMBean extends BaseManagedBean implements Serializable {
-    protected static final Logger log = Logger.getLogger(ManageCAsMBean.class);
+    protected static final Logger log = LogManager.getLogger(ManageCAsMBean.class);
     private static final long serialVersionUID = 1L;
     @EJB
     private CaSessionLocal caSession;
@@ -199,7 +200,7 @@ public class ManageCAsMBean extends BaseManagedBean implements Serializable {
                         } catch (CertificateParsingException e) {
                             log.error("The zip entry " + unpackedFile.getFileName() + " could not be parsed. " +
                                     "Is the zip entry containing X.509 certificate(s) in PEM format?"
-                                            + e.getMessage(), null);
+                                            + e.getMessage());
                             errors.incrementAndGet();
                         } catch (AuthorizationDeniedException e) {
                             log.error(e.getMessage());
@@ -208,7 +209,7 @@ public class ManageCAsMBean extends BaseManagedBean implements Serializable {
                                 | CADoesntExistsException | EndEntityProfileValidationException | ApprovalException
                                 | WaitingForApprovalException | CustomFieldException e) {
                             log.error("Could not add end entity when processing file " + unpackedFile.getFileName() + ". "
-                                    + e.getMessage(), null);
+                                    + e.getMessage());
                             errors.incrementAndGet();
                         }
                     });

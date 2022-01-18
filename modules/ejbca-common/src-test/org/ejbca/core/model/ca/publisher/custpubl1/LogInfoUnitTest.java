@@ -18,7 +18,8 @@ import static org.junit.Assert.fail;
 
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 
 /**
@@ -28,7 +29,7 @@ import org.junit.Test;
  */
 public class LogInfoUnitTest {
 
-    private static final Logger log = Logger.getLogger(LogInfoUnitTest.class);
+    private static final Logger log = LogManager.getLogger(LogInfoUnitTest.class);
 
     @Test
     public void testConstructAndEncode() throws Exception {

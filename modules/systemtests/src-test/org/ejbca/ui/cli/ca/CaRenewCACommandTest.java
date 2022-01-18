@@ -23,7 +23,8 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.certificates.ca.CaSessionRemote;
@@ -45,7 +46,7 @@ import org.junit.Test;
 public class CaRenewCACommandTest extends CaTestCase {
     
 	/** Logger for this class. */
-	private static final Logger LOG = Logger.getLogger(CaRenewCACommandTest.class);
+	private static final Logger LOG = LogManager.getLogger(CaRenewCACommandTest.class);
 	
 	private static final AuthenticationToken internalAdmin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("CaRenewCACommandTest"));
     

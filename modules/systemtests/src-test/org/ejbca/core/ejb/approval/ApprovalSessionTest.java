@@ -27,7 +27,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationSubject;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
@@ -97,7 +98,7 @@ import static org.junit.Assert.fail;
  */
 public class ApprovalSessionTest extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(ApprovalSessionTest.class);
+    private static final Logger log = LogManager.getLogger(ApprovalSessionTest.class);
     private static final AuthenticationToken intadmin = new TestAlwaysAllowLocalAuthenticationToken(ApprovalSessionTest.class.getSimpleName());
 
     private static final String P12_FOLDER_NAME = "p12";

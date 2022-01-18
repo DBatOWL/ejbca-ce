@@ -19,7 +19,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.CA;
 import org.cesecore.certificates.ca.catoken.CATokenConstants;
 import org.cesecore.certificates.ca.extendedservices.ExtendedCAService;
@@ -45,7 +46,7 @@ import org.ejbca.util.crypto.CryptoTools;
 public class KeyRecoveryCAService extends ExtendedCAService implements Serializable {
 
 	private static final long serialVersionUID = 2400252746958812175L;
-    private static Logger log = Logger.getLogger(KeyRecoveryCAService.class);
+    private static Logger log = LogManager.getLogger(KeyRecoveryCAService.class);
 	/** Internal localization of logs and errors */
 	private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

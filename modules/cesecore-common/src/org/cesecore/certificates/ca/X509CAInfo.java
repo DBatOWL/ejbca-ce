@@ -28,7 +28,8 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.IntRange;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.catoken.CAToken;
 import org.cesecore.certificates.ca.extendedservices.ExtendedCAServiceInfo;
 import org.cesecore.certificates.certificate.CertificateConstants;
@@ -43,7 +44,7 @@ import org.cesecore.util.SimpleTime;
  */
 public class X509CAInfo extends CAInfo {
 
-    private static final Logger log = Logger.getLogger(X509CAInfo.class);
+    private static final Logger log = LogManager.getLogger(X509CAInfo.class);
     
 	private static final long serialVersionUID = 2L;
 	private List<CertificatePolicy> policies;

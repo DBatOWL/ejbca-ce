@@ -20,7 +20,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionRemote;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -41,7 +42,7 @@ import org.junit.Test;
  */
 public class LoggingStressTest {
 	
-	private static Logger log = Logger.getLogger(LoggingStressTest.class);
+	private static Logger log = LogManager.getLogger(LoggingStressTest.class);
 	
 	private static final int NUMBER_OF_THREADS = 20; 
 	private static final int TIME_TO_RUN = 15*60000; // Run for 15 minutes

@@ -19,7 +19,8 @@ import java.security.Principal;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationSubject;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
@@ -44,7 +45,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public abstract class PasswordUsingCommandBase extends CommandBase {
 
-    private static final Logger log = Logger.getLogger(PasswordUsingCommandBase.class);
+    private static final Logger log = LogManager.getLogger(PasswordUsingCommandBase.class);
 
     public static final String USERNAME_KEY = "-u";
     public static final String PASSWORD_PROMPT_KEY = "-p";

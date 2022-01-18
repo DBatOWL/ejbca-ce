@@ -19,7 +19,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.access.AuthorizationCacheReload;
 import org.cesecore.authorization.access.AuthorizationCacheReloadListener;
 import org.cesecore.config.CesecoreConfiguration;
@@ -34,7 +35,7 @@ import org.cesecore.internal.InternalResources;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class AccessTreeUpdateSessionBean implements AccessTreeUpdateSessionLocal {
 
-    private static final Logger LOG = Logger.getLogger(AccessTreeUpdateSessionBean.class);
+    private static final Logger LOG = LogManager.getLogger(AccessTreeUpdateSessionBean.class);
 
     @PersistenceContext(unitName = CesecoreConfiguration.PERSISTENCE_UNIT)
     private EntityManager entityManager;

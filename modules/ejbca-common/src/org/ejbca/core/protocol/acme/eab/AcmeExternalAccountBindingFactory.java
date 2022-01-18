@@ -20,7 +20,8 @@ import java.util.Map;
 import java.util.ServiceLoader;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.accounts.AccountBindingException;
 
 /**
@@ -32,7 +33,7 @@ public enum AcmeExternalAccountBindingFactory {
     INSTANCE;
 
     /** Object logger. */
-    private final Logger log = Logger.getLogger(AcmeExternalAccountBindingFactory.class);
+    private final Logger log = LogManager.getLogger(AcmeExternalAccountBindingFactory.class);
     
     /** Map with type/object pairs. */
     private Map<String, AcmeExternalAccountBinding> identifierToImplementationMap = new HashMap<>();

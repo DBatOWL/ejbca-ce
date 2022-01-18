@@ -12,7 +12,7 @@
  *************************************************************************/
 package org.ejbca.ui.cli.keybind;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.keybind.InternalKeyBindingMgmtSessionRemote;
 import org.cesecore.keybind.InternalKeyBindingStatus;
@@ -31,7 +31,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class InternalKeyBindingSetStatusCommand extends RudInternalKeyBindingCommand {
 
-    private static final Logger log = Logger.getLogger(InternalKeyBindingModifyCommand.class);
+    private static final Logger log = LogManager.getLogger(InternalKeyBindingModifyCommand.class);
 
     private static final String VALUE_KEY = "-v";
 

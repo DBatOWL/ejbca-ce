@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.certificates.ca.CAInfo;
@@ -42,7 +43,7 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DomainValidatorTest extends CaTestCase {
     
-    private static final Logger log = Logger.getLogger(DomainValidatorTest.class);
+    private static final Logger log = LogManager.getLogger(DomainValidatorTest.class);
     
     private static final String TEST_EEV_ROOT_CA_NAME = "testEEVRootCa";
     private static final String TEST_EEV_END_ENTITY_NAME = "testEEVEndEntity" + REPLACABLE_TAG;

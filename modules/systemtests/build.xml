@@ -213,7 +213,7 @@
         	encoding="UTF-8" classpathref="systemtests.classpath" target="${java.target.version}">
 			<classpath path="${systemtests.build.test.dir}"/>
 		</javac>
-		<copy file="${log4j.test.file}" tofile="${systemtests.build.test.dir}/log4j.xml" failonerror="true"/>
+		<copy file="${log4j2.test.file}" tofile="${systemtests.build.test.dir}/log4j2.xml" failonerror="true"/>
 		<!-- jndi.properties needs to be in the classpath, if it exists (not for glassfish) -->
 		<copy file="${jndi.properties.file}" todir="${systemtests.build.dir}" failonerror="false"/>
 		<copy file="${jboss-ejb-client.properties}" todir="${systemtests.build.dir}" failonerror="false"/>

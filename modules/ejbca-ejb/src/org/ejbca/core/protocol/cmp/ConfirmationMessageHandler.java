@@ -19,7 +19,8 @@ import java.security.NoSuchProviderException;
 import java.security.cert.X509Certificate;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.cmp.PKIHeader;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
@@ -55,7 +56,7 @@ import org.ejbca.core.ejb.EjbBridgeSessionLocal;
  */
 public class ConfirmationMessageHandler extends BaseCmpMessageHandler implements ICmpMessageHandler {
 	
-	private static final Logger LOG = Logger.getLogger(ConfirmationMessageHandler.class);
+	private static final Logger LOG = LogManager.getLogger(ConfirmationMessageHandler.class);
 	
 	/** Parameter used to determine the type of protection for the response message */
 	private String responseProtection = null;

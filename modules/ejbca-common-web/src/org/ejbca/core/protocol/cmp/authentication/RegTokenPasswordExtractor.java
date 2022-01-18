@@ -14,7 +14,8 @@
 package org.ejbca.core.protocol.cmp.authentication;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.DERUTF8String;
 import org.bouncycastle.asn1.cmp.PKIMessage;
@@ -32,7 +33,7 @@ import org.ejbca.core.protocol.cmp.CmpPKIBodyConstants;
  */
 public class RegTokenPasswordExtractor implements ICMPAuthenticationModule {
     
-    private static final Logger log = Logger.getLogger(RegTokenPasswordExtractor.class);
+    private static final Logger log = LogManager.getLogger(RegTokenPasswordExtractor.class);
 
     private String password;
     private String errorMessage;

@@ -12,7 +12,7 @@
  *************************************************************************/
 package org.ejbca.ui.cli.service;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.core.ejb.services.ServiceSessionRemote;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
@@ -25,7 +25,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class ServiceDeleteCommand extends BaseServiceCommand {
 
-    private static final Logger log = Logger.getLogger(ServiceDeleteCommand.class);
+    private static final Logger log = LogManager.getLogger(ServiceDeleteCommand.class);
 
     @Override
     public String getMainCommand() {

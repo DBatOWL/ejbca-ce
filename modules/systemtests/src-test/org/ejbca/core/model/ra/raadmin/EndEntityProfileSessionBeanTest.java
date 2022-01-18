@@ -22,7 +22,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CaTestUtils;
 import org.cesecore.RoleUsingTestCase;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -80,7 +81,7 @@ import static org.junit.Assert.fail;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EndEntityProfileSessionBeanTest extends RoleUsingTestCase {
-    private static final Logger log = Logger.getLogger(EndEntityProfileSessionBeanTest.class);
+    private static final Logger log = LogManager.getLogger(EndEntityProfileSessionBeanTest.class);
 
     private static final String ROLENAME = "EndEntityProfileSessionTest";
 

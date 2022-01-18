@@ -15,7 +15,8 @@ package org.ejbca.core.model.approval;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.config.EjbcaConfiguration;
 
 /**
@@ -65,7 +66,7 @@ ApprovalExecutorUtil.requireApproval checks all the rules and returns true or fa
  */
 public class ApprovalExecutorUtil {
       
-	private static final Logger log = Logger.getLogger(ApprovalExecutorUtil.class);
+	private static final Logger log = LogManager.getLogger(ApprovalExecutorUtil.class);
 	
 	/** These variables are protected to enable JUnit testing */
 	protected static String globallyAllowedString = EjbcaConfiguration.getApprovalExcludedClasses();

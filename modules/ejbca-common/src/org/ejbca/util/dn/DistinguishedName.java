@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.util.dn;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.util.DnComponents;
 
 import javax.naming.InvalidNameException;
@@ -38,7 +39,7 @@ import java.util.Map;
 public class DistinguishedName extends LdapName {
 
     private static final long serialVersionUID = -66612792695581203L;
-    private static final Logger log = Logger.getLogger(DistinguishedName.class);
+    private static final Logger log = LogManager.getLogger(DistinguishedName.class);
 
     /** Public constructor.
      * Note that this constructor (from LdapName) makes things reverted...

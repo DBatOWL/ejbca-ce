@@ -19,7 +19,8 @@ import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.keys.token.PKCS11SlotListWrapperFactory;
 
 /**
@@ -34,7 +35,7 @@ import org.cesecore.keys.token.PKCS11SlotListWrapperFactory;
  * The {@link #getInstance(File)} method must be called before any SunPKCS#11 provider is created.
  */
 public class SunP11SlotListWrapperFactory implements PKCS11SlotListWrapperFactory {
-    private static final Logger log = Logger.getLogger(SunP11SlotListWrapperFactory.class);
+    private static final Logger log = LogManager.getLogger(SunP11SlotListWrapperFactory.class);
 
     private static final int PRIORITY = 1;
     

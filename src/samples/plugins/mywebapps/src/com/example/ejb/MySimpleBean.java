@@ -17,7 +17,8 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.Local;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import com.example.entity.MyCounterData;
 
@@ -33,7 +34,7 @@ import javax.annotation.PostConstruct;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class MySimpleBean implements MySimpleBeanLocal {
 
-    private final static Logger log = Logger.getLogger(MySimpleBean.class);
+    private final static Logger log = LogManager.getLogger(MySimpleBean.class);
     
     private final static Integer FIXED_PK = 1;
     

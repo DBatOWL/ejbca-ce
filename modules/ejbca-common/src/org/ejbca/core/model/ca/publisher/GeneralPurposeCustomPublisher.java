@@ -23,7 +23,8 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x509.Extension;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.certificate.CertificateConstants;
@@ -39,7 +40,7 @@ import org.ejbca.core.model.InternalEjbcaResources;
  */
 public class GeneralPurposeCustomPublisher extends CustomPublisherUiBase implements ICustomPublisher {
     private static final long serialVersionUID = 1L;
-    private static Logger log = Logger.getLogger(GeneralPurposeCustomPublisher.class);
+    private static Logger log = LogManager.getLogger(GeneralPurposeCustomPublisher.class);
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 
     public static final String CRL_EXTERNAL_COMMAND_PROPERTY_NAME = "crl.application";

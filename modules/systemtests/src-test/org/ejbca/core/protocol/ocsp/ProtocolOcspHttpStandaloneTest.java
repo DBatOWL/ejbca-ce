@@ -41,7 +41,8 @@ import java.util.regex.Pattern;
 import javax.ejb.CreateException;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.ocsp.BasicOCSPResp;
@@ -96,7 +97,7 @@ import org.junit.rules.TestRule;
  */
 public class ProtocolOcspHttpStandaloneTest extends ProtocolOcspTestBase {
 
-    private static final Logger log = Logger.getLogger(ProtocolOcspHttpStandaloneTest.class);
+    private static final Logger log = LogManager.getLogger(ProtocolOcspHttpStandaloneTest.class);
     
     private static final String TESTCLASSNAME = ProtocolOcspHttpStandaloneTest.class.getSimpleName();
     private static final String CA_DN = "CN=OcspDefaultTestCA,O=Foo,C=SE";

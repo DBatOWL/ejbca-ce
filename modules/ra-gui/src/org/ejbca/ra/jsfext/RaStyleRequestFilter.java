@@ -32,7 +32,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 
 import org.apache.commons.io.output.ByteArrayOutputStream;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.config.RaStyleInfo;
 import org.cesecore.config.RaStyleInfo.RaCssInfo;
@@ -56,7 +57,7 @@ import org.ejbca.ra.RaAuthenticationHelper;
  */
 public class RaStyleRequestFilter implements Filter {
     private final String RA_LOGO_PATH = "/ejbca/ra/img/pk_logo.png";
-    private static Logger log = Logger.getLogger(RaStyleRequestFilter.class);
+    private static Logger log = LogManager.getLogger(RaStyleRequestFilter.class);
 
     @EJB
     private AdminPreferenceSessionLocal adminPreferenceSessionLocal;

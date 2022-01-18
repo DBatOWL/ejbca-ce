@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.cesecore.dbprotection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 
 /**
@@ -63,7 +64,7 @@ import org.apache.log4j.Logger;
  */
 public abstract class ProtectedData {
 
-    private static final Logger log = Logger.getLogger(ProtectedData.class);
+    private static final Logger log = LogManager.getLogger(ProtectedData.class);
 
     /** Implementation for the database protection method used */
     protected ProtectedDataImpl impl;

@@ -16,7 +16,7 @@ package org.ejbca.ui.cli.ra;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.endentity.EndEntityInformation;
 import org.cesecore.certificates.endentity.ExtendedInformation;
@@ -37,7 +37,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class FindEndEntityCommand extends BaseRaCommand {
 
-    private static final Logger log = Logger.getLogger(FindEndEntityCommand.class);
+    private static final Logger log = LogManager.getLogger(FindEndEntityCommand.class);
 
     private static final String COMMAND = "findendentity";
     private static final String OLD_COMMAND = "finduser";

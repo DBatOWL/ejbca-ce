@@ -18,7 +18,8 @@ import java.security.KeyPair;
 import java.security.cert.X509Certificate;
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1OutputStream;
 import org.bouncycastle.asn1.cmp.PKIMessage;
@@ -59,7 +60,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class CmpRAAuthenticationTest extends CmpTestCase {
 
-    private static final Logger LOG = Logger.getLogger(CmpRAAuthenticationTest.class);
+    private static final Logger LOG = LogManager.getLogger(CmpRAAuthenticationTest.class);
 
     private static final String CA_NAME_1 = "CmpRAAuthenticationTestCA1";
     private static final String CA_NAME_2 = "CmpRAAuthenticationTestCA2";

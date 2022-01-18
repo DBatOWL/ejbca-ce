@@ -27,7 +27,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.X509CertificateAuthenticationToken;
 import org.cesecore.authorization.control.StandardRules;
@@ -45,7 +46,7 @@ public class ProxiedAuthenticationFilter implements Filter {
 
 	private static final String ATTR_X509CERTIFICATE = "javax.servlet.request.X509Certificate";
     private static final String ATTR_PROXIED_AUTH_TOKEN_STRING = "proxiedAuthenticationTokenString";
-	private static final Logger log = Logger.getLogger(ProxiedAuthenticationFilter.class);
+	private static final Logger log = LogManager.getLogger(ProxiedAuthenticationFilter.class);
 	
 	private boolean proxiedAuthenticationEnabled = false;
 	

@@ -19,7 +19,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.audit.SecurityEventsAuditorSessionLocal;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
 import org.cesecore.authorization.AuthorizationSessionLocal;
@@ -84,7 +85,7 @@ import org.ejbca.statedump.ejb.StatedumpSessionLocal;
  */
 public class EjbLocalHelper implements EjbBridgeSessionLocal {
 	
-    private static final Logger log = Logger.getLogger(EjbLocalHelper.class);
+    private static final Logger log = LogManager.getLogger(EjbLocalHelper.class);
 	private static Context initialContext = null;
 	private static ReentrantLock initialContextLock = new ReentrantLock(true);
 	// Static is more performant, but a failed JEE5 lookup from one module would block all other JEE5 lookups

@@ -17,7 +17,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.access.AccessSet;
@@ -36,7 +37,7 @@ import org.junit.Test;
  */
 public class AuthorizationSystemSessionBeanTest {
 
-    private static final Logger log = Logger.getLogger(AuthorizationSystemSessionBeanTest.class);
+    private static final Logger log = LogManager.getLogger(AuthorizationSystemSessionBeanTest.class);
 
     private AuthorizationSystemSessionRemote authorizationSystemSession = EjbRemoteHelper.INSTANCE.getRemoteSession(AuthorizationSystemSessionRemote.class);
     private RoleInitializationSessionRemote roleInitializationSession = EjbRemoteHelper.INSTANCE.getRemoteSession(RoleInitializationSessionRemote.class,

@@ -21,7 +21,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Class containing logic for a list of scripts allowed to be executed by "External Command Validators".
@@ -29,7 +30,7 @@ import org.apache.log4j.Logger;
 public class ExternalScriptsAllowlist {
     
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(ExternalScriptsAllowlist.class);
+    private static final Logger log = LogManager.getLogger(ExternalScriptsAllowlist.class);
 
     private final List<File> scripts;
     private final boolean isEnabled;

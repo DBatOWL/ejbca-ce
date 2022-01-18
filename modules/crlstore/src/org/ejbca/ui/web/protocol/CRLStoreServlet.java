@@ -24,7 +24,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.CertificateConstants;
 import org.cesecore.certificates.certificate.HashID;
 import org.cesecore.certificates.crl.CrlStoreSessionLocal;
@@ -46,7 +47,7 @@ public class CRLStoreServlet extends StoreServletBase {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger log = Logger.getLogger(CRLStoreServlet.class);
+	private static final Logger log = LogManager.getLogger(CRLStoreServlet.class);
 	
 	private static final String PARAM_DELTACRL = "delta";
 	private static final String PARAM_CRLNUMBER = "crlnumber";

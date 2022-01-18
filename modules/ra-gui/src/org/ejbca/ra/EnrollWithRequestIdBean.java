@@ -44,7 +44,8 @@ import javax.faces.validator.ValidatorException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.pkcs.PKCS10CertificationRequest;
 import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequest;
@@ -93,7 +94,7 @@ import org.ejbca.core.model.ra.raadmin.EndEntityProfileValidationException;
 public class EnrollWithRequestIdBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(EnrollWithRequestIdBean.class);
+    private static final Logger log = LogManager.getLogger(EnrollWithRequestIdBean.class);
 
     protected String requestId;
     

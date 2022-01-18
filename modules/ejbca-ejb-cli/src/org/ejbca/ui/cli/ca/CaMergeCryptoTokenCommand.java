@@ -14,7 +14,7 @@ package org.ejbca.ui.cli.ca;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CADoesntExistsException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -43,7 +43,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaMergeCryptoTokenCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaMergeCryptoTokenCommand.class);
+    private static final Logger log = LogManager.getLogger(CaMergeCryptoTokenCommand.class);
     private static final String CA_NAME_KEY = "--caname";
     private static final String EXECUTE_KEY = "--execute";
     private static final String DELETE_KEY = "--delete";

@@ -16,7 +16,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.FastDateFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.DERSet;
@@ -219,7 +220,7 @@ import static org.junit.Assume.assumeTrue;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EjbcaWSTest extends CommonEjbcaWs {
 
-    private static final Logger log = Logger.getLogger(EjbcaWSTest.class);
+    private static final Logger log = LogManager.getLogger(EjbcaWSTest.class);
 
     public final static String WS_TEST_ROLENAME = "WsTestRoleMgmt";
     private final static String WS_TEST_CERTIFICATE_PROFILE_NAME = "WSTESTPROFILE";

@@ -16,7 +16,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.configuration.GlobalConfigurationProxySessionRemote;
@@ -41,7 +42,7 @@ import java.util.stream.Collectors;
  * @version $Id$
  */
 public class OcspResponseCleanupSessionBeanTest {
-    private static final Logger log = Logger.getLogger(OcspResponseCleanupSessionBeanTest.class);
+    private static final Logger log = LogManager.getLogger(OcspResponseCleanupSessionBeanTest.class);
     private static final EjbRemoteHelper ejbRemoteHelper = EjbRemoteHelper.INSTANCE;
 
     private static final OcspCleanupProxySessionRemote ocspCleanup = ejbRemoteHelper.getRemoteSession(OcspCleanupProxySessionRemote.class, EjbRemoteHelper.MODULE_TEST);

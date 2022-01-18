@@ -32,7 +32,8 @@ import javax.ws.rs.core.UriBuilder;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationNotProvidedException;
 import org.cesecore.authentication.oauth.OAuthGrantResponseInfo;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
@@ -54,7 +55,7 @@ import org.ejbca.util.HttpTools;
 @SessionScoped
 public class AdminLoginMBean extends BaseManagedBean implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(AdminLoginMBean.class);
+    private static final Logger log = LogManager.getLogger(AdminLoginMBean.class);
 
     private EjbcaWebBean ejbcaWebBean;
 

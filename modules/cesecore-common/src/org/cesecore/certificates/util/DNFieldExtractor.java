@@ -21,7 +21,8 @@ import java.util.List;
 import java.util.Locale;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.x500.AttributeTypeAndValue;
 import org.bouncycastle.asn1.x500.RDN;
@@ -39,7 +40,7 @@ public class DNFieldExtractor implements Serializable {
 
     private static final long serialVersionUID = -1313839342568999844L;
 
-    private static final Logger log = Logger.getLogger(DNFieldExtractor.class);
+    private static final Logger log = LogManager.getLogger(DNFieldExtractor.class);
     // Public constants
     public static final int TYPE_SUBJECTDN = 0;
     public static final int TYPE_SUBJECTALTNAME = 1;

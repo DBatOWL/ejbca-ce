@@ -15,7 +15,8 @@ package org.cesecore.certificates.certificate.certextensions.standard;
 import java.security.PublicKey;
 import java.util.ArrayList;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1Integer;
@@ -50,7 +51,7 @@ import org.cesecore.certificates.endentity.EndEntityInformation;
  */
 public class DocumentTypeList extends StandardCertificateExtension {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(DocumentTypeList.class);
+    private static final Logger log = LogManager.getLogger(DocumentTypeList.class);
 
     @Override
     public void init(final CertificateProfile certProf) {

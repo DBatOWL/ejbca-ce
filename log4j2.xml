@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Properties>
+		<Property name="basePath">${env:JBOSS_HOME}/standalone/log</Property>
+	</Properties>
+	<Appenders>
+
+<!-- 		<RollingFile name="NORMAL_LOG_FILE"
+			fileName="${basePath}/appUMS.log"
+			filePattern="${basePath}/appUMS.log.%d{yyyy-MM-dd-HH}">
+			<PatternLayout>
+				<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %c{1} %L- %msg%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+			<ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
+		</RollingFile> -->
+
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%highlight{%d [%t] %-5level: %msg%n%throwable}" />
+		</Console>
+
+	</Appenders>
+	<Loggers>
+		<Logger name="org.ejbca" level="info"/>
+		<Logger name="org.cesecore" level="info"/>
+
+ 		<Root level="info">
+			<AppenderRef ref="console" level="info"/>
+		</Root> 
+	</Loggers>
+</Configuration>
+

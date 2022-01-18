@@ -27,7 +27,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.cache.AccessTreeUpdateSessionLocal;
@@ -45,7 +46,7 @@ import org.cesecore.util.ProfileID;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class RoleMemberDataSessionBean implements RoleMemberDataSessionLocal, RoleMemberDataSessionRemote {
 
-    private static final Logger log = Logger.getLogger(RoleMemberDataSessionBean.class);
+    private static final Logger log = LogManager.getLogger(RoleMemberDataSessionBean.class);
 
     @EJB
     private AccessTreeUpdateSessionLocal accessTreeUpdateSession;

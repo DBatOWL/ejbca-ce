@@ -30,7 +30,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.util.CryptoProviderTools;
@@ -60,7 +61,7 @@ import org.ejbca.core.model.InternalEjbcaResources;
  */
 public class HealthCheckServlet extends HttpServlet {
 
-    private static final Logger log = Logger.getLogger(HealthCheckServlet.class);
+    private static final Logger log = LogManager.getLogger(HealthCheckServlet.class);
     private static final long serialVersionUID = 1L;
 
     /** Internal localization of logs and errors */

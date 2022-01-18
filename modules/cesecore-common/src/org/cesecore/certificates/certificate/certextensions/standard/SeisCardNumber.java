@@ -15,7 +15,8 @@ package org.cesecore.certificates.certificate.certextensions.standard;
 import java.security.PublicKey;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.DERPrintableString;
 import org.cesecore.certificates.ca.CA;
@@ -38,7 +39,7 @@ public class SeisCardNumber extends StandardCertificateExtension {
 
 	private static final long serialVersionUID = 1L;
 
-    private static final Logger log = Logger.getLogger(SeisCardNumber.class);
+    private static final Logger log = LogManager.getLogger(SeisCardNumber.class);
 
     /** OID for creating Smartcard Number Certificate Extension
      *  SEIS Cardnumber Extension according to SS 614330/31 */

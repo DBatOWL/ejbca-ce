@@ -59,7 +59,8 @@ import javax.persistence.QueryTimeoutException;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.CesecoreException;
 import org.cesecore.ErrorCode;
@@ -240,7 +241,7 @@ import org.ejbca.util.query.IllegalQueryException;
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class RaMasterApiSessionBean implements RaMasterApiSessionLocal {
 
-    private static final Logger log = Logger.getLogger(RaMasterApiSessionBean.class);
+    private static final Logger log = LogManager.getLogger(RaMasterApiSessionBean.class);
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 
     @EJB

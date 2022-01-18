@@ -14,7 +14,8 @@ package org.cesecore.util;
 
 import java.security.cert.Certificate;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Hex;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +28,7 @@ import static org.junit.Assert.assertNotNull;
  * @version $Id$
  */
 public class HexTest {
-    private static final Logger log = Logger.getLogger(HexTest.class);
+    private static final Logger log = LogManager.getLogger(HexTest.class);
 
     private static String testcert_oneline = ("MIIDATCCAmqgAwIBAgIIczEoghAwc3EwDQYJKoZIhvcNAQEFBQAwLzEPMA0GA1UE"
             + "AxMGVGVzdENBMQ8wDQYDVQQKEwZBbmFUb20xCzAJBgNVBAYTAlNFMB4XDTAzMDky"

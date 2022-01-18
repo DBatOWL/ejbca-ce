@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.certificates.ca.CaSessionLocal;
 import org.ejbca.issuechecker.ConfigurationIssue;

@@ -13,9 +13,23 @@
 
 package org.ejbca.ui.cli.ra;
 
-import org.apache.log4j.AppenderSkeleton;
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggingEvent;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.apache.logging.log4j.core.Filter;
+import org.apache.logging.log4j.core.Layout;
+import org.apache.logging.log4j.core.LogEvent;
+import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.core.appender.AbstractAppender;
+import org.apache.logging.log4j.core.config.Property;
+import org.apache.logging.log4j.core.layout.PatternLayout;
 import org.bouncycastle.jce.X509KeyUsage;
 import org.cesecore.CaTestUtils;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -41,15 +55,6 @@ import org.ejbca.util.query.UserMatch;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 /**
  * System test class for RA addendentity and setpwd commands
@@ -154,8 +159,13 @@ public class AddEndEntityCommandTest {
 
             // Append our test appender to the commands logger, so we can check the output of the command 
             // after running
-            final TestAppender appender1 = new TestAppender();
-            final Logger logger1 = command1.getLogger();
+            
+            PatternLayout layout = PatternLayout.newBuilder()
+                    .withPattern("%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%c] [%M] [%l] %level - %msg%n").build();
+            
+            final TestAppender appender1 = new TestAppender("TestAppender1", null, layout, false, null);
+            final Logger logger1 = (Logger) command1.getLogger();
+            appender1.start();
             logger1.addAppender(appender1);
             command1.execute(INVALIDUSER_PATH_SETPWDPWD_ARGS);
             col = endEntityAccessSession.query(admin, query, caauthstring, eeprofilestr, 0, AccessRulesConstants.CREATE_END_ENTITY);
@@ -167,13 +177,14 @@ public class AddEndEntityCommandTest {
             assertTrue(eeAuthSession.verifyPassword(admin, USER_NAME, "foo123", false));
             assertFalse(eeAuthSession.verifyPassword(admin, USER_NAME, "bar123", false));
             // Verify that we had a nice error message that the user did not exist
-            List<LoggingEvent> log = appender1.getLog();
-            assertEquals("End entity with username '"+USER_NAME_INVALID+"' does not exist.", log.get(1).getMessage());
+            List<LogEvent> log = appender1.getLog();
+            assertEquals("End entity with username '"+USER_NAME_INVALID+"' does not exist.", log.get(1).getMessage().toString());
 
             // Append our test appender to the commands logger, so we can check the output of the command 
             // after running
-            final TestAppender appender2 = new TestAppender();
-            final Logger logger2 = command2.getLogger();
+            final TestAppender appender2 = new TestAppender("TestAppender2", null, layout, false, null);
+            final Logger logger2 = (Logger) command2.getLogger();
+            appender2.start();
             logger2.addAppender(appender2);
             command2.execute(INVALIDUSER_PATH_SETCLEARPWD_ARGS);
             col = endEntityAccessSession.query(admin, query, caauthstring, eeprofilestr, 0, AccessRulesConstants.CREATE_END_ENTITY);
@@ -186,7 +197,9 @@ public class AddEndEntityCommandTest {
             assertFalse(eeAuthSession.verifyPassword(admin, USER_NAME, "foo123bar", false));
             // Verify that we had a nice error message that the user did not exist
             log = appender2.getLog();
-            assertEquals("End entity with username '"+USER_NAME_INVALID+"' does not exist.", log.get(1).getMessage());
+            assertEquals("End entity with username '"+USER_NAME_INVALID+"' does not exist.", log.get(1).getMessage().toString());
+            appender1.stop();
+            appender2.stop();
         } finally {
             try {
                 eeSession.deleteUser(admin, USER_NAME);
@@ -194,25 +207,20 @@ public class AddEndEntityCommandTest {
         }    
     }
     
-    class TestAppender extends AppenderSkeleton {
-        private final List<LoggingEvent> log = new ArrayList<LoggingEvent>();
+    class TestAppender extends AbstractAppender {
+        protected TestAppender(String name, Filter filter, Layout<? extends Serializable> layout, boolean ignoreExceptions, Property[] properties) {
+            super(name, filter, layout, ignoreExceptions, properties);
+        }
 
-        @Override
-        public boolean requiresLayout() {
-            return false;
+        private final List<LogEvent> log = new ArrayList<>();
+
+        public List<LogEvent> getLog() {
+            return log;
         }
 
         @Override
-        protected void append(final LoggingEvent loggingEvent) {
-            log.add(loggingEvent);
-        }
-
-        @Override
-        public void close() {
-        }
-
-        public List<LoggingEvent> getLog() {
-            return new ArrayList<LoggingEvent>(log);
+        public void append(LogEvent event) {
+            log.add(event);
         }
     }
 }

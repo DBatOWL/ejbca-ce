@@ -16,7 +16,8 @@ import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.jwk.AsymmetricJWK;
 import com.nimbusds.jose.jwk.JWK;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1Sequence;
 import org.bouncycastle.asn1.DERBMPString;
@@ -129,7 +130,7 @@ import java.util.List;
  * @version $Id$
  */
 public final class KeyTools {
-    private static final Logger log = Logger.getLogger(KeyTools.class);
+    private static final Logger log = LogManager.getLogger(KeyTools.class);
     private static final InternalResources intres = InternalResources.getInstance();
 
     private static final byte[] BAG_ATTRIBUTES = "Bag Attributes\n".getBytes();

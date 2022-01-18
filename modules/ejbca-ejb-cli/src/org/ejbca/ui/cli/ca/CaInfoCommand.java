@@ -17,7 +17,7 @@ import java.security.cert.Certificate;
 import java.security.interfaces.ECPublicKey;
 import java.util.ArrayList;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.spec.ECNamedCurveSpec;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.keys.util.KeyTools;
@@ -37,7 +37,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaInfoCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaInfoCommand.class);
+    private static final Logger log = LogManager.getLogger(CaInfoCommand.class);
     
     private static final String CA_NAME_KEY = "--caname";
     

@@ -26,7 +26,8 @@ import java.util.ServiceLoader;
 
 import javax.ejb.NoSuchEJBException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ui.cli.infrastructure.command.CliCommandPlugin;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
 
@@ -41,7 +42,7 @@ public enum CommandLibrary {
     private static final String TAB = "    ";
     private static final String DELIMITER = "--------------------------------\n";
 
-    private final Logger log = Logger.getLogger(CommandLibrary.class);
+    private final Logger log = LogManager.getLogger(CommandLibrary.class);
 
     private Branch root;
 

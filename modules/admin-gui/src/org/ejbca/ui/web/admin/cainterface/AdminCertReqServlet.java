@@ -24,7 +24,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CesecoreException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -109,7 +110,7 @@ import org.ejbca.ui.web.admin.rainterface.UserView;
 public class AdminCertReqServlet extends BaseAdminServlet {
 
     private static final long serialVersionUID = 1L;
-    private final static Logger log = Logger.getLogger(AdminCertReqServlet.class);
+    private final static Logger log = LogManager.getLogger(AdminCertReqServlet.class);
 
     private final static byte[] BEGIN_CERT = "-----BEGIN CERTIFICATE-----".getBytes();
     private final static int BEGIN_CERT_LENGTH = BEGIN_CERT.length;

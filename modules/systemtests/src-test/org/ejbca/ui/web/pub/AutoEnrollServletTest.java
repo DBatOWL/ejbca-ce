@@ -27,7 +27,8 @@ import java.security.cert.X509Certificate;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
 import org.bouncycastle.cms.CMSSignedData;
@@ -56,7 +57,7 @@ import org.junit.Test;
  */
 public class AutoEnrollServletTest {
 
-	private static Logger log = Logger.getLogger(AutoEnrollServletTest.class);
+	private static Logger log = LogManager.getLogger(AutoEnrollServletTest.class);
 
 	private EndEntityManagementSessionRemote endEntityManagementSession = EjbRemoteHelper.INSTANCE.getRemoteSession(EndEntityManagementSessionRemote.class);
 	private CertificateProfileSessionRemote certificateProfileSession = EjbRemoteHelper.INSTANCE.getRemoteSession(CertificateProfileSessionRemote.class);

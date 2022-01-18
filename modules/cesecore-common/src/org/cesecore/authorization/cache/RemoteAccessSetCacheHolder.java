@@ -15,7 +15,8 @@ package org.cesecore.authorization.cache;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.access.AccessSet;
 import org.cesecore.util.ConcurrentCache;
@@ -29,7 +30,7 @@ import org.cesecore.util.ConcurrentCache;
 @Deprecated
 public final class RemoteAccessSetCacheHolder {
     
-    private static final Logger log = Logger.getLogger(RemoteAccessSetCacheHolder.class);
+    private static final Logger log = LogManager.getLogger(RemoteAccessSetCacheHolder.class);
 
     // These fields are also modified by the test RemoteAccessSetCacheHolderTest
     private static volatile int lastUpdate = -1;

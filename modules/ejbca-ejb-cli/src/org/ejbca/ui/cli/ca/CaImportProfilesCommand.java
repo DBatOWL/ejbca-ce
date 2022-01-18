@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.certificates.ca.CaSessionRemote;
@@ -56,7 +56,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaImportProfilesCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaImportProfilesCommand.class);
+    private static final Logger log = LogManager.getLogger(CaImportProfilesCommand.class);
 
     private static final String DIRECTORY_KEY = "-d";
     private static final String CA_NAME_KEY = "--caname";

@@ -17,7 +17,8 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.cert.ocsp.CertificateID;
 import org.bouncycastle.cert.ocsp.OCSPException;
 import org.bouncycastle.cert.ocsp.RespID;
@@ -35,7 +36,7 @@ import org.cesecore.util.CertTools;
  */
 public class OcspSigningCacheEntry {
 
-    private static final Logger log = Logger.getLogger(OcspSigningCacheEntry.class);
+    private static final Logger log = LogManager.getLogger(OcspSigningCacheEntry.class);
     
     private final List<CertificateID> certificateID;
     private final List<X509Certificate> caCertificateChain;

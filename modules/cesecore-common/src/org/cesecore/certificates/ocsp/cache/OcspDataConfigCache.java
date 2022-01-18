@@ -22,7 +22,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
 import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
@@ -42,7 +43,7 @@ import org.cesecore.util.CertTools;
 public enum OcspDataConfigCache {
     INSTANCE;
     
-    private final static Logger log = Logger.getLogger(OcspDataConfigCache.class);
+    private final static Logger log = LogManager.getLogger(OcspDataConfigCache.class);
     
     private Map<Integer, OcspDataConfigCacheEntry> cache = new HashMap<>();
     private Map<Integer, OcspDataConfigCacheEntry> staging = new HashMap<>();

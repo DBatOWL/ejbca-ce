@@ -23,7 +23,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.util.dn.DNFieldsUtil;
 import org.cesecore.util.Base64GetHashMap;
 import org.cesecore.util.Base64PutHashMap;
@@ -39,7 +40,7 @@ import org.cesecore.util.XmlSerializer;
  */
 public class EndEntityInformation implements Serializable {
 
-    private static final Logger log = Logger.getLogger(EndEntityInformation.class);
+    private static final Logger log = LogManager.getLogger(EndEntityInformation.class);
 
     /**
      * Determines if a de-serialized file is compatible with this class.

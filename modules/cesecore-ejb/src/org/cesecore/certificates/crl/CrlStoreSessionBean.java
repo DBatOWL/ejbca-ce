@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.cesecore.certificates.crl;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
 import org.cesecore.audit.enums.ModuleTypes;
@@ -49,7 +50,7 @@ import java.util.Map;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class CrlStoreSessionBean implements CrlStoreSessionLocal, CrlStoreSessionRemote {
 
-    private static final Logger log = Logger.getLogger(CrlStoreSessionBean.class);
+    private static final Logger log = LogManager.getLogger(CrlStoreSessionBean.class);
 
     /** Internal localization of logs and errors */
     protected static final InternalResources intres = InternalResources.getInstance();

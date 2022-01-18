@@ -16,7 +16,8 @@ package org.cesecore.util.ui;
 import java.text.ParseException;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.internal.InternalResources;
 import org.cesecore.util.StringTools;
 import org.cesecore.util.ValidityDate;
@@ -28,7 +29,7 @@ public class DateValidator implements DynamicUiPropertyValidator<String> {
 
     private static final long serialVersionUID = 1L;
     
-    private static final Logger log = Logger.getLogger(DateValidator.class);
+    private static final Logger log = LogManager.getLogger(DateValidator.class);
     private static final InternalResources intres = InternalResources.getInstance();
     
     private static final String VALIDATOR_TYPE = "dateValidator";

@@ -23,7 +23,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.ASN1Sequence;
@@ -48,7 +49,7 @@ import org.junit.Test;
  */
 @SuppressWarnings("resource")
 public class QcStatementTest {
-    private static Logger log = Logger.getLogger(QcStatementTest.class);
+    private static Logger log = LogManager.getLogger(QcStatementTest.class);
 	
     @Test
     public void testQcStatement() throws CertificateExtensionException, IOException {

@@ -22,7 +22,8 @@ import java.security.KeyPair;
 import java.security.cert.X509Certificate;
 import java.util.Calendar;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x509.PrivateKeyUsagePeriod;
 import org.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -63,7 +64,7 @@ import org.junit.Test;
  * @version $Id$
  */
 public class PrivateKeyUsageSignSessionTest extends SignSessionCommon {
-    private static final Logger log = Logger.getLogger(PrivateKeyUsageSignSessionTest.class);
+    private static final Logger log = LogManager.getLogger(PrivateKeyUsageSignSessionTest.class);
 
     private static KeyPair rsakeyPrivKeyUsagePeriod;
 

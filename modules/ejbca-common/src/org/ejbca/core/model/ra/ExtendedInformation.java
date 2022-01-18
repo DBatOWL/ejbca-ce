@@ -22,7 +22,8 @@ import java.util.Locale;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.lang.time.FastDateFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Base64;
 import org.cesecore.internal.UpgradeableDataHashMap;
 import org.cesecore.util.ValidityDate;
@@ -41,7 +42,7 @@ import org.ejbca.core.model.InternalEjbcaResources;
  */
 @Deprecated
 public class ExtendedInformation extends UpgradeableDataHashMap implements java.io.Serializable, Cloneable {
-    private static final Logger log = Logger.getLogger(ExtendedInformation.class);
+    private static final Logger log = LogManager.getLogger(ExtendedInformation.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

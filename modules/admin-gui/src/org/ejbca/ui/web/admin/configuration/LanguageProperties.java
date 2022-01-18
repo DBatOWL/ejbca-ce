@@ -19,7 +19,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.internal.InternalResources;
 
 /** Properties bag that handles "double type encoding".
@@ -29,7 +30,7 @@ import org.cesecore.internal.InternalResources;
 public class LanguageProperties extends Properties {  
     private static final long serialVersionUID = -2652154499847668359L;
 
-    private static Logger log = Logger.getLogger(LanguageProperties.class);
+    private static Logger log = LogManager.getLogger(LanguageProperties.class);
     
 	private static final String keyValueSeparators = "=: \t\r\n\f";  
 	private static final String strictKeyValueSeparators = "=:";

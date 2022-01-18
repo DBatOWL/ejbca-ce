@@ -26,7 +26,8 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectedData;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
@@ -42,7 +43,7 @@ import org.cesecore.util.SecureXMLDecoder;
 public class AcmeAccountData extends ProtectedData implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(AcmeAccountData.class);
+    private static final Logger log = LogManager.getLogger(AcmeAccountData.class);
 
     private String accountId;
     private String currentKeyId;

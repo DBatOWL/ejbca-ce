@@ -32,7 +32,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
@@ -76,7 +77,7 @@ public class EndEntityAccessSessionBean implements EndEntityAccessSessionLocal, 
     /** Columns in the database used in select. */
     private static final String USERDATA_CREATED_COL = "timeCreated";
 
-    private static final Logger log = Logger.getLogger(EndEntityAccessSessionBean.class);
+    private static final Logger log = LogManager.getLogger(EndEntityAccessSessionBean.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

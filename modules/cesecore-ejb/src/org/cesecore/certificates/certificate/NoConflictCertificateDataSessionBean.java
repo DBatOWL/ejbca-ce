@@ -24,7 +24,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang.time.FastDateFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.crl.RevokedCertInfo;
 import org.cesecore.config.CesecoreConfiguration;
 import org.cesecore.util.ValidityDate;
@@ -38,7 +39,7 @@ import org.cesecore.util.ValidityDate;
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class NoConflictCertificateDataSessionBean extends BaseCertificateDataSessionBean implements NoConflictCertificateDataSessionLocal {
 
-    private final static Logger log = Logger.getLogger(NoConflictCertificateDataSessionBean.class);
+    private final static Logger log = LogManager.getLogger(NoConflictCertificateDataSessionBean.class);
 
     @PersistenceContext(unitName = CesecoreConfiguration.PERSISTENCE_UNIT)
     private EntityManager entityManager;

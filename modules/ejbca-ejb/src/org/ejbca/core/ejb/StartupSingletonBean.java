@@ -13,7 +13,8 @@
 
 package org.ejbca.core.ejb;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.audit.AuditDevicesConfig;
 import org.cesecore.audit.enums.EventStatus;
@@ -96,7 +97,7 @@ import java.util.Set;
 @TransactionManagement(TransactionManagementType.BEAN)  // By legacy we create a global config here this way
 public class StartupSingletonBean {
 
-    private static final Logger log = Logger.getLogger(StartupSingletonBean.class);
+    private static final Logger log = LogManager.getLogger(StartupSingletonBean.class);
     private final AuthenticationToken authenticationToken = new AlwaysAllowLocalAuthenticationToken("Application internal");
     
     @EJB

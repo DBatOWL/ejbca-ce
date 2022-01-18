@@ -26,7 +26,8 @@ import java.util.Set;
 
 import javax.crypto.spec.SecretKeySpec;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
 import org.bouncycastle.cms.CMSEnvelopedData;
 import org.bouncycastle.cms.CMSEnvelopedDataGenerator;
@@ -52,7 +53,7 @@ public class CryptoTools {
     
     public static final String BCRYPT_PREFIX = "$2a$";
     
-    private static final Logger log = Logger.getLogger(CryptoTools.class);
+    private static final Logger log = LogManager.getLogger(CryptoTools.class);
 
     /**
      * Creates the hashed password using the bcrypt algorithm, http://www.mindrot.org/projects/jBCrypt/

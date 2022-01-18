@@ -37,7 +37,8 @@ import java.security.cert.X509Certificate;
 import java.security.interfaces.RSAPublicKey;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1OutputStream;
 import org.bouncycastle.asn1.DERSet;
@@ -78,7 +79,7 @@ import static org.junit.Assert.assertTrue;
  * Tests http servlet for certificate request
  */
 public class CertRequestHttpTest extends CaTestCase {
-    private static Logger log = Logger.getLogger(CertRequestHttpTest.class);
+    private static Logger log = LogManager.getLogger(CertRequestHttpTest.class);
 
     private static final String TEST_USERNAME = "reqtest";
     private String httpReqPath;

@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.core.protocol;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1Integer;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
@@ -40,7 +41,7 @@ import java.util.Iterator;
 public class MSPKCS10RequestMessage extends PKCS10RequestMessage {
 	
 	private static final long serialVersionUID = 2936342787428871121L;
-    private static final Logger log = Logger.getLogger(MSPKCS10RequestMessage.class);
+    private static final Logger log = LogManager.getLogger(MSPKCS10RequestMessage.class);
 
 	public MSPKCS10RequestMessage() {
 		super();

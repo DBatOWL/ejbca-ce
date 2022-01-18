@@ -25,7 +25,8 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.cache.AccessTreeUpdateSessionLocal;
 import org.cesecore.config.CesecoreConfiguration;
 import org.cesecore.jndi.JndiConstants;
@@ -44,7 +45,7 @@ import org.cesecore.util.QueryResultWrapper;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class RoleDataSessionBean implements RoleDataSessionLocal, RoleDataSessionRemote {
 
-    private static final Logger log = Logger.getLogger(RoleDataSessionBean.class);
+    private static final Logger log = LogManager.getLogger(RoleDataSessionBean.class);
 
     @EJB
     private AccessTreeUpdateSessionLocal accessTreeUpdateSession;

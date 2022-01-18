@@ -18,7 +18,8 @@ import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.naming.directory.Attribute;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.MSAutoEnrollmentSettingsTemplate;
 import org.cesecore.util.TimeUnitFormat;
 
@@ -31,7 +32,7 @@ import net.tirasa.adsddl.ntsd.utils.GUID;
 
 public class LDAPAttributeHelper {
 
-    private static final Logger log = Logger.getLogger(LDAPAttributeHelper.class);
+    private static final Logger log = LogManager.getLogger(LDAPAttributeHelper.class);
     
     // XCEP Enrollment Flags
     // https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-xcep/cd22d3a0-f469-4a44-95ed-d10ce4dc2063

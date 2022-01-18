@@ -24,7 +24,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.roles.AccessRulesHelper;
 
 /**
@@ -36,7 +37,7 @@ import org.cesecore.roles.AccessRulesHelper;
 @Deprecated
 public final class AccessSet implements Serializable {
 
-    private static final Logger log = Logger.getLogger(AccessSet.class);
+    private static final Logger log = LogManager.getLogger(AccessSet.class);
     private static final long serialVersionUID = -6522714939328731306L;
 
     /**

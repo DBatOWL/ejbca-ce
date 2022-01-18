@@ -14,7 +14,8 @@ package org.cesecore.keys.token;
 
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.internal.InternalResources;
 import org.cesecore.keys.token.p11.P11Slot;
 import org.cesecore.keys.token.p11.P11SlotUser;
@@ -42,7 +43,7 @@ public class PKCS11CryptoToken extends BaseCryptoToken implements P11SlotUser {
     private static final long serialVersionUID = 7719014139640717867L;
 
     /** Log4j instance */
-    private static final Logger log = Logger.getLogger(PKCS11CryptoToken.class);
+    private static final Logger log = LogManager.getLogger(PKCS11CryptoToken.class);
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();
 

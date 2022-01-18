@@ -22,7 +22,8 @@ import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.event.ValueChangeListener;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import org.cesecore.util.ui.DynamicUiModel;
 import org.cesecore.util.ui.DynamicUiProperty;
@@ -38,7 +39,7 @@ public class JsfDynamicUiValueChangeListener implements Serializable, ValueChang
     private static final long serialVersionUID = -1L;
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(JsfDynamicUiValueChangeListener.class);
+    private static final Logger log = LogManager.getLogger(JsfDynamicUiValueChangeListener.class);
 
     /** DynamicUIProperty reference. */
     private DynamicUiProperty<?> dynamicUiProperty;

@@ -27,7 +27,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -45,7 +46,7 @@ import org.junit.Test;
  */
 public class AuthorizationCacheTest {
 
-    private static final Logger log = Logger.getLogger(AuthorizationCacheTest.class);
+    private static final Logger log = LogManager.getLogger(AuthorizationCacheTest.class);
     
     @Test
     public void testBasicOperations() throws InterruptedException, AuthenticationFailedException {

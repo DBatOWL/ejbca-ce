@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.cesecore.authorization;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
 import org.cesecore.audit.enums.ModuleTypes;
@@ -63,7 +64,7 @@ import java.util.Map.Entry;
 @Stateless(mappedName = JndiConstants.APP_JNDI_PREFIX + "AuthorizationSessionRemote")
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class AuthorizationSessionBean implements AuthorizationSessionLocal, AuthorizationSessionRemote {
-    private static final Logger log = Logger.getLogger(AuthorizationSessionBean.class);
+    private static final Logger log = LogManager.getLogger(AuthorizationSessionBean.class);
 
     @EJB
     private AccessTreeUpdateSessionLocal accessTreeUpdateSession;

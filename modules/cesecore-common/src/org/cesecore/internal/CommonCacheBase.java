@@ -20,7 +20,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Object and name to id lookup cache base implementation.
@@ -46,7 +47,7 @@ public abstract class CommonCacheBase<T> implements CommonCache<T> {
         }
     }
     
-    private static final Logger log = Logger.getLogger(CommonCacheBase.class);
+    private static final Logger log = LogManager.getLogger(CommonCacheBase.class);
     private Map<Integer, CacheEntry> cache = new HashMap<>();
     private Map<String, Integer> nameToIdMap = new HashMap<>();
 

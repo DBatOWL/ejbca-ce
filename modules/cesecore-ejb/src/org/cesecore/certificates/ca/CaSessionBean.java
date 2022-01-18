@@ -14,7 +14,8 @@ package org.cesecore.certificates.ca;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Base64;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.audit.enums.EventStatus;
@@ -97,7 +98,7 @@ import java.util.TreeSet;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class CaSessionBean implements CaSessionLocal, CaSessionRemote {
 
-    private static final Logger log = Logger.getLogger(CaSessionBean.class);
+    private static final Logger log = LogManager.getLogger(CaSessionBean.class);
 
     /* Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();

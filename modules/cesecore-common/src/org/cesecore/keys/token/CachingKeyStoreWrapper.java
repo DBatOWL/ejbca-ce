@@ -37,7 +37,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import javax.crypto.SecretKey;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Wrapper of a Java KeyStore to speed up key operations by caching key references.
@@ -49,7 +50,7 @@ import org.apache.log4j.Logger;
  */
 public class CachingKeyStoreWrapper {
     /** Similar to Java's KeyStore.Entry */
-    private static final Logger log = Logger.getLogger(CachingKeyStoreWrapper.class);
+    private static final Logger log = LogManager.getLogger(CachingKeyStoreWrapper.class);
     private final ReentrantLock updateLock = new ReentrantLock(false);
     private final KeyStore keyStore;
     private final KeyStoreCache keyStoreCache;

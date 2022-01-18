@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -50,7 +50,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CARepublishCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CARepublishCommand.class);
+    private static final Logger log = LogManager.getLogger(CARepublishCommand.class);
 
     private static final String CA_NAME_KEY = "--caname";
     private static final String ALL_KEY = "-all";

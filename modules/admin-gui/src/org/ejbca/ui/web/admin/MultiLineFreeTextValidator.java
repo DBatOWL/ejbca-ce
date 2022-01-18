@@ -20,7 +20,8 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
 import org.apache.commons.lang.CharSetUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
 
 /**
@@ -30,7 +31,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
  * @version $Id$
  */
 public class MultiLineFreeTextValidator implements Validator<Object> {
-    private static final Logger log = Logger.getLogger(MultiLineFreeTextValidator.class);
+    private static final Logger log = LogManager.getLogger(MultiLineFreeTextValidator.class);
 
     private static final String CONTROL_CHARS = "\u0000-\u0008\u000B\u000C\u000E-\u001F"; // all characters from 0x00-0x1F except 09 (tab), 0A (line feed) and 0D (carriage return)
 

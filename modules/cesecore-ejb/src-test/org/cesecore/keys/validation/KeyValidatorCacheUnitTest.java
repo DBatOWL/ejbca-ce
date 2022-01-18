@@ -16,7 +16,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.ConfigurationHolder;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,7 +29,7 @@ import org.junit.Test;
  */
 public class KeyValidatorCacheUnitTest {
 
-    private static final transient Logger log = Logger.getLogger(KeyValidatorCacheUnitTest.class);
+    private static final transient Logger log = LogManager.getLogger(KeyValidatorCacheUnitTest.class);
 
     // Validator names
     private static final String[] VALIDATOR_NAMES = new String[]{

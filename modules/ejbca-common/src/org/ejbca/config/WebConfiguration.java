@@ -18,7 +18,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.StringTools;
 import org.ejbca.util.SlotList;
 import org.ejbca.util.URIUtil;
@@ -28,7 +29,7 @@ import org.ejbca.util.URIUtil;
  */
 public class WebConfiguration {
 
-	private static final Logger log = Logger.getLogger(WebConfiguration.class);
+	private static final Logger log = LogManager.getLogger(WebConfiguration.class);
 	
 	public static final String CONFIG_HTTPSSERVERHOSTNAME  = "httpsserver.hostname";
 	public static final String CONFIG_HTTPSERVERPUBHTTP    = "httpserver.pubhttp";

@@ -21,7 +21,8 @@ import java.util.List;
 
 import javax.net.ssl.X509KeyManager;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Simple implementation for providing a private key and a certificate chain in SSL/TLS negotiations from the client.
@@ -30,7 +31,7 @@ import org.apache.log4j.Logger;
  */
 public class ClientX509KeyManager implements X509KeyManager {
     
-    private static final Logger log = Logger.getLogger(ClientX509KeyManager.class);
+    private static final Logger log = LogManager.getLogger(ClientX509KeyManager.class);
     
     private final String alias;
     private final PrivateKey privateKey;

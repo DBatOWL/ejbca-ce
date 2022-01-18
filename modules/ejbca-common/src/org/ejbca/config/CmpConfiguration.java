@@ -25,7 +25,8 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.configuration.ConfigurationBase;
 
 
@@ -36,7 +37,7 @@ public class CmpConfiguration extends ConfigurationBase implements Serializable 
 
     private static final long serialVersionUID = -2787354158199916828L;
 
-    private static final Logger log = Logger.getLogger(CmpConfiguration.class);
+    private static final Logger log = LogManager.getLogger(CmpConfiguration.class);
     
     // Constants: Authentication modules
     public static final String AUTHMODULE_REG_TOKEN_PWD         = "RegTokenPwd";

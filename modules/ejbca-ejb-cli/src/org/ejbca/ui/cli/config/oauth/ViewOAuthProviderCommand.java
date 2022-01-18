@@ -12,7 +12,7 @@
  *************************************************************************/
 package org.ejbca.ui.cli.config.oauth;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.cesecore.authentication.oauth.OAuthPublicKey;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
@@ -28,7 +28,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class ViewOAuthProviderCommand extends BaseOAuthConfigCommand {
     
-    private static final Logger log = Logger.getLogger(ViewOAuthProviderCommand.class);
+    private static final Logger log = LogManager.getLogger(ViewOAuthProviderCommand.class);
     
     private static final String LABEL = "--label";
     

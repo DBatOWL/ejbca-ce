@@ -17,7 +17,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.endentity.EndEntityInformation;
 import org.cesecore.certificates.endentity.ExtendedInformation;
 import org.cesecore.internal.UpgradeableDataHashMap;
@@ -33,7 +34,7 @@ import org.ejbca.core.model.InternalEjbcaResources;
 public class PublisherQueueVolatileInformation extends UpgradeableDataHashMap implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = 3423544212169635898L;
-    private static final Logger log = Logger.getLogger(PublisherQueueVolatileInformation.class);
+    private static final Logger log = LogManager.getLogger(PublisherQueueVolatileInformation.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

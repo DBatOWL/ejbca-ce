@@ -7,7 +7,8 @@ import java.lang.Thread.State;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.SecureXMLDecoder;
 import org.junit.Test;
 
@@ -16,7 +17,7 @@ import org.junit.Test;
  */
 public class UpgradeableDataHashMapTest {
     
-    static final Logger log = Logger.getLogger(UpgradeableDataHashMapTest.class);
+    static final Logger log = LogManager.getLogger(UpgradeableDataHashMapTest.class);
     
     /**
      * Test if UpgradeableDataHashMap is vulnerable to CVE-2010-4476 through

@@ -30,7 +30,8 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -56,7 +57,7 @@ import org.ejbca.core.model.ra.RevokeBackDateNotAllowedForProfileException;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class ImportCrlSessionBean implements ImportCrlSessionLocal, ImportCrlSessionRemote {
 
-    private static final Logger log = Logger.getLogger(ImportCrlSessionBean.class);
+    private static final Logger log = LogManager.getLogger(ImportCrlSessionBean.class);
 
     @EJB
     private CertificateStoreSessionLocal certStoreSession;

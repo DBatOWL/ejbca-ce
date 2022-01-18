@@ -57,7 +57,7 @@
 		<mkdir dir="${healthcheck-war.build-test.dir}" />
 		<javac srcdir="${healthcheck-war.src-test.dir}" destdir="${healthcheck-war.build-test.dir}" debug="on" includeantruntime="no"
         	encoding="UTF-8" target="${java.target.version}" classpathref="test.classpath"/>
-		<copy file="${log4j.test.file}" tofile="${healthcheck-war.build-test.dir}/log4j.xml" failonerror="true"/>
+		<copy file="${log4j2.test.file}" tofile="${healthcheck-war.build-test.dir}/log4j2.xml" failonerror="true"/>
 	</target>
 
 	<target name="test" depends="compile-tests">

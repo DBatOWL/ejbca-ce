@@ -22,7 +22,8 @@ import java.util.TimeZone;
 import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.PublicAccessAuthenticationToken;
 import org.cesecore.authentication.tokens.PublicWebPrincipal;
@@ -52,7 +53,7 @@ import org.ejbca.core.model.ra.raadmin.EndEntityProfile;
  */
 public class ApprovalRequestGUIInfo implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(ApprovalRequestGUIInfo.class);
+    private static final Logger log = LogManager.getLogger(ApprovalRequestGUIInfo.class);
     
     public static final class ApprovalGuiObject {
         private Approval approval;

@@ -18,7 +18,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -29,7 +30,7 @@ import org.junit.Test;
  */
 public class CryptoTokenFactoryTest {
 
-    private static final Logger log = Logger.getLogger(CryptoTokenFactoryTest.class);
+    private static final Logger log = LogManager.getLogger(CryptoTokenFactoryTest.class);
 
     private static int numBuiltinCryptoTokenTypes;
 

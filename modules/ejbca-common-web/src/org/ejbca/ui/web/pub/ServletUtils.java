@@ -2,7 +2,8 @@ package org.ejbca.ui.web.pub;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /** 
  * A class containing some helpful functions used in more than one Servlet, avoiding code duplication.
@@ -11,7 +12,7 @@ import org.apache.log4j.Logger;
  */
 public class ServletUtils {
 
-    private static final Logger log = Logger.getLogger(ServletUtils.class);
+    private static final Logger log = LogManager.getLogger(ServletUtils.class);
 
     /** Helper methods that removes no-cache headers from a response. No-cache headers 
      * makes IE refuse to save a file that is sent (for example a certificate). 

@@ -21,7 +21,8 @@ import java.util.Set;
 import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang.ObjectUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Comparator for sorting select items by displayed name.  
@@ -30,7 +31,7 @@ import org.apache.log4j.Logger;
 public class SelectItemComparator implements Comparator<SelectItem>, Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(SelectItemComparator.class);
+    private static final Logger log = LogManager.getLogger(SelectItemComparator.class);
     
     private final Set<Object> specialObjects;
     

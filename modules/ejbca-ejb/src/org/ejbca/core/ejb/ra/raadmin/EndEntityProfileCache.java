@@ -19,7 +19,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import javax.persistence.EntityManager;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.endentity.EndEntityConstants;
 import org.ejbca.config.EjbcaConfiguration;
 import org.ejbca.core.model.InternalEjbcaResources;
@@ -43,7 +44,7 @@ import org.ejbca.core.model.ra.raadmin.EndEntityProfile;
 public enum EndEntityProfileCache {
     INSTANCE;
 
-    private final Logger LOG = Logger.getLogger(EndEntityProfileCache.class);
+    private final Logger LOG = LogManager.getLogger(EndEntityProfileCache.class);
     /** Internal localization of logs and errors */
     private final InternalEjbcaResources INTRES = InternalEjbcaResources.getInstance();
 

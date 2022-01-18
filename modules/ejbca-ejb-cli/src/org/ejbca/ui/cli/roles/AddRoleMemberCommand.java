@@ -18,7 +18,7 @@ import java.util.List;
 
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.cesecore.authentication.tokens.AuthenticationTokenMetaData;
 import org.cesecore.authentication.tokens.OAuth2AuthenticationTokenMetaData;
@@ -50,7 +50,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class AddRoleMemberCommand extends BaseRolesCommand {
 
-    private static final Logger log = Logger.getLogger(AddRoleMemberCommand.class);
+    private static final Logger log = LogManager.getLogger(AddRoleMemberCommand.class);
 
     private static final String ROLE_NAME_KEY = "--role";
     private static final String CA_NAME_KEY = "--caname";

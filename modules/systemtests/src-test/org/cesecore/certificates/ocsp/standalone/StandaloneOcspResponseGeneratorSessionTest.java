@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.cesecore.certificates.ocsp.standalone;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.DEROctetString;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.bouncycastle.asn1.x500.X500Name;
@@ -142,7 +143,7 @@ import static org.junit.Assert.fail;
 public class StandaloneOcspResponseGeneratorSessionTest {
    
     private static final String TESTCLASSNAME = StandaloneOcspResponseGeneratorSessionTest.class.getSimpleName();
-    private static final Logger log = Logger.getLogger(StandaloneOcspResponseGeneratorSessionTest.class);
+    private static final Logger log = LogManager.getLogger(StandaloneOcspResponseGeneratorSessionTest.class);
  
     private String originalSigningTruststoreValidTime;
 

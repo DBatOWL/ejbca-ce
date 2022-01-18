@@ -19,7 +19,8 @@ import java.io.InputStream;
 import java.util.Locale;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.CesecoreConfiguration;
 import org.cesecore.internal.InternalResources;
 
@@ -34,7 +35,7 @@ import org.cesecore.internal.InternalResources;
  */
 public class InternalEjbcaResources extends InternalResources {
 
-    private static final Logger log = Logger.getLogger(InternalEjbcaResources.class);
+    private static final Logger log = LogManager.getLogger(InternalEjbcaResources.class);
 
     /**
      * Determines if a de-serialized file is compatible with this class.

@@ -23,7 +23,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
 import org.bouncycastle.jcajce.provider.asymmetric.rsa.BCRSAPublicKey;
 import org.cesecore.certificates.certificateprofile.CertificateProfile;
@@ -50,7 +51,7 @@ public class PublicKeyBlacklistKeyValidator extends KeyValidatorBase {
     private static final long serialVersionUID = 215729318959311916L;
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(PublicKeyBlacklistKeyValidator.class);
+    private static final Logger log = LogManager.getLogger(PublicKeyBlacklistKeyValidator.class);
 
     /** The key validator type. */
     private static final String TYPE_IDENTIFIER = "BLACKLIST_KEY_VALIDATOR";

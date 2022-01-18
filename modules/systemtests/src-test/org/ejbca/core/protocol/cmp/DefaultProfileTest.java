@@ -26,7 +26,8 @@ import java.util.Set;
 import javax.security.auth.x500.X500Principal;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1OutputStream;
@@ -99,7 +100,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class DefaultProfileTest extends CmpTestCase {
     
-    private static final Logger log = Logger.getLogger(AuthenticationModulesTest.class);
+    private static final Logger log = LogManager.getLogger(AuthenticationModulesTest.class);
 
     private static final String USERNAME = "DefaultProfileTestUser";
     private static final X500Name USERDN = new X500Name("CN=" + USERNAME);

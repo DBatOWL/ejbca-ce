@@ -21,7 +21,8 @@ import static org.junit.Assert.fail;
 import java.security.cert.X509Certificate;
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.icao.ICAOObjectIdentifiers;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
@@ -50,7 +51,7 @@ import org.junit.Test;
  * @version $Id$
  */
 public class RenewCANewSubjectDNTest extends CaTestCase {
-    private static final Logger log = Logger.getLogger(RenewCANewSubjectDNTest.class);
+    private static final Logger log = LogManager.getLogger(RenewCANewSubjectDNTest.class);
     private static final AuthenticationToken internalAdmin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("RenewCATest"));
     private static boolean backupEnableIcaoCANameChangeValue = false;
 

@@ -43,7 +43,8 @@ import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -76,7 +77,7 @@ import static org.junit.Assert.assertTrue;
  */
 public final class WebTestUtils {
 
-    private static final Logger log = Logger.getLogger(WebTestUtils.class);
+    private static final Logger log = LogManager.getLogger(WebTestUtils.class);
     
     public final static String USER_AGENT = "EJBCA-Test/1.0";
     public final static int DEFAULT_TIMEOUT = 30000;

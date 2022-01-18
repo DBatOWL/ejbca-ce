@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+/*************************************************************************
+ *                                                                       *
+ *  EJBCA: The OpenSource Certificate Authority                          *
+ *                                                                       *
+ *  This software is free software; you can redistribute it and/or       *
+ *  modify it under the terms of the GNU Lesser General Public           *
+ *  License as published by the Free Software Foundation; either         *
+ *  version 2.1 of the License, or any later version.                    *
+ *                                                                       *
+ *  See terms of license at gnu.org.                                     *
+ *                                                                       *
+ *************************************************************************/
+ -->
+
+<Configuration>
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT" >
+			<PatternLayout pattern="%d %-5p [%c] %m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<!-- Use full DEBUG for all EJBCA classes -->
+		<Logger name="org.ejbca" level="trace" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+
+		<Logger name="org.cesecore" level="trace" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+
+		<Logger name="org.hibernate.tool.hbm2ddl"
+			level="info" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+
+		<Logger name="org.hibernate"
+			level="info" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+
+		<!-- Set basic limit for console -->
+		<Root level="info">
+			<AppenderRef ref="console" level="trace"/>
+		</Root>
+	</Loggers>
+</Configuration>

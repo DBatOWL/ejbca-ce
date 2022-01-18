@@ -23,7 +23,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x509.ReasonFlags;
 import org.bouncycastle.cert.ocsp.SingleResp;
 import org.cesecore.CaTestUtils;
@@ -92,7 +93,7 @@ public class CertRevocationStatusCheckerTest extends CaTestCase {
     
     private final AuthenticationToken alwaysAllowToken = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal(
             "CertRevocationStatusCheckTest"));
-    private static final Logger log = Logger.getLogger(CertRevocationStatusCheckerTest.class);
+    private static final Logger log = LogManager.getLogger(CertRevocationStatusCheckerTest.class);
     
     private CaSessionRemote caSession = EjbRemoteHelper.INSTANCE.getRemoteSession(CaSessionRemote.class);
     private EndEntityManagementSessionRemote eeManagementSession = EjbRemoteHelper.INSTANCE.getRemoteSession(EndEntityManagementSessionRemote.class);

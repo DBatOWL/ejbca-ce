@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 import org.ejbca.issuechecker.ConfigurationIssue;
 import org.ejbca.issuechecker.Ticket;
 import org.ejbca.issuechecker.TicketDescription;
@@ -27,7 +27,6 @@ import org.ejbca.issuechecker.TicketDescription;
  * <code>{Red Ticket1, Red Ticket2... Red TicketN}</code> where <code>N</code> is specified 
  * when the mock is instantiated.
  * 
- * @version $Id$
  */
 public class RedIssue extends ConfigurationIssue {
     private final int ticketCount;

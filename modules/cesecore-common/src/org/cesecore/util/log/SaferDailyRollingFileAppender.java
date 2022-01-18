@@ -17,8 +17,9 @@ import java.io.File;
 import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.Logger;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.Core;
 import org.apache.logging.log4j.core.Filter;
@@ -37,7 +38,7 @@ public class SaferDailyRollingFileAppender extends NonFinalRollingFileAppender {
     
     public static final String PLUGIN_NAME = "SaferDailyRollingFileAppender";
 
-    private final static Logger LOGGER = Logger.getLogger(SaferDailyRollingFileAppender.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(SaferDailyRollingFileAppender.class.getName());
     
     private static SaferAppenderListener subscriber;
 

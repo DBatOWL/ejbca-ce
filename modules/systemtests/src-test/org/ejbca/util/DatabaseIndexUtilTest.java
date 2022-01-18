@@ -18,7 +18,8 @@ import static org.junit.Assert.assertNotNull;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.InternalCertificateStoreSessionRemote;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.util.DatabaseIndexUtil.DatabaseIndex;
@@ -31,7 +32,7 @@ import org.junit.Test;
  */
 public class DatabaseIndexUtilTest {
 
-    private static final Logger log = Logger.getLogger(DatabaseIndexUtilTest.class);
+    private static final Logger log = LogManager.getLogger(DatabaseIndexUtilTest.class);
     private final InternalCertificateStoreSessionRemote internalCertStoreSession = EjbRemoteHelper.INSTANCE.getRemoteSession(InternalCertificateStoreSessionRemote.class, EjbRemoteHelper.MODULE_TEST);
 
     @Test

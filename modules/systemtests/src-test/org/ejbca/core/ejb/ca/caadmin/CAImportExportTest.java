@@ -25,7 +25,8 @@ import java.security.cert.X509Certificate;
 import java.util.Date;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.cesecore.CaTestUtils;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -68,7 +69,7 @@ import static org.junit.Assert.fail;
  * @version $Id$
  */
 public class CAImportExportTest  {
-    private static Logger log = Logger.getLogger(CAImportExportTest.class);
+    private static Logger log = LogManager.getLogger(CAImportExportTest.class);
     private static CAInfo cainfo = null;
     
     private CAAdminSessionRemote caadminsession = EjbRemoteHelper.INSTANCE.getRemoteSession(CAAdminSessionRemote.class);

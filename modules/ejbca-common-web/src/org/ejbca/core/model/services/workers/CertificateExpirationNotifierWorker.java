@@ -19,7 +19,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.certificates.ca.CaSessionLocal;
@@ -43,7 +44,7 @@ import org.ejbca.core.model.services.actions.MailActionInfo;
  */
 public class CertificateExpirationNotifierWorker extends EmailSendingWorker {
 
-    private static final Logger log = Logger.getLogger(CertificateExpirationNotifierWorker.class);
+    private static final Logger log = LogManager.getLogger(CertificateExpirationNotifierWorker.class);
 
     private CertificateStoreSessionLocal certificateStoreSession;
     private transient List<Integer> certificateProfileIds;

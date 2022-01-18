@@ -15,7 +15,8 @@ package org.ejbca.util.query;
 
 import static org.junit.Assert.assertEquals;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.endentity.EndEntityConstants;
 import org.junit.Test;
 
@@ -26,7 +27,7 @@ import org.junit.Test;
  * @version $Id$
  */
 public class QueryTest {
-    private static Logger log = Logger.getLogger(QueryTest.class);
+    private static Logger log = LogManager.getLogger(QueryTest.class);
 
     @Test
     public void test01TestUserQuery() throws Exception {

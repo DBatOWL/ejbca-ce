@@ -19,7 +19,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.cert.X509Certificate;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.bouncycastle.cert.ocsp.BasicOCSPResp;
 import org.bouncycastle.cert.ocsp.OCSPException;
@@ -36,7 +37,7 @@ import org.cesecore.certificates.ocsp.exception.OcspFailureException;
 public class OcspResponseInformation implements Serializable {
 
     private static final long serialVersionUID = -4177593916232755218L;
-    private static final Logger log = Logger.getLogger(OcspResponseInformation.class);
+    private static final Logger log = LogManager.getLogger(OcspResponseInformation.class);
     private final byte[] ocspResponse;
     private final int status;
     private final long maxAge;

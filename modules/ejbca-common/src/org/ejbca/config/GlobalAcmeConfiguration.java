@@ -29,7 +29,7 @@ import org.cesecore.configuration.ConfigurationBase;
 public class GlobalAcmeConfiguration extends ConfigurationBase implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    //private static final Logger log = Logger.getLogger(GlobalAcmeConfiguration.class);
+    //private static final Logger log = LogManager.getLogger(GlobalAcmeConfiguration.class);
 
     public static final String ACME_CONFIGURATION_ID = "ACME";
     

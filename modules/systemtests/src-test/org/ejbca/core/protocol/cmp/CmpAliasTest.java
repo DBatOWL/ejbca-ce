@@ -20,7 +20,8 @@ import static org.junit.Assert.assertTrue;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.SystemTestsConfiguration;
 import org.cesecore.configuration.GlobalConfigurationSession;
 import org.cesecore.configuration.GlobalConfigurationSessionRemote;
@@ -39,7 +40,7 @@ import org.junit.Test;
 
 public class CmpAliasTest extends CmpTestCase {
     
-    private static final Logger log = Logger.getLogger(CmpAliasTest.class);
+    private static final Logger log = LogManager.getLogger(CmpAliasTest.class);
 
     private final GlobalConfigurationSession globalConfigurationSession = EjbRemoteHelper.INSTANCE.getRemoteSession(GlobalConfigurationSessionRemote.class);
 

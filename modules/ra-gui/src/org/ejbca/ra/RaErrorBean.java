@@ -22,7 +22,8 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.core.model.era.RaMasterBackendUnavailableException;
 import org.ejbca.ra.jsfext.RaExceptionHandlerFactory;
 
@@ -36,7 +37,7 @@ import org.ejbca.ra.jsfext.RaExceptionHandlerFactory;
 public class RaErrorBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RaErrorBean.class);
+    private static final Logger log = LogManager.getLogger(RaErrorBean.class);
 
     @ManagedProperty(value="#{raLocaleBean}")
     private RaLocaleBean raLocaleBean;

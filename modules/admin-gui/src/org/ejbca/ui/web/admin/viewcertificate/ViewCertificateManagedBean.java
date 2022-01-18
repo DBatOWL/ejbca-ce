@@ -29,7 +29,8 @@ import javax.faces.event.ComponentSystemEvent;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CADoesntExistsException;
 import org.cesecore.certificates.certificate.CertificateConstants;
@@ -53,7 +54,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaWebBean;
 @ViewScoped
 @ManagedBean(name="viewCertificateMBean")
 public class ViewCertificateManagedBean extends BaseManagedBean implements Serializable {
-    private static final Logger log = Logger.getLogger(ViewCertificateManagedBean.class);
+    private static final Logger log = LogManager.getLogger(ViewCertificateManagedBean.class);
 
     private static final long serialVersionUID = 1L;
     

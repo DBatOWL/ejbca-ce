@@ -30,7 +30,8 @@ import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectedData;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
@@ -50,7 +51,7 @@ import org.ejbca.core.model.services.ServiceConfiguration;
 public class ServiceData extends ProtectedData implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(ServiceData.class);
+	private static final Logger log = LogManager.getLogger(ServiceData.class);
 
 	private int id;
 	private String name;

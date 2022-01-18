@@ -26,7 +26,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.certificate.Base64CertData;
 import org.cesecore.certificates.certificate.CertificateData;
@@ -44,7 +45,7 @@ import org.cesecore.util.StringTools;
 public class CustomPublisherContainer extends BasePublisher {
 	private static final long serialVersionUID = -7060678968358301488L;
 
-    private static final Logger log = Logger.getLogger(CustomPublisherContainer.class);
+    private static final Logger log = LogManager.getLogger(CustomPublisherContainer.class);
 
     private ICustomPublisher custompublisher = null; 
 	

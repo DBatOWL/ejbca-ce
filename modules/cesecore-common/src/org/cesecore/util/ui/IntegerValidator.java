@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.cesecore.util.ui;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.internal.InternalResources;
 
 /**
@@ -21,7 +22,7 @@ import org.cesecore.internal.InternalResources;
 public final class IntegerValidator implements DynamicUiPropertyValidator<Integer> {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(IntegerValidator.class);
+    private static final Logger log = LogManager.getLogger(IntegerValidator.class);
     
     private static final long serialVersionUID = 8775592914355238649L;
 

@@ -21,7 +21,8 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.ui.DateValidator;
 import org.cesecore.util.ui.DynamicUiModel;
 import org.cesecore.util.ui.DynamicUiProperty;
@@ -29,7 +30,7 @@ import org.cesecore.util.ui.DynamicUiProperty;
 public abstract class KeyValidatorBase extends ValidatorBase implements KeyValidator {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(KeyValidatorBase.class);
+    private static final Logger log = LogManager.getLogger(KeyValidatorBase.class);
     
     private static final long serialVersionUID = 1L;
     

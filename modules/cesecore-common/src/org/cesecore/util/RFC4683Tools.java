@@ -22,7 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
@@ -58,7 +59,7 @@ public final class RFC4683Tools {
     /** OID for SIM written into the certificate. */
     public static final String SUBJECTIDENTIFICATIONMETHOD_OBJECTID = "1.3.6.1.5.5.7.8.6";
 
-    private static final Logger LOG = Logger.getLogger(RFC4683Tools.class);
+    private static final Logger LOG = LogManager.getLogger(RFC4683Tools.class);
 
     /**
      * Gets the allowed hash algorithm object identifiers (see <a href="https://tools.ietf.org/html/rfc4683#section-4.3">RFC 4683 section 4.3</a>).

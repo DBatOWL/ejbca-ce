@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.cesecore.util;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificateprofile.CertificatePolicy;
 import org.cesecore.certificates.certificateprofile.PKIDisclosureStatement;
 import org.junit.Test;
@@ -49,7 +50,7 @@ import static org.junit.Assert.fail;
 
 public class SecureXMLDecoderTest {
 
-    private static final Logger log = Logger.getLogger(SecureXMLDecoderTest.class);
+    private static final Logger log = LogManager.getLogger(SecureXMLDecoderTest.class);
     
     @Test
     public void testElementaryTypes() throws IOException {

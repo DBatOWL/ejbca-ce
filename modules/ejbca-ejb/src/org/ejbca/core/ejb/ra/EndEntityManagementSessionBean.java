@@ -14,7 +14,8 @@ package org.ejbca.core.ejb.ra;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.asn1.x500.X500NameStyle;
 import org.bouncycastle.asn1.x509.GeneralNames;
@@ -157,7 +158,7 @@ import java.util.Random;
 @Stateless(mappedName = JndiConstants.APP_JNDI_PREFIX + "EndEntityManagementSessionRemote")
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class EndEntityManagementSessionBean implements EndEntityManagementSessionLocal, EndEntityManagementSessionRemote {
-    private static final Logger log = Logger.getLogger(EndEntityManagementSessionBean.class);
+    private static final Logger log = LogManager.getLogger(EndEntityManagementSessionBean.class);
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 
     @PersistenceContext(unitName = "ejbca")

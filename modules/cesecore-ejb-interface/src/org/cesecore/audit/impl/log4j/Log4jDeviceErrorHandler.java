@@ -12,15 +12,12 @@
  *************************************************************************/
 package org.cesecore.audit.impl.log4j;
 
-import org.apache.log4j.Appender;
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.ErrorHandler;
-import org.apache.log4j.spi.LoggingEvent;
+import org.apache.logging.log4j.core.ErrorHandler;
+import org.apache.logging.log4j.core.LogEvent;
 
 /**
  * Custom wrapper for Log4J ErrorHandler, so we can check if logging was successful or not.
  * 
- * @version $Id$
  */
 public class Log4jDeviceErrorHandler implements ErrorHandler {
 	
@@ -47,36 +44,16 @@ public class Log4jDeviceErrorHandler implements ErrorHandler {
 		ok = false;
 	}
 
-	@Override
-	public void error(final String arg0, final Exception arg1, final int arg2) {
-		errorHandler.error(arg0, arg1, arg2);
-		ok = false;
-	}
+    @Override
+    public void error(String msg, Throwable t) {
+        errorHandler.error(msg, t);
+        ok = false;
+        
+    }
 
-	@Override
-	public void error(final String arg0, final Exception arg1, final int arg2, final LoggingEvent arg3) {
-		errorHandler.error(arg0, arg1, arg2, arg3);
-		ok = false;
-	}
-
-	@Override
-	public void setAppender(final Appender arg0) {
-		errorHandler.setAppender(arg0);
-	}
-
-	@Override
-	public void setBackupAppender(final Appender arg0) {
-		errorHandler.setBackupAppender(arg0);
-	}
-
-	@Override
-	public void setLogger(final Logger arg0) {
-		errorHandler.setLogger(arg0);
-	}
-
-	// EJBCAINTER-323 Removed.
-//	@Override
-	public void activateOptions() {
-//		errorHandler.activateOptions();
-	}
+    @Override
+    public void error(String msg, LogEvent event, Throwable t) {
+        errorHandler.error(msg, event, t);
+        ok = false;        
+    }
 }

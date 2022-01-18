@@ -22,7 +22,8 @@ import java.time.Instant;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.request.FailInfo;
 
 /**
@@ -34,7 +35,7 @@ public class ScepResponseInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private static final Logger log = Logger.getLogger(ScepResponseInfo.class);
+    private static final Logger log = LogManager.getLogger(ScepResponseInfo.class);
 
     // this will always be set
     private byte[] pkcs7Response;

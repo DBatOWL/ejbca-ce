@@ -30,7 +30,8 @@ import javax.activation.DataSource;
 import javax.mail.Multipart;
 import javax.mail.internet.MimeMultipart;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.SystemTestsConfiguration;
 import org.cesecore.certificates.certificate.HashID;
 import org.cesecore.util.EjbRemoteHelper;
@@ -48,7 +49,7 @@ import org.junit.Assert;
  *
  */
 public class CertFetchAndVerify {
-	private final static Logger log = Logger.getLogger(CertFetchAndVerify.class);
+	private final static Logger log = LogManager.getLogger(CertFetchAndVerify.class);
 	private final CertificateFactory cf;
 	CertFetchAndVerify() throws CertificateException {
 		this.cf = CertificateFactory.getInstance("X.509");

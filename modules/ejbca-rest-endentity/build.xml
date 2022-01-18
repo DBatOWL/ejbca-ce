@@ -76,7 +76,7 @@
 
 	<target name="compile-tests" depends="build">
 		<mkdir dir="${ejbca-rest-endentity.build-test.dir}" />
-		<copy file="${log4j.test.file}" tofile="${ejbca-rest-endentity.build-test.dir}/log4j.xml" failonerror="true"/>
+		<copy file="${log4j2.test.file}" tofile="${ejbca-rest-endentity.build-test.dir}/log4j2.xml" failonerror="true"/>
 		<copy file="${jndi.properties.file}" tofile="${ejbca-rest-endentity.build-test.dir}/jndi.properties" failonerror="true"/>
 		<copy file="${jboss-ejb-client.properties}" todir="${ejbca-rest-endentity.build-test.dir}" failonerror="true"/>
 		<javac srcdir="${ejbca-rest-endentity.src-test.dir}" destdir="${ejbca-rest-endentity.build-test.dir}" debug="on" includeantruntime="no"

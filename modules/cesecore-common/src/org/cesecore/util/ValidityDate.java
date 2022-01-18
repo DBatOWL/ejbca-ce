@@ -23,7 +23,8 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.lang.time.FastDateFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Class for encoding and decoding certificate validity and end date.
@@ -37,7 +38,7 @@ public class ValidityDate {
 	// Offset for period of time from notBefore through notAfter, inclusive. See ECA-9523, ECA-10327.
 	public static final long NOT_AFTER_INCLUSIVE_OFFSET = 1000;
 
-	private static final Logger log = Logger.getLogger(ValidityDate.class);
+	private static final Logger log = LogManager.getLogger(ValidityDate.class);
 	// Time format for storage where implied timezone is UTC
 	private static final String[] IMPLIED_UTC_PATTERN = {"yyyy-MM-dd HH:mm", "yyyy-MM-dd HH:mm:ss"};
 	private static final String[] IMPLIED_UTC_PATTERN_TZ = {"yyyy-MM-dd HH:mmZZ", "yyyy-MM-dd HH:mm:ssZZ"};

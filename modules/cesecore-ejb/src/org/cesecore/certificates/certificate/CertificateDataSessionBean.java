@@ -30,7 +30,8 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang.time.FastDateFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.crl.RevokedCertInfo;
 import org.cesecore.config.CesecoreConfiguration;
 import org.cesecore.util.QueryResultWrapper;
@@ -46,7 +47,7 @@ import org.cesecore.util.ValueExtractor;
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class CertificateDataSessionBean extends BaseCertificateDataSessionBean implements CertificateDataSessionLocal {
 
-    private static final Logger log = Logger.getLogger(CertificateDataSessionBean.class);
+    private static final Logger log = LogManager.getLogger(CertificateDataSessionBean.class);
 
     @PersistenceContext(unitName = CesecoreConfiguration.PERSISTENCE_UNIT)
     private EntityManager entityManager;

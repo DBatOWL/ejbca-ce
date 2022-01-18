@@ -24,7 +24,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import org.apache.commons.collections.MapUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationSessionLocal;
@@ -51,7 +52,7 @@ import org.ejbca.core.model.era.RaMasterApiProxyBeanLocal;
 public class RaAccessBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RaAccessBean.class);
+    private static final Logger log = LogManager.getLogger(RaAccessBean.class);
 
     private static final long CACHE_READ_TIMEOUT = 2000L; // milliseconds
 

@@ -28,7 +28,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.util.MapTools;
 import org.cesecore.util.ui.PropertyValidationException;
@@ -52,7 +53,7 @@ import org.junit.Test;
  * @version $Id$
  */
 public class MissingEmailConfigurationUnitTest {
-    private static final Logger log = Logger.getLogger(MissingEmailConfigurationUnitTest.class);
+    private static final Logger log = LogManager.getLogger(MissingEmailConfigurationUnitTest.class);
     
     private static final int APPROVALPROFILE1_ID = 51;
     private static final int APPROVALPROFILE2_ID = -345;

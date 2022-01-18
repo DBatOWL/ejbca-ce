@@ -21,7 +21,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.certificates.certificate.CertificateConstants;
@@ -67,7 +68,7 @@ import static org.junit.Assert.assertNull;
  */
 public class CertificateExpireTest extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(CertificateExpireTest.class);
+    private static final Logger log = LogManager.getLogger(CertificateExpireTest.class);
     private static final AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("CertificateExpireTest"));
     private static final String USERNAME = "CertificateExpireTest";
     private static final String PASSWORD = "foo123";

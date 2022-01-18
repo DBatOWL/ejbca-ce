@@ -18,7 +18,8 @@ import java.security.spec.ECPublicKeySpec;
 import java.util.Date;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1Sequence;
 import org.bouncycastle.asn1.x500.X500Name;
@@ -57,7 +58,7 @@ import static org.junit.Assume.assumeTrue;
  */
 public class ExtraAlgorithmsPKCS12Test {
     
-    private static final Logger log = Logger.getLogger(ExtraAlgorithmsPKCS12Test.class);
+    private static final Logger log = LogManager.getLogger(ExtraAlgorithmsPKCS12Test.class);
 
     @BeforeClass
     public static void beforeClass() throws Exception {

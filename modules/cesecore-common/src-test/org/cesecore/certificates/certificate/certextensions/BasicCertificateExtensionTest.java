@@ -25,7 +25,8 @@ import java.math.BigInteger;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Boolean;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1EncodableVector;
@@ -55,7 +56,7 @@ import org.junit.Test;
  * Tests encoding of the various encoding input/output formats of BasicCertificateExtension 
  */
 public class BasicCertificateExtensionTest {
-    private static Logger log = Logger.getLogger(BasicCertificateExtensionTest.class);
+    private static Logger log = LogManager.getLogger(BasicCertificateExtensionTest.class);
 	
     private static final InternalResources intres = InternalResources.getInstance();
         

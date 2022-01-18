@@ -13,7 +13,8 @@
 
 package org.ejbca.core.model.raadmin.userdatasource;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.endentity.EndEntityType;
 import org.cesecore.certificates.endentity.EndEntityTypes;
 import org.cesecore.certificates.endentity.PSD2RoleOfPSPStatement;
@@ -34,7 +35,7 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
 public class UserDataVOTest {
-    private final static Logger log = Logger.getLogger(UserDataVOTest.class);
+    private final static Logger log = LogManager.getLogger(UserDataVOTest.class);
 
     @Test
     public void testBasicEncodeDecodeXml() throws Exception {

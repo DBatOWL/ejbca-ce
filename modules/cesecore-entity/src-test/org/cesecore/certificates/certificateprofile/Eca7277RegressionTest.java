@@ -19,7 +19,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ObjectInputStream;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.ConfigurationHolder;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -56,7 +57,7 @@ import org.junit.Test;
 @Deprecated
 public class Eca7277RegressionTest {
     
-    private static final Logger log = Logger.getLogger(Eca7277RegressionTest.class);
+    private static final Logger log = LogManager.getLogger(Eca7277RegressionTest.class);
 
     private boolean isDatabaseProtectionImplementationAvailable() {
         try {

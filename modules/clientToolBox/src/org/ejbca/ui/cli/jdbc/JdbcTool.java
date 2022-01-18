@@ -27,7 +27,8 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ui.cli.ClientToolBox;
 
 /**
@@ -46,7 +47,7 @@ import org.ejbca.ui.cli.ClientToolBox;
  */
 public class JdbcTool extends ClientToolBox {
 
-    private static final Logger log = Logger.getLogger(JdbcTool.class);
+    private static final Logger log = LogManager.getLogger(JdbcTool.class);
 
     @Override
     protected String getName() {

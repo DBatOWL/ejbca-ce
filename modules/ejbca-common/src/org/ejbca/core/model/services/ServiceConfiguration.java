@@ -18,7 +18,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.internal.UpgradeableDataHashMap;
 import org.ejbca.core.model.InternalEjbcaResources;
 import org.ejbca.core.model.services.workers.EmailSendingWorkerConstants;
@@ -33,7 +34,7 @@ import org.ejbca.core.model.services.workers.EmailSendingWorkerConstants;
 public class ServiceConfiguration extends UpgradeableDataHashMap implements Serializable, Cloneable {
 
     private static final long serialVersionUID = -3094484762673017432L;
-    private static final Logger log = Logger.getLogger(ServiceConfiguration.class);
+    private static final Logger log = LogManager.getLogger(ServiceConfiguration.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
     

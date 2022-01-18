@@ -55,7 +55,8 @@ import javax.xml.bind.DatatypeConverter;
 import javax.xml.namespace.QName;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
@@ -212,7 +213,7 @@ import static org.junit.Assert.fail;
  */
 public abstract class CommonEjbcaWs extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(CommonEjbcaWs.class);
+    private static final Logger log = LogManager.getLogger(CommonEjbcaWs.class);
 
     protected static final String P12_FOLDER_NAME = "p12";
     protected static final String TEST_ADMIN_USERNAME = "wstest";

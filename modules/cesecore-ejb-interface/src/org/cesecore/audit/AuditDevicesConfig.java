@@ -27,7 +27,8 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.lang.time.FastDateFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.audit.AuditExporter;
 import org.cesecore.audit.impl.AuditExporterDummy;
 import org.cesecore.config.ConfigurationHolder;
@@ -43,7 +44,7 @@ import org.cesecore.util.ValidityDate;
  */
 public class AuditDevicesConfig {
 
-    private static final Logger log = Logger.getLogger(AuditDevicesConfig.class);
+    private static final Logger log = LogManager.getLogger(AuditDevicesConfig.class);
     private static final ReentrantLock lock = new ReentrantLock(false);
     private static Map<String, AuditLogDevice> loggers = null;
     private static final Map<String, Class<? extends AuditExporter>> exporters = new HashMap<String, Class<? extends AuditExporter>>();

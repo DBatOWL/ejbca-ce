@@ -15,7 +15,8 @@ package org.cesecore.util;
 
 import java.util.Random;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Shamelessly ripped from generated XDoclet source, because I don't want to generate util classes.
@@ -23,7 +24,7 @@ import org.apache.log4j.Logger;
  * @version $Id$
  */
 public class GUIDGenerator {
-    private static final Logger log = Logger.getLogger(GUIDGenerator.class);
+    private static final Logger log = LogManager.getLogger(GUIDGenerator.class);
 
     /** Cached per JVM server IP. */
     private static String hexServerIP = null;

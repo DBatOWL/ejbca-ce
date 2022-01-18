@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.cesecore.keybind.impl;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x509.KeyPurposeId;
 import org.cesecore.certificates.pinning.TrustEntry;
 import org.cesecore.util.CertTools;
@@ -35,7 +36,7 @@ import java.util.stream.Collectors;
  * @version $Id$
  */
 public class ClientX509TrustManager implements X509TrustManager {
-    private final Logger log = Logger.getLogger(ClientX509TrustManager.class);
+    private final Logger log = LogManager.getLogger(ClientX509TrustManager.class);
     private final List<TrustEntry> trustEntries;
     private List<X509Certificate> encounteredServerCertificateChain;
     

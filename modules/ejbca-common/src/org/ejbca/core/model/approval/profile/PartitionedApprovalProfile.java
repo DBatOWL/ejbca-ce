@@ -19,7 +19,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.user.AccessUserAspect;
@@ -40,7 +41,7 @@ public class PartitionedApprovalProfile extends ApprovalProfileBase {
 
     private static final long serialVersionUID = 6991912129797327010L;
 
-    private static final Logger log = Logger.getLogger(PartitionedApprovalProfile.class);
+    private static final Logger log = LogManager.getLogger(PartitionedApprovalProfile.class);
 
     private static final InternalResources intres = InternalResources.getInstance();
 

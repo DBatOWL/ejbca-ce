@@ -25,7 +25,8 @@ import java.net.URI;
 import java.net.URL;
 import java.security.cert.X509Certificate;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.Arrays;
 import org.cesecore.SystemTestsConfiguration;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -52,7 +53,7 @@ import org.junit.Test;
  * 
  */
 public class CrlStoreServletTest extends CaTestCase {
-	private final static Logger log = Logger.getLogger(CrlStoreServletTest.class);
+	private final static Logger log = LogManager.getLogger(CrlStoreServletTest.class);
 
 	private final CAAdminSessionRemote caAdminSession = EjbRemoteHelper.INSTANCE.getRemoteSession(CAAdminSessionRemote.class);
 	private final CaSessionRemote caSession = EjbRemoteHelper.INSTANCE.getRemoteSession(CaSessionRemote.class);

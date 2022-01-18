@@ -13,7 +13,8 @@
 package org.ejbca.core.model.services.workers;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.core.ejb.ca.publisher.PublisherQueueSessionLocal;
 import org.ejbca.core.ejb.ca.publisher.PublisherSessionLocal;
 import org.ejbca.core.ejb.ca.publisher.PublishingResult;
@@ -36,7 +37,7 @@ import java.util.Map;
  */
 public class PublishQueueProcessWorker extends EmailSendingWorker {
 
-    private static final Logger log = Logger.getLogger(PublishQueueProcessWorker.class);
+    private static final Logger log = LogManager.getLogger(PublishQueueProcessWorker.class);
 
     public static final String PROP_PUBLISHER_IDS = "publisherids";
 

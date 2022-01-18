@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.cesecore.config;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -25,7 +26,7 @@ import java.util.regex.Pattern;
  */
 public final class CesecoreConfiguration {
 
-    private static final Logger log = Logger.getLogger(CesecoreConfiguration.class);
+    private static final Logger log = LogManager.getLogger(CesecoreConfiguration.class);
 
     public static final String CUSTOM_CLASS_WHITELIST_KEY = "custom.class.whitelist";
     

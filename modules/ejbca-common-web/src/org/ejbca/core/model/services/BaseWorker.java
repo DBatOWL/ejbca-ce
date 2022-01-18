@@ -18,7 +18,8 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.ca.CAConstants;
 import org.cesecore.certificates.ca.CaSessionLocal;
@@ -35,7 +36,7 @@ public abstract class BaseWorker implements IWorker {
     private static final String ERROR_EXPIRE_WORKER_MISCONFIG = "services.errorexpireworker.errorconfig";
     private static final String ERROR_ACTION_CLASSPATH_MISCONFIG = "services.erroractionclasspath";
     
-	private static final Logger log = Logger.getLogger(BaseWorker.class);
+	private static final Logger log = LogManager.getLogger(BaseWorker.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

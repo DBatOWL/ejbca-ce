@@ -26,7 +26,8 @@ import java.util.TreeSet;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.cesecore.util.CeSecoreNameStyle;
 
@@ -38,7 +39,7 @@ import org.cesecore.util.CeSecoreNameStyle;
  * seemingly similar contents. 
  */
 public class DnComponents {
-    private static Logger log = Logger.getLogger(DnComponents.class);
+    private static Logger log = LogManager.getLogger(DnComponents.class);
 
     /** This class should be instantiated immediately */
     private static DnComponents obj = new DnComponents();

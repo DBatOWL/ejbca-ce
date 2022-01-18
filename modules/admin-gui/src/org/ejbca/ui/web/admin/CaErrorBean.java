@@ -23,7 +23,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.keys.token.CryptoTokenOfflineException;
@@ -41,7 +42,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaWebBean;
 public class CaErrorBean extends BaseManagedBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(CaErrorBean.class);
+    private static final Logger log = LogManager.getLogger(CaErrorBean.class);
     
     private EjbcaWebBean ejbcaWebBean;
     

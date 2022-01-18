@@ -15,7 +15,8 @@ package org.ejbca.core.model.services.actions;
 import java.util.Arrays;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.core.model.InternalEjbcaResources;
 import org.ejbca.core.model.services.ActionException;
 import org.ejbca.core.model.services.ActionInfo;
@@ -30,7 +31,7 @@ import org.ejbca.util.mail.MailSender;
  */
 public class MailAction extends BaseAction {
 
-    private static final Logger log = Logger.getLogger(MailAction.class);
+    private static final Logger log = LogManager.getLogger(MailAction.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

@@ -17,7 +17,8 @@ import java.beans.PropertyChangeListener;
 
 import javax.faces.component.html.HtmlOutputText;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.ui.DynamicUiComponent;
 import org.cesecore.util.ui.DynamicUiProperty;
 
@@ -28,7 +29,7 @@ import org.cesecore.util.ui.DynamicUiProperty;
 public class JsfDynamicUiHtmlOutputLabel extends HtmlOutputText implements DynamicUiComponent, PropertyChangeListener {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(JsfDynamicUiHtmlOutputLabel.class);
+    private static final Logger log = LogManager.getLogger(JsfDynamicUiHtmlOutputLabel.class);
 
     /** DynamicUIProperty reference. */
     private DynamicUiProperty<?> dynamicUiProperty;

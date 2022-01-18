@@ -24,7 +24,8 @@ import java.net.Socket;
 import java.net.URL;
 
 import org.apache.commons.fileupload.util.Streams;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.X509KeyUsage;
 import org.cesecore.CaTestUtils;
 import org.cesecore.SystemTestsConfiguration;
@@ -55,7 +56,7 @@ import static org.junit.Assume.assumeTrue;
  */
 public class HttpMethodsTest {
 
-    final private static Logger log = Logger.getLogger(WebdistHttpTest.class);
+    final private static Logger log = LogManager.getLogger(WebdistHttpTest.class);
 
     private static final AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("HttpMethodsTest"));
     

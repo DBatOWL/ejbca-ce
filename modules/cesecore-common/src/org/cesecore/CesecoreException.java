@@ -28,7 +28,7 @@ public class CesecoreException extends Exception {
 
     private static final long serialVersionUID = -3754146611270578813L;
     
-    //private static final Logger log = Logger.getLogger(CesecoreException.class);
+    //private static final Logger log = LogManager.getLogger(CesecoreException.class);
 
     /** The error code describes the cause of the exception. */
     ErrorCode errorCode = null;

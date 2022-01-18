@@ -210,8 +210,10 @@
     -->
     <property name="profilemappings.properties.file" location="${ejbca.home}/src/java/profilemappings.properties" />
     <property name="profilemappings_enterprise.properties.file" location="${ejbca.home}/src/java/profilemappings_enterprise.properties" />
-    <property name="log4j.test.file" location="${mod.common.path}/resources/log4j-test.xml" />
-    <property name="log4j.cli.file" location="${mod.common.path}/resources/log4j-cli.xml" />
+<!--    <property name="log4j.test.file" location="${mod.common.path}/resources/log4j-test.xml" />
+-->    <property name="log4j2.test.file" location="${mod.common.path}/resources/log4j2-test.xml" />
+<!--    <property name="log4j.cli.file" location="${mod.common.path}/resources/log4j-cli.xml" />
+-->    <property name="log4j2.cli.file" location="${mod.common.path}/resources/log4j2-cli.xml" />
     <property name="internal.properties.file" location="${ejbca.home}/src/internal.properties" />
     <property name="defaultvalues.properties.file" location="${ejbca.home}/src/java/defaultvalues.properties" />
 	<property name="systemtests.properties.file" location="${ejbca.home}/conf/systemtests.properties"/>

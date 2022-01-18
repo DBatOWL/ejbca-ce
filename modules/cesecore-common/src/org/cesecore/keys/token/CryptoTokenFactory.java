@@ -19,7 +19,8 @@ import java.util.Properties;
 
 import com.google.common.base.Preconditions;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.internal.InternalResources;
 import org.cesecore.keys.token.p11.exception.NoSuchSlotException;
 
@@ -32,7 +33,7 @@ import org.cesecore.keys.token.p11.exception.NoSuchSlotException;
  */
 public class CryptoTokenFactory {
 	
-    private static transient Logger log = Logger.getLogger(CryptoTokenFactory.class);
+    private static transient Logger log = LogManager.getLogger(CryptoTokenFactory.class);
     
     // Used for references where EE version may not be available
     public static final String JACKNJI_SIMPLE_NAME = "Pkcs11NgCryptoToken";

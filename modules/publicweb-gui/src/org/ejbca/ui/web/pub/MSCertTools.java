@@ -17,7 +17,8 @@ import java.util.HashMap;
 
 import javax.ejb.EJBException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x509.KeyPurposeId;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -39,7 +40,7 @@ import org.ejbca.core.model.ra.raadmin.EndEntityProfileNotFoundException;
  */
 public class MSCertTools {
 
-	private static final Logger log = Logger.getLogger(MSCertTools.class);
+	private static final Logger log = LogManager.getLogger(MSCertTools.class);
 
 	private static final String REQUESTSTART = "-----BEGIN NEW CERTIFICATE REQUEST-----";
 	private static final String REQUESTEND = "-----END NEW CERTIFICATE REQUEST-----";

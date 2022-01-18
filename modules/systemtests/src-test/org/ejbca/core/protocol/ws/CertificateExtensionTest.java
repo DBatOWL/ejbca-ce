@@ -25,7 +25,8 @@ import java.util.Random;
 
 import javax.xml.ws.soap.SOAPFaultException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.ASN1Primitive;
 import org.bouncycastle.asn1.ASN1Sequence;
@@ -84,7 +85,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class CertificateExtensionTest extends CommonEjbcaWs {
 
-    private static final Logger log = Logger.getLogger(CertificateExtensionTest.class);
+    private static final Logger log = LogManager.getLogger(CertificateExtensionTest.class);
     private static final String WS_ADMIN_ROLENAME = "CertificateExtensionTest";
     private static final String TEST_CERTIFICATE_PROFILE = "certExtensionTestCertificateProfile";
     private static final String TEST_USER = "certExtension";

@@ -13,7 +13,8 @@
 package org.ejbca.webtest;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.SystemTestsConfiguration;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -71,7 +72,7 @@ import java.util.logging.Level;
  */
 public abstract class WebTestBase extends ExtentReportCreator {
 
-    private static final Logger log = Logger.getLogger(WebTestBase.class);
+    private static final Logger log = LogManager.getLogger(WebTestBase.class);
     // Authentication token to use.
     private static final AuthenticationToken ADMIN_TOKEN = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("EjbcaWebTest"));
 

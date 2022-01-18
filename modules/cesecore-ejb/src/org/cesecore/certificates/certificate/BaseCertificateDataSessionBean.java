@@ -19,7 +19,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.crl.RevokedCertInfo;
 import org.cesecore.config.CesecoreConfiguration;
 import org.cesecore.util.CompressedCollection;
@@ -32,7 +33,7 @@ import org.cesecore.util.ValueExtractor;
  */
 public abstract class BaseCertificateDataSessionBean {
 
-    private static final Logger log = Logger.getLogger(CertificateDataSessionBean.class);
+    private static final Logger log = LogManager.getLogger(CertificateDataSessionBean.class);
     
     /** Returns the name of the table in the database. Either "CertificateData" or "NoConflictCertificateData" */
     protected abstract String getTableName();

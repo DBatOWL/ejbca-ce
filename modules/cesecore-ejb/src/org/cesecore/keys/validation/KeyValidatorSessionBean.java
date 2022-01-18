@@ -36,7 +36,8 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x509.Extension;
 import org.bouncycastle.asn1.x509.Extensions;
 import org.bouncycastle.util.encoders.Base64;
@@ -80,7 +81,7 @@ public class KeyValidatorSessionBean implements KeyValidatorSessionLocal, KeyVal
     private static final ExecutorService executorService = Executors.newFixedThreadPool(64);
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(KeyValidatorSessionBean.class);
+    private static final Logger log = LogManager.getLogger(KeyValidatorSessionBean.class);
 
     /** Internal localization of logs and errors. */
     private static final InternalResources intres = InternalResources.getInstance();

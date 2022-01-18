@@ -20,7 +20,8 @@ import java.util.Objects;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.internal.CaCertificateCache;
 import org.cesecore.certificates.certificate.HashID;
 import org.cesecore.certificates.crl.CRLInfo;
@@ -34,7 +35,7 @@ import org.cesecore.util.CertTools;
  * @version $Id$
  */
 public class CRLCache {
-	private static final Logger log = Logger.getLogger(CRLCache.class);
+	private static final Logger log = LogManager.getLogger(CRLCache.class);
 	
     private static CRLCache instance = null;
     private static final Lock lock = new ReentrantLock();

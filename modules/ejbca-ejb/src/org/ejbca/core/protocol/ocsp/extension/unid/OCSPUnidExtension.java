@@ -23,7 +23,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.DEROctetString;
 import org.bouncycastle.asn1.x509.Extension;
@@ -49,7 +50,7 @@ public class OCSPUnidExtension implements OCSPExtension {
     public static final String OCSP_UNID_OID = "2.16.578.1.16.3.2";
     public static final String OCSP_UNID_NAME = "UnId Fnr";
     
-	private static final Logger log = Logger.getLogger(OCSPUnidExtension.class);
+	private static final Logger log = LogManager.getLogger(OCSPUnidExtension.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
     

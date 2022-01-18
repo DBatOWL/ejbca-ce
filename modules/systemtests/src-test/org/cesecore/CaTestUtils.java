@@ -34,7 +34,8 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -94,7 +95,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public abstract class CaTestUtils {
     
-    private static final Logger log = Logger.getLogger(CaTestUtils.class);
+    private static final Logger log = LogManager.getLogger(CaTestUtils.class);
 
     /**
      * Creates and stores a simple X509 Root CA with an ACTIVE state

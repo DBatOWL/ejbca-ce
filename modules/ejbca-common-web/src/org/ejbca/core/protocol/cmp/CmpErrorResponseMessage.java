@@ -20,7 +20,8 @@ import java.security.cert.CRL;
 import java.security.cert.Certificate;
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.DERUTF8String;
 import org.bouncycastle.asn1.cmp.CMPObjectIdentifiers;
 import org.bouncycastle.asn1.cmp.ErrorMsgContent;
@@ -44,7 +45,7 @@ import org.cesecore.certificates.certificate.request.ResponseStatus;
  */
 public class CmpErrorResponseMessage extends BaseCmpMessage implements ResponseMessage {
 
-	private static Logger log = Logger.getLogger(CmpErrorResponseMessage.class);
+	private static Logger log = LogManager.getLogger(CmpErrorResponseMessage.class);
 	/**
 	 * Determines if a de-serialized file is compatible with this class.
 	 *

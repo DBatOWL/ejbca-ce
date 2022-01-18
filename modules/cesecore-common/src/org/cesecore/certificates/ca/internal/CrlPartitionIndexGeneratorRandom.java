@@ -15,7 +15,8 @@ package org.cesecore.certificates.ca.internal;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.X509CAInfo;
 import org.cesecore.certificates.certificate.CertificateConstants;
 
@@ -34,7 +35,7 @@ public enum CrlPartitionIndexGeneratorRandom {
             random = SecureRandom.getInstance("SHA1PRNG");
         } catch (NoSuchAlgorithmException e) {
             initializationFailure = e;
-            Logger.getLogger(CrlPartitionIndexGeneratorRandom.class).error("Could not initialized random generator", e);
+            LogManager.getLogger(CrlPartitionIndexGeneratorRandom.class).error("Could not initialized random generator", e);
         }
     }
 

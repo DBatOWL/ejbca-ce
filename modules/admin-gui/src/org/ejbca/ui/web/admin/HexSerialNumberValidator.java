@@ -22,7 +22,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.X509CertificateAuthenticationTokenMetaData;
 import org.cesecore.authorization.user.matchvalues.X500PrincipalAccessMatchValue;
 import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
@@ -33,7 +34,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
  * @version $Id$
  */
 public class HexSerialNumberValidator implements Validator<Object> {
-	private static final Logger log = Logger.getLogger(HexSerialNumberValidator.class);
+	private static final Logger log = LogManager.getLogger(HexSerialNumberValidator.class);
 
 	@Override
 	public void validate(FacesContext facesContext, UIComponent textField, Object object) throws ValidatorException {

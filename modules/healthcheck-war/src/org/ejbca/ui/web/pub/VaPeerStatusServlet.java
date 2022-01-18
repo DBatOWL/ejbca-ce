@@ -15,7 +15,8 @@ package org.ejbca.ui.web.pub;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.configuration.GlobalConfigurationSessionLocal;
 import org.ejbca.config.EjbcaConfiguration;
 import org.ejbca.config.GlobalConfiguration;
@@ -95,7 +96,7 @@ import java.util.stream.Collectors;
  * </ul>
  */
 public class VaPeerStatusServlet extends HttpServlet {
-    private static final Logger log = Logger.getLogger(VaPeerStatusServlet.class);
+    private static final Logger log = LogManager.getLogger(VaPeerStatusServlet.class);
     private static final long serialVersionUID = 1L;
     @EJB
     private PublisherSessionLocal publisherSession;

@@ -29,7 +29,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.asn1.x500.X500Name;
@@ -96,7 +97,7 @@ public class CmsCAService extends ExtendedCAService implements java.io.Serializa
     */
 	private static final long serialVersionUID = 5273836489592921586L;
 	
-	private static final Logger log = Logger.getLogger(CmsCAService.class);
+	private static final Logger log = LogManager.getLogger(CmsCAService.class);
 	/** Internal localization of logs and errors */
 	private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

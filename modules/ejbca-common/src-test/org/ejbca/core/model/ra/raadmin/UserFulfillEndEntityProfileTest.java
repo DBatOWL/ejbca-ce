@@ -27,7 +27,8 @@ import java.util.Locale;
 import java.util.Set;
 
 import org.apache.commons.lang.time.FastDateFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificateprofile.CertificateProfile;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
 import org.cesecore.certificates.endentity.ExtendedInformation;
@@ -44,7 +45,7 @@ import org.junit.rules.ExpectedException;
  *
  */
 public class UserFulfillEndEntityProfileTest {
-    private static final Logger log = Logger.getLogger(UserFulfillEndEntityProfileTest.class);
+    private static final Logger log = LogManager.getLogger(UserFulfillEndEntityProfileTest.class);
 
     private static final String STANDARD_DN = "CN=John Smith,OU=DEP1_1,OU=DEP2_1,C=SE";
     private static final int TEST_CA_1 = 2;

@@ -21,7 +21,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.RoleUsingTestCase;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -48,7 +49,7 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UserDataSourceTest extends RoleUsingTestCase {
 
-    private static final Logger log = Logger.getLogger(UserDataSourceTest.class);
+    private static final Logger log = LogManager.getLogger(UserDataSourceTest.class);
     private static final AuthenticationToken internalAdmin = new TestAlwaysAllowLocalAuthenticationToken("UserDataSourceTest");
 
     private static final String ROLENAME = "USERDATASOURCE_EDITOR";

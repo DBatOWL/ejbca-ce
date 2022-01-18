@@ -13,16 +13,20 @@
 
 package org.cesecore.config;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.cesecore.authentication.oauth.OAuthKeyInfo;
+import org.cesecore.configuration.ConfigurationBase;
+
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import org.cesecore.authentication.oauth.OAuthKeyInfo;
-import org.cesecore.configuration.ConfigurationBase;
 
 public class OAuthConfiguration extends ConfigurationBase implements Serializable {
     /** Class logger. */
+    private static final Logger log = LogManager.getLogger(OAuthConfiguration.class);
     private static final long serialVersionUID = 1L;
 
     public static final String OAUTH_CONFIGURATION_ID = "OAUTH";

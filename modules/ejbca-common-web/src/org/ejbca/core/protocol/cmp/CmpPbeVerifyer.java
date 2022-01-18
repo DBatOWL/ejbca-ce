@@ -23,8 +23,9 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.bouncycastle.asn1.ASN1BitString;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.cmp.CMPObjectIdentifiers;
 import org.bouncycastle.asn1.cmp.PBMParameter;
@@ -40,7 +41,7 @@ import org.ejbca.core.model.InternalEjbcaResources;
  * @version $Id$
  */
 public class CmpPbeVerifyer {
-	private static final Logger LOG = Logger.getLogger(CmpPbeVerifyer.class);
+	private static final Logger LOG = LogManager.getLogger(CmpPbeVerifyer.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources INTRES = InternalEjbcaResources.getInstance();
 

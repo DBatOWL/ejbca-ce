@@ -98,7 +98,7 @@ public class ConfigurationCheckerSessionBean implements ConfigurationCheckerSess
                 .add(new CertificateTransparencyConfigurationIssueSet())
                 .build();
     }
-
+    
     @Override
     public Stream<Ticket> getTickets(final TicketRequest request) {
         return allConfigurationIssues.stream()
@@ -107,7 +107,7 @@ public class ConfigurationCheckerSessionBean implements ConfigurationCheckerSess
                 .flatMap(tickets -> tickets.stream())
                 .sorted()
                 .filter(ticket -> ticket.isAuthorizedToView(request.getAuthenticationToken()))
-                .filter(ticket -> ticket.getLevel().isGreaterOrEqual(request.getMinimumLevel()))
+                .filter(ticket -> ticket.getLevel().isLessSpecificThan(request.getMinimumLevel()))
                 .skip(request.getOffset())
                 .limit(request.getLimit());
     }

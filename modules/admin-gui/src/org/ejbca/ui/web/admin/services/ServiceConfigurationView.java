@@ -26,7 +26,8 @@ import java.util.Set;
 
 import javax.faces.model.SelectItem;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.core.model.services.IAction;
 import org.ejbca.core.model.services.IInterval;
 import org.ejbca.core.model.services.IWorker;
@@ -52,7 +53,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
 public class ServiceConfigurationView implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(ServiceConfigurationView.class);
+	private static final Logger log = LogManager.getLogger(ServiceConfigurationView.class);
 	
 	private WorkerType workerType;
 	private ActionType actionType;

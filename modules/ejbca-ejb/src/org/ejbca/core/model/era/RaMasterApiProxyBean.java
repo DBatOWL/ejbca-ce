@@ -14,7 +14,8 @@
 package org.ejbca.core.model.era;
 
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.operator.OperatorCreationException;
@@ -159,7 +160,7 @@ import java.util.TreeMap;
 @Lock(LockType.READ)
 public class RaMasterApiProxyBean implements RaMasterApiProxyBeanLocal {
 
-    private static final Logger log = Logger.getLogger(RaMasterApiProxyBean.class);
+    private static final Logger log = LogManager.getLogger(RaMasterApiProxyBean.class);
 
     @EJB
     private RaMasterApiSessionLocal raMasterApiSession;

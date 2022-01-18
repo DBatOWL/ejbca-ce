@@ -30,7 +30,8 @@ import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CADoesntExistsException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -62,7 +63,7 @@ import org.ejbca.ra.RaEndEntityDetails.Callbacks;
 public class RaEndEntityBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private static final Logger log = Logger.getLogger(RaEndEntityBean.class);
+    private static final Logger log = LogManager.getLogger(RaEndEntityBean.class);
 
     @EJB
     private RaMasterApiProxyBeanLocal raMasterApiProxyBean;

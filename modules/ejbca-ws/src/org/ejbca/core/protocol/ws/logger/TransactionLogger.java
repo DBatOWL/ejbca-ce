@@ -15,7 +15,8 @@ package org.ejbca.core.protocol.ws.logger;
 
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.GUIDGenerator;
 import org.ejbca.config.WebServiceConfiguration;
 import org.ejbca.util.DummyPatternLogger;
@@ -39,7 +40,7 @@ public class TransactionLogger {
     final private String timeZone = WebServiceConfiguration.getTransactionLogTimeZone();
     final private boolean doLog = WebServiceConfiguration.getTransactionLogEnabled();
     final private String sessionID = GUIDGenerator.generateGUID(this);
-    final private Logger log = Logger.getLogger(TransactionLogger.class.getName());
+    final private Logger log = LogManager.getLogger(TransactionLogger.class.getName());
     private int transactionID = 0;
 
     private TransactionLogger() {}

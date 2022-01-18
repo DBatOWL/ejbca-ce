@@ -32,7 +32,8 @@ import javax.faces.model.SelectItem;
 import javax.faces.validator.ValidatorException;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CesecoreException;
 import org.cesecore.ErrorCode;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -73,7 +74,7 @@ public class ValidatorBean extends BaseManagedBean implements Serializable {
     private static final long serialVersionUID = -2889613238729145716L;
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(ValidatorBean.class);
+    private static final Logger log = LogManager.getLogger(ValidatorBean.class);
 
     @EJB
     private GlobalConfigurationSessionLocal configurationSession;

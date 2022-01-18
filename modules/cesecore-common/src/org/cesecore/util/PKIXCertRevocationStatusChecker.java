@@ -47,7 +47,8 @@ import java.util.Set;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.NullOutputStream;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.DEROctetString;
@@ -81,7 +82,7 @@ import org.cesecore.certificates.ocsp.SHA1DigestCalculator;
  */
 public class PKIXCertRevocationStatusChecker extends PKIXCertPathChecker {
 
-    private static final Logger log = Logger.getLogger(PKIXCertRevocationStatusChecker.class);
+    private static final Logger log = LogManager.getLogger(PKIXCertRevocationStatusChecker.class);
 
     
     private String ocspUrl;

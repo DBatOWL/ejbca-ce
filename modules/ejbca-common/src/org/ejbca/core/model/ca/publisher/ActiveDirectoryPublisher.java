@@ -21,7 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.endentity.ExtendedInformation;
 import org.cesecore.certificates.util.DNFieldExtractor;
 import org.cesecore.util.CertTools;
@@ -40,7 +41,7 @@ public class ActiveDirectoryPublisher extends LdapPublisher{
 	
 	private static final long serialVersionUID = 1081937637762724531L;
 
-    private static final Logger log = Logger.getLogger(ActiveDirectoryPublisher.class);
+    private static final Logger log = LogManager.getLogger(ActiveDirectoryPublisher.class);
 	 	
 	public static final float LATEST_VERSION = 1;
 	

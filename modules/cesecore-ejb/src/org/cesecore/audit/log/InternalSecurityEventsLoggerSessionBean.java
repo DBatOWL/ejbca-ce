@@ -21,7 +21,8 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
 import org.apache.commons.lang.time.StopWatch;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.AuditDevicesConfig;
 import org.cesecore.audit.audit.LogServiceState;
 import org.cesecore.audit.enums.EventStatus;
@@ -47,7 +48,7 @@ import org.cesecore.time.TrustedTime;
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class InternalSecurityEventsLoggerSessionBean implements InternalSecurityEventsLoggerSessionLocal {
 
-    private static final Logger LOG = Logger.getLogger(InternalSecurityEventsLoggerSessionBean.class);
+    private static final Logger LOG = LogManager.getLogger(InternalSecurityEventsLoggerSessionBean.class);
     
     @EJB
     private QueuedLoggerSessionLocal queuedLoggerSession;

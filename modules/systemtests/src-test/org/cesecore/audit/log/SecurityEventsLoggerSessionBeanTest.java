@@ -29,7 +29,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.time.StopWatch;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.AuditLogEntry;
 import org.cesecore.audit.SecurityEventsBase;
 import org.cesecore.audit.audit.AuditLogReportElem;
@@ -65,7 +66,7 @@ import org.junit.Test;
  */
 public class SecurityEventsLoggerSessionBeanTest extends SecurityEventsBase {
 
-    private static final Logger log = Logger.getLogger(SecurityEventsLoggerSessionBeanTest.class);
+    private static final Logger log = LogManager.getLogger(SecurityEventsLoggerSessionBeanTest.class);
     private final SecurityEventsLoggerSession securityEventsLogger = EjbRemoteHelper.INSTANCE.getRemoteSession(SecurityEventsLoggerSessionRemote.class);
     private final SecurityEventsAuditorSession securityEventsAuditor = EjbRemoteHelper.INSTANCE.getRemoteSession(SecurityEventsAuditorSessionRemote.class);
     private final TxFailureLoggerOperationSessionRemote txFailure = EjbRemoteHelper.INSTANCE.getRemoteSession(TxFailureLoggerOperationSessionRemote.class, EjbRemoteHelper.MODULE_TEST);

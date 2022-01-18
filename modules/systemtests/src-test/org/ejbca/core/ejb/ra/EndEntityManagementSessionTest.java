@@ -30,7 +30,8 @@ import java.util.Set;
 import javax.security.auth.x500.X500Principal;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.X509KeyUsage;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.ErrorCode;
@@ -121,7 +122,7 @@ import static org.junit.Assert.fail;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EndEntityManagementSessionTest extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(EndEntityManagementSessionTest.class);
+    private static final Logger log = LogManager.getLogger(EndEntityManagementSessionTest.class);
     
     private static final AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken("EndEntityManagementSessionTest");
     private static final BigInteger THROWAWAY_CERT_SERIAL = new BigInteger("123456788A43197E", 16);

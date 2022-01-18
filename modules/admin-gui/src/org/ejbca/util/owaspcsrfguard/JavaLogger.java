@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.util.owaspcsrfguard;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.owasp.csrfguard.log.ILogger;
 import org.owasp.csrfguard.log.LogLevel;
 
@@ -26,7 +27,7 @@ public class JavaLogger implements ILogger {
 
     private static final long serialVersionUID = -4857601483759096197L;
 
-    private final static Logger log = Logger.getLogger(JavaLogger.class);
+    private final static Logger log = LogManager.getLogger(JavaLogger.class);
 
     @Override
     public void log(String msg) {

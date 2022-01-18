@@ -22,7 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.DEROctetString;
 import org.bouncycastle.asn1.isismtt.ocsp.CertHash;
@@ -54,7 +55,7 @@ public class OcspCertHashExtension implements OCSPExtension {
     public static final String CERT_HASH_NAME = "Certificate Hash";
     public static final ASN1ObjectIdentifier SHA256 = new ASN1ObjectIdentifier("2.16.840.1.101.3.4.2.1");
 
-    private static final Logger log = Logger.getLogger(OcspCertHashExtension.class);
+    private static final Logger log = LogManager.getLogger(OcspCertHashExtension.class);
     
     @Override
     public String getOid() {

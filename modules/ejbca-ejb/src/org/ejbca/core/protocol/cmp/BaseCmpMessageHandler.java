@@ -14,7 +14,8 @@
 package org.ejbca.core.protocol.cmp;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CADoesntExistsException;
@@ -38,7 +39,7 @@ import org.ejbca.core.model.ra.raadmin.EndEntityProfileNotFoundException;
  */
 public class BaseCmpMessageHandler {
 
-	private static Logger LOG = Logger.getLogger(BaseCmpMessageHandler.class);
+	private static Logger LOG = LogManager.getLogger(BaseCmpMessageHandler.class);
     /** Internal localization of logs and errors */
     private static final InternalResources INTRES = InternalResources.getInstance();
 

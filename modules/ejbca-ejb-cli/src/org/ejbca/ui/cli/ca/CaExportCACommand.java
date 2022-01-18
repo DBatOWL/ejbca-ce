@@ -18,7 +18,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.core.ejb.ca.caadmin.CAAdminSessionRemote;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
@@ -35,7 +35,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaExportCACommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaExportCACommand.class);
+    private static final Logger log = LogManager.getLogger(CaExportCACommand.class);
 
     private static final String CA_NAME_KEY = "--caname";
     private static final String FILE_KEY = "-f";

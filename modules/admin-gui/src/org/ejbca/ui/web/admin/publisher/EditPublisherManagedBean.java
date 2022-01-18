@@ -32,7 +32,8 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.ejbca.config.GlobalConfiguration;
 import org.ejbca.config.WebConfiguration;
@@ -67,7 +68,7 @@ import org.ejbca.ui.web.admin.configuration.SortableSelectItem;
 public class EditPublisherManagedBean extends BaseManagedBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(EditPublisherManagedBean.class);
+    private static final Logger log = LogManager.getLogger(EditPublisherManagedBean.class);
 
     private static final Map<Integer, String> AVAILABLE_PUBLISHERS;
     private final Map<Class <? extends BasePublisher>, Runnable> publisherInitMap = new HashMap<>();

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT" >
+			<PatternLayout pattern="%m%n" />
+		</Console>
+		<!-- Debug console output -->
+		<Console name="debug-console" target="SYSTEM_OUT"
+			>
+			<PatternLayout pattern="%d %-5p [%c] %m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<!-- Limit the JBoss EAP/Wildfly EJB remoting output -->
+		<Logger name="org.xnio" level="warn" additivity="false" />
+		<Logger name="org.jboss" level="error" additivity="false" />
+		<Logger name="org.wildfly" level="warn" additivity="false" />
+
+		<Logger name="org.ejbca" level="trace" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+
+		<Logger name="org.cesecore" level="trace" additivity="false">
+			<!-- Change this to 'debug-console' for full debug info -->
+			<AppenderRef ref="console" />
+		</Logger>
+
+		<Logger name="org.ejbca.config.EjbcaConfigurationHolder"
+			level="warn" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+
+		<Logger name="org.cesecore.config.ConfigurationHolder"
+			level="warn" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+
+		<Root level="info">
+			<!-- Set basic limit for console -->
+			<AppenderRef ref="console" level="info"/>
+		</Root>
+	</Loggers>
+</Configuration>
+

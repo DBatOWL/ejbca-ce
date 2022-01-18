@@ -29,7 +29,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectedData;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
@@ -47,7 +48,7 @@ import org.cesecore.util.SecureXMLDecoder;
 public class RoleData extends ProtectedData implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RoleData.class);
+    private static final Logger log = LogManager.getLogger(RoleData.class);
 
     private int id;
     private String nameSpaceColumn;

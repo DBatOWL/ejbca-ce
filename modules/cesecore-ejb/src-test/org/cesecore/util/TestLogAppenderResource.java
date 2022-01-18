@@ -14,45 +14,71 @@ package org.cesecore.util;
 
 import java.io.ByteArrayOutputStream;
 
-import org.apache.log4j.Appender;
-import org.apache.log4j.Layout;
-import org.apache.log4j.Logger;
-import org.apache.log4j.SimpleLayout;
-import org.apache.log4j.WriterAppender;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.appender.OutputStreamAppender;
+import org.apache.logging.log4j.core.config.AppenderRef;
+import org.apache.logging.log4j.core.config.Configuration;
+import org.apache.logging.log4j.core.config.LoggerConfig;
+import org.apache.logging.log4j.core.layout.PatternLayout;
 import org.junit.rules.ExternalResource;
 
 // TODO ECA-8963: Extract into a separate module ejbca-unittest, as it is common utility class that can be reused.
 /**
  * This is a help class, implementing a @Rule to catch log4j logging messages.
  *
- * @version $Id$
  */
 public class TestLogAppenderResource extends ExternalResource {
 
-    private static final String APPENDER_NAME = "log4jRuleAppender";
-    private static final Layout LAYOUT = new SimpleLayout();
+    private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-    private final Logger logger;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-
-    public TestLogAppenderResource(final Logger logger) {
-        this.logger = logger;
+    private final Class<?> clazz;
+    
+    public TestLogAppenderResource(final Class<?> clazz) {
+        this.clazz = clazz;
     }
 
     @Override
     protected void before() {
-        Appender appender = new WriterAppender(LAYOUT, outContent);
-        appender.setName(APPENDER_NAME);
-        logger.addAppender(appender);
+        addAppender();
     }
 
     @Override
     protected void after() {
-        logger.removeAppender(APPENDER_NAME);
+        removeAppender();
     }
 
     public String getOutput() {
         return outContent.toString();
+    }
+    
+    private void removeAppender() {
+        final LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
+        final Configuration config = ctx.getConfiguration();
+        config.removeLogger(clazz.getCanonicalName());
+        ctx.updateLoggers();
+    }
+    
+    private void addAppender() {
+        final LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
+        final Configuration config = ctx.getConfiguration();
+        
+        final PatternLayout layout = PatternLayout.newBuilder()
+                .withPattern("%level - %m%n").withConfiguration(config).build();
+        
+        OutputStreamAppender writerAppender = OutputStreamAppender.newBuilder().setName(clazz.getName()).setTarget(outContent)
+                .setLayout(layout).build();
+
+        writerAppender.start();
+        config.addAppender(writerAppender);
+        AppenderRef ref = AppenderRef.createAppenderRef(clazz.getName(), null, null);
+        AppenderRef[] refs = new AppenderRef[] {ref};
+        LoggerConfig loggerConfig = LoggerConfig.createLogger(false, Level.INFO, clazz.getCanonicalName(), "true", refs, null, config, null);
+                
+        loggerConfig.addAppender(writerAppender, null, null);
+        config.addLogger(clazz.getCanonicalName(), loggerConfig);
+        ctx.updateLoggers();
     }
 
 }

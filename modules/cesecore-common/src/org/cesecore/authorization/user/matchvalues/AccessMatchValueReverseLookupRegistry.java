@@ -17,7 +17,8 @@ import java.util.Map;
 import java.util.ServiceLoader;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationTokenMetaData;
 
 /**
@@ -31,7 +32,7 @@ public enum AccessMatchValueReverseLookupRegistry {
     INSTANCE;
     
     // Logger is not static since static initializers run after the constructor for enums.
-    private final Logger log = Logger.getLogger(AccessMatchValueReverseLookupRegistry.class); // NOPMD
+    private final Logger log = LogManager.getLogger(AccessMatchValueReverseLookupRegistry.class); // NOPMD
     
     // Registry of methods used to look up database values
     private final Map<String, AuthenticationTokenMetaData> metaDatas = new HashMap<>();

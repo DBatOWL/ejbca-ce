@@ -14,7 +14,8 @@ package org.ejbca.ui.web.admin.configuration;
 
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.util.StringTools;
@@ -38,7 +39,7 @@ import java.util.Set;
  * This class is used to manage EAB configs in EJBCA's system configuration.
  */
 public class EABConfigManager {
-    private static final Logger log = Logger.getLogger(EABConfigManager.class);
+    private static final Logger log = LogManager.getLogger(EABConfigManager.class);
 
     private final SystemConfigurationHelper systemConfigurationHelper;
     private UploadedFile eabCSVFile = null;

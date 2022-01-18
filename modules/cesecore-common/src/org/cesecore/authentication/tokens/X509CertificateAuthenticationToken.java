@@ -26,7 +26,8 @@ import java.util.regex.Pattern;
 import javax.security.auth.x500.X500Principal;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.user.AccessUserAspect;
 import org.cesecore.authorization.user.matchvalues.X500PrincipalAccessMatchValue;
 import org.cesecore.certificates.util.DNFieldExtractor;
@@ -47,7 +48,7 @@ public class X509CertificateAuthenticationToken extends NestableAuthenticationTo
 
     public static final X509CertificateAuthenticationTokenMetaData metaData = new X509CertificateAuthenticationTokenMetaData();
     
-    private static final Logger log = Logger.getLogger(X509CertificateAuthenticationToken.class);
+    private static final Logger log = LogManager.getLogger(X509CertificateAuthenticationToken.class);
     private static final long serialVersionUID = 1097165653913865515L;
 
     private static final Pattern serialPattern = Pattern.compile("\\bSERIALNUMBER=", Pattern.CASE_INSENSITIVE);

@@ -19,7 +19,8 @@ import java.util.List;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationSubject;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.mock.authentication.SimpleAuthenticationProviderSessionRemote;
@@ -37,7 +38,7 @@ import org.cesecore.util.EjbRemoteHelper;
  */
 public abstract class RoleUsingTestCase {
 
-    private static final Logger log = Logger.getLogger(RoleUsingTestCase.class);
+    private static final Logger log = LogManager.getLogger(RoleUsingTestCase.class);
     private static RoleInitializationSessionRemote roleInitializationSession;
 
     protected static TestX509CertificateAuthenticationToken roleMgmgToken;

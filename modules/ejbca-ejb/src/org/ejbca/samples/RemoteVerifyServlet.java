@@ -32,7 +32,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ui.web.RequestHelper;
 
 
@@ -64,7 +65,7 @@ import org.ejbca.ui.web.RequestHelper;
 public class RemoteVerifyServlet extends HttpServlet {
     private static final long serialVersionUID = -2870243590371650403L;
 
-    private static Logger log = Logger.getLogger(RemoteVerifyServlet.class);
+    private static Logger log = LogManager.getLogger(RemoteVerifyServlet.class);
 
     /** Status code for successful communication */
     public static final String MSG_OK = "200 OK";
@@ -534,7 +535,7 @@ public class RemoteVerifyServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
 
-        log = Logger.getLogger(this.getClass());
+        log = LogManager.getLogger(this.getClass());
 
         debugLog((new Date()).toString() + " RemoteVerify.init:");
         loadUserDB();

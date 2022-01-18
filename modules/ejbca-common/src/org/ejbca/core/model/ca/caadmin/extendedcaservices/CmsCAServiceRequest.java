@@ -15,7 +15,8 @@ package org.ejbca.core.model.ca.caadmin.extendedcaservices;
 
 import java.io.Serializable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.extendedservices.ExtendedCAServiceRequest;
 import org.cesecore.certificates.ca.extendedservices.ExtendedCAServiceTypes;
 
@@ -26,7 +27,7 @@ import org.cesecore.certificates.ca.extendedservices.ExtendedCAServiceTypes;
  */
 public class CmsCAServiceRequest extends ExtendedCAServiceRequest implements Serializable {    
     
-	public static final Logger m_log = Logger.getLogger(CmsCAServiceRequest.class);
+	public static final Logger m_log = LogManager.getLogger(CmsCAServiceRequest.class);
 	
 	public static final int MODE_SIGN    = 1;
 	public static final int MODE_ENCRYPT = 2;

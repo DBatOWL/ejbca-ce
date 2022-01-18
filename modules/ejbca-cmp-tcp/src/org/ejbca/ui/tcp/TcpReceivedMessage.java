@@ -17,7 +17,8 @@ import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.Base64;
 import org.ejbca.core.model.InternalEjbcaResources;
 
@@ -29,7 +30,7 @@ import org.ejbca.core.model.InternalEjbcaResources;
  *
  */
 public class TcpReceivedMessage {
-	private static final Logger log = Logger.getLogger(TcpReceivedMessage.class.getName());
+	private static final Logger log = LogManager.getLogger(TcpReceivedMessage.class.getName());
 	/** Internal localization of logs and errors */
 	private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 	/**

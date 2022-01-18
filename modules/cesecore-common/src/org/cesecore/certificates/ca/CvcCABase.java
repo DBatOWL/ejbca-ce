@@ -22,7 +22,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ServiceLoader;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.cert.X509CRLHolder;
 import org.cesecore.certificates.ca.extendedservices.ExtendedCAServiceInfo;
 import org.cesecore.certificates.ca.extendedservices.ExtendedCAServiceTypes;
@@ -41,7 +42,7 @@ import org.cesecore.keys.token.CryptoToken;
 public abstract class CvcCABase extends CABase implements Serializable, CvcCA {
 
     private static final long serialVersionUID = 3L;
-	private static final Logger log = Logger.getLogger(CvcCABase.class);
+	private static final Logger log = LogManager.getLogger(CvcCABase.class);
 
 	/** Internal localization of logs and errors */
 	private static final InternalResources intres = InternalResources.getInstance();

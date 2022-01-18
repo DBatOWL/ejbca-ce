@@ -23,7 +23,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 
 /**
@@ -32,7 +33,7 @@ import org.junit.Test;
  */
 public final class AccessSetUnitTest {
 
-    private static final Logger log = Logger.getLogger(AccessSetUnitTest.class);
+    private static final Logger log = LogManager.getLogger(AccessSetUnitTest.class);
 
     @SuppressWarnings("deprecation")
     private final AccessSet as = makeLegacyAccessSet("/test", "/one/two", "/three", "/three/four", "/three/four/five",

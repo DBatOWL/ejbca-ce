@@ -21,7 +21,8 @@ import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Call {@link #doSignTask(List, Provider, ISignOperation)} or {@link #doSignTask(List, String, ISignOperation)}
@@ -38,7 +39,7 @@ import org.apache.log4j.Logger;
  */
 public class SignWithWorkingAlgorithm {
     /** Log4j instance */
-    final private static Logger log = Logger.getLogger(SignWithWorkingAlgorithm.class);
+    final private static Logger log = LogManager.getLogger(SignWithWorkingAlgorithm.class);
     final private static Map<Integer, SignWithWorkingAlgorithm> instanceMap = new HashMap<>();
     final private Provider provider;
     final private List<String> availableSignAlgorithms;

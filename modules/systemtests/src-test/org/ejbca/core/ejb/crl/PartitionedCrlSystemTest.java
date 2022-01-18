@@ -35,7 +35,8 @@ import java.util.HashSet;
 import java.util.Properties;
 
 import org.apache.http.HttpResponse;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x509.Extension;
 import org.cesecore.SystemTestsConfiguration;
 import org.cesecore.WebTestUtils;
@@ -95,7 +96,7 @@ import org.junit.Test;
  */
 public class PartitionedCrlSystemTest {
 
-    private static final Logger log = Logger.getLogger(PartitionedCrlSystemTest.class);
+    private static final Logger log = LogManager.getLogger(PartitionedCrlSystemTest.class);
 
     private static final String TEST_NAME = "PartitionedCrlSystemTest";
     private static final AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken(TEST_NAME);

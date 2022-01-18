@@ -13,7 +13,8 @@
 package org.cesecore.keys.token;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
@@ -74,7 +75,7 @@ import java.util.Random;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class CryptoTokenManagementSessionBean implements CryptoTokenManagementSessionLocal, CryptoTokenManagementSessionRemote {
 
-    private static final Logger log = Logger.getLogger(CryptoTokenManagementSessionBean.class);
+    private static final Logger log = LogManager.getLogger(CryptoTokenManagementSessionBean.class);
     /** Internal localization of logs and errors */
     private static final InternalResources INTRES = InternalResources.getInstance();
     private static final Random rnd = new SecureRandom();

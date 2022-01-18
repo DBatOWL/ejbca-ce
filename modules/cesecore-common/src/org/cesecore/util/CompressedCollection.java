@@ -30,7 +30,8 @@ import java.util.zip.DeflaterOutputStream;
 import java.util.zip.InflaterInputStream;
 
 import org.apache.commons.collections.SetUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Special Collection that compresses all the added objects to a in memory byte array.
@@ -48,7 +49,7 @@ import org.apache.log4j.Logger;
 public class CompressedCollection<T extends Serializable> implements Collection<T> , Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(CompressedCollection.class);
+    private static final Logger log = LogManager.getLogger(CompressedCollection.class);
 
     private ByteArrayOutputStream baos = null;
     private ObjectOutputStream oos = null;

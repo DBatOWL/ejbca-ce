@@ -34,7 +34,8 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.config.CesecoreConfiguration;
@@ -53,7 +54,7 @@ public class SoftCryptoToken extends BaseCryptoToken {
     private static final long serialVersionUID = 387950849444619646L;
 
     /** Log4j instance */
-    private static final Logger log = Logger.getLogger(SoftCryptoToken.class);
+    private static final Logger log = LogManager.getLogger(SoftCryptoToken.class);
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();
 

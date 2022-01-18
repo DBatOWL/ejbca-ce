@@ -22,7 +22,8 @@ import java.util.regex.Pattern;
 import javax.security.auth.x500.X500Principal;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.InvalidAuthenticationTokenException;
 import org.cesecore.authentication.tokens.X509CertificateAuthenticationToken;
 import org.cesecore.authorization.user.AccessUserAspect;
@@ -38,7 +39,7 @@ import org.cesecore.util.CertTools;
 
 public class TestX509CertificateAuthenticationToken extends X509CertificateAuthenticationToken {
 
-    private static final Logger log = Logger.getLogger(TestX509CertificateAuthenticationToken.class);
+    private static final Logger log = LogManager.getLogger(TestX509CertificateAuthenticationToken.class);
     
     private static final long serialVersionUID = 4343703249070152822L;
 

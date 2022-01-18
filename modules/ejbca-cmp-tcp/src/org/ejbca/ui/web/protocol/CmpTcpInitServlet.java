@@ -19,7 +19,8 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ui.tcp.CmpTcpServer;
 
 /**
@@ -30,7 +31,7 @@ import org.ejbca.ui.tcp.CmpTcpServer;
 public class CmpTcpInitServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger LOG = Logger.getLogger(CmpTcpInitServlet.class);
+	private static final Logger LOG = LogManager.getLogger(CmpTcpInitServlet.class);
 	
 	private transient CmpTcpServer cmpTcpServer;	// HttpServlet implements Serializable
 

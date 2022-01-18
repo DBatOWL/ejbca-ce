@@ -13,7 +13,7 @@
 
 package org.ejbca.issuechecker.db;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 
 /**
@@ -25,7 +25,7 @@ public class TicketRequestBuilder {
     protected final AuthenticationToken authenticationToken;
     protected int limit = Integer.MAX_VALUE;
     protected int offset = 0;
-    protected Level minimumLevel = Level.ALL;
+    protected Level minimumLevel = Level.OFF;
 
     /**
      * Construct a new builder of {@link TicketRequest} objects.

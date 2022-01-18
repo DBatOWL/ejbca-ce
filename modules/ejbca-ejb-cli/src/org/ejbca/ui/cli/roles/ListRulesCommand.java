@@ -15,7 +15,7 @@ package org.ejbca.ui.cli.roles;
 
 import java.util.Map.Entry;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.roles.AccessRulesHelper;
 import org.cesecore.roles.Role;
@@ -35,7 +35,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class ListRulesCommand extends BaseRolesCommand {
 
-    private static final Logger log = Logger.getLogger(ListRulesCommand.class);
+    private static final Logger log = LogManager.getLogger(ListRulesCommand.class);
 
     private static final String ROLE_NAME_KEY = "--role";
     private static final String ROLE_NAMESPACE_KEY = "--namespace";

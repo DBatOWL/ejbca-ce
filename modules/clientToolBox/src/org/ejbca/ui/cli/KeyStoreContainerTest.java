@@ -38,7 +38,8 @@ import java.util.Set;
 
 import javax.crypto.Cipher;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.certificates.util.AlgorithmTools;
 import org.cesecore.keys.token.p11.PKCS11Utils;
@@ -65,7 +66,7 @@ class KeyStoreContainerTest {
     private static final PrintStream termOut = System.out;
     private static final PrintStream termErr = System.err;
     private static final InputStream termIn = System.in;
-    private static final Logger log = Logger.getLogger(KeyStoreContainerTest.class);
+    private static final Logger log = LogManager.getLogger(KeyStoreContainerTest.class);
     KeyStoreContainerTest(String a, KeyPair kp, String pn) {
         this.alias = a;
         this.keyPair = kp;

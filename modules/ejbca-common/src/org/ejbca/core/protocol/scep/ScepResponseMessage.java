@@ -34,7 +34,8 @@ import java.util.List;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.DEROctetString;
 import org.bouncycastle.asn1.DERPrintableString;
@@ -88,7 +89,7 @@ public class ScepResponseMessage implements CertificateResponseMessage {
      */
     static final long serialVersionUID = 2016710353393853879L;
 
-    private static Logger log = Logger.getLogger(ScepResponseMessage.class);
+    private static Logger log = LogManager.getLogger(ScepResponseMessage.class);
 
     /** The encoded response message */
     private byte[] responseMessage = null;

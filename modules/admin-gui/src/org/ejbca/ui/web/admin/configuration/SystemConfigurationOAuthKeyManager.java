@@ -26,7 +26,8 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import org.bouncycastle.util.encoders.Base64;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
@@ -53,7 +54,7 @@ import com.nimbusds.jose.jwk.JWKSet;
  * new OAuth Keys.
  */
 public class SystemConfigurationOAuthKeyManager extends OAuthKeyManager {
-    private static final Logger log = Logger.getLogger(SystemConfigurationOAuthKeyManager.class);
+    private static final Logger log = LogManager.getLogger(SystemConfigurationOAuthKeyManager.class);
 
     private static final String EDIT_OAUTH_KEY = "editOAuthKey";
     private static final String OAUTH_KEY_SAVED = "saved";

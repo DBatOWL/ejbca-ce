@@ -24,7 +24,8 @@ import javax.faces.component.UISelectItems;
 import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.model.SelectItem;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.ui.DynamicUiComponent;
 import org.cesecore.util.ui.DynamicUiProperty;
 import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
@@ -36,7 +37,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
 public class JsfDynamicUiHtmlSelectOneMenu extends HtmlSelectOneMenu implements DynamicUiComponent, PropertyChangeListener {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(JsfDynamicUiHtmlSelectOneMenu.class);
+    private static final Logger log = LogManager.getLogger(JsfDynamicUiHtmlSelectOneMenu.class);
 
     /** DynamicUIProperty reference. */
     private DynamicUiProperty<?> dynamicUiProperty;

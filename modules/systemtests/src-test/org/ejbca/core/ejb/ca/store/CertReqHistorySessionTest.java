@@ -25,7 +25,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.certextensions.standard.QcStatement;
 import org.cesecore.certificates.endentity.EndEntityInformation;
 import org.cesecore.certificates.endentity.EndEntityTypes;
@@ -56,7 +57,7 @@ import static org.junit.Assert.assertTrue;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CertReqHistorySessionTest {
 
-    private static final Logger log = Logger.getLogger(CertReqHistorySessionTest.class);
+    private static final Logger log = LogManager.getLogger(CertReqHistorySessionTest.class);
     private static X509Certificate cert1;
     private static X509Certificate cert2;
     private static String username = "";

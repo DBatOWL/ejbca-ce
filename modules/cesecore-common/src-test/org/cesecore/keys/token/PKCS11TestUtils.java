@@ -18,7 +18,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.keys.token.p11.Pkcs11SlotLabelType;
 
 /**
@@ -27,7 +28,7 @@ import org.cesecore.keys.token.p11.Pkcs11SlotLabelType;
  */
 public class PKCS11TestUtils {
 
-    private static final Logger log = Logger.getLogger(PKCS11TestUtils.class);
+    private static final Logger log = LogManager.getLogger(PKCS11TestUtils.class);
 
     private static final String PROPERTYFILE = "/systemtests.properties";
     private static Properties properties = null;

@@ -49,7 +49,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
@@ -126,7 +127,7 @@ public class EjbcaWebBeanImpl implements EjbcaWebBean {
 
     private static final long serialVersionUID = 1L;
 
-    private static Logger log = Logger.getLogger(EjbcaWebBeanImpl.class);
+    private static Logger log = LogManager.getLogger(EjbcaWebBeanImpl.class);
 
     private final EjbBridgeSessionLocal ejbLocalHelper;
     private final EnterpriseEditionEjbBridgeSessionLocal enterpriseEjbLocalHelper;

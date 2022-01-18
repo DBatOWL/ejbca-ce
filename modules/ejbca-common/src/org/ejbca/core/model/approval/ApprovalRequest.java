@@ -30,7 +30,8 @@ import java.util.Set;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.LocalJvmOnlyAuthenticationToken;
@@ -62,7 +63,7 @@ import org.ejbca.core.model.log.Admin;
 public abstract class ApprovalRequest implements Externalizable {
 
     private static final long serialVersionUID = -1L;
-    private static final Logger log = Logger.getLogger(ApprovalRequest.class);
+    private static final Logger log = LogManager.getLogger(ApprovalRequest.class);
     private static final int LATEST_BASE_VERSION = 6;
 
     /**

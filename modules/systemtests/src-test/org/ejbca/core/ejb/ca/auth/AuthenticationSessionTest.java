@@ -13,7 +13,8 @@
 
 package org.ejbca.core.ejb.ca.auth;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -64,7 +65,7 @@ import static org.junit.Assert.fail;
  * @version $Id$
  */
 public class AuthenticationSessionTest extends CaTestCase {
-    private static final Logger log = Logger.getLogger(AuthenticationSessionTest.class);
+    private static final Logger log = LogManager.getLogger(AuthenticationSessionTest.class);
     private static final AuthenticationToken internalAdmin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("AuthenticationSessionTest"));
     private int caid = getTestCAId();
 

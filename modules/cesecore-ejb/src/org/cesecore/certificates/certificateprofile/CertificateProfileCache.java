@@ -19,7 +19,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import javax.persistence.EntityManager;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.CesecoreConfiguration;
 
 /**
@@ -42,7 +43,7 @@ import org.cesecore.config.CesecoreConfiguration;
 public enum CertificateProfileCache {
     INSTANCE;
 
-    private final Logger LOG = Logger.getLogger(CertificateProfileCache.class);
+    private final Logger LOG = LogManager.getLogger(CertificateProfileCache.class);
 
     /*
      * Cache of profiles, with Id as keys. This cache may be

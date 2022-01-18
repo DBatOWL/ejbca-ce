@@ -17,7 +17,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Util for locking based on a String. This class can of course not do locking distributed over
@@ -42,7 +43,7 @@ import org.apache.log4j.Logger;
  */
 public class FairStringLock {
 
-	private static final Logger log = Logger.getLogger(FairStringLock.class);
+	private static final Logger log = LogManager.getLogger(FairStringLock.class);
 			
 	private static Map<String, FairStringLock> instanceMap = new HashMap<String, FairStringLock>();
 	private static ReentrantLock instanceMapLock = new ReentrantLock(true);

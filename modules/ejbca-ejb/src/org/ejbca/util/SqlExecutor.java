@@ -27,13 +27,14 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /** Class to execute a file full of sql commands. Useful for running update scripts.
  * @version $Id$
  */
 public class SqlExecutor {
-    static Logger log = Logger.getLogger(SqlExecutor.class);
+    static Logger log = LogManager.getLogger(SqlExecutor.class);
 
     private Connection con = null;
     private int commands = 0;

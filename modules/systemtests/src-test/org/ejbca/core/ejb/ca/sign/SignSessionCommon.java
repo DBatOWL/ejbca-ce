@@ -15,7 +15,8 @@ package org.ejbca.core.ejb.ca.sign;
 import java.security.cert.Certificate;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -45,7 +46,7 @@ import org.ejbca.core.model.ra.raadmin.EndEntityProfile;
  */
 public abstract class SignSessionCommon extends CaTestCase{
 
-    private static final Logger log = Logger.getLogger(SignSessionCommon.class);
+    private static final Logger log = LogManager.getLogger(SignSessionCommon.class);
     
     private static final AuthenticationToken internalAdmin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("SignSessionCommon"));
     

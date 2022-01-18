@@ -29,7 +29,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.CertificateStoreSessionLocal;
 import org.cesecore.certificates.certificate.HashID;
 import org.cesecore.util.CertTools;
@@ -49,7 +50,7 @@ public class CertStoreServlet extends StoreServletBase {
     @EJB
     private CertificateStoreSessionLocal certificateStoreSession;
 
-	private final static Logger log = Logger.getLogger(CertStoreServlet.class);
+	private final static Logger log = LogManager.getLogger(CertStoreServlet.class);
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {

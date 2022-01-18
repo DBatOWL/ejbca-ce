@@ -57,8 +57,9 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.bouncycastle.asn1.ASN1BitString;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1GeneralizedTime;
@@ -190,7 +191,7 @@ import org.junit.internal.ArrayComparisonFailure;
  */
 public abstract class CmpTestCase extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(CmpTestCase.class);
+    private static final Logger log = LogManager.getLogger(CmpTestCase.class);
 
     private static final String resourceCmp = "publicweb/cmp";
     private static final int PORT_NUMBER = 5587;

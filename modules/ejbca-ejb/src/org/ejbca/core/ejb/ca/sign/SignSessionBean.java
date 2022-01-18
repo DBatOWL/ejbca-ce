@@ -15,7 +15,8 @@ package org.ejbca.core.ejb.ca.sign;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x509.Extensions;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.CMSProcessableByteArray;
@@ -170,7 +171,7 @@ import java.util.Map;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class SignSessionBean implements SignSessionLocal, SignSessionRemote {
 
-    private static final Logger log = Logger.getLogger(SignSessionBean.class);
+    private static final Logger log = LogManager.getLogger(SignSessionBean.class);
 
     @PersistenceContext(unitName = "ejbca")
     private EntityManager entityManager;

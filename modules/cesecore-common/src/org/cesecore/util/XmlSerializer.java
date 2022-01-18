@@ -14,7 +14,8 @@ package org.cesecore.util;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificateprofile.PKIDisclosureStatement;
 
 import java.beans.XMLEncoder;
@@ -39,7 +40,7 @@ import java.util.TreeSet;
  */
 public class XmlSerializer {
 
-    private static final Logger log = Logger.getLogger(XmlSerializer.class);
+    private static final Logger log = LogManager.getLogger(XmlSerializer.class);
 
 	@SuppressWarnings("unchecked")
     public static Map<String, Object> decode(final String input) {

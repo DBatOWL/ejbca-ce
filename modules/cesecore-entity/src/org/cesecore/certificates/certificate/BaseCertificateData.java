@@ -21,7 +21,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang.ClassUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.crl.RevokedCertInfo;
 import org.cesecore.certificates.endentity.EndEntityConstants;
 import org.cesecore.dbprotection.ProtectedData;
@@ -35,7 +36,7 @@ import org.cesecore.util.CertTools;
  */
 public abstract class BaseCertificateData extends ProtectedData {
 
-    private static final Logger log = Logger.getLogger(BaseCertificateData.class);
+    private static final Logger log = LogManager.getLogger(BaseCertificateData.class);
 
     /**
      * The certificate itself

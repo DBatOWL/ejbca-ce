@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.core.ejb.ws;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CesecoreException;
 import org.cesecore.ErrorCode;
 import org.cesecore.authentication.oauth.TokenExpiredException;
@@ -100,7 +101,7 @@ import java.util.Set;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class EjbcaWSHelperSessionBean implements EjbcaWSHelperSessionLocal, EjbcaWSHelperSessionRemote {
 
-    private static final Logger log = Logger.getLogger(EjbcaWSHelperSessionBean.class);
+    private static final Logger log = LogManager.getLogger(EjbcaWSHelperSessionBean.class);
 
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

@@ -31,7 +31,7 @@ import org.quickserver.net.server.QuickServer;
  */
 public class CmpTcpServer {
 
-	private static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(CmpTcpServer.class);
+	private static final org.apache.log4j.Logger LOG = org.apache.log4j.LogManager.getLogger(CmpTcpServer.class);
 	private static final String VER = "1.0";
 
 	private transient QuickServer myServer = null;
@@ -62,10 +62,10 @@ public class CmpTcpServer {
 			logFile.mkdir();
 		}
 		try	{
-			logger = Logger.getLogger("");
+			logger = LogManager.getLogger("");
 			logger.setLevel(Level.INFO);
 
-			logger = Logger.getLogger("cmptcpserver");
+			logger = LogManager.getLogger("cmptcpserver");
 			logger.setLevel(Level.FINEST); 
 			txtLog = new FileHandler(logDir+"/cmptcpserver.log");
 			//reduce info 

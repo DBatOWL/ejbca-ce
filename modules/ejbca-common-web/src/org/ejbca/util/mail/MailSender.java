@@ -26,7 +26,8 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.config.MailConfiguration;
 import org.ejbca.core.ejb.ServiceLocator;
 import org.ejbca.core.ejb.ServiceLocatorException;
@@ -38,7 +39,7 @@ import org.ejbca.core.ejb.ServiceLocatorException;
  */
 public class MailSender {
 	
-	private static final Logger log = Logger.getLogger(MailSender.class);
+	private static final Logger log = LogManager.getLogger(MailSender.class);
 	
 	// Some constants to make it easier to read the client code
 	public final static List<String> NO_TO = null;	//List<String>

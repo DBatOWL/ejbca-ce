@@ -16,7 +16,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * This class represents the audit log validation report. 
@@ -26,7 +27,7 @@ import org.apache.log4j.Logger;
  */
 public class AuditLogValidationReport implements Serializable{
 
-    private static final Logger log = Logger.getLogger(AuditLogValidationReport.class);
+    private static final Logger log = LogManager.getLogger(AuditLogValidationReport.class);
     private static final long serialVersionUID = 1L;
     
     private final List<AuditLogReportElem> errors;

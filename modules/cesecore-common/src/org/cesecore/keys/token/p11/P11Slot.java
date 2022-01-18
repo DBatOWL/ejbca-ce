@@ -21,7 +21,8 @@ import java.util.Map;
 
 import javax.security.auth.login.LoginException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.internal.InternalResources;
 import org.cesecore.keys.token.CryptoTokenOfflineException;
 import org.cesecore.keys.token.p11.exception.NoSuchSlotException;
@@ -35,7 +36,7 @@ import org.cesecore.keys.token.p11.exception.NoSuchSlotException;
  */
 public class P11Slot {
 
-    private static final Logger log = Logger.getLogger(P11Slot.class);
+    private static final Logger log = LogManager.getLogger(P11Slot.class);
 
     /** Used for library key map when a sun configuration file is used to specify a token (slot). In this case only one lib could be used. */
     private static final String ONLY_ONE = "onlyOne";

@@ -18,7 +18,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.RoleUsingTestCase;
 import org.cesecore.audit.enums.EventTypes;
 import org.cesecore.audit.impl.integrityprotected.IntegrityProtectedDevice;
@@ -43,7 +44,7 @@ import org.junit.Test;
  */
 public class EjbcaAuditorSessionBeanTest extends RoleUsingTestCase {
     
-    private static final Logger LOG = Logger.getLogger(EjbcaAuditorSessionBeanTest.class);
+    private static final Logger LOG = LogManager.getLogger(EjbcaAuditorSessionBeanTest.class);
     private final static String DEVICE_NAME = IntegrityProtectedDevice.class.getSimpleName();
     private final static String ROLE_NAME = "EjbcaSecurityAuditTest";
     

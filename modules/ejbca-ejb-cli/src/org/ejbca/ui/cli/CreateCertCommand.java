@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.security.cert.CertificateException;
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.CesecoreException;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.certificate.certextensions.CertificateExtensionException;
@@ -48,7 +48,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CreateCertCommand extends EjbcaCliUserCommandBase {
 
-    private static final Logger log = Logger.getLogger(CreateCertCommand.class);
+    private static final Logger log = LogManager.getLogger(CreateCertCommand.class);
 
     private static final String ENTITY_NAME = "--username";
     private static final String ENTITY_PASSWORD = "--password";

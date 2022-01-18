@@ -144,7 +144,7 @@
 	<!-- Tests -->
 	<target name="compile-tests" depends="build">
 		<mkdir dir="${clientToolBox.build-test.dir}" />
-		<copy file="${log4j.test.file}" tofile="${clientToolBox.build-test.dir}/log4j.xml" failonerror="true"/>
+		<copy file="${log4j2.test.file}" tofile="${clientToolBox.build-test.dir}/log4j2.xml" failonerror="true"/>
 		<copy file="${jndi.properties.file}" tofile="${clientToolBox.build-test.dir}/jndi.properties" failonerror="true"/>
 		<copy file="${jboss-ejb-client.properties}" todir="${clientToolBox.build-test.dir}" failonerror="true"/>
 		<javac srcdir="${clientToolBox.src-test.dir}" destdir="${clientToolBox.build-test.dir}" debug="on" includeantruntime="no"

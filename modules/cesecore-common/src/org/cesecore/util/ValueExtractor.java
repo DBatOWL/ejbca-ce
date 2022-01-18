@@ -15,7 +15,8 @@ package org.cesecore.util;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Helper object to convert from JDBC driver specific objects to a unified form. 
@@ -24,7 +25,7 @@ import org.apache.log4j.Logger;
  */
 public abstract class ValueExtractor {
     
-    private static final Logger LOG = Logger.getLogger(ValueExtractor.class);
+    private static final Logger LOG = LogManager.getLogger(ValueExtractor.class);
 
     /**
      * Return the intValue if the supplied object has a "intValue" method.

@@ -49,7 +49,8 @@ import java.util.regex.Pattern;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1Integer;
@@ -165,7 +166,7 @@ public class X509CAImpl extends CABase implements Serializable, X509CA {
     
     private static final long serialVersionUID = -2882572653108530258L;
 
-    private static final Logger log = Logger.getLogger(X509CAImpl.class);
+    private static final Logger log = LogManager.getLogger(X509CAImpl.class);
 
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();

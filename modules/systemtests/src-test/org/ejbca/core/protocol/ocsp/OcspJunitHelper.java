@@ -34,7 +34,8 @@ import java.util.Date;
 import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.DEROctetString;
@@ -67,7 +68,7 @@ import org.cesecore.util.Base64;
  */
 public class OcspJunitHelper {
 
-	private static Logger log = Logger.getLogger(OcspJunitHelper.class);
+	private static Logger log = LogManager.getLogger(OcspJunitHelper.class);
 
 	final private String sBaseURL;
 	final private URI baseURI;

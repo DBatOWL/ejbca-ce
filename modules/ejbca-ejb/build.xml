@@ -134,7 +134,7 @@
 		<mkdir dir="${ejbca-ejb.build-test.dir}" />
 		<javac srcdir="${ejbca-ejb.src-test.dir}" destdir="${ejbca-ejb.build-test.dir}" debug="on" includeantruntime="no"
         	encoding="UTF-8" target="${java.target.version}" classpathref="compile-test.classpath"/>
-		<copy file="${log4j.test.file}" tofile="${ejbca-ejb.build-test.dir}/log4j.xml" failonerror="true"/>
+		<copy file="${log4j2.test.file}" tofile="${ejbca-ejb.build-test.dir}/log4j2.xml" failonerror="true"/>
 		<copy todir="${ejbca-ejb.build-test.dir}" failonerror="true">
 			<fileset dir="${ejbca.home}/src" includes="intresources/**"/>
 			<fileset dir="${ejbca.home}" includes="conf/extendedkeyusage.properties"/>

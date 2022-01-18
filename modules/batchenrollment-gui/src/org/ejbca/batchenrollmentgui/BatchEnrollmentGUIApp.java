@@ -15,7 +15,8 @@ package org.ejbca.batchenrollmentgui;
 import java.awt.Dimension;
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
 
@@ -28,7 +29,7 @@ import org.jdesktop.application.SingleFrameApplication;
 public class BatchEnrollmentGUIApp extends SingleFrameApplication {
 
     /** Logger for this class. */
-    private static final Logger LOG = Logger.getLogger(BatchEnrollmentGUIApp.class);
+    private static final Logger LOG = LogManager.getLogger(BatchEnrollmentGUIApp.class);
 
     private static final String SETTINGS_FILENAME = "settings";
     

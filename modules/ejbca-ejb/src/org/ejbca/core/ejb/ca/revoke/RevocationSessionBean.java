@@ -30,7 +30,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.ModuleTypes;
@@ -75,7 +76,7 @@ import org.ejbca.core.model.InternalEjbcaResources;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class RevocationSessionBean implements RevocationSessionLocal, RevocationSessionRemote {
 
-    private static final Logger log = Logger.getLogger(RevocationSessionBean.class);
+    private static final Logger log = LogManager.getLogger(RevocationSessionBean.class);
 
     @PersistenceContext(unitName = CesecoreConfiguration.PERSISTENCE_UNIT)
     private EntityManager entityManager;

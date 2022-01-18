@@ -33,7 +33,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.TreeSet;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -63,7 +64,7 @@ import org.junit.runner.RunWith;
 @RunWith(EasyMockRunner.class)
 public class MultiGroupPublisherUnitTest {
 
-    private static final Logger log = Logger.getLogger(MultiGroupPublisherUnitTest.class);
+    private static final Logger log = LogManager.getLogger(MultiGroupPublisherUnitTest.class);
 
     private static final String TEST_PUBLISHER_DESCRIPTION = "This is a test";
     private static final String TEST_PUBLISHER_NAME = "SomeMultiGroupPublisher";

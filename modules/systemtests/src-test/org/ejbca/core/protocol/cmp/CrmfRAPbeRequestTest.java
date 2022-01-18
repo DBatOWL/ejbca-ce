@@ -27,7 +27,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1OutputStream;
 import org.bouncycastle.asn1.cmp.CMPCertificate;
@@ -105,7 +106,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class CrmfRAPbeRequestTest extends CmpTestCase {
 
-    private static final Logger log = Logger.getLogger(CrmfRAPbeRequestTest.class);
+    private static final Logger log = LogManager.getLogger(CrmfRAPbeRequestTest.class);
 
     private static final String P12_FOLDER_NAME = "p12";
 

@@ -30,7 +30,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.roles.Role;
 import org.cesecore.roles.RoleData;
 import org.junit.Test;
@@ -46,7 +47,7 @@ import org.junit.Test;
  */
 public class DynamicUiPropertyTest {
 
-    private static final Logger log = Logger.getLogger(DynamicUiPropertyTest.class);
+    private static final Logger log = LogManager.getLogger(DynamicUiPropertyTest.class);
     
     final static private String roleName = "anybody";
     

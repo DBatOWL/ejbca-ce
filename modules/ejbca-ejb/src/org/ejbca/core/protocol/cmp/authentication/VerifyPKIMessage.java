@@ -13,7 +13,8 @@
 
 package org.ejbca.core.protocol.cmp.authentication;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.cmp.PKIMessage;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationSession;
@@ -36,7 +37,7 @@ import org.ejbca.core.ejb.ra.raadmin.EndEntityProfileSession;
  */
 public class VerifyPKIMessage {
     
-    private static final Logger log = Logger.getLogger(VerifyPKIMessage.class);
+    private static final Logger log = LogManager.getLogger(VerifyPKIMessage.class);
     
     private final CAInfo caInfo;
     private String errorMessage = null;

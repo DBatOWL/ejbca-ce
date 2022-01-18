@@ -16,7 +16,8 @@ package org.cesecore.certificates.certificate.certextensions.standard;
 import java.security.PublicKey;
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.DERGeneralizedTime;
@@ -38,7 +39,7 @@ public class PrivateKeyUsagePeriod extends StandardCertificateExtension {
 
     private static final long serialVersionUID = 1L;
     /** Logger for this class. */
-    private static final Logger LOG = Logger.getLogger(PrivateKeyUsagePeriod.class);
+    private static final Logger LOG = LogManager.getLogger(PrivateKeyUsagePeriod.class);
 
     @Override
     public void init(CertificateProfile certProf) {

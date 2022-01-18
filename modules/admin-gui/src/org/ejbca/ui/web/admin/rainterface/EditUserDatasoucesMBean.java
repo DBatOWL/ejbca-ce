@@ -24,7 +24,8 @@ import javax.ejb.EJB;
 import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.control.StandardRules;
 import org.cesecore.certificates.util.DNFieldExtractor;
@@ -42,7 +43,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
 public class EditUserDatasoucesMBean extends BaseManagedBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(EditUserDatasoucesMBean.class);
+    private static final Logger log = LogManager.getLogger(EditUserDatasoucesMBean.class);
 
     private DatasourceGui datasourceGui = null;
     private UserDatasoucesMBean userDatasoucesMBean;

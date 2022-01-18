@@ -13,7 +13,8 @@
 
 package org.ejbca.core.model.services.workers;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAConstants;
 import org.cesecore.certificates.ca.CAInfo;
@@ -41,7 +42,7 @@ import java.util.Set;
  */
 public class CRLUpdateWorker extends BaseWorker {
 
-    private static final Logger log = Logger.getLogger(CRLUpdateWorker.class);	
+    private static final Logger log = LogManager.getLogger(CRLUpdateWorker.class);	
 
     /** Semaphore that tries to make sure that this CRL creation job does not run several times on the same machine.
      * Since CRL generation can sometimes take a lot of time, this is needed.

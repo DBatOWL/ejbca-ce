@@ -16,7 +16,8 @@ package org.ejbca.core.ejb.ra;
 import java.security.KeyPair;
 import java.security.cert.Certificate;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.certificates.ca.CAInfo;
@@ -56,7 +57,7 @@ import org.junit.Test;
  * @version $Id$
  */
 public class AddLotsofCertsPerUserTest extends CaTestCase {
-    private static final Logger log = Logger.getLogger(AddLotsofCertsPerUserTest.class);
+    private static final Logger log = LogManager.getLogger(AddLotsofCertsPerUserTest.class);
 
     private EndEntityManagementSessionRemote endEntityManagementSession = EjbRemoteHelper.INSTANCE.getRemoteSession(EndEntityManagementSessionRemote.class);
     private SignSessionRemote signSession = EjbRemoteHelper.INSTANCE.getRemoteSession(SignSessionRemote.class);

@@ -25,7 +25,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 import org.cesecore.authorization.user.AccessUserAspectData;
 import org.cesecore.profiles.ProfileBase;
@@ -41,7 +42,7 @@ import org.ejbca.core.model.approval.Approval;
  */
 public abstract class ApprovalProfileBase extends ProfileBase implements ApprovalProfile, Cloneable {
 
-    private static final Logger log = Logger.getLogger(ApprovalProfileBase.class);
+    private static final Logger log = LogManager.getLogger(ApprovalProfileBase.class);
 
     private static final long serialVersionUID = 1L;
 

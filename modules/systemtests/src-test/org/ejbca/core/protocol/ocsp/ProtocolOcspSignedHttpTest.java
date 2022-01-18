@@ -20,7 +20,8 @@ import java.security.PrivateKey;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.DEROctetString;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.bouncycastle.asn1.ocsp.OCSPResponseStatus;
@@ -83,7 +84,7 @@ import static org.junit.Assert.assertNull;
  * @version $Id$
  **/
 public class ProtocolOcspSignedHttpTest extends CaTestCase {
-    private static Logger log = Logger.getLogger(ProtocolOcspSignedHttpTest.class);
+    private static Logger log = LogManager.getLogger(ProtocolOcspSignedHttpTest.class);
     @Rule
     public TestRule traceLogMethodsRule = new TraceLogMethodsRule();
 

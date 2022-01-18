@@ -17,7 +17,8 @@ import java.io.ByteArrayOutputStream;
 import java.security.KeyPair;
 import java.security.cert.X509Certificate;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1OutputStream;
 import org.bouncycastle.asn1.cmp.PKIFailureInfo;
@@ -67,7 +68,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class CrmfRATcpRequestTest extends CmpTestCase {
 	
-    private static final Logger log = Logger.getLogger(CrmfRATcpRequestTest.class);
+    private static final Logger log = LogManager.getLogger(CrmfRATcpRequestTest.class);
 
     private static final String CMP_USERNAME = "cmptest";
     private static final String PBEPASSWORD = "password";

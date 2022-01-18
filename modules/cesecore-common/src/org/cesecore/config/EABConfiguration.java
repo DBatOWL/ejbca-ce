@@ -13,7 +13,8 @@
 
 package org.cesecore.config;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.configuration.ConfigurationBase;
 
 import java.io.Serializable;
@@ -24,7 +25,7 @@ import java.util.Set;
 public class EABConfiguration extends ConfigurationBase implements Serializable {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(EABConfiguration.class);
+    private static final Logger log = LogManager.getLogger(EABConfiguration.class);
     private static final long serialVersionUID = 1L;
     public static final String EAB_CONFIGURATION_ID = "EAB";
     private static final LinkedHashMap<String, Set<String>> EAB_MAP_DEFAULT = new LinkedHashMap<>();

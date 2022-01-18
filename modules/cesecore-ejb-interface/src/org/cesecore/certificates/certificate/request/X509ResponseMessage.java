@@ -20,7 +20,8 @@ import java.security.cert.CertificateException;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.Base64CertData;
 import org.cesecore.certificates.certificate.CertificateData;
 import org.cesecore.util.CertTools;
@@ -43,7 +44,7 @@ public class X509ResponseMessage implements CertificateResponseMessage {
      */
     static final long serialVersionUID = -2157072605987735913L;
 
-    private static final Logger log = Logger.getLogger(X509ResponseMessage.class);
+    private static final Logger log = LogManager.getLogger(X509ResponseMessage.class);
 
     /** Certificate to be in response message, */
     private byte[] certbytes = null;

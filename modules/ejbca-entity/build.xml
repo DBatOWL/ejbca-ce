@@ -156,7 +156,7 @@
     	<fail unless="jdbc.driver.dir" message="Use -Djdbc.driver.dir=/path-to-jdbc-jars/ to specify the directory with the JDBC driver JARs."/>
 		<available property="database.driver.available" classname="${database.driver}" classpathref="jdbc-jars.classpath"/>
     	<fail unless="database.driver.available" message="Driver class (${database.driver}) from database.properties can not be found in ${jdbc.driver.dir}."/>
-        <copy file="${ejbca-entity.resources.dir}/log4j.xml" tofile="${ejbca-entity.build-test.dir}/log4j.xml" />
+        <copy file="${ejbca-entity.resources.dir}/log4j2.xml" tofile="${ejbca-entity.build-test.dir}/log4j2.xml" />
     	<mkdir dir="${ejbca-entity.build-test.dir}/META-INF"/>
 		<copy file="${ejbca-entity.resources.dir}/orm-ejbca-${database.name}.xml" todir="${ejbca-entity.build-test.dir}/META-INF/" failonerror="true" overwrite="true"/>
 		<junit printsummary="yes" haltonfailure="no" showoutput="${test.showoutput}" fork="true" failureproperty="databaseschemarest.failed">
@@ -180,7 +180,7 @@
     	<fail unless="jdbc.driver.dir" message="Use -Djdbc.driver.dir=/path-to-jdbc-jars/ to specify the directory with the JDBC driver JARs."/>
 		<available property="database.driver.available" classname="${database.driver}" classpathref="jdbc-jars.classpath"/>
     	<fail unless="database.driver.available" message="Driver class (${database.driver}) from database.properties can not be found in ${jdbc.driver.dir}."/>
-        <copy file="${ejbca-entity.resources.dir}/log4j.xml" tofile="${ejbca-entity.build-test.dir}/log4j.xml" />
+        <copy file="${ejbca-entity.resources.dir}/log4j2.xml" tofile="${ejbca-entity.build-test.dir}/log4j2.xml" />
     	<mkdir dir="${ejbca-entity.build-test.dir}/META-INF"/>
 		<copy file="${ejbca-entity.resources.dir}/orm-ejbca-${database.name}.xml" todir="${ejbca-entity.build-test.dir}/META-INF/" failonerror="true" overwrite="true"/>
     	<junit printsummary="yes" haltonfailure="no" showoutput="${test.showoutput}" fork="false" failureproperty="databaseschemarest.failed">
@@ -288,7 +288,7 @@
 				<attribute name="Main-Class" value="org.ejbca.database.DatabaseCli"/>
             </manifest>
 		</jar>
-        <copy file="${ejbca-entity.resources.dir}/log4j-cli.xml" tofile="${mod.ejbca-db-cli.dist}/log4j.xml"/>
+        <copy file="${ejbca-entity.resources.dir}/log4j2-cli.xml" tofile="${mod.ejbca-db-cli.dist}/log4j2.xml"/>
         <copy file="${ejbca-entity.build-cli.dir}/META-INF/persistence.xml" tofile="${mod.ejbca-db-cli.dist}/META-INF/persistence.xml" failonerror="true"/>
     	<copy todir="${mod.ejbca-db-cli.dist}/conf" failonerror="false">
     		<fileset dir="${ejbca.home}/conf">
@@ -302,7 +302,7 @@
 
 	<target name="runone" depends="compile-test">
 		<fail message="'test.runone' is not set. Example -Dtest.runone=ApprovalExecutorUtilTest . You can also use -Dtest.showoutput=true to send test output to console." unless="test.runone" />
-        <copy file="${log4j.test.file}" tofile="${ejbca-entity.build-test.dir}/log4j.xml" failonerror="true"/>
+        <copy file="${log4j2.test.file}" tofile="${ejbca-entity.build-test.dir}/log4j2.xml" failonerror="true"/>
 		<junit printsummary="yes" haltonfailure="no" showoutput="${test.showoutput}">
 			<classpath>
         		<path refid="test.classpath-nojdbc"/>

@@ -20,7 +20,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 import org.cesecore.configuration.GlobalConfigurationSessionLocal;
 import org.ejbca.config.ConfigurationCheckerConfiguration;
 import org.ejbca.issuechecker.Ticket;
@@ -50,10 +50,10 @@ public class ConfigurationCheckerManagedBean extends BaseManagedBean {
     }
 
     public String getStyleClass(final Ticket ticket) {
-        if (ticket.getLevel().isGreaterOrEqual(Level.ERROR)) {
+        if (ticket.getLevel().isLessSpecificThan(Level.ERROR)) {
             return "prio-error";
         }
-        if (ticket.getLevel().isGreaterOrEqual(Level.WARN)) {
+        if (ticket.getLevel().isLessSpecificThan(Level.WARN)) {
             return "prio-warn";
         } else {
             return "prio-info";

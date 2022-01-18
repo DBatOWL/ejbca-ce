@@ -28,7 +28,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.CesecoreConfiguration;
 import org.cesecore.internal.InternalResources;
 import org.cesecore.util.QueryResultWrapper;
@@ -41,7 +42,7 @@ import org.cesecore.util.QueryResultWrapper;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class InternalKeyBindingDataSessionBean implements InternalKeyBindingDataSessionLocal {
 
-    private static final Logger log = Logger.getLogger(InternalKeyBindingDataSessionBean.class);
+    private static final Logger log = LogManager.getLogger(InternalKeyBindingDataSessionBean.class);
     private static final InternalResources intres = InternalResources.getInstance();
     private static final Random rnd = new SecureRandom();
 

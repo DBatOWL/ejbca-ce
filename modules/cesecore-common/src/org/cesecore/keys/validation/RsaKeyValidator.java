@@ -24,7 +24,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.math.Primes;
 import org.cesecore.certificates.certificateprofile.CertificateProfile;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
@@ -49,7 +50,7 @@ public class RsaKeyValidator extends KeyValidatorBase {
     private static final long serialVersionUID = -335429118359811926L;
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(RsaKeyValidator.class);
+    private static final Logger log = LogManager.getLogger(RsaKeyValidator.class);
 
     /** MUST be at least 2048 bits key size. */
     public static final int CAB_FORUM_BLR_142_KEY_SIZE_MIN = 2048;

@@ -12,7 +12,8 @@
  *************************************************************************/ 
 package org.cesecore.certificates.ca.internal;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.request.RequestMessage;
 import org.cesecore.certificates.certificate.request.RequestMessageUtils;
 import org.cesecore.certificates.endentity.ExtendedInformation;
@@ -34,7 +35,7 @@ import java.security.PublicKey;
 public class RequestAndPublicKeySelector {
 
 	/** Class logger. */
-    private static final Logger log = Logger.getLogger(RequestAndPublicKeySelector.class);
+    private static final Logger log = LogManager.getLogger(RequestAndPublicKeySelector.class);
     
     private PublicKey publicKey;
     private RequestMessage requestMessage;

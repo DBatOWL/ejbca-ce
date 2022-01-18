@@ -20,7 +20,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.access.AccessTreeState;
 import org.cesecore.authorization.rules.AccessRuleData;
 
@@ -32,7 +33,7 @@ import org.cesecore.authorization.rules.AccessRuleData;
 @SuppressWarnings("deprecation")
 public class AccessRulesMigrator {
 
-    private static final Logger log = Logger.getLogger(AccessRulesMigrator.class);
+    private static final Logger log = LogManager.getLogger(AccessRulesMigrator.class);
 
     private final List<String> allKnownResourcesNormalized = new ArrayList<>();
     

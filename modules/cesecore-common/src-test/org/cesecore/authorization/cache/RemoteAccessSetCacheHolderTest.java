@@ -22,7 +22,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.PublicAccessAuthenticationToken;
 import org.cesecore.authorization.access.AccessSet;
@@ -37,7 +38,7 @@ import org.junit.Test;
 @SuppressWarnings("deprecation")
 public final class RemoteAccessSetCacheHolderTest {
 
-    private static final Logger log = Logger.getLogger(RemoteAccessSetCacheHolderTest.class);
+    private static final Logger log = LogManager.getLogger(RemoteAccessSetCacheHolderTest.class);
     
     private final AuthenticationToken token1 = new PublicAccessAuthenticationToken("CN=test1", false);
     private final AuthenticationToken token2 = new PublicAccessAuthenticationToken("CN=test2", false);

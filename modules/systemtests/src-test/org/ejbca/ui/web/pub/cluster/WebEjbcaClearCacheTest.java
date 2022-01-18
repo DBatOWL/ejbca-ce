@@ -22,7 +22,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.SystemTestsConfiguration;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.config.WebConfiguration;
@@ -36,7 +37,7 @@ import org.junit.Test;
  * @version $Id$
  */
 public class WebEjbcaClearCacheTest {
-    private static final Logger log = Logger.getLogger(WebEjbcaClearCacheTest.class);
+    private static final Logger log = LogManager.getLogger(WebEjbcaClearCacheTest.class);
 
     private ConfigurationSessionRemote configurationSession = EjbRemoteHelper.INSTANCE.getRemoteSession(ConfigurationSessionRemote.class, EjbRemoteHelper.MODULE_TEST);
 

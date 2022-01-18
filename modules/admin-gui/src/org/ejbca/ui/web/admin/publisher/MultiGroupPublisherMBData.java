@@ -21,7 +21,8 @@ import java.util.List;
 import java.util.TreeSet;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.core.ejb.ca.publisher.PublisherSessionLocal;
 import org.ejbca.core.model.ca.publisher.MultiGroupPublisher;
 import org.ejbca.core.model.ca.publisher.PublisherDoesntExistsException;
@@ -39,7 +40,7 @@ public final class MultiGroupPublisherMBData implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private static final Logger log = Logger.getLogger(MultiGroupPublisherMBData.class);
+    private static final Logger log = LogManager.getLogger(MultiGroupPublisherMBData.class);
 
     private final PublisherSessionLocal publisherSession = new EjbLocalHelper().getPublisherSession();
 

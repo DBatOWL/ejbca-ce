@@ -22,7 +22,8 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.control.StandardRules;
 import org.ejbca.config.GlobalConfiguration;
 import org.ejbca.core.model.authorization.AccessRulesConstants;
@@ -40,7 +41,7 @@ import org.ejbca.ui.web.admin.cainterface.CAInterfaceBean;
 public class DisplayResultMBean extends BaseManagedBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(DisplayResultMBean.class);
+    private static final Logger log = LogManager.getLogger(DisplayResultMBean.class);
     
     private CAInterfaceBean caBean;
 

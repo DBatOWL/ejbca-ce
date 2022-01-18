@@ -28,7 +28,8 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x500.RDN;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.asn1.x500.X500NameBuilder;
@@ -65,7 +66,7 @@ public class LdapPublisher extends BasePublisher {
 
 
     private static final long serialVersionUID = -584431431033065114L;
-    private static final Logger log = Logger.getLogger(LdapPublisher.class);
+    private static final Logger log = LogManager.getLogger(LdapPublisher.class);
 	/** Internal localization of logs and errors */
 	private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

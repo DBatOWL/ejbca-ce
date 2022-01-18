@@ -13,7 +13,8 @@
 
 package org.ejbca.core.ejb.ra;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
 
 /**
@@ -32,7 +33,7 @@ import org.cesecore.dbprotection.ProtectionStringBuilder;
  */
 public class Eca8457UserData extends UserData {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(Eca8457UserData.class);
+    private static final Logger log = LogManager.getLogger(Eca8457UserData.class);
 
     public Eca8457UserData(final UserData data) {
         super(data);

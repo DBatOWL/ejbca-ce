@@ -14,7 +14,8 @@ package org.ejbca.core.ejb.ra.raadmin;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -62,7 +63,7 @@ import java.util.TreeMap;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class EndEntityProfileSessionBean implements EndEntityProfileSessionLocal, EndEntityProfileSessionRemote {
 
-    private static final Logger LOG = Logger.getLogger(EndEntityProfileSessionBean.class);
+    private static final Logger LOG = LogManager.getLogger(EndEntityProfileSessionBean.class);
 
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources INTRES = InternalEjbcaResources.getInstance();

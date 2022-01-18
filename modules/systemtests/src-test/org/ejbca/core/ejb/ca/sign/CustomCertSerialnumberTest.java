@@ -27,7 +27,8 @@ import java.security.cert.CertificateParsingException;
 import java.security.cert.X509Certificate;
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.DERSet;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.pkcs.PKCS10CertificationRequest;
@@ -85,7 +86,7 @@ import static org.junit.Assert.fail;
  */
 public class CustomCertSerialnumberTest extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(CustomCertSerialnumberTest.class);
+    private static final Logger log = LogManager.getLogger(CustomCertSerialnumberTest.class);
 
     private final AuthenticationToken internalAdmin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("CustomCertSerialnumberTest"));
 

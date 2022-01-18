@@ -37,7 +37,8 @@ import javax.faces.event.ComponentSystemEvent;
 import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Primitive;
 import org.bouncycastle.asn1.util.ASN1Dump;
 import org.bouncycastle.asn1.x509.Extension;
@@ -83,7 +84,7 @@ public class RaCertificateDetails {
         UIComponent getConfirmPasswordComponent();
     }
 
-    private static final Logger log = Logger.getLogger(RaCertificateDetails.class);
+    private static final Logger log = LogManager.getLogger(RaCertificateDetails.class);
     public static String PARAM_REQUESTID = "requestId";
 
     private final Callbacks callbacks;

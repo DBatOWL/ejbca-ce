@@ -12,7 +12,8 @@ package org.ejbca.core.model.services.workers;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.ejbca.core.ejb.ca.revoke.RevocationSessionLocal;
 import org.ejbca.core.model.InternalEjbcaResources;
@@ -29,7 +30,7 @@ import org.ejbca.core.model.services.ServiceExecutionResult.Result;
  */
 public class PreCertificateRevocationWorker extends BaseWorker {
 
-    private static final Logger log = Logger.getLogger(PreCertificateRevocationWorker.class);
+    private static final Logger log = LogManager.getLogger(PreCertificateRevocationWorker.class);
 
     public static final String PROP_MAX_ISSUANCE_TIME = "worker.maxIssuanceTime";
     public static final String PROP_MAX_ISSUANCE_TIMEUNIT = "worker.maxIssuancceTimeUnit";

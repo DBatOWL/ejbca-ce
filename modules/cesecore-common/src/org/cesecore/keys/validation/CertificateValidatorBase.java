@@ -20,7 +20,8 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.util.ui.DynamicUiModel;
 
@@ -33,7 +34,7 @@ public abstract class CertificateValidatorBase extends ValidatorBase implements 
 	private static final long serialVersionUID = 1L;
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(KeyValidatorBase.class);
+    private static final Logger log = LogManager.getLogger(KeyValidatorBase.class);
 
     /** List of applicable CA types (see {@link #getApplicableCaTypes()}). */ 
     protected static List<Integer> APPLICABLE_CA_TYPES;

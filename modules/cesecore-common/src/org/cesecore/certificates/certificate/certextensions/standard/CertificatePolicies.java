@@ -19,7 +19,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
@@ -46,7 +47,7 @@ import org.cesecore.certificates.endentity.EndEntityInformation;
  */
 public class CertificatePolicies extends StandardCertificateExtension {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(CertificatePolicies.class);
+    private static final Logger log = LogManager.getLogger(CertificatePolicies.class);
 	
     @Override
 	public void init(final CertificateProfile certProf) {

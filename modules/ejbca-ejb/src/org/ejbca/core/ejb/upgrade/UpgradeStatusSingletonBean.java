@@ -12,6 +12,7 @@
  *************************************************************************/
 package org.ejbca.core.ejb.upgrade;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -22,13 +23,12 @@ import javax.ejb.Singleton;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 
-import org.apache.log4j.Appender;
-import org.apache.log4j.Layout;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.ErrorHandler;
-import org.apache.log4j.spi.Filter;
-import org.apache.log4j.spi.LoggingEvent;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.Appender;
+import org.apache.logging.log4j.core.ErrorHandler;
+import org.apache.logging.log4j.core.Layout;
+import org.apache.logging.log4j.core.LogEvent;
+import org.apache.logging.log4j.core.Logger;
 
 /**
  * Singleton responsible for keep track of a node-local post upgrade.
@@ -42,26 +42,6 @@ public class UpgradeStatusSingletonBean implements UpgradeStatusSingletonLocal {
 
     /** Custom appender so that we can capture and display the log from the upgrade process. */
     private final Appender appender = new Appender() {
-        @Override
-        public void addFilter(Filter filter) {}
-        @Override
-        public void clearFilters() {}
-        @Override
-        public void close() {}
-        @Override
-        public ErrorHandler getErrorHandler() { return null; }
-        @Override
-        public Filter getFilter() { return null; }
-        @Override
-        public Layout getLayout() { return null; }
-        @Override
-        public boolean requiresLayout() { return false; }
-        @Override
-        public void setErrorHandler(final ErrorHandler errorHandler) {}
-        @Override
-        public void setLayout(final Layout layout) {}
-        @Override
-        public void setName(final String name) {}
 
         @Override
         public String getName() {
@@ -69,22 +49,58 @@ public class UpgradeStatusSingletonBean implements UpgradeStatusSingletonLocal {
         }
 
         @Override
-        public void doAppend(final LoggingEvent loggingEvent) {
-            logged.add(loggingEvent);
+        public State getState() {
+            return null;
+        }
+        @Override
+        public void initialize() {
+        }
+        @Override
+        public boolean isStarted() {
+            return false;
+        }
+        @Override
+        public boolean isStopped() {
+            return false;
+        }
+        @Override
+        public void start() {
+        }
+        @Override
+        public void stop() {
+        }
+        @Override
+        public void append(LogEvent event) {
+            logged.add(event);
+        }
+        @Override
+        public ErrorHandler getHandler() {
+            return null;
+        }
+        @Override
+        public Layout<? extends Serializable> getLayout() {
+            return null;
+        }
+        @Override
+        public boolean ignoreExceptions() {
+            return false;
+        }
+        @Override
+        public void setHandler(ErrorHandler handler) {
         }
     };
 
     private AtomicBoolean postUpgradeInProgress = new AtomicBoolean(false);
 
     /** Fixed size list (dropping oldest additions when running out of space) to prevent all memory from being consumed if attached process never detaches. */
-    private List<LoggingEvent> logged = new LinkedList<LoggingEvent>() {
+    private List<LogEvent> logged = new LinkedList<LogEvent>() {
         private static final long serialVersionUID = 1L;
         private static final int MAX_ENTRIES_IN_LIST = 10000;
 
         @Override
-        public boolean add(final LoggingEvent loggingEvent) {
+        public boolean add(final LogEvent loggingEvent) {
             // Hard code a filter so we only keep DEBUG and above here in the in-memory buffer
-            if (!loggingEvent.getLevel().isGreaterOrEqual(Level.DEBUG)) {
+            if (!loggingEvent.getLevel().isLessSpecificThan(Level.DEBUG)) {
                 return false;
             }
             final boolean added = super.add(loggingEvent);
@@ -112,7 +128,7 @@ public class UpgradeStatusSingletonBean implements UpgradeStatusSingletonLocal {
     }
     
     @Override
-    public List<LoggingEvent> getLogged() {
+    public List<LogEvent> getLogged() {
         return logged;
     }
     

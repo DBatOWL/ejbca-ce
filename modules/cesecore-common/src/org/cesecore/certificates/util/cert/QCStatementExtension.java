@@ -20,7 +20,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.ASN1Primitive;
@@ -39,7 +40,7 @@ import org.cesecore.util.CertTools;
  */
 public final class QCStatementExtension extends CertTools {
 
-    private static final Logger log = Logger.getLogger(QCStatementExtension.class);
+    private static final Logger log = LogManager.getLogger(QCStatementExtension.class);
 
     /**
      * inhibits creation of new SubjectDirAttrExtension

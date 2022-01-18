@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.core.ejb.ocsp;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.configuration.GlobalConfigurationSessionLocal;
 import org.cesecore.jndi.JndiConstants;
 import org.ejbca.config.GlobalConfiguration;
@@ -38,7 +39,7 @@ import java.util.concurrent.TimeUnit;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class OcspResponseCleanupSessionBean implements OcspResponseCleanupSessionLocal, OcspResponseCleanupSessionRemote {
 
-    private static final Logger log = Logger.getLogger(OcspResponseCleanupSessionBean.class);
+    private static final Logger log = LogManager.getLogger(OcspResponseCleanupSessionBean.class);
 
     private static final String JOB_NAME = "OcspResponseCleanup";
     private static final String RESCHEDULED_JOB_SUFFIX = "Rescheduled";

@@ -17,8 +17,9 @@ import com.novell.ldap.LDAPDN;
 import org.apache.commons.lang.CharUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1Encoding;
@@ -188,7 +189,7 @@ import java.util.regex.Pattern;
  * Tools to handle common certificate operations.
  */
 public abstract class CertTools {
-    private static final Logger log = Logger.getLogger(CertTools.class);
+    private static final Logger log = LogManager.getLogger(CertTools.class);
 
     private static final InternalResources intres = InternalResources.getInstance();
 

@@ -24,7 +24,8 @@ import java.net.URLEncoder;
 import java.security.KeyPair;
 
 import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1OutputStream;
 import org.bouncycastle.asn1.DERSet;
@@ -65,7 +66,7 @@ import org.cesecore.util.CryptoProviderTools;
  * @version $Id$
  */
 public class HttpGetCert {
-    private static Logger log = Logger.getLogger(HttpGetCert.class);
+    private static Logger log = LogManager.getLogger(HttpGetCert.class);
 
     /**
      * Constructor

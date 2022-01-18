@@ -14,7 +14,8 @@
 package org.ejbca.ui.web.admin;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
 
 import javax.faces.application.FacesMessage;
@@ -31,8 +32,7 @@ import java.net.URISyntaxException;
  * @version $Id: UrlValidator.java 28844 2018-05-04 08:31:02Z samuellb $
  */
 public class UrlValidator implements Validator<Object> {
-    private static final Logger log = Logger.getLogger(UrlValidator.class);
-    
+    private static final Logger log = LogManager.getLogger(UrlValidator.class);
     
 
     @Override

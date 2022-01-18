@@ -18,8 +18,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.ejbca.core.ejb.approval.ApprovalProfileSession;
@@ -39,7 +40,7 @@ import org.ejbca.issuechecker.TicketDescription;
  */
 public class MissingEmailConfiguration extends ConfigurationIssue {
     
-    private static final Logger log = Logger.getLogger(MissingEmailConfiguration.class);
+    private static final Logger log = LogManager.getLogger(MissingEmailConfiguration.class);
 
     private static final String APPROVALPROFILE_LANGUAGE_KEY = "MISSING_EMAIL_CONFIGURATION_APPROVALPROFILE_TICKET_DESCRIPTION";
     private static final String ENDENTITYPROFILE_LANGUAGE_KEY = "MISSING_EMAIL_CONFIGURATION_ENDENTITYPROFILE_TICKET_DESCRIPTION";

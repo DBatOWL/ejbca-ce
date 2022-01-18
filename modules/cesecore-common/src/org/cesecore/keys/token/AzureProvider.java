@@ -48,7 +48,8 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.crypto.signers.PlainDSAEncoding;
 import org.bouncycastle.crypto.signers.StandardDSAEncoding;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -85,7 +86,7 @@ public class AzureProvider extends Provider {
      */
     public static class AzureSignature extends SignatureSpi {
 
-        private static final Logger log = Logger.getLogger(AzureSignature.class);
+        private static final Logger log = LogManager.getLogger(AzureSignature.class);
 
         private KeyVaultPrivateKey privateKey;
         /** the hash algorithm to use to hash the toBeSigned data, hashing is done in SW before signing */
@@ -296,7 +297,7 @@ public class AzureProvider extends Provider {
      */
     public static class AzureCipher extends CipherSpi {
 
-        private static final Logger log = Logger.getLogger(AzureCipher.class);
+        private static final Logger log = LogManager.getLogger(AzureCipher.class);
 
         private int opmode;
         private KeyVaultPrivateKey privateKey;

@@ -25,7 +25,8 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.cert.X509CRLHolder;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.audit.enums.EventStatus;
@@ -58,7 +59,7 @@ import org.cesecore.util.CryptoProviderTools;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class CrlCreateSessionBean implements CrlCreateSessionLocal, CrlCreateSessionRemote {
 
-    private static final Logger log = Logger.getLogger(CrlCreateSessionBean.class);
+    private static final Logger log = LogManager.getLogger(CrlCreateSessionBean.class);
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();
     

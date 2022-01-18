@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.keys.token.CryptoTokenInfo;
 import org.cesecore.keys.token.CryptoTokenManagementSessionRemote;
 import org.cesecore.keys.token.PKCS11CryptoToken;
@@ -33,7 +33,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class CryptoTokenListCommand extends EjbcaCliUserCommandBase {
 
-    private static final Logger log = Logger.getLogger(CryptoTokenListCommand.class);
+    private static final Logger log = LogManager.getLogger(CryptoTokenListCommand.class);
     
     @Override
     public String[] getCommandPath() {

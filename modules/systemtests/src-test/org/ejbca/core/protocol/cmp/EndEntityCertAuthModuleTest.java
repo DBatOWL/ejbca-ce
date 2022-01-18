@@ -31,7 +31,8 @@ import java.util.Set;
 import javax.security.auth.x500.X500Principal;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1OutputStream;
@@ -111,7 +112,7 @@ import static org.junit.Assert.fail;
  */
 public class EndEntityCertAuthModuleTest extends CmpTestCase {
 
-    private static final Logger log = Logger.getLogger(EndEntityCertAuthModuleTest.class);
+    private static final Logger log = LogManager.getLogger(EndEntityCertAuthModuleTest.class);
     
     private final static String RA1_ALIAS = "EECertAuthModTestRA1ConfAlias";
     private final static String RA2_ALIAS = "EECertAuthModTestRA2ConfAlias";

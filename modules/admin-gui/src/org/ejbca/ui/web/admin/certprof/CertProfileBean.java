@@ -37,7 +37,8 @@ import javax.faces.model.SelectItem;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.control.StandardRules;
 import org.cesecore.certificates.ca.ApprovalRequestType;
@@ -79,7 +80,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
 //@javax.faces.bean.ManagedBean(name="certProfileBean")
 public class CertProfileBean extends BaseManagedBean implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(CertProfileBean.class);
+    private static final Logger log = LogManager.getLogger(CertProfileBean.class);
 
     private int currentCertProfileId = -1;
     private int certificateProfileId;

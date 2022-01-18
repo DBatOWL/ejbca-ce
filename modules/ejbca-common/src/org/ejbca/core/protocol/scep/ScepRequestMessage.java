@@ -30,7 +30,8 @@ import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1InputStream;
@@ -98,7 +99,7 @@ public class ScepRequestMessage extends PKCS10RequestMessage implements RequestM
      */
 	static final long serialVersionUID = -235623330828902051L;
 
-    private static Logger log = Logger.getLogger(ScepRequestMessage.class);
+    private static Logger log = LogManager.getLogger(ScepRequestMessage.class);
 
     public static final String id_Verisign = "2.16.840.1.113733";
     public static final String id_pki = id_Verisign + ".1";

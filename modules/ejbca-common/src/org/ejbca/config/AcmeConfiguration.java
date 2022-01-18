@@ -19,7 +19,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.accounts.AccountBindingException;
 import org.cesecore.certificates.endentity.EndEntityConstants;
 import org.cesecore.internal.InternalResources;
@@ -35,7 +36,7 @@ import org.ejbca.core.protocol.dnssec.DnsSecDefaults;
 public class AcmeConfiguration extends UpgradeableDataHashMap implements Serializable {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(AcmeConfiguration.class);
+    private static final Logger log = LogManager.getLogger(AcmeConfiguration.class);
     
     private static final long serialVersionUID = 1L;
     

@@ -25,7 +25,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import org.cesecore.authorization.control.StandardRules;
 import org.cesecore.util.CertTools;
@@ -43,7 +44,7 @@ import org.ejbca.ui.web.admin.BaseManagedBean;
 public class ImportCaCertMBean extends BaseManagedBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(ImportCaCertMBean.class);
+    private static final Logger log = LogManager.getLogger(ImportCaCertMBean.class);
 
     @EJB
     private CAAdminSessionLocal caAdminSession;

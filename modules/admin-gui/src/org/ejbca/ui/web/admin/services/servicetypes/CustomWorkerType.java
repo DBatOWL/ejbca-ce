@@ -24,7 +24,8 @@ import java.util.Properties;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.core.model.services.CustomServiceWorkerProperty;
 import org.ejbca.core.model.services.CustomServiceWorkerUiSupport;
 import org.ejbca.core.model.services.IWorker;
@@ -40,7 +41,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
  */
 public class CustomWorkerType extends WorkerType {
     
-    private static final Logger log = Logger.getLogger(CustomWorkerType.class);
+    private static final Logger log = LogManager.getLogger(CustomWorkerType.class);
 
 	
 	private static final long serialVersionUID = 1790314768357040269L;

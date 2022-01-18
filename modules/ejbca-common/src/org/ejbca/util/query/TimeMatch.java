@@ -14,7 +14,8 @@ package org.ejbca.util.query;
 
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 
 /**
@@ -25,7 +26,7 @@ import org.apache.log4j.Logger;
 public class TimeMatch extends BasicMatch {
 
     private static final long serialVersionUID = 555503673432162539L;
-    private static final Logger log = Logger.getLogger(TimeMatch.class);
+    private static final Logger log = LogManager.getLogger(TimeMatch.class);
 
 	/** UserMatch Specific Constant */	
     public static final int MATCH_WITH_TIMECREATED = 0;

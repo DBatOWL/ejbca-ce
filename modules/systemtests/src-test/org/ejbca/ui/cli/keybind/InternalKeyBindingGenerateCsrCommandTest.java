@@ -15,7 +15,8 @@ package org.ejbca.ui.cli.keybind;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequest;
 import org.cesecore.CaTestUtils;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -49,7 +50,7 @@ import static org.junit.Assert.fail;
  */
 public class InternalKeyBindingGenerateCsrCommandTest {
 
-    private static final Logger log = Logger.getLogger(InternalKeyBindingGenerateCsrCommandTest.class);
+    private static final Logger log = LogManager.getLogger(InternalKeyBindingGenerateCsrCommandTest.class);
     private static final String TESTCLASS_NAME = InternalKeyBindingGenerateCsrCommandTest.class.getSimpleName();
 
     private static final AuthenticationToken authenticationToken = new TestAlwaysAllowLocalAuthenticationToken(

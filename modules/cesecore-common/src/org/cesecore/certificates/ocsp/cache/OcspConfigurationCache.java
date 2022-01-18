@@ -14,7 +14,8 @@ package org.cesecore.certificates.ocsp.cache;
 
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.OcspConfiguration;
 import org.cesecore.keybind.impl.OcspKeyBinding;
 
@@ -29,7 +30,7 @@ import org.cesecore.keybind.impl.OcspKeyBinding;
 public enum OcspConfigurationCache {
     INSTANCE;
 
-    private static final Logger log = Logger.getLogger(OcspConfigurationCache.class);
+    private static final Logger log = LogManager.getLogger(OcspConfigurationCache.class);
     
     /* If true a certificate that does not exist in the database, but is issued by a CA the responder handles
      * will be treated as not revoked. Default is to treat is as "unknown".

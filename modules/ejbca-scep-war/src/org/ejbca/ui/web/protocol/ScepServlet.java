@@ -27,7 +27,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.DecoderException;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -78,7 +79,7 @@ import org.ejbca.util.HTMLTools;
  */
 public class ScepServlet extends HttpServlet {
     private static final long serialVersionUID = -6776853218419335240L;
-    private static final Logger log = Logger.getLogger(ScepServlet.class);
+    private static final Logger log = LogManager.getLogger(ScepServlet.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
     /** Only intended to check if Peer connected instance is authorized to SCEP at all. This will not affect user authorization */

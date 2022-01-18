@@ -20,7 +20,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.asn1.x509.Extensions;
 import org.bouncycastle.cms.CMSSignedGenerator;
@@ -32,7 +33,7 @@ import org.cesecore.util.CeSecoreNameStyle;
  */
 public class SimpleRequestMessage implements RequestMessage {
 
-    private static final Logger log = Logger.getLogger(SimpleRequestMessage.class);
+    private static final Logger log = LogManager.getLogger(SimpleRequestMessage.class);
 
     /**
      * Determines if a de-serialized file is compatible with this class.

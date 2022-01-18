@@ -18,7 +18,8 @@ import javax.naming.NamingException;
 import javax.persistence.PostPersist;
 import javax.transaction.TransactionSynchronizationRegistry;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Entity listener for PublisherQueueData. If the entity object comes from a 
@@ -31,7 +32,7 @@ import org.apache.log4j.Logger;
  */
 public class PublisherQueueDataEntityListener {
 
-    private static final Logger log = Logger.getLogger(PublisherQueueDataEntityListener.class);
+    private static final Logger log = LogManager.getLogger(PublisherQueueDataEntityListener.class);
 
     // @Resource Annotation causes lookup failure on WF10. Lookup with JNDI instead
     TransactionSynchronizationRegistry registry;

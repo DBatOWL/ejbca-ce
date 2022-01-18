@@ -25,7 +25,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.cesecore.certificates.pinning.TrustEntry;
 import org.cesecore.certificates.pinning.TrustedChain;
@@ -46,7 +47,7 @@ import org.junit.runner.Description;
  */
 public class ClientX509TrustManagerTest {
 
-    private static final Logger log = Logger.getLogger(ClientX509TrustManagerTest.class);
+    private static final Logger log = LogManager.getLogger(ClientX509TrustManagerTest.class);
 
     @Rule
     public final TestWatcher traceLogMethodsRule = new TestWatcher() {

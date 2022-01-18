@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration>
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT" >
+			<PatternLayout pattern="%d %-5p [%c] %m%n" />
+		</Console>
+
+		<RollingFile name="full" fileName="ctb.log"
+			ignoreExceptions="false" append="false" filePattern="ctb-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d %-5p [%c] %m%n</Pattern>
+			</PatternLayout>
+ 			<Policies>
+ 			 	<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="5" /> 
+		</RollingFile>
+
+		<Async name="ASYNC">
+			<AppenderRef ref="full" />
+			<AppenderRef ref="console" level="info"/>
+		</Async>
+
+	</Appenders>
+	<Loggers>
+		<!-- Make sure we get all to info when running tests. -->
+		<Logger name="org.ejbca.ui.cli.TestOcspMonitoringTool"
+			level="trace" />
+
+		<!-- Limit Hibernate's output to INFO and log-file only -->
+		<Logger name="org.hibernate" level="info" />
+
+	    <!-- Avoid that these chatty classes' output appear in the console -->
+		<Logger name="org.ejbca.config.EjbcaConfigurationHolder"
+			level="debug" additivity="false">
+			<AppenderRef ref="full" />
+		</Logger>
+
+		<Logger name="org.cesecore.config.ConfigurationHolder"
+			level="debug" additivity="false">
+			<AppenderRef ref="full" />
+		</Logger>
+
+		<Root level="error">
+			<AppenderRef ref="ASYNC" />
+		</Root>
+	</Loggers>
+</Configuration>

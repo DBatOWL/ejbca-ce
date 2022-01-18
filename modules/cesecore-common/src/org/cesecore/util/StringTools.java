@@ -48,7 +48,8 @@ import com.google.common.net.InternetDomainName;
 
 import org.apache.commons.lang.CharUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.util.encoders.DecoderException;
 import org.bouncycastle.util.encoders.Hex;
@@ -59,7 +60,7 @@ import org.cesecore.config.ConfigurationHolder;
  * This class implements some utility functions that are useful when handling Strings.
  */
 public final class StringTools {
-    private static final Logger log = Logger.getLogger(StringTools.class);
+    private static final Logger log = LogManager.getLogger(StringTools.class);
 
     private static Pattern VALID_IPV4_PATTERN = null;
     private static Pattern VALID_IPV6_PATTERN = null;

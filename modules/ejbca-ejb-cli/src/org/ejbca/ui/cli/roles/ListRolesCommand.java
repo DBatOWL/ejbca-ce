@@ -16,7 +16,7 @@ package org.ejbca.ui.cli.roles;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.roles.Role;
 import org.cesecore.roles.management.RoleSessionRemote;
@@ -32,7 +32,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class ListRolesCommand extends BaseRolesCommand {
 
-    private static final Logger log = Logger.getLogger(ListRolesCommand.class);
+    private static final Logger log = LogManager.getLogger(ListRolesCommand.class);
 
     @Override
     public String getMainCommand() {

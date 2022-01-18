@@ -29,7 +29,8 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
 import org.cesecore.audit.enums.ModuleTypes;
@@ -55,7 +56,7 @@ import org.ejbca.ui.web.admin.BaseManagedBean;
 @ManagedBean
 public class RolesBean extends BaseManagedBean implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RolesBean.class);
+    private static final Logger log = LogManager.getLogger(RolesBean.class);
 
     @EJB
     private AuthorizationSessionLocal authorizationSession;

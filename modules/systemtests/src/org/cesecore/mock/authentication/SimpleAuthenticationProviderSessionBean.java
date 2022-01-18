@@ -26,7 +26,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.security.auth.x500.X500Principal;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.cesecore.authentication.tokens.AuthenticationSubject;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -49,7 +50,7 @@ import org.cesecore.util.CryptoProviderTools;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class SimpleAuthenticationProviderSessionBean implements SimpleAuthenticationProviderSessionRemote, SimpleAuthenticationProviderSessionLocal {
 
-    private static final Logger log = Logger.getLogger(SimpleAuthenticationProviderSessionBean.class);
+    private static final Logger log = LogManager.getLogger(SimpleAuthenticationProviderSessionBean.class);
 
     private static final long serialVersionUID = -5788194519235705323L;
 

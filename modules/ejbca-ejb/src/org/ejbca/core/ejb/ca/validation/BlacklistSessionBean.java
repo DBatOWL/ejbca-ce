@@ -25,7 +25,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.ServiceTypes;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
@@ -54,7 +55,7 @@ import org.ejbca.core.model.validation.PublicKeyBlacklistEntryCache;
 public class BlacklistSessionBean implements BlacklistSessionLocal, BlacklistSessionRemote {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(BlacklistSessionBean.class);
+    private static final Logger log = LogManager.getLogger(BlacklistSessionBean.class);
 
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();

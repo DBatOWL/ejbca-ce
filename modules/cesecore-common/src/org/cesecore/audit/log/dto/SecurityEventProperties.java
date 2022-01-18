@@ -19,7 +19,8 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.collections.MapUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventType;
 import org.cesecore.audit.enums.ModuleType;
@@ -89,7 +90,7 @@ import org.cesecore.authentication.tokens.AuthenticationToken;
  */
 public class SecurityEventProperties {
 
-    private static final Logger log = Logger.getLogger(SecurityEventProperties.class);
+    private static final Logger log = LogManager.getLogger(SecurityEventProperties.class);
     //
     public static final String CERT_SIGN_KEY = "certSignKey";
     public static final String CRL_SIGN_KEY = "crlSignKey";

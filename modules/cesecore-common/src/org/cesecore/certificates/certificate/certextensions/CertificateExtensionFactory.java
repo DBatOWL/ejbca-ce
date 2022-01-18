@@ -14,7 +14,8 @@ package org.cesecore.certificates.certificate.certextensions;
 
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.bouncycastle.asn1.x509.Extension;
 import org.cesecore.certificates.certificate.certextensions.standard.AuthorityInformationAccess;
@@ -55,7 +56,7 @@ import org.cesecore.util.CertTools;
  */
 public class CertificateExtensionFactory {
 
-	private static final Logger log = Logger.getLogger(CertificateExtensionFactory.class);
+	private static final Logger log = LogManager.getLogger(CertificateExtensionFactory.class);
 	private static final InternalResources intres = InternalResources.getInstance();
 	
 	private static CertificateExtensionFactory instance = null;

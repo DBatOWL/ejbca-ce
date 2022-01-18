@@ -36,7 +36,8 @@ import java.util.List;
 
 import javax.ejb.EJBTransactionRolledbackException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x509.Extension;
 import org.bouncycastle.asn1.x509.ExtensionsGenerator;
 import org.bouncycastle.asn1.x509.GeneralNames;
@@ -75,7 +76,7 @@ import org.junit.Test;
  */
 public class CertificateStoreSessionTest extends RoleUsingTestCase {
 
-    private static final Logger log = Logger.getLogger(CertificateStoreSessionTest.class);
+    private static final Logger log = LogManager.getLogger(CertificateStoreSessionTest.class);
     private static KeyPair keys;
 
     private static final String USERNAME = "CertificateStoreSessionTest";

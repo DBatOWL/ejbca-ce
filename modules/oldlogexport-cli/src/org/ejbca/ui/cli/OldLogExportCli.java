@@ -21,7 +21,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.QueryResultWrapper;
 import org.cesecore.util.ValidityDate;
 import org.cesecore.util.ValueExtractor;
@@ -39,7 +40,7 @@ import org.ejbca.core.model.log.LogEntry;
 @SuppressWarnings("deprecation")
 public class OldLogExportCli {
 
-	private static final Logger LOG = Logger.getLogger(OldLogExportCli.class);
+	private static final Logger LOG = LogManager.getLogger(OldLogExportCli.class);
 
 	//TODO: create .sh and .bat, additional orm-mappings.. more comments, test with huge log-table
 	public static void main(final String[] args) throws IOException {

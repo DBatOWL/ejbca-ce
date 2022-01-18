@@ -40,7 +40,8 @@ import java.util.regex.Pattern;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.CesecoreException;
 import org.cesecore.keys.validation.DnsNameValidator;
@@ -75,7 +76,8 @@ import org.ejbca.core.model.validation.domainblacklist.DomainBlacklistNormalizer
 public class DomainBlacklistValidator extends ValidatorBase implements DnsNameValidator {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(DomainBlacklistValidator.class);
+    private static final Logger log = LogManager.getLogger(DomainBlacklistValidator.class);
+
     private static final Pattern allowedDomainCharacters = Pattern.compile("^[a-zA-Z0-9._-]+$");
 
     /** The domain blacklist validator type. */

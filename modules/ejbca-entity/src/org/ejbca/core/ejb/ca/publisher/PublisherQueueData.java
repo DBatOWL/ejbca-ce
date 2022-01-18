@@ -31,7 +31,8 @@ import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectedData;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
@@ -68,7 +69,7 @@ import org.ejbca.core.model.ca.publisher.PublisherQueueVolatileInformation;
 public class PublisherQueueData extends ProtectedData implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(PublisherQueueData.class);
+    private static final Logger log = LogManager.getLogger(PublisherQueueData.class);
 
     private String pk;
     private long timeCreated;

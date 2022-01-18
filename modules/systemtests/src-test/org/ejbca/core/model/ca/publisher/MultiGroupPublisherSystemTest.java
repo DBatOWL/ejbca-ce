@@ -20,7 +20,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CaTestUtils;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -68,7 +69,7 @@ import static org.junit.Assert.fail;
  */
 public class MultiGroupPublisherSystemTest {
 
-    private static final Logger log = Logger.getLogger(MultiGroupPublisherSystemTest.class);
+    private static final Logger log = LogManager.getLogger(MultiGroupPublisherSystemTest.class);
 
     private static final String MGP_PUBLISHER_NAME = "MultiGroupPublisherSystemTest_MultiGroupPublisher";
     private static final String LDAP_PUBLISHER1_NAME = "MultiGroupPublisherSystemTest_LdapPublisher1";

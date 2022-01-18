@@ -29,7 +29,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
@@ -66,7 +67,7 @@ import org.cesecore.util.ValidityDate;
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class NoConflictCertificateStoreSessionBean implements NoConflictCertificateStoreSessionRemote, NoConflictCertificateStoreSessionLocal {
 
-    private final static Logger log = Logger.getLogger(NoConflictCertificateStoreSessionBean.class);
+    private final static Logger log = LogManager.getLogger(NoConflictCertificateStoreSessionBean.class);
     
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();

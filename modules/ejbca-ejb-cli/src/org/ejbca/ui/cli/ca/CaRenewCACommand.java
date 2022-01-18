@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x509.SubjectKeyIdentifier;
 import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.cert.X509ExtensionUtils;
@@ -62,7 +62,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaRenewCACommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaRenewCACommand.class);
+    private static final Logger log = LogManager.getLogger(CaRenewCACommand.class);
 
     private static final String NEWLINE = System.getProperty("line.separator");
 

@@ -17,7 +17,8 @@ import java.util.Arrays;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.keys.token.PKCS11SlotListWrapper;
 import org.cesecore.keys.token.PKCS11SlotListWrapperHelper;
 import org.cesecore.keys.token.PKCS11TestUtils;
@@ -37,7 +38,7 @@ import static org.junit.Assume.assumeTrue;
  */
 public class Pkcs11WrapperTest {
 
-    private static final Logger log = Logger.getLogger(Pkcs11WrapperTest.class);
+    private static final Logger log = LogManager.getLogger(Pkcs11WrapperTest.class);
 
     @BeforeClass
     public static void beforeClass() {

@@ -16,7 +16,8 @@ package org.ejbca.core.protocol.cmp;
 import java.io.ByteArrayOutputStream;
 import java.security.cert.X509Certificate;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1OutputStream;
 import org.bouncycastle.asn1.cmp.PKIMessage;
@@ -50,7 +51,7 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(CryptoTokenTestRunner.class)
 public class CmpConfirmMessageTest extends CmpTestCase {
 
-    private static final Logger log = Logger.getLogger(CrmfRequestTest.class);
+    private static final Logger log = LogManager.getLogger(CrmfRequestTest.class);
 
     private static final String user = "TestUser";
     private static final X500Name userDN = new X500Name("CN=" + user + ", O=PrimeKey Solutions AB, C=SE");

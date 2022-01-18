@@ -20,7 +20,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 import org.bouncycastle.math.ec.ECPoint;
 import org.cesecore.certificates.certificateprofile.CertificateProfile;
@@ -44,7 +45,7 @@ public class EccKeyValidator extends KeyValidatorBase {
 
     private static final long serialVersionUID = -335429158339811928L;
 
-    private static final Logger log = Logger.getLogger(EccKeyValidator.class);
+    private static final Logger log = LogManager.getLogger(EccKeyValidator.class);
 
     /** The key validator type. */
     private static final String TYPE_IDENTIFIER = "ECC_KEY_VALIDATOR";

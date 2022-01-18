@@ -48,7 +48,8 @@ import java.util.List;
 import javax.crypto.KeyGenerator;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.DERSet;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.asn1.x9.X9ECParameters;
@@ -80,7 +81,7 @@ import org.cesecore.util.CertTools;
  * @version $Id$
  */
 public class KeyStoreTools {
-    private static final Logger log = Logger.getLogger(KeyStoreTools.class);
+    private static final Logger log = LogManager.getLogger(KeyStoreTools.class);
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();
 

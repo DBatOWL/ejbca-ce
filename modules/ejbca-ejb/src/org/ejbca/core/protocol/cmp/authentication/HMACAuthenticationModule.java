@@ -18,7 +18,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.cmp.PKIMessage;
 import org.bouncycastle.asn1.cmp.RevReqContent;
 import org.bouncycastle.asn1.crmf.CertReqMessages;
@@ -51,7 +52,7 @@ import org.ejbca.core.protocol.cmp.InvalidCmpProtectionException;
  */
 public class HMACAuthenticationModule implements ICMPAuthenticationModule {
 
-    private static final Logger LOG = Logger.getLogger(HMACAuthenticationModule.class);
+    private static final Logger LOG = LogManager.getLogger(HMACAuthenticationModule.class);
     private static final InternalEjbcaResources INTRES = InternalEjbcaResources.getInstance();
 
     private final AuthenticationToken authenticationToken;

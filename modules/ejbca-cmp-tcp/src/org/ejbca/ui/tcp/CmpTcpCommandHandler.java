@@ -16,7 +16,8 @@ package org.ejbca.ui.tcp;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.WebPrincipal;
@@ -36,7 +37,7 @@ import org.quickserver.net.server.DataType;
  */
 public class CmpTcpCommandHandler implements ClientEventHandler, ClientBinaryHandler  {
 
-	private static final Logger LOG = Logger.getLogger(CmpTcpCommandHandler.class.getName());
+	private static final Logger LOG = LogManager.getLogger(CmpTcpCommandHandler.class.getName());
     private static final InternalEjbcaResources INTRES = InternalEjbcaResources.getInstance();
     private static EjbLocalHelper ejb = null;
 	

@@ -23,7 +23,8 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import org.apache.commons.lang.time.FastDateFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.endentity.EndEntityConstants;
 import org.cesecore.certificates.endentity.EndEntityInformation;
 import org.cesecore.certificates.endentity.EndEntityTypes;
@@ -39,7 +40,7 @@ import org.junit.Test;
  */
 public class EjbcaWSHelperSessionUnitTest {
 
-    private static final Logger log = Logger.getLogger(EjbcaWSHelperSessionUnitTest.class);
+    private static final Logger log = LogManager.getLogger(EjbcaWSHelperSessionUnitTest.class);
 
     private static final String TEST_CANAME = "EjbcaWSHelperSessionUnitTestCA";
     private static final String TEST_CADN = "CN=" + TEST_CANAME + ",O=Test";

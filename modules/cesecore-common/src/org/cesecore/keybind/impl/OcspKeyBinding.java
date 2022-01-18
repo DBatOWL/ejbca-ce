@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.cesecore.keybind.impl;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.DERNull;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
@@ -55,7 +56,7 @@ import java.util.Map;
 public class OcspKeyBinding extends InternalKeyBindingBase {
   
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(OcspKeyBinding.class);
+    private static final Logger log = LogManager.getLogger(OcspKeyBinding.class);
 
     public enum ResponderIdType {
         KEYHASH(2, "KeyHash"), NAME(1, "Name");

@@ -12,28 +12,26 @@
  *************************************************************************/
 package org.cesecore.audit.log.dto;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-
-import org.apache.log4j.Logger;
-import org.cesecore.util.TestLogAppenderResource;
-import org.junit.Rule;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+
+import org.cesecore.util.TestLogAppenderResource;
+import org.junit.Rule;
+import org.junit.Test;
+
 /**
  * Unit test for SecurityEventProperties.
  *
- * @version $Id$
  */
 public class SecurityEventPropertiesUnitTest {
 
     @Rule
-    public TestLogAppenderResource testLog = new TestLogAppenderResource(Logger.getLogger(SecurityEventProperties.class));
+    public TestLogAppenderResource testLog = new TestLogAppenderResource(SecurityEventProperties.class);
 
     @Test
     public void shouldMapCertSignKey() {
@@ -194,6 +192,9 @@ public class SecurityEventPropertiesUnitTest {
         // when
         final Map<String, Object> resultMap = securityEventProperties.toMap();
         // then
+        
+        System.out.println("DEar amin the test log is " + testLog.getOutput());
+        
         assertEquals("Resulting map has unexpected number of elements.", 0, resultMap.keySet().size());
         assertTrue("Event log is missing.", testLog.getOutput().contains("WARN - Got an entry with null key, excluding from the result map."));
     }

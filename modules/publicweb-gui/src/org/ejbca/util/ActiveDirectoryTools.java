@@ -14,7 +14,8 @@ package org.ejbca.util;
 
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.config.GlobalConfiguration;
 
 import com.novell.ldap.LDAPAttribute;
@@ -28,7 +29,7 @@ import com.novell.ldap.LDAPSearchResults;
  * @version $Id$
  */
 public class ActiveDirectoryTools {
-	private static final Logger log = Logger.getLogger(ActiveDirectoryTools.class);
+	private static final Logger log = LogManager.getLogger(ActiveDirectoryTools.class);
     //private static final InternalResources intres = InternalResources.getInstance();
 
 	/**

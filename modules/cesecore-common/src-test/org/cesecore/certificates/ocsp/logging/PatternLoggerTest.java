@@ -17,7 +17,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Method;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 
 /**
@@ -27,7 +28,7 @@ import org.junit.Test;
  */
 public class PatternLoggerTest {
 
-    private static final Logger log = Logger.getLogger(PatternLoggerTest.class);
+    private static final Logger log = LogManager.getLogger(PatternLoggerTest.class);
 
     /** Try out some interpolation with focus on different date formats. */
     @Test

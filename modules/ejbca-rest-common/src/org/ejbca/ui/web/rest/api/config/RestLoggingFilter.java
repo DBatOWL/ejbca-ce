@@ -30,7 +30,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 
 import org.apache.commons.io.output.ByteArrayOutputStream;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Servlet Filter for logging REST request and responses.
@@ -133,7 +134,7 @@ public class RestLoggingFilter implements Filter {
         }       
     }
     
-    private static final Logger log = Logger.getLogger(RestLoggingFilter.class);
+    private static final Logger log = LogManager.getLogger(RestLoggingFilter.class);
 
     @Override
     public void init(final FilterConfig filterConfig) throws ServletException {}

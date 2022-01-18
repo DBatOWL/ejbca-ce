@@ -13,7 +13,8 @@
 
 package org.ejbca.core.ejb.ra;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.ErrorCode;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -86,7 +87,7 @@ import java.util.Date;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class KeyStoreCreateSessionBean implements KeyStoreCreateSessionLocal, KeyStoreCreateSessionRemote {
     
-    private static final Logger log = Logger.getLogger(KeyStoreCreateSessionBean.class);
+    private static final Logger log = LogManager.getLogger(KeyStoreCreateSessionBean.class);
 
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
 

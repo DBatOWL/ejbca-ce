@@ -24,7 +24,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.CesecoreConfiguration;
 
 /**
@@ -35,7 +36,7 @@ import org.cesecore.config.CesecoreConfiguration;
 @Stateless
 public class IncompleteIssuanceJournalDataSessionBean implements IncompleteIssuanceJournalDataSessionLocal {
 
-    private static final Logger log = Logger.getLogger(IncompleteIssuanceJournalDataSessionBean.class);
+    private static final Logger log = LogManager.getLogger(IncompleteIssuanceJournalDataSessionBean.class);
 
     /** Number of rows to fetch at once */
     private static final int BATCH_SIZE = 100;

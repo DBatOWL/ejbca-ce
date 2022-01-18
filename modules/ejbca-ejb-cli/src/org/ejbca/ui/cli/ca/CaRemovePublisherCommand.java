@@ -16,7 +16,7 @@ package org.ejbca.ui.cli.ca;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CADoesntExistsException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -44,7 +44,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaRemovePublisherCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaRemovePublisherCommand.class);
+    private static final Logger log = LogManager.getLogger(CaRemovePublisherCommand.class);
     
     private static final String PUBL_NAME_KEY = "--name";
     private static final String LIST_REF_KEY = "--listref";

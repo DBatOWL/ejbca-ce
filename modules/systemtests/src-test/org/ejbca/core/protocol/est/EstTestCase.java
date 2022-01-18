@@ -50,7 +50,8 @@ import javax.net.ssl.X509TrustManager;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.DERSequence;
 import org.bouncycastle.asn1.DERSet;
@@ -111,7 +112,7 @@ import static org.junit.Assert.fail;
  */
 public abstract class EstTestCase extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(EstTestCase.class);
+    private static final Logger log = LogManager.getLogger(EstTestCase.class);
 
     protected static final String CP_NAME = "EST_TEST_CP_NAME";
     protected static final String EEP_NAME = "EST_TEST_EEP_NAME";

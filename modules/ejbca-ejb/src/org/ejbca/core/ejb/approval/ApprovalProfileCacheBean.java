@@ -25,7 +25,8 @@ import javax.ejb.Startup;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.profiles.ProfileData;
 import org.ejbca.config.EjbcaConfiguration;
 import org.ejbca.core.model.approval.profile.ApprovalProfile;
@@ -50,7 +51,7 @@ import org.ejbca.core.model.approval.profile.ApprovalProfile;
 @TransactionManagement(TransactionManagementType.BEAN)
 public class ApprovalProfileCacheBean {
 
-    private final Logger LOG = Logger.getLogger(ApprovalProfileCacheBean.class);
+    private final Logger LOG = LogManager.getLogger(ApprovalProfileCacheBean.class);
 
     @EJB
     private ApprovalProfileSessionLocal approvalProfileSession;

@@ -13,7 +13,8 @@
 package org.ejbca.ui.web.pub.cluster;
 
 import org.apache.http.HttpResponse;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.WebTestUtils;
 
 /**
@@ -23,7 +24,7 @@ import org.cesecore.WebTestUtils;
  */
 public class WebEjbcaHealthRunner implements Runnable { // NOPMD, this is not a JEE app, only a test
 	
-	private static Logger log = Logger.getLogger(WebEjbcaHealthRunner.class);
+	private static Logger log = LogManager.getLogger(WebEjbcaHealthRunner.class);
 
 	public static final int NO_TESTS=100;
 	public static final int TIMEOUT = 31*1000;

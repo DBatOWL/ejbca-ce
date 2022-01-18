@@ -32,7 +32,8 @@ import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.config.CesecoreConfiguration;
 import org.cesecore.keys.token.PKCS11SlotListWrapper;
@@ -51,7 +52,7 @@ public class Pkcs11SlotLabel {
     public static final String IAIK_JCEPROVIDER_CLASS = "iaik.security.provider.IAIK";
     public static final String JACKJNI_CLASS = "org.cesecore.keys.token.p11ng.provider.JackNJI11Provider";
 
-    private static final Logger log = Logger.getLogger(Pkcs11SlotLabel.class);
+    private static final Logger log = LogManager.getLogger(Pkcs11SlotLabel.class);
 
     private final Pkcs11SlotLabelType type;
     private final String value;

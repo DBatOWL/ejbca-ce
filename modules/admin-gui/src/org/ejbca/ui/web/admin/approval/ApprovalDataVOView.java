@@ -25,7 +25,8 @@ import javax.ejb.EJBException;
 import javax.faces.application.Application;
 import javax.faces.context.FacesContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.PublicAccessAuthenticationToken;
 import org.cesecore.authentication.tokens.PublicWebPrincipal;
@@ -53,7 +54,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
 public class ApprovalDataVOView implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(ApprovalDataVOView.class);
+	private static final Logger log = LogManager.getLogger(ApprovalDataVOView.class);
 	private final EjbLocalHelper ejbLocalHelper = new EjbLocalHelper();
     private ApprovalDataVO data;
 

@@ -19,7 +19,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.SimpleTime;
 import org.cesecore.util.StringTools;
 import org.cesecore.util.TimeUnitFormat;
@@ -31,7 +32,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
  */
 public class SimpleTimeValidator implements Validator<Object> {
 
-    private static final Logger log = Logger.getLogger(SimpleTimeValidator.class);
+    private static final Logger log = LogManager.getLogger(SimpleTimeValidator.class);
 
     @Override
     public void validate(FacesContext facesContext, UIComponent component, Object object) throws ValidatorException {

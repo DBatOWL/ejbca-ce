@@ -16,7 +16,8 @@ package org.cesecore.config;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConversionException;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
 import org.cesecore.util.CertTools;
 
@@ -33,7 +34,7 @@ import java.util.Set;
  */
 public class OcspConfiguration {
 
-    private static final Logger log = Logger.getLogger(OcspConfiguration.class);
+    private static final Logger log = LogManager.getLogger(OcspConfiguration.class);
 
     @Deprecated // Deprecated in 6.2.4, remains to allow migration from previous versions
     public static final String DEFAULT_RESPONDER = "ocsp.defaultresponder";

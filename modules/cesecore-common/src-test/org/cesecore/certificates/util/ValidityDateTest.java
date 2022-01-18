@@ -21,7 +21,8 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import org.apache.commons.lang.time.FastDateFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.ValidityDate;
 import org.junit.Assert;
 import org.junit.Test;
@@ -32,7 +33,7 @@ import org.junit.Test;
  */
 public class ValidityDateTest {
 
-    private static final Logger LOG = Logger.getLogger(ValidityDateTest.class);
+    private static final Logger LOG = LogManager.getLogger(ValidityDateTest.class);
     private static final String RELATIVE = "relative";
     private static final String ABSOLUTE = "absolute";
     

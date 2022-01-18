@@ -13,7 +13,8 @@
 
 package org.cesecore.util;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,7 +49,7 @@ import java.util.zip.ZipInputStream;
  * @version $Id$
  */
 public class SecureZipUnpacker {
-    private static final Logger log = Logger.getLogger(SecureZipUnpacker.class);
+    private static final Logger log = LogManager.getLogger(SecureZipUnpacker.class);
 
     private final ZipInputStream zipInputStream;
     private final int maxFileCount;

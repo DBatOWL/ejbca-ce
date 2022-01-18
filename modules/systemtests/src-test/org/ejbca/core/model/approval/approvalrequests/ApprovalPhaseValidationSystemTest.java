@@ -27,7 +27,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -76,7 +77,7 @@ import org.junit.Test;
  */
 public class ApprovalPhaseValidationSystemTest extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(ApprovalPhaseValidationSystemTest.class);
+    private static final Logger log = LogManager.getLogger(ApprovalPhaseValidationSystemTest.class);
 
     private static final AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("ApprovalPhaseValidationSystemTest"));
 

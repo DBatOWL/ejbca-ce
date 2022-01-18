@@ -22,7 +22,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.Arrays;
 import org.cesecore.authorization.rules.AccessRuleData;
 import org.cesecore.authorization.rules.AccessRuleState;
@@ -78,7 +79,7 @@ import static org.junit.Assert.assertTrue;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DatabaseSchemaTest {
 
-    private static final Logger LOG = Logger.getLogger(DatabaseSchemaTest.class);
+    private static final Logger LOG = LogManager.getLogger(DatabaseSchemaTest.class);
 
     private static String VARCHAR_80B;
     private static String VARCHAR_250B;

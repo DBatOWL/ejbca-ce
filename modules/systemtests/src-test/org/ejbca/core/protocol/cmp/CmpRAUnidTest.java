@@ -20,7 +20,8 @@ import java.security.KeyPair;
 import java.security.cert.X509Certificate;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
@@ -77,7 +78,7 @@ import static org.junit.Assume.assumeTrue;
  */
 public class CmpRAUnidTest extends CmpTestCase {
 
-    private static final Logger log = Logger.getLogger(CmpRAUnidTest.class);
+    private static final Logger log = LogManager.getLogger(CmpRAUnidTest.class);
     private final AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("CmpRAUnidTest"));
 
     private static final String PBEPASSWORD = "password";

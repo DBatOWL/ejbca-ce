@@ -48,7 +48,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
 import org.cesecore.audit.enums.ModuleTypes;
@@ -89,7 +90,7 @@ import org.ejbca.cvc.PublicKeyEC;
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class CertificateStoreSessionBean implements CertificateStoreSessionRemote, CertificateStoreSessionLocal {
 
-    private final static Logger log = Logger.getLogger(CertificateStoreSessionBean.class);
+    private final static Logger log = LogManager.getLogger(CertificateStoreSessionBean.class);
     /** Internal localization of logs and errors */
     private static final InternalResources INTRES = InternalResources.getInstance();
     private static final int TIMERID_CACERTIFICATECACHE = 1;

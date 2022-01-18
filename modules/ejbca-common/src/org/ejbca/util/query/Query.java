@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.StringTools;
 
 /**
@@ -32,7 +33,7 @@ public class Query implements Serializable {
 
     private static final long serialVersionUID = 2020709050743730820L;
  
-    private static Logger log = Logger.getLogger(Query.class);
+    private static Logger log = LogManager.getLogger(Query.class);
 
     /** @deprecated Type of query is no longer support and only kept as a reminder not to re-reuse the value 0 */
     @Deprecated

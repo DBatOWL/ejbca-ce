@@ -14,7 +14,8 @@
 package org.ejbca.core.ejb.services;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.log.InternalSecurityEventsLoggerSessionLocal;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
@@ -103,7 +104,7 @@ import java.util.Map;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class ServiceSessionBean implements ServiceSessionLocal, ServiceSessionRemote {
 
-    private static final Logger log = Logger.getLogger(ServiceSessionBean.class);
+    private static final Logger log = LogManager.getLogger(ServiceSessionBean.class);
 
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();

@@ -28,7 +28,8 @@ import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.SystemUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.internal.InternalResources;
 
 /**
@@ -39,7 +40,7 @@ import org.cesecore.internal.InternalResources;
 public final class ExternalProcessTools {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(ExternalProcessTools.class);
+    private static final Logger log = LogManager.getLogger(ExternalProcessTools.class);
 
     /** Internal localization of logs and errors. */
     private static final InternalResources intres = InternalResources.getInstance();

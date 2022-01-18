@@ -17,7 +17,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.x500.RDN;
 import org.bouncycastle.asn1.x500.X500Name;
@@ -41,7 +42,7 @@ import org.ejbca.util.passgen.LettersAndDigitsPasswordGenerator;
  */
 public class UnidFnrHandler implements ExtendedUserDataHandler {
 	private static final long serialVersionUID = 1L;
-    private static final Logger LOG = Logger.getLogger(UnidFnrHandler.class);
+    private static final Logger LOG = LogManager.getLogger(UnidFnrHandler.class);
 	private static final Pattern onlyDecimalDigits = Pattern.compile("^[0-9]+$");
 	protected UnidfnrSessionLocal unidfnrSession;
 

@@ -44,7 +44,8 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.operator.OperatorCreationException;
@@ -102,7 +103,7 @@ import org.cesecore.util.ui.DynamicUiProperty;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class InternalKeyBindingMgmtSessionBean implements InternalKeyBindingMgmtSessionLocal, InternalKeyBindingMgmtSessionRemote {
 
-    private static final Logger log = Logger.getLogger(InternalKeyBindingMgmtSessionBean.class);
+    private static final Logger log = LogManager.getLogger(InternalKeyBindingMgmtSessionBean.class);
     private static final InternalResources intres = InternalResources.getInstance();
 
     @EJB

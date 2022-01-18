@@ -15,7 +15,8 @@ package org.ejbca.core.model.services;
 
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
@@ -46,7 +47,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class UserPasswordExpireTest extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(UserPasswordExpireTest.class);
+    private static final Logger log = LogManager.getLogger(UserPasswordExpireTest.class);
     private static final AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("UserPasswordExpireTest"));
     private int caid = getTestCAId();
 

@@ -27,7 +27,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.pkcs.PKCS10CertificationRequest;
 import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequest;
@@ -55,7 +56,7 @@ public class RaEndEntityDetails {
         EndEntityProfile getEndEntityProfile(final int eepId);
     }
 
-    private static final Logger log = Logger.getLogger(RaEndEntityDetails.class);
+    private static final Logger log = LogManager.getLogger(RaEndEntityDetails.class);
     private final Callbacks callbacks;
 
     private final String username;

@@ -18,7 +18,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.keys.token.p11.Pkcs11SlotLabelType;
 
 /**
@@ -61,7 +62,7 @@ public abstract class SystemTestsConfiguration {
         "/usr/lib/x86_64-linux-gnu/softhsm/libsofthsm2.so", // SoftHSM 2 (Linux multiarch, 64-bit)
     };
 
-    private static final Logger log = Logger.getLogger(SystemTestsConfiguration.class);
+    private static final Logger log = LogManager.getLogger(SystemTestsConfiguration.class);
     private static final String PROPERTYFILE = "/systemtests.properties";
     private static Properties properties = null;
 

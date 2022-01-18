@@ -29,7 +29,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Can be used instead of ObjectInputStream to safely deserialize(readObject) unverified serialized java object.
@@ -46,7 +47,7 @@ import org.apache.log4j.Logger;
  */
 public class LookAheadObjectInputStream extends ObjectInputStream {
 
-    private static final Logger log = Logger.getLogger(LookAheadObjectInputStream.class);
+    private static final Logger log = LogManager.getLogger(LookAheadObjectInputStream.class);
     private Set<Class<? extends Serializable>> acceptedClasses = null;
     private Set<Class<? extends Serializable>> acceptedClassesDynamically = null;
     

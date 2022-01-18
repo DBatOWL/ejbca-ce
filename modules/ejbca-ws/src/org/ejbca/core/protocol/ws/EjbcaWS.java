@@ -48,8 +48,9 @@ import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CesecoreException;
 import org.cesecore.ErrorCode;
 import org.cesecore.audit.enums.EventType;
@@ -194,7 +195,7 @@ public class EjbcaWS implements IEjbcaWS {
 	/** The maximum number of rows returned in array responses. */
 	private static final int MAX_NUMBER_OF_ROWS = 100;
 
-	private static final Logger log = Logger.getLogger(EjbcaWS.class);
+	private static final Logger log = LogManager.getLogger(EjbcaWS.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
     /** Only intended to check if Peer connected instance is authorized to Web Services at all.*/

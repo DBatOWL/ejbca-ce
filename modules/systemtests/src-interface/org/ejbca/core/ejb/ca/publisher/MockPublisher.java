@@ -15,7 +15,8 @@ package org.ejbca.core.ejb.ca.publisher;
 import java.security.cert.Certificate;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.endentity.ExtendedInformation;
 import org.cesecore.util.ExternalScriptsAllowlist;
@@ -32,7 +33,7 @@ public class MockPublisher extends CustomPublisherContainer implements ICustomPu
 
     private static final long serialVersionUID = 1L;
 
-    private static final Logger log = Logger.getLogger(MockPublisher.class);
+    private static final Logger log = LogManager.getLogger(MockPublisher.class);
     
     public static final String PROPERTYKEY_LIMIT = "successLimit";
     public static final String PROPERTYKEY_SUCCESSES = "numberOfSuccesses";

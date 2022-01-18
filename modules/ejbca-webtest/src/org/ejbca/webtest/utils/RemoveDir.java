@@ -25,11 +25,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class RemoveDir {
 
-    private static final Logger log = Logger.getLogger(RemoveDir.class);
+    private static final Logger log = LogManager.getLogger(RemoveDir.class);
 
     private Path path;
 

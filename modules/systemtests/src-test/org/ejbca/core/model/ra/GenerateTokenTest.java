@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.core.model.ra;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
@@ -59,7 +60,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class GenerateTokenTest extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(GenerateTokenTest.class);
+    private static final Logger log = LogManager.getLogger(GenerateTokenTest.class);
 
     private static final AuthenticationToken internalAdmin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("GenerateTokenTest"));
     private static final EndEntityManagementSessionRemote endEntityManagementSession = EjbRemoteHelper.INSTANCE

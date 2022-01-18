@@ -25,7 +25,8 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -54,7 +55,7 @@ import org.ejbca.core.model.approval.profile.ApprovalProfile;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class ApprovalProfileSessionBean implements ApprovalProfileSessionLocal, ApprovalProfileSessionRemote {
     
-    private static final Logger LOG = Logger.getLogger(ApprovalProfileSessionBean.class);
+    private static final Logger LOG = LogManager.getLogger(ApprovalProfileSessionBean.class);
     /** Internal localization of logs and errors */
     private static final InternalResources INTRES = InternalResources.getInstance();
 

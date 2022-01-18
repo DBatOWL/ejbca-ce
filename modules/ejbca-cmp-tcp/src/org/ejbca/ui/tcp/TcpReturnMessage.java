@@ -17,7 +17,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Encodes a TCP messages to a client.
@@ -27,7 +28,7 @@ import org.apache.log4j.Logger;
  *
  */
 public class TcpReturnMessage {
-	private static final Logger log = Logger.getLogger(TcpReceivedMessage.class.getName());
+	private static final Logger log = LogManager.getLogger(TcpReceivedMessage.class.getName());
 	/**
 	 * The message to be sent to be returned to the client.
 	 */

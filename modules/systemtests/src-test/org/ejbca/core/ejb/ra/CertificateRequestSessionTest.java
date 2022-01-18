@@ -25,7 +25,8 @@ import java.util.Enumeration;
 import java.util.Random;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.certificates.certificate.CertificateConstants;
@@ -59,7 +60,7 @@ import org.junit.Test;
  */
 public class CertificateRequestSessionTest extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(CertificateRequestSessionTest.class);
+    private static final Logger log = LogManager.getLogger(CertificateRequestSessionTest.class);
     private static final AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("CertificateRequestSessionTest"));
     private final Random random = new Random();
 

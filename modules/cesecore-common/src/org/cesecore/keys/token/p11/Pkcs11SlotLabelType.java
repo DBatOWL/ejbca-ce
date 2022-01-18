@@ -15,7 +15,8 @@ package org.cesecore.keys.token.p11;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * This enum class represents the typing of a slot label. In PKCS#11 an HSM is split up into separate partitions known 
@@ -47,7 +48,7 @@ public enum Pkcs11SlotLabelType {
     SLOT_NUMBER("SLOT_NUMBER", "Slot Number", NumberValidator.class), 
     SUN_FILE("SUN_FILE", "Sun configuration file", null);
 
-    private static final Logger log = Logger.getLogger(Pkcs11SlotLabelType.class);
+    private static final Logger log = LogManager.getLogger(Pkcs11SlotLabelType.class);
     
     private static final Map<String, Pkcs11SlotLabelType> keyLookUpMap = new HashMap<>();
     

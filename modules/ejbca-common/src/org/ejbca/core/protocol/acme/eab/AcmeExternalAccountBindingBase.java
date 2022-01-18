@@ -18,7 +18,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.accounts.AccountBinding;
 import org.cesecore.accounts.AccountBindingBase;
 import org.cesecore.util.ui.DynamicUiModel;
@@ -33,7 +34,7 @@ public abstract class AcmeExternalAccountBindingBase extends AccountBindingBase 
     private static final long serialVersionUID = 3018936825885684493L;
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(AcmeExternalAccountBindingBase.class);
+    private static final Logger log = LogManager.getLogger(AcmeExternalAccountBindingBase.class);
 
     /** Dynamic UI model extension. */
     protected DynamicUiModel uiModel;

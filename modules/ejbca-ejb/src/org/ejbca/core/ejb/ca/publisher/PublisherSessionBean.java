@@ -43,7 +43,8 @@ import javax.persistence.TypedQuery;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.IntRange;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.log.AuditRecordStorageException;
 import org.cesecore.audit.log.SecurityEventsLoggerSessionLocal;
@@ -97,7 +98,7 @@ import org.ejbca.core.model.ca.publisher.PublisherQueueVolatileInformation;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class PublisherSessionBean implements PublisherSessionLocal, PublisherSessionRemote {
 
-    private static final Logger log = Logger.getLogger(PublisherSessionBean.class);
+    private static final Logger log = LogManager.getLogger(PublisherSessionBean.class);
 
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();

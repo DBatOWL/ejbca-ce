@@ -16,7 +16,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.CertTools;
 import org.ejbca.util.passgen.IPasswordGenerator;
 import org.ejbca.util.passgen.PasswordGeneratorFactory;
@@ -44,7 +45,7 @@ import org.ejbca.util.passgen.PasswordGeneratorFactory;
  */
 public class UsernameGenerator {
 
-	private static final Logger log = Logger.getLogger(UsernameGenerator.class);
+	private static final Logger log = LogManager.getLogger(UsernameGenerator.class);
 
 	// Generator configuration parameters, with good default values
 	private UsernameGeneratorParams params = null;

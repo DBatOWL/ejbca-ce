@@ -13,7 +13,7 @@
 
 package org.ejbca.issuechecker.db;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 
 /**

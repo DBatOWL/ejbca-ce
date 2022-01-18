@@ -32,7 +32,8 @@ import javax.faces.model.SelectItem;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.AuditDevicesConfig;
 import org.cesecore.audit.AuditLogEntry;
 import org.cesecore.audit.audit.AuditExporter;
@@ -76,7 +77,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaWebBean;
 public class AuditorManagedBean extends BaseManagedBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(AuditorManagedBean.class);
+	private static final Logger log = LogManager.getLogger(AuditorManagedBean.class);
 
 	private static final boolean ORDER_ASC = true;
 	private static final boolean ORDER_DESC = false;

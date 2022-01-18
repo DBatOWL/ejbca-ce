@@ -26,7 +26,8 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.SystemConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.ConfigurationHolder;
 
 /**
@@ -45,7 +46,7 @@ import org.cesecore.config.ConfigurationHolder;
  */
 public final class EjbcaConfigurationHolder {
 
-	private static final Logger log = Logger.getLogger(EjbcaConfigurationHolder.class);
+	private static final Logger log = LogManager.getLogger(EjbcaConfigurationHolder.class);
 
 	private static CompositeConfiguration config = null;
 	private static CompositeConfiguration configBackup = null;

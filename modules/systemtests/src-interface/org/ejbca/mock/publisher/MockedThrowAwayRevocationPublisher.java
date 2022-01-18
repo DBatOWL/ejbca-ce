@@ -15,7 +15,8 @@ package org.ejbca.mock.publisher;
 import java.security.cert.Certificate;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.certificate.Base64CertData;
 import org.cesecore.certificates.certificate.CertificateData;
@@ -31,7 +32,7 @@ import org.ejbca.core.model.ca.publisher.PublisherException;
  */
 public class MockedThrowAwayRevocationPublisher implements ICustomPublisher, FullEntityPublisher {
 
-    private static final Logger log = Logger.getLogger(MockedThrowAwayRevocationPublisher.class);
+    private static final Logger log = LogManager.getLogger(MockedThrowAwayRevocationPublisher.class);
     
     private static int lastTestRevocationReason; // Totally non-threadsafe, but fine since this is test code
     

@@ -30,7 +30,8 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.ErrorCode;
 import org.ejbca.core.ejb.ra.raadmin.AdminPreferenceSessionLocal;
 
@@ -47,7 +48,7 @@ public class RaLocaleBean implements Serializable {
     private static final String RIGHT_TO_LEFT = "rtl";
     
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RaLocaleBean.class);
+    private static final Logger log = LogManager.getLogger(RaLocaleBean.class);
     
     private Locale locale = null;
     private boolean directionLeftToRight = true;

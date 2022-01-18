@@ -26,7 +26,8 @@ import javax.persistence.Transient;
 
 import org.apache.commons.lang.ObjectUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
 import org.cesecore.util.CertTools;
@@ -60,7 +61,7 @@ public class NoConflictCertificateData extends BaseCertificateData implements Se
     
     private static final long serialVersionUID = 1L;
 
-    private static final Logger log = Logger.getLogger(NoConflictCertificateData.class);
+    private static final Logger log = LogManager.getLogger(NoConflictCertificateData.class);
 
     private static final int LATEST_PROTECT_VERSON = 5;
 

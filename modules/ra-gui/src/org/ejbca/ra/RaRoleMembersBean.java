@@ -30,7 +30,8 @@ import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.cesecore.authentication.tokens.AuthenticationTokenMetaData;
 import org.cesecore.authorization.user.matchvalues.AccessMatchValue;
@@ -54,7 +55,7 @@ import org.ejbca.core.model.era.RaRoleMemberTokenTypeInfo;
 public class RaRoleMembersBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RaRoleMembersBean.class);
+    private static final Logger log = LogManager.getLogger(RaRoleMembersBean.class);
     
     @EJB
     private RaMasterApiProxyBeanLocal raMasterApiProxyBean;

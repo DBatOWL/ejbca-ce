@@ -31,7 +31,8 @@ import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
@@ -46,7 +47,7 @@ import org.ejbca.util.SelectItemComparator;
 public abstract class BaseManagedBean implements Serializable {
 
     private static final long serialVersionUID = -8019234011853194880L;
-    private static final Logger log = Logger.getLogger(BaseManagedBean.class);
+    private static final Logger log = LogManager.getLogger(BaseManagedBean.class);
 
     private static final Map<String, Map<String, Object>> publicConstantCache = new ConcurrentHashMap<>();
 

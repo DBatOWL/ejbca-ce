@@ -23,7 +23,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventType;
 import org.cesecore.audit.enums.ModuleType;
@@ -45,7 +46,7 @@ import org.cesecore.util.QueryResultWrapper;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class IntegrityProtectedLoggerSessionBean implements IntegrityProtectedLoggerSessionLocal {
 
-    private static final Logger log = Logger.getLogger(IntegrityProtectedLoggerSessionBean.class);
+    private static final Logger log = LogManager.getLogger(IntegrityProtectedLoggerSessionBean.class);
 
     @PersistenceContext(unitName = CesecoreConfiguration.PERSISTENCE_UNIT)
     private EntityManager entityManager;

@@ -19,7 +19,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 
 /**
@@ -29,7 +30,7 @@ import org.junit.Test;
  */
 public class RoleTest {
 
-    private static final Logger log = Logger.getLogger(RoleTest.class);
+    private static final Logger log = LogManager.getLogger(RoleTest.class);
     private static final String ERRMSG_ALLOWED_TO_DENIED = "Access granted that should have been denied.";
     private static final String ERRMSG_DENIED_TO_ALLOWED = "Access denied that should have been granted.";
 

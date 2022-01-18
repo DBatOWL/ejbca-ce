@@ -14,7 +14,7 @@
 package org.ejbca.ui.cli;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CADoesntExistsException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -122,7 +122,7 @@ public class RecoverCommand extends EjbcaCliUserCommandBase {
 
     @Override
     protected Logger getLogger() {
-        return Logger.getLogger(RecoverCommand.class);
+        return LogManager.getLogger(RecoverCommand.class);
     }
 
     @Override

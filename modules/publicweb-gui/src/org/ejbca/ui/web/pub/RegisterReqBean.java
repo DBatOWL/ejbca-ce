@@ -25,7 +25,8 @@ import java.util.Map.Entry;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.PublicWebPrincipal;
@@ -66,7 +67,7 @@ import org.ietf.ldap.LDAPDN;
  */
 public class RegisterReqBean {
 
-    private static final Logger log = Logger.getLogger(RegisterReqBean.class);
+    private static final Logger log = LogManager.getLogger(RegisterReqBean.class);
 
 
     private final EjbLocalHelper ejbLocalHelper = new EjbLocalHelper();

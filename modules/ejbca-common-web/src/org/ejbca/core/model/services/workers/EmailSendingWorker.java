@@ -17,7 +17,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.CertificateConstants;
 import org.ejbca.core.model.services.BaseWorker;
 import org.ejbca.core.model.services.ServiceExecutionFailedException;
@@ -28,7 +29,7 @@ import org.ejbca.core.model.services.actions.MailActionInfo;
  */
 public abstract class EmailSendingWorker extends BaseWorker {
 
-	private static final Logger log = Logger.getLogger(EmailSendingWorker.class);
+	private static final Logger log = LogManager.getLogger(EmailSendingWorker.class);
 
 	private transient String endUserSubject = null;
 	private transient String adminSubject = null;

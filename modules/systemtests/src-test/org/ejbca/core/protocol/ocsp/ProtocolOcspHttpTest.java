@@ -58,7 +58,8 @@ import javax.ejb.ObjectNotFoundException;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1GeneralizedTime;
@@ -187,7 +188,7 @@ public class ProtocolOcspHttpTest extends ProtocolOcspTestBase {
 
     private static final String DSA_DN = "CN=OCSPDSATEST,O=Foo,C=SE";
     
-    private static final Logger log = Logger.getLogger(ProtocolOcspHttpTest.class);
+    private static final Logger log = LogManager.getLogger(ProtocolOcspHttpTest.class);
 
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
     

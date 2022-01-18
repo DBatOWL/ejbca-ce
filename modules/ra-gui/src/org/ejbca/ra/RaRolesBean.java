@@ -26,7 +26,8 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.roles.Role;
 import org.ejbca.core.model.era.RaMasterApiProxyBeanLocal;
 import org.ejbca.core.model.era.RaRoleSearchRequest;
@@ -43,7 +44,7 @@ import org.ejbca.core.model.era.RaRoleSearchResponse;
 public class RaRolesBean implements Serializable {
     
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RaRolesBean.class);
+    private static final Logger log = LogManager.getLogger(RaRolesBean.class);
     
     @EJB
     private RaMasterApiProxyBeanLocal raMasterApiProxyBean;

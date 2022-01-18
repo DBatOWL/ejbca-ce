@@ -27,7 +27,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.configuration.GlobalConfigurationSessionLocal;
 import org.ejbca.config.GlobalConfiguration;
 import org.ejbca.core.ejb.config.ClearCacheSessionLocal;
@@ -41,7 +42,7 @@ import org.ejbca.core.ejb.config.ClearCacheSessionLocal;
 public class ClearCacheServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -8563174167843989458L;
-	private static final Logger log = Logger.getLogger(ClearCacheServlet.class);
+	private static final Logger log = LogManager.getLogger(ClearCacheServlet.class);
 	
 	private static final Set<String> LOCALHOST_IPS = new HashSet<>(Arrays.asList("127.0.0.1", "0:0:0:0:0:0:0:1", "::1"));
 	

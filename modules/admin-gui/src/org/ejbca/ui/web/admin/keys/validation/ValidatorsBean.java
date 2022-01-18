@@ -26,7 +26,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.control.StandardRules;
 import org.cesecore.certificates.ca.CaSessionLocal;
@@ -52,7 +53,7 @@ public class ValidatorsBean extends BaseManagedBean {
     private static final long serialVersionUID = 1969611638716145216L;
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(ValidatorsBean.class);
+    private static final Logger log = LogManager.getLogger(ValidatorsBean.class);
 
     /** Selected validator id. */
     private Integer validatorId = null;

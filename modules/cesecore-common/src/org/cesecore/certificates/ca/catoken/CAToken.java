@@ -23,7 +23,8 @@ import java.util.HashMap;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.internal.InternalResources;
 import org.cesecore.internal.UpgradeableDataHashMap;
 import org.cesecore.keys.token.CryptoToken;
@@ -50,7 +51,7 @@ public class CAToken extends UpgradeableDataHashMap {
     private static final long serialVersionUID = -459748276141898509L;
 
     /** Log4j instance */
-    private static final Logger log = Logger.getLogger(CAToken.class);
+    private static final Logger log = LogManager.getLogger(CAToken.class);
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();
 

@@ -34,7 +34,8 @@ import java.util.List;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.x500.AttributeTypeAndValue;
 import org.bouncycastle.asn1.x500.RDN;
@@ -110,7 +111,7 @@ import org.junit.Test;
  */
 public class CertificateCreateSessionTest extends RoleUsingTestCase {
 
-    private static final Logger log = Logger.getLogger(CertificateCreateSessionTest.class);
+    private static final Logger log = LogManager.getLogger(CertificateCreateSessionTest.class);
 
     private static KeyPair keys;
     private static KeyPair renewalKeys;

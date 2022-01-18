@@ -24,7 +24,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x509.Extension;
 import org.cesecore.util.CertTools;
 
@@ -38,7 +39,7 @@ import org.cesecore.util.CertTools;
  */
 public class EkuPKIXCertPathChecker extends PKIXCertPathChecker {
     
-    private static final Logger log = Logger.getLogger(EkuPKIXCertPathChecker.class);
+    private static final Logger log = LogManager.getLogger(EkuPKIXCertPathChecker.class);
     private final List<String> requiredKeyPurposeOids;
 
     /**

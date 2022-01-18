@@ -15,7 +15,7 @@ package org.ejbca.ui.cli.ca;
 
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.certificates.ca.CaSessionRemote;
 import org.cesecore.certificates.certificate.CertificateConstants;
@@ -41,7 +41,7 @@ public class CaChangeCertProfileCommand extends BaseCaAdminCommand {
     private static final String CA_NAME_KEY = "--caname";
     private static final String CERTIFICATE_PROFILE_NAME = "--certprofile";
 
-    private static final Logger log = Logger.getLogger(CaChangeCertProfileCommand.class);
+    private static final Logger log = LogManager.getLogger(CaChangeCertProfileCommand.class);
 
     {
         registerParameter(new Parameter(CA_NAME_KEY, "CA Name", MandatoryMode.MANDATORY, StandaloneMode.ALLOW, ParameterMode.ARGUMENT,

@@ -48,7 +48,8 @@ import org.apache.http.entity.mime.MIME;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHeader;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.FileTools;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -60,7 +61,7 @@ import org.json.simple.parser.ParseException;
  */
 public class OAuthTokenRequest {
 
-    private static final Logger log = Logger.getLogger(OAuthTokenRequest.class);
+    private static final Logger log = LogManager.getLogger(OAuthTokenRequest.class);
 
     private int timeoutMillis = 20_000;
     private int maxResponseBytes = 1024*1024; // 1 MiB

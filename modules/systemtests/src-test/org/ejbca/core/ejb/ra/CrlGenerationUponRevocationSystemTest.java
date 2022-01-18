@@ -26,7 +26,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CaTestUtils;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -85,7 +86,7 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CrlGenerationUponRevocationSystemTest extends CaTestCase {
 
-    private static final Logger log = Logger.getLogger(CrlGenerationUponRevocationSystemTest.class);
+    private static final Logger log = LogManager.getLogger(CrlGenerationUponRevocationSystemTest.class);
 
     private static final AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken("CrlGenerationUponRevocationSystemTest");
     private static final ArrayList<String> usernames = new ArrayList<>();

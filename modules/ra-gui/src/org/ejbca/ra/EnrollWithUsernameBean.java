@@ -32,7 +32,8 @@ import javax.faces.validator.ValidatorException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.request.RequestMessage;
 import org.cesecore.certificates.certificate.request.RequestMessageUtils;
 import org.cesecore.certificates.certificateprofile.CertificateProfile;
@@ -56,7 +57,7 @@ import org.ejbca.ra.EnrollMakeNewRequestBean.KeyPairGeneration;
 public class EnrollWithUsernameBean extends EnrollWithRequestIdBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(EnrollWithUsernameBean.class);
+    private static final Logger log = LogManager.getLogger(EnrollWithUsernameBean.class);
 
     public static String PARAM_USERNAME = "username";
     public static String PARAM_ENROLLMENT_CODE = "enrollmentcode";

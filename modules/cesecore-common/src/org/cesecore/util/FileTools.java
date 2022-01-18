@@ -29,7 +29,8 @@ import java.text.Collator;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 
 /**
@@ -38,7 +39,7 @@ import org.apache.log4j.Logger;
  * @version $Id$
  */
 public abstract class FileTools {
-    private static final Logger log = Logger.getLogger(FileTools.class);
+    private static final Logger log = LogManager.getLogger(FileTools.class);
 
     private static final int ZIP_HEADER_SIZE = 4;
     /** Starting byte sequence of a ZIP file with at least one file */

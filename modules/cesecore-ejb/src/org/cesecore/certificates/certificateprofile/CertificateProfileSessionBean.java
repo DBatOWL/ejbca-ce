@@ -29,7 +29,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventType;
 import org.cesecore.audit.enums.EventTypes;
@@ -57,7 +58,7 @@ import org.cesecore.audit.log.dto.SecurityEventProperties;
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class CertificateProfileSessionBean implements CertificateProfileSessionLocal, CertificateProfileSessionRemote {
 
-    private static final Logger LOG = Logger.getLogger(CertificateProfileSessionBean.class);
+    private static final Logger LOG = LogManager.getLogger(CertificateProfileSessionBean.class);
 
     /** Internal localization of logs and errors */
     private static final InternalResources INTRES = InternalResources.getInstance();

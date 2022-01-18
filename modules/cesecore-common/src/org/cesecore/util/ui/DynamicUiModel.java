@@ -24,7 +24,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CesecoreException;
 
 /**
@@ -42,7 +43,7 @@ public class DynamicUiModel {
     public static final String LIST_SEPARATOR = ";";
     
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(DynamicUiModel.class);
+    private static final Logger log = LogManager.getLogger(DynamicUiModel.class);
 
     /** Reference to data map. */
     private LinkedHashMap<Object, Object> data;

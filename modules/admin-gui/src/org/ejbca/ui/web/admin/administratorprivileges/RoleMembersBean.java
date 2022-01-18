@@ -33,7 +33,8 @@ import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.cesecore.authentication.tokens.AuthenticationTokenMetaData;
 import org.cesecore.authentication.tokens.X509CertificateAuthenticationTokenMetaData;
@@ -68,7 +69,7 @@ import org.ejbca.ui.web.admin.BaseManagedBean;
 public class RoleMembersBean extends BaseManagedBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RoleMembersBean.class);
+    private static final Logger log = LogManager.getLogger(RoleMembersBean.class);
 
     @EJB
     private AuthorizationSessionLocal authorizationSession;

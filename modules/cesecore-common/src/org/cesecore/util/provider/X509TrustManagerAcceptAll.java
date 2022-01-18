@@ -17,7 +17,8 @@ import java.security.cert.X509Certificate;
 
 import javax.net.ssl.X509TrustManager;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.CertTools;
 
 /**
@@ -29,7 +30,7 @@ import org.cesecore.util.CertTools;
  */
 public class X509TrustManagerAcceptAll implements X509TrustManager {
 
-    private static final Logger log = Logger.getLogger(X509TrustManagerAcceptAll.class);
+    private static final Logger log = LogManager.getLogger(X509TrustManagerAcceptAll.class);
     
     /**
      */

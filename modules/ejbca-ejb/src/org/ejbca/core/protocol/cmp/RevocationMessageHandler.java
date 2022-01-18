@@ -20,7 +20,8 @@ import java.security.NoSuchProviderException;
 import java.security.cert.X509Certificate;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Enumerated;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1Integer;
@@ -71,7 +72,7 @@ import org.ejbca.core.protocol.cmp.authentication.VerifyPKIMessage;
  */
 public class RevocationMessageHandler extends BaseCmpMessageHandler implements ICmpMessageHandler {
 	
-	private static final Logger LOG = Logger.getLogger(RevocationMessageHandler.class);
+	private static final Logger LOG = LogManager.getLogger(RevocationMessageHandler.class);
     /** Internal localization of logs and errors */
     private static final InternalEjbcaResources INTRES = InternalEjbcaResources.getInstance();
 	

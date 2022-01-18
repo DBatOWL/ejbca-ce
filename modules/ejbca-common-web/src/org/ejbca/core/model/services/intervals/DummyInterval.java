@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.core.model.services.intervals;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.core.model.services.BaseInterval;
 import org.ejbca.core.model.services.IInterval;
 
@@ -24,7 +25,7 @@ import org.ejbca.core.model.services.IInterval;
  */
 public class DummyInterval extends BaseInterval {
 
-	private static final Logger log = Logger.getLogger(DummyInterval.class);
+	private static final Logger log = LogManager.getLogger(DummyInterval.class);
 	/**
 	 * @see org.ejbca.core.model.services.IInterval#getTimeToExecution()
 	 */

@@ -24,7 +24,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.Query;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.config.CesecoreConfiguration;
 import org.cesecore.jndi.JndiConstants;
 import org.cesecore.oscp.OcspResponseData;
@@ -38,7 +39,7 @@ import org.cesecore.oscp.OcspResponseData;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class OcspDataSessionBean implements OcspDataSessionLocal, OcspDataSessionRemote {
 
-    private static final Logger log = Logger.getLogger(OcspDataSessionBean.class);
+    private static final Logger log = LogManager.getLogger(OcspDataSessionBean.class);
 
     @PersistenceContext(unitName = CesecoreConfiguration.PERSISTENCE_UNIT)
     private EntityManager entityManager;

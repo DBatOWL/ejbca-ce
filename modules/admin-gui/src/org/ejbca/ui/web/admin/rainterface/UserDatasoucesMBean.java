@@ -38,7 +38,7 @@ import org.ejbca.ui.web.admin.BaseManagedBean;
 //@ViewScoped
 public class UserDatasoucesMBean extends BaseManagedBean implements Serializable {
     private static final long serialVersionUID = 1L;
-    //private static final Logger log = Logger.getLogger(UserDatasoucesMBean.class);
+    //private static final Logger log = LogManager.getLogger(UserDatasoucesMBean.class);
 
     @EJB
     private UserDataSourceSessionLocal userdatasourcesession = null;

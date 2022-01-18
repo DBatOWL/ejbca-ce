@@ -38,7 +38,8 @@ import java.util.Map;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.SystemUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.DERSequence;
 import org.bouncycastle.asn1.DERSet;
@@ -105,7 +106,7 @@ import org.junit.Test;
 public class KeyValidatorSessionTest extends RoleUsingTestCase {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(KeyValidatorSessionTest.class);
+    private static final Logger log = LogManager.getLogger(KeyValidatorSessionTest.class);
 
     /** Test user. */
     private static final AuthenticationToken internalAdmin = new TestAlwaysAllowLocalAuthenticationToken(

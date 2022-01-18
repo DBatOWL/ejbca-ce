@@ -13,7 +13,8 @@
 
 package org.ejbca.core.model.ca.publisher;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.RoleUsingTestCase;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -100,7 +101,7 @@ public class PublisherTest extends RoleUsingTestCase {
 	private final static String orgName = "TESTDUMMYCUSTOM";
 	private final static String newName = "TESTNEWDUMMYCUSTOM";
 
-	private static final Logger log = Logger.getLogger(PublisherTest.class);
+	private static final Logger log = LogManager.getLogger(PublisherTest.class);
 	private static final AuthenticationToken internalAdmin = new TestAlwaysAllowLocalAuthenticationToken("PublisherTest");
 	private static final String commonname = PublisherTest.class.getCanonicalName();
 	private static final Set<String> publisherNames = new HashSet<String>();

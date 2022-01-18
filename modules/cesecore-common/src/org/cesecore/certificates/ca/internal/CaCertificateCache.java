@@ -26,7 +26,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.HashID;
 import org.cesecore.config.OcspConfiguration;
 import org.cesecore.util.Base64;
@@ -43,7 +44,7 @@ public enum CaCertificateCache  {
     INSTANCE;
     
     // Logger is not static since static initializers run after the constructor for enums.
-	private final Logger log = Logger.getLogger(CaCertificateCache.class);
+	private final Logger log = LogManager.getLogger(CaCertificateCache.class);
 
     /** Mapping from subjectDN to key in the certs HashMap. */
     private Map<Integer, X509Certificate> certsFromSubjectDN = new HashMap<>();

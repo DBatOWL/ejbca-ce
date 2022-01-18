@@ -32,7 +32,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.control.StandardRules;
@@ -58,7 +59,7 @@ import org.ejbca.ui.web.admin.BaseManagedBean;
 //@javax.faces.bean.ManagedBean(name="certProfilesBean")
 public class CertProfilesBean extends BaseManagedBean implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(CertProfilesBean.class);
+    private static final Logger log = LogManager.getLogger(CertProfilesBean.class);
     
     // This restriction in certificate profile naming can be removed when the current running version no longer has
     // to be able to run side by side (share the db) with an EJBCA 6.1.x or earlier

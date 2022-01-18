@@ -21,7 +21,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.keys.validation.DnsNameValidator;
 import org.cesecore.keys.validation.IssuancePhase;
 import org.cesecore.keys.validation.Validator;
@@ -58,7 +59,7 @@ public class GoogleSafeBrowsingValidator extends ValidatorBase implements DnsNam
     private static final long serialVersionUID = -1L;
     public static final String TYPE_IDENTIFIER = "SAFE_BROWSING_VALIDATOR";
     private static final String API_KEY_KEY = "API_KEY";
-    private static final Logger log = Logger.getLogger(GoogleSafeBrowsingValidator.class);
+    private static final Logger log = LogManager.getLogger(GoogleSafeBrowsingValidator.class);
     protected DynamicUiModel uiModel;
     private transient final Supplier<CloseableHttpClient> supplyHttpClient;
 

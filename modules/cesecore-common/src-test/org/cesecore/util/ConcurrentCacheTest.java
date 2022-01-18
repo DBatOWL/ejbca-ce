@@ -20,17 +20,24 @@ import static org.junit.Assert.fail;
 
 import java.util.Random;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.appender.OutputStreamAppender;
+import org.apache.logging.log4j.core.config.AppenderRef;
+import org.apache.logging.log4j.core.config.Configuration;
+import org.apache.logging.log4j.core.config.Configurator;
+import org.apache.logging.log4j.core.config.LoggerConfig;
+import org.apache.logging.log4j.core.layout.PatternLayout;
 import org.junit.Test;
 
 /**
  * 
- * @version $Id$
  */
 public final class ConcurrentCacheTest {
 
-    private static final Logger log = Logger.getLogger(ConcurrentCacheTest.class);
+    private static final Logger log = LogManager.getLogger(ConcurrentCacheTest.class);
 
     // Internal IDs for threads
     private static final int THREAD_ONE = 101;
@@ -185,8 +192,11 @@ public final class ConcurrentCacheTest {
     public void testRandomMultiThreaded() throws InterruptedException {
         log.trace(">testRandomMultiThreaded");
         // This tests outputs as LOT of debug/trace messages. JUnit even runs out of heap space if those are enabled.
-        Logger.getRootLogger().setLevel(Level.INFO);
-        Logger.getLogger(ConcurrentCache.class).setLevel(Level.INFO);
+        
+        
+        setRootLoggerLevel(Level.TRACE);
+        setLoggerLevel(ConcurrentCache.class, Level.TRACE);
+        
         try {
             final ConcurrentCache<String,Integer> cache = new ConcurrentCache<>();
             cache.setMaxEntries(20);
@@ -232,12 +242,25 @@ public final class ConcurrentCacheTest {
             // Preferably, the log level should be restored to the original value,
             // but neither of the getLevel/getEffectiveLevel methods return the correct value
             // so we hard-code Level.TRACE here.
-            Logger.getRootLogger().setLevel(Level.TRACE);
-            Logger.getLogger(ConcurrentCache.class).setLevel(Level.TRACE);
+            
+            setRootLoggerLevel(Level.TRACE);
+            setLoggerLevel(ConcurrentCache.class, Level.TRACE);
+
             log.trace("<testRandomMultiThreaded");
         }
     }
     
+    private void setLoggerLevel(final Class<?> clazz, final Level logLevel) {
+        Configurator.setLevel(LogManager.getLogger(clazz).getName(), logLevel);
+    }
+
+    private void setRootLoggerLevel(final Level logLevel) {
+        final LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
+        final Configuration config = ctx.getConfiguration();
+        config.getRootLogger().setLevel(logLevel);
+        ctx.updateLoggers();        
+    }
+
     private static final int MAXENTRIES = 1000000;
     private static final int OVERSHOOT = MAXENTRIES+(MAXENTRIES/2)+1; // overshoot by 50%
     private static final int MIN_ENTRIES_AFTER_CLEANUP = MAXENTRIES - (MAXENTRIES/4); // 75% of maxentries
@@ -251,7 +274,7 @@ public final class ConcurrentCacheTest {
         ConcurrentCache<String,Integer>.Entry entry;
         
         try {
-            Logger.getLogger(ConcurrentCache.class).setLevel(Level.INFO);
+            setLoggerLevel(ConcurrentCache.class, Level.INFO);
             // Create initial entries
             log.debug("Creating initial entries");
             for (int i = 0; i < MAXENTRIES; i++) {
@@ -292,7 +315,7 @@ public final class ConcurrentCacheTest {
             // Cleanup should have run now
             cache.checkNumberOfEntries(MIN_ENTRIES_AFTER_CLEANUP, MAXENTRIES-1);
         } finally {
-            Logger.getLogger(ConcurrentCache.class).setLevel(Level.TRACE);
+            setLoggerLevel(ConcurrentCache.class, Level.TRACE);
             log.trace("<testMaxEntries");
         }
     }
@@ -301,7 +324,7 @@ public final class ConcurrentCacheTest {
         private final int id;
         private final ConcurrentCache<String,Integer> cache;
         
-        private final static String[] KEYS = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+        private static final String[] KEYS = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
         public volatile boolean shouldExit = false;
         
         public CacheTestRunner(final ConcurrentCache<String,Integer> cache, final int id) {
@@ -367,5 +390,4 @@ public final class ConcurrentCacheTest {
             }
         }
     }
-
 }

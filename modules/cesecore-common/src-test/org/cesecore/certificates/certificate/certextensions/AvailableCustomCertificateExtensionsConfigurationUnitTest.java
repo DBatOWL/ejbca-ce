@@ -19,7 +19,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificateprofile.CertificateProfile;
 import org.cesecore.certificates.endentity.EndEntityInformation;
 import org.junit.Test;
@@ -32,7 +33,7 @@ import org.junit.Test;
  */
 public class AvailableCustomCertificateExtensionsConfigurationUnitTest {
 
-    private static final Logger log = Logger.getLogger(AvailableCustomCertificateExtensionsConfigurationUnitTest.class);
+    private static final Logger log = LogManager.getLogger(AvailableCustomCertificateExtensionsConfigurationUnitTest.class);
 
     /** Encoded DEROctetString with 2 byte value: AB CD */
     private static final byte[] EXPECTED_ENCODED_VALUE = { 0x04, 0x02, (byte) 0xAB, (byte) 0xCD };

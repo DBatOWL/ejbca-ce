@@ -18,7 +18,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.CACommon;
 import org.cesecore.certificates.ca.CAConstants;
 import org.cesecore.certificates.ca.CAFactory;
@@ -37,7 +38,7 @@ import org.junit.Test;
  */
 public class CaCacheUnitTest {
     
-    private static final transient Logger log = Logger.getLogger(CaCacheUnitTest.class);
+    private static final transient Logger log = LogManager.getLogger(CaCacheUnitTest.class);
 
     // CA names
     private static final String[] CA_NAMES = new String[] {

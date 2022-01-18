@@ -58,7 +58,8 @@ import javax.security.auth.x500.X500Principal;
 import javax.xml.namespace.QName;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Base64;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationToken;
@@ -103,7 +104,7 @@ import org.ejbca.util.query.BasicMatch;
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class OcspKeyRenewalSessionBean implements OcspKeyRenewalSessionLocal, OcspKeyRenewalSessionRemote {
 
-    private static final Logger log = Logger.getLogger(OcspKeyRenewalSessionBean.class);
+    private static final Logger log = LogManager.getLogger(OcspKeyRenewalSessionBean.class);
 
     private static final InternalResources intres = InternalResources.getInstance();
 

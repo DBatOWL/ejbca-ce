@@ -36,7 +36,8 @@ import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang.math.NumberUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.AuthorizationSessionLocal;
 import org.cesecore.authorization.control.AuditLogRules;
@@ -173,7 +174,7 @@ public class AccessRulesBean extends BaseManagedBean implements Serializable {
     }
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(AccessRulesBean.class);
+    private static final Logger log = LogManager.getLogger(AccessRulesBean.class);
 
     private static final String TEMPLATE_NAME_CUSTOM = "CUSTOM";
 

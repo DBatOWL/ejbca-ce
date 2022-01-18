@@ -20,7 +20,8 @@ import java.security.NoSuchProviderException;
 import java.security.PublicKey;
 import java.security.SignatureException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1Sequence;
 import org.bouncycastle.asn1.crmf.CertReqMsg;
@@ -52,7 +53,7 @@ import org.ejbca.cvc.exception.ParseException;
  */
 public abstract class RequestMessageUtils {
 
-	private static final Logger log = Logger.getLogger(RequestMessageUtils.class);
+	private static final Logger log = LogManager.getLogger(RequestMessageUtils.class);
 
 	/** Tries to parse the byte array to create a request message of the correct type.
 	 * Currently handles PKCS10 request messages and CVC request messages.

@@ -26,7 +26,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x509.Extensions;
 import org.bouncycastle.jce.X509KeyUsage;
 import org.bouncycastle.operator.OperatorCreationException;
@@ -56,7 +57,7 @@ public abstract class CABase extends CABaseCommon implements Serializable, CA {
     private static final long serialVersionUID = -8755429830955594642L;
 
     /** Log4j instance */
-    private static Logger log = Logger.getLogger(CABase.class);
+    private static Logger log = LogManager.getLogger(CABase.class);
     /** Internal localization of logs and errors */
 
     // protected fields.

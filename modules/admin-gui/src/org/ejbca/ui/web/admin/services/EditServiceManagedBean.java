@@ -28,7 +28,8 @@ import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.control.StandardRules;
 import org.cesecore.certificates.ca.CAConstants;
@@ -84,7 +85,7 @@ import org.ejbca.ui.web.jsf.configuration.EjbcaJSFHelper;
 public class EditServiceManagedBean extends BaseManagedBean {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(EditServiceManagedBean.class);
+    private static final Logger log = LogManager.getLogger(EditServiceManagedBean.class);
 
     private final EjbLocalHelper ejb = new EjbLocalHelper();
     private final CertificateProfileSessionLocal certificateProfileSession = ejb.getCertificateProfileSession();

@@ -24,7 +24,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.CAConstants;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.certificates.ca.CaSessionLocal;
@@ -44,7 +45,7 @@ import org.ejbca.core.model.authorization.AccessRulesConstants;
 @ViewScoped
 public class AdminIndexMBean extends CheckAdmin implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(AdminIndexMBean.class);
+    private static final Logger log = LogManager.getLogger(AdminIndexMBean.class);
 
     @EJB
     private CaSessionLocal caSession;

@@ -13,8 +13,15 @@
 
 package org.ejbca.issuechecker.issues;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.cesecore.certificates.ca.CAConstants;
 import org.cesecore.certificates.ca.CaSessionLocal;
 import org.cesecore.certificates.certificateprofile.CertificateProfile;
@@ -26,8 +33,6 @@ import org.ejbca.issuechecker.ConfigurationIssue;
 import org.ejbca.issuechecker.Ticket;
 import org.ejbca.issuechecker.TicketDescription;
 
-import java.util.*;
-
 /**
  * Produce an error for each certificate/end entity profile pair without CAs in common.
  *
@@ -38,7 +43,7 @@ import java.util.*;
  * @version $Id$
  */
 public class ProfilePairHasNoUsableCa extends ConfigurationIssue {
-    private final static Logger log = Logger.getLogger(ProfilePairHasNoUsableCa.class);
+    private final static Logger log = LogManager.getLogger(ProfilePairHasNoUsableCa.class);
     
     private final EndEntityProfileSession endEntityProfileSession;
     private final CertificateProfileSession certificateProfileSession;

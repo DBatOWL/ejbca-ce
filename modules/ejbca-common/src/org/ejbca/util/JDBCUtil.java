@@ -20,7 +20,8 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.config.DatabaseConfiguration;
 import org.ejbca.core.ejb.ServiceLocator;
 import org.ejbca.core.ejb.ServiceLocatorException;
@@ -39,7 +40,7 @@ import org.ejbca.core.ejb.ServiceLocatorException;
  */
 public class JDBCUtil {
 
-    private static final Logger log = Logger.getLogger(JDBCUtil.class);
+    private static final Logger log = LogManager.getLogger(JDBCUtil.class);
     
     public interface Preparer {
         /**

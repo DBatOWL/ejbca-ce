@@ -20,7 +20,8 @@ import java.security.cert.X509Certificate;
 import java.util.Arrays;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.DERSet;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
@@ -85,7 +86,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class CertificateRequestThrowAwayTest {
 
-    private static final Logger LOG = Logger.getLogger(CertificateRequestThrowAwayTest.class);
+    private static final Logger LOG = LogManager.getLogger(CertificateRequestThrowAwayTest.class);
     private static final AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal(
             "CertificateRequestThrowAwayTest"));
     private static final Random random = new SecureRandom();

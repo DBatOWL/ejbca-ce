@@ -24,7 +24,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.util.AlgorithmTools;
 import org.cesecore.keys.util.KeyTools;
@@ -55,7 +56,7 @@ import static org.junit.Assert.fail;
 public class UpdatePublicKeyBlacklistCommandTest {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(UpdatePublicKeyBlacklistCommandTest.class);
+    private static final Logger log = LogManager.getLogger(UpdatePublicKeyBlacklistCommandTest.class);
 
     // Directory and file constants (see ${project.dir}/resources)
     private static File emptyFolder;

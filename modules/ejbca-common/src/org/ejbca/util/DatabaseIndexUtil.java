@@ -27,7 +27,8 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Helper class for reading the index meta data from the database using direct JDBC.
@@ -36,7 +37,7 @@ import org.apache.log4j.Logger;
  */
 public abstract class DatabaseIndexUtil {
 
-    private static final Logger log = Logger.getLogger(DatabaseIndexUtil.class);
+    private static final Logger log = LogManager.getLogger(DatabaseIndexUtil.class);
 
     private static final String ORACLE = "oracle";
     private static final int ORACLE_VERSION = 19;

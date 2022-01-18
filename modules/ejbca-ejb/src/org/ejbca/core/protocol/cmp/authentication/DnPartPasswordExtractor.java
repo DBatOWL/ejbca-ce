@@ -14,7 +14,8 @@
 
 package org.ejbca.core.protocol.cmp.authentication;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.cmp.PKIMessage;
 import org.bouncycastle.asn1.crmf.CertReqMessages;
 import org.bouncycastle.asn1.crmf.CertReqMsg;
@@ -29,7 +30,7 @@ import org.ejbca.core.protocol.cmp.CmpPKIBodyConstants;
  */
 public class DnPartPasswordExtractor implements ICMPAuthenticationModule {
 
-    private static final Logger log = Logger.getLogger(DnPartPasswordExtractor.class);
+    private static final Logger log = LogManager.getLogger(DnPartPasswordExtractor.class);
 
     private String dnPart;
     private String password;

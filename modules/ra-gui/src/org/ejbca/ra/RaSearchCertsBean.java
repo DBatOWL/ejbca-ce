@@ -35,7 +35,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CADoesntExistsException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -62,7 +63,7 @@ import org.ejbca.ra.RaCertificateDetails.Callbacks;
 public class RaSearchCertsBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RaSearchCertsBean.class);
+    private static final Logger log = LogManager.getLogger(RaSearchCertsBean.class);
 
     @EJB
     private RaMasterApiProxyBeanLocal raMasterApiProxyBean;

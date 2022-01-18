@@ -24,7 +24,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.StringTools;
 import org.ejbca.core.model.log.LogEntry;
 
@@ -41,7 +42,7 @@ public class LogEntryData implements Serializable {
 
 	private static final long serialVersionUID = 1L;
     private static final int COMMENT_MAXLEN = 249;	// 250-255 chars depending on current mapping.
-	private static final Logger log = Logger.getLogger(LogEntryData.class);
+	private static final Logger log = LogManager.getLogger(LogEntryData.class);
 
 	private int id;
 	private int adminType;

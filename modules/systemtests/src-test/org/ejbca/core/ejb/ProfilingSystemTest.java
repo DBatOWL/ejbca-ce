@@ -16,7 +16,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.EjbRemoteHelper;
 import org.cesecore.util.TraceLogMethodsRule;
 import org.ejbca.config.DatabaseConfiguration;
@@ -30,7 +31,7 @@ import org.junit.Test;
  */
 public class ProfilingSystemTest {
     
-    private static final Logger log = Logger.getLogger(ProfilingSystemTest.class);
+    private static final Logger log = LogManager.getLogger(ProfilingSystemTest.class);
 
     // Default
     private static final long HIGEST_AVERAGE_ALLOWED_MS_DEFAULT = 30_000L;

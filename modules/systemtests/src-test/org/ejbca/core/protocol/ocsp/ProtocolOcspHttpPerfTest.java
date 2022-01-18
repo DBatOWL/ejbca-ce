@@ -36,7 +36,8 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
@@ -76,7 +77,7 @@ import org.junit.Test;
  * 
  **/
 public class ProtocolOcspHttpPerfTest {
-    private static final Logger log = Logger.getLogger(ProtocolOcspHttpPerfTest.class);
+    private static final Logger log = LogManager.getLogger(ProtocolOcspHttpPerfTest.class);
 
     //private static final String myOcspIp = "127.0.0.1";
     private static final String myOcspIp = "192.168.1.111";

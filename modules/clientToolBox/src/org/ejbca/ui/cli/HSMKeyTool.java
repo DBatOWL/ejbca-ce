@@ -41,7 +41,8 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.ASN1Primitive;
@@ -105,7 +106,7 @@ public class HSMKeyTool extends ClientToolBox {
     private static final String SIGN_SWITCH = "sign";
     private static final String LINKCERT_SWITCH = "linkcert";
 
-    private static final Logger log = Logger.getLogger(HSMKeyTool.class);
+    private static final Logger log = LogManager.getLogger(HSMKeyTool.class);
 
     private static final String TOKEN_ID_PARAM = "<PKCS#11 token identifier>";
     private static void sunConfigFileUseDescription(){

@@ -49,7 +49,7 @@ import org.junit.Test;
 ' */
 public class AuthorizationSessionBeanTest {
 
-    //private static final Logger log = Logger.getLogger(AuthorizationSessionBeanTest.class);
+    //private static final Logger log = LogManager.getLogger(AuthorizationSessionBeanTest.class);
 
     private AuthorizationSessionRemote authorizationSession = EjbRemoteHelper.INSTANCE.getRemoteSession(AuthorizationSessionRemote.class);
     private RoleSessionRemote roleSession = EjbRemoteHelper.INSTANCE.getRemoteSession(RoleSessionRemote.class);

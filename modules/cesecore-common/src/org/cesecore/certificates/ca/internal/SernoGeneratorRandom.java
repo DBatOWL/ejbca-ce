@@ -23,7 +23,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.crypto.digests.SHA512Digest;
 import org.bouncycastle.crypto.prng.EntropySource;
 import org.bouncycastle.crypto.prng.EntropySourceProvider;
@@ -77,7 +78,7 @@ import org.cesecore.internal.InternalResources;
  */
 public class SernoGeneratorRandom implements SernoGenerator {
     /** Log4j instance */
-    private static final Logger log = Logger.getLogger(SernoGeneratorRandom.class);
+    private static final Logger log = LogManager.getLogger(SernoGeneratorRandom.class);
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();
 

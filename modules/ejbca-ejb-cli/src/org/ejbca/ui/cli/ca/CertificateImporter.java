@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.concurrent.Callable;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.certificates.certificate.CertificateConstants;
@@ -50,7 +50,7 @@ import org.ejbca.util.passgen.PasswordGeneratorFactory;
  * @version $Id$
  */
 class CertificateImporter implements Callable<CertificateImporter.Result> {
-    private static final Logger log = Logger.getLogger(CertificateImporter.class);
+    private static final Logger log = LogManager.getLogger(CertificateImporter.class);
     // Map Username -> Certificate containing the usernames of end entities currently being
     // processed. If two certificates, belonging to the same end entity, are being imported at the
     // same time, one of these imports will fail with IMPORT_IN_PROGRESS to avoid transaction rollback.

@@ -42,7 +42,7 @@ import static org.junit.Assert.assertTrue;
 public class AddEditEndEntityApprovalTest  extends CaTestCase {
 
 
-    //private static final Logger log = Logger.getLogger(AddEditEndEntityApprovalTest.class);
+    //private static final Logger log = LogManager.getLogger(AddEditEndEntityApprovalTest.class);
 
     private static final AuthenticationToken internalAdmin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal(
             "AddEditEndEntityApprovalTest"));

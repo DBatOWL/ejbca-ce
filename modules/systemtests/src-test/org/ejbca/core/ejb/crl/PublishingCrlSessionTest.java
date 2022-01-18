@@ -25,7 +25,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.DERIA5String;
@@ -91,7 +92,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class PublishingCrlSessionTest extends RoleUsingTestCase {
 
-    private final static Logger log = Logger.getLogger(PublishingCrlSessionTest.class);
+    private final static Logger log = LogManager.getLogger(PublishingCrlSessionTest.class);
 
     private static final String X509CADN = "CN=" + PublishingCrlSessionTest.class.getSimpleName();
     private static CA testx509ca;

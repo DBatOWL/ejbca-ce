@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.core.model.approval;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Class used in constants for approvable methods indicating calling classes/methods
@@ -24,7 +25,7 @@ import org.apache.log4j.Logger;
  */
 public class ApprovalOveradableClassName {
 	
-	private static final Logger log = Logger.getLogger(ApprovalOveradableClassName.class);
+	private static final Logger log = LogManager.getLogger(ApprovalOveradableClassName.class);
 	
 	String className = null;
 	String methodName = null;

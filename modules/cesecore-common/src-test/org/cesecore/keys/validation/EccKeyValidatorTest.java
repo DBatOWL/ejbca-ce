@@ -19,7 +19,8 @@ import java.security.KeyPair;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.util.AlgorithmConstants;
 import org.cesecore.keys.util.KeyTools;
 import org.cesecore.util.CryptoProviderTools;
@@ -35,7 +36,7 @@ import org.junit.Test;
 public class EccKeyValidatorTest {
 
     /** Class logger. */
-    private static final Logger log = Logger.getLogger(EccKeyValidatorTest.class);
+    private static final Logger log = LogManager.getLogger(EccKeyValidatorTest.class);
 
     @Before
     public void setUp() throws Exception {

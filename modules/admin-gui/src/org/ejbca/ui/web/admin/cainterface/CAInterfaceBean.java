@@ -46,7 +46,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.ECNamedCurveTable;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -122,7 +123,7 @@ import org.ejbca.util.cert.OID;
 public class CAInterfaceBean implements Serializable {
 
 	private static final long serialVersionUID = 3L;
-	private static final Logger log = Logger.getLogger(CAInterfaceBean.class);
+	private static final Logger log = LogManager.getLogger(CAInterfaceBean.class);
 	private static final String LIST_SEPARATOR = ";";
 
 	private final EjbLocalHelper ejbLocalHelper = new EjbLocalHelper();

@@ -43,7 +43,8 @@ import java.util.List;
 import java.util.Random;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.ASN1OctetString;
@@ -750,7 +751,7 @@ class SCEPTest extends ClientToolBox {
     }
 
     private static class ScepRequestGenerator {
-        private static Logger log = Logger.getLogger(ScepRequestGenerator.class);
+        private static Logger log = LogManager.getLogger(ScepRequestGenerator.class);
 
         private X509Certificate cacert = null;
         private String reqdn = null;

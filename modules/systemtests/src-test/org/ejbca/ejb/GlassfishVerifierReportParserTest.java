@@ -22,7 +22,8 @@ import java.io.IOException;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,7 +46,7 @@ import org.xml.sax.SAXException;
  */
 public class GlassfishVerifierReportParserTest {
 
-	private static final Logger log = Logger.getLogger(GlassfishVerifierReportParserTest.class);
+	private static final Logger log = LogManager.getLogger(GlassfishVerifierReportParserTest.class);
 	
 	private String verifierReport;
 	private int expectedErrors = 0;

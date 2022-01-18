@@ -29,7 +29,8 @@ import java.util.Map;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.catoken.CAToken;
 import org.cesecore.certificates.ca.extendedservices.ExtendedCAService;
 import org.cesecore.certificates.ca.extendedservices.ExtendedCAServiceInfo;
@@ -56,7 +57,7 @@ public abstract class CABaseCommon extends UpgradeableDataHashMap implements CAC
     /** Version of this class, if this is increased the upgrade() method will be called automatically */
     public static final float LATEST_VERSION = 25;
     
-    private static Logger log = Logger.getLogger(CABaseCommon.class);
+    private static Logger log = LogManager.getLogger(CABaseCommon.class);
     
     private static final InternalResources intres = InternalResources.getInstance();
     

@@ -14,7 +14,8 @@ package org.cesecore.util;
 
 import java.util.Random;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Used to get an ID not already existing in a DB.
@@ -22,7 +23,7 @@ import org.apache.log4j.Logger;
  * @version $Id$
  */
 public class ProfileID {
-    private static final Logger log = Logger.getLogger(ProfileID.class);
+    private static final Logger log = LogManager.getLogger(ProfileID.class);
     private static final Random RANDOM = new Random();
     private static final int MIN = 1<<16;
 	/**

@@ -29,7 +29,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.webtest.WebTestBase;
 import org.ejbca.webtest.helper.AddEndEntityHelper;
 import org.ejbca.webtest.helper.AuditLogHelper;
@@ -53,7 +54,7 @@ import org.openqa.selenium.WebElement;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EcaQa76_AuditLogSearch extends WebTestBase {
     
-    private static final Logger log = Logger.getLogger(EcaQa76_AuditLogSearch.class);
+    private static final Logger log = LogManager.getLogger(EcaQa76_AuditLogSearch.class);
 
     private static WebDriver webDriver;
     // Helpers

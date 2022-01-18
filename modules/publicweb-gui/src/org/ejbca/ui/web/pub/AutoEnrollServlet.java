@@ -32,7 +32,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringEscapeUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.PublicWebPrincipal;
@@ -74,7 +75,7 @@ import org.ejbca.util.passgen.PasswordGeneratorFactory;
 public class AutoEnrollServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private final static Logger log = Logger.getLogger(AutoEnrollServlet.class);
+	private final static Logger log = LogManager.getLogger(AutoEnrollServlet.class);
 
 	@EJB
 	private CertificateStoreSessionLocal certificateStoreSession;

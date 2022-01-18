@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ServiceLoader;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.ssh.SshCa;
 import org.cesecore.certificates.ca.ssh.SshCaInfo;
 
@@ -25,7 +26,7 @@ public enum CAFactory {
     private static final String CA_TYPE_SSH = SshCa.CA_TYPE;
 
 
-    private static final Logger log = Logger.getLogger(CAFactory.class);
+    private static final Logger log = LogManager.getLogger(CAFactory.class);
 
     private final Map<String, CACommon> caImplMap = new HashMap<>();
 
@@ -48,10 +49,10 @@ public enum CAFactory {
                 Class<?> clazz = Class.forName(caimpl);
                 caImplMap.put("X509CA", (CACommon)clazz.newInstance());
             } catch (IllegalAccessException | ClassNotFoundException | InstantiationException e) {
-                Logger.getLogger(CAFactory.class).info("Could not construct org.cesecore.certificates.ca.X509CAImpl implementation for developers: ", e);
+                LogManager.getLogger(CAFactory.class).info("Could not construct org.cesecore.certificates.ca.X509CAImpl implementation for developers: ", e);
             }
             // If no CA implementations were found, log error
-            Logger.getLogger(CAFactory.class).error("No CA implementations found by ServiceLoader");
+            LogManager.getLogger(CAFactory.class).error("No CA implementations found by ServiceLoader");
         }
     }
 

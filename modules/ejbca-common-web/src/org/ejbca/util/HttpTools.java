@@ -21,7 +21,8 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.StringTools;
 
 /**
@@ -31,7 +32,7 @@ import org.cesecore.util.StringTools;
  */
 public class HttpTools {
 
-    private static final Logger log = Logger.getLogger(HttpTools.class);
+    private static final Logger log = LogManager.getLogger(HttpTools.class);
 
     public static final String AUTHORIZATION_HEADER = "Authorization";
     public static final String AUTHORIZATION_SCHEME_BEARER = "Bearer";

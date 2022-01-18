@@ -26,7 +26,8 @@ import java.io.IOException;
 import java.io.StringReader;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
 import org.cesecore.certificates.endentity.EndEntityConstants;
 import org.cesecore.certificates.endentity.EndEntityInformation;
@@ -43,7 +44,7 @@ import org.junit.Test;
  */
 public class SVGImageManipulatorUnitTest {
 
-    private static final Logger log = Logger.getLogger(SVGImageManipulatorUnitTest.class);
+    private static final Logger log = LogManager.getLogger(SVGImageManipulatorUnitTest.class);
 
     /** Basic SVG with some attributes ($USERNAME, $ENDDATE, etc) */
     private static final String TEST_SVG =

@@ -20,7 +20,8 @@ import java.util.TreeSet;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.certificate.Base64CertData;
@@ -40,7 +41,7 @@ import org.ejbca.core.model.util.EjbLocalHelper;
  */
 public class MultiGroupPublisher extends BasePublisher {
 
-    private static final Logger log = Logger.getLogger(MultiGroupPublisher.class);
+    private static final Logger log = LogManager.getLogger(MultiGroupPublisher.class);
 
     private static final long serialVersionUID = 1L;
 

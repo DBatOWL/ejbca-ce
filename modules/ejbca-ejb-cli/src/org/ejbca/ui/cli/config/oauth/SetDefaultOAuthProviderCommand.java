@@ -14,7 +14,7 @@ package org.ejbca.ui.cli.config.oauth;
 
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
 import org.ejbca.ui.cli.infrastructure.parameter.Parameter;
@@ -29,7 +29,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class SetDefaultOAuthProviderCommand extends BaseOAuthConfigCommand {
 
-    private static final Logger log = Logger.getLogger(SetDefaultOAuthProviderCommand.class);
+    private static final Logger log = LogManager.getLogger(SetDefaultOAuthProviderCommand.class);
     
     private static final String LABEL = "--label";
     

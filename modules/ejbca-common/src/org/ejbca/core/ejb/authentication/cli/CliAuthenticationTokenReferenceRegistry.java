@@ -16,7 +16,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.AuthenticationFailedException;
 
 /**
@@ -39,7 +40,7 @@ import org.cesecore.authentication.AuthenticationFailedException;
 public enum CliAuthenticationTokenReferenceRegistry {
     INSTANCE;
 
-    private static final Logger log = Logger.getLogger(CliAuthenticationTokenReferenceRegistry.class);
+    private static final Logger log = LogManager.getLogger(CliAuthenticationTokenReferenceRegistry.class);
 
     private Map<Long, CliAuthenticationToken> tokenRegistry;
 

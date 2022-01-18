@@ -14,7 +14,8 @@
 package org.ejbca.ui.web.pub;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AlwaysAllowLocalAuthenticationToken;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.PublicWebPrincipal;
@@ -54,7 +55,7 @@ public class ApplyBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger log = Logger.getLogger(ApplyBean.class);
+	private static final Logger log = LogManager.getLogger(ApplyBean.class);
 
     private boolean initialized;
     private AuthenticationToken administrator;

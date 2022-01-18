@@ -17,7 +17,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * The sole purpose of this class is to standardize mapping in JNDI of our Stateless Session Beans.
@@ -29,7 +30,7 @@ import org.apache.log4j.Logger;
  */
 public abstract class JndiHelper {
 
-	private static final Logger log = Logger.getLogger(JndiHelper.class);
+	private static final Logger log = LogManager.getLogger(JndiHelper.class);
 	
 	private static Context context = null;
 

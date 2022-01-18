@@ -29,7 +29,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.config.RaStyleInfo;
 import org.ejbca.core.ejb.ra.raadmin.AdminPreferenceSessionLocal;
@@ -45,7 +46,7 @@ import org.ejbca.core.model.ra.raadmin.AdminPreference;
 public class RaPreferencesBean implements Converter, Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RaPreferencesBean.class);
+    private static final Logger log = LogManager.getLogger(RaPreferencesBean.class);
     private static final int DUMMY_STYLE_ARCHIVE_ID = 0;
 
     @EJB

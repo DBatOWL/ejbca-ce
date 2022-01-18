@@ -19,7 +19,8 @@ import java.security.cert.X509Certificate;
 
 import javax.security.auth.x500.X500Principal;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
@@ -34,7 +35,7 @@ import org.cesecore.util.CertTools;
  */
 public class HashID {
 	/** Log4j instance for Base */
-	private static final Logger log = Logger.getLogger(HashID.class);
+	private static final Logger log = LogManager.getLogger(HashID.class);
 	/**
 	 * True if the ID confirms to a RFC4387 ID.
 	 */

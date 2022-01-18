@@ -26,7 +26,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 public class RaEndEntitySearchRequest implements Serializable, Comparable<RaEndEntitySearchRequest> {
 
     private static final long serialVersionUID = 1L;
-    //private static final Logger log = Logger.getLogger(RaEndEntitySearchRequest.class);
+    //private static final Logger log = LogManager.getLogger(RaEndEntitySearchRequest.class);
     public static int DEFAULT_MAX_RESULTS = 25;
 
     private int maxResults = DEFAULT_MAX_RESULTS;

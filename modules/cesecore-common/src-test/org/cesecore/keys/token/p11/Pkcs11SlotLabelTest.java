@@ -17,7 +17,8 @@ import static org.junit.Assume.assumeTrue;
 
 import java.security.Provider;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.keys.token.PKCS11TestUtils;
 import org.cesecore.keys.token.p11.exception.NoSuchSlotException;
 import org.cesecore.util.CryptoProviderTools;
@@ -42,7 +43,7 @@ import org.junit.Test;
  */
 public class Pkcs11SlotLabelTest {
 
-    private static final Logger log = Logger.getLogger(Pkcs11SlotLabelTest.class);
+    private static final Logger log = LogManager.getLogger(Pkcs11SlotLabelTest.class);
 
     @BeforeClass
     public static void beforeClass() {

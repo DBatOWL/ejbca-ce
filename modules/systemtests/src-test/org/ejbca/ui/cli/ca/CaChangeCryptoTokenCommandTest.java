@@ -20,7 +20,8 @@ import static org.junit.Assert.assertNull;
 import java.io.File;
 import java.io.FileWriter;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
 import org.cesecore.certificates.ca.CAInfo;
@@ -44,7 +45,7 @@ import org.junit.Test;
  * @version $Id$
  */
 public class CaChangeCryptoTokenCommandTest {
-    private final static Logger log = Logger.getLogger(CaChangeCryptoTokenCommandTest.class);
+    private final static Logger log = LogManager.getLogger(CaChangeCryptoTokenCommandTest.class);
 
     private static final String CA_NAME = "1327changecryptotoken";
     private static final String CRYPTOTOKEN_BASENAME = "1327newcryptotoken";

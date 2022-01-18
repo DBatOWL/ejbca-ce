@@ -17,7 +17,8 @@ import static org.junit.Assert.assertSame;
 
 import java.util.Collections;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 
 /**
@@ -27,7 +28,7 @@ import org.junit.Test;
  */
 public class QueryWrapperUnitTest {
     
-    private static final Logger log = Logger.getLogger(QueryWrapperUnitTest.class);
+    private static final Logger log = LogManager.getLogger(QueryWrapperUnitTest.class);
 
     /** Tests without adding any query pieces */
     @Test

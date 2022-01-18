@@ -14,7 +14,8 @@ package org.cesecore.certificates.certificateprofile;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.bouncycastle.asn1.x509.Extension;
 import org.bouncycastle.asn1.x509.KeyPurposeId;
@@ -56,7 +57,7 @@ import java.util.StringTokenizer;
  * CertificateProfile is a basic class used to customize a certificate configuration or be inherited by fixed certificate profiles.
  */
 public class CertificateProfile extends UpgradeableDataHashMap implements Serializable, Cloneable {
-    private static final Logger log = Logger.getLogger(CertificateProfile.class);
+    private static final Logger log = LogManager.getLogger(CertificateProfile.class);
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();
 

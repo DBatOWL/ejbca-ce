@@ -27,7 +27,8 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
 import org.cesecore.audit.enums.ModuleTypes;
@@ -61,7 +62,7 @@ import org.cesecore.roles.member.RoleMemberDataSessionLocal;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class RoleSessionBean implements RoleSessionLocal, RoleSessionRemote {
 
-    private static final Logger log = Logger.getLogger(RoleSessionBean.class);
+    private static final Logger log = LogManager.getLogger(RoleSessionBean.class);
 
     @EJB
     private AuthorizationSessionLocal authorizationSession;

@@ -33,7 +33,8 @@ import javax.persistence.Transient;
 
 import org.apache.commons.lang.ObjectUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.crl.RevokedCertInfo;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
@@ -98,7 +99,7 @@ public class CertificateData extends BaseCertificateData implements Serializable
 
     private static final long serialVersionUID = -8493105317760641442L;
 
-    private static final Logger log = Logger.getLogger(CertificateData.class);
+    private static final Logger log = LogManager.getLogger(CertificateData.class);
 
     private static final int LATEST_PROTECT_VERSON = 6;
 

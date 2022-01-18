@@ -23,7 +23,7 @@ import java.security.NoSuchProviderException;
 import java.security.cert.CertificateException;
 import java.util.Enumeration;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.util.EjbRemoteHelper;
 import org.cesecore.util.FileTools;
@@ -42,7 +42,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaRestoreKeyStoreCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaInfoCommand.class);
+    private static final Logger log = LogManager.getLogger(CaInfoCommand.class);
 
     private static final String CA_NAME_KEY = "--caname";
     private static final String PKCS12_FILE_KEY = "-f";

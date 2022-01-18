@@ -8,7 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.certificates.ca.CaSessionLocal;
@@ -21,7 +22,7 @@ import org.ejbca.ui.web.pub.ServletUtils;
  * This Servlet exports a CA as an octet/stream.
  */
 public class CAExportServlet extends BaseAdminServlet {
-	private static final Logger log = Logger.getLogger(CAExportServlet.class);
+	private static final Logger log = LogManager.getLogger(CAExportServlet.class);
 	private static final long serialVersionUID = 378499368926058906L;
 	public static final String HIDDEN_CANAME				= "hiddencaname";
 	public static final String TEXTFIELD_EXPORTCA_PASSWORD	= "textfieldexportcapassword";

@@ -13,7 +13,8 @@
 
 package org.cesecore.legacy;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.dbprotection.ProtectionStringBuilder;
 import org.cesecore.roles.member.RoleMemberData;
 
@@ -32,7 +33,7 @@ import org.cesecore.roles.member.RoleMemberData;
 @SuppressWarnings("serial")
 @Deprecated
 public class Eca10289RoleMemberData extends RoleMemberData {
-    private final static Logger log = Logger.getLogger(Eca10289RoleMemberData.class);
+    private final static Logger log = LogManager.getLogger(Eca10289RoleMemberData.class);
 
     public Eca10289RoleMemberData(final RoleMemberData data) {
         // We cannot use the standard constructor, since it performs upgrades,

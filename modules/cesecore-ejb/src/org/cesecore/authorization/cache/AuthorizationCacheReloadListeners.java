@@ -15,7 +15,8 @@ package org.cesecore.authorization.cache;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.access.AuthorizationCacheReload;
 import org.cesecore.authorization.access.AuthorizationCacheReloadListener;
 
@@ -29,7 +30,7 @@ public enum AuthorizationCacheReloadListeners {
 
     private final Set<AuthorizationCacheReloadListener> authCacheReloadEvent = new HashSet<>();
     // Logger is not static since static initializers run after the constructor for enums.
-    private final Logger log = Logger.getLogger(AuthorizationCacheReloadListeners.class);
+    private final Logger log = LogManager.getLogger(AuthorizationCacheReloadListeners.class);
 
     /** Broadcast the specified event to all registered listeners */
     public void onReload(final AuthorizationCacheReload event) {

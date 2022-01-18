@@ -15,7 +15,8 @@ package org.ejbca.core.ejb.ca.caadmin;
 
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CaTestUtils;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
@@ -52,7 +53,7 @@ import static org.junit.Assert.fail;
  */
 public class CAKeystoreExportRemoveRestoreTest {
 
-    private static final Logger log = Logger.getLogger(CAKeystoreExportRemoveRestoreTest.class);
+    private static final Logger log = LogManager.getLogger(CAKeystoreExportRemoveRestoreTest.class);
 
     private CryptoTokenManagementSessionRemote cryptoTokenManagementSession = EjbRemoteHelper.INSTANCE.getRemoteSession(CryptoTokenManagementSessionRemote.class);
     private CAAdminSessionRemote caAdminSession = EjbRemoteHelper.INSTANCE.getRemoteSession(CAAdminSessionRemote.class);

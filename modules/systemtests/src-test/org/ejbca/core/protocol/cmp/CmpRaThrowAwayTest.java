@@ -28,7 +28,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1GeneralizedTime;
@@ -86,7 +87,7 @@ import org.junit.Test;
  */
 public class CmpRaThrowAwayTest extends CmpTestCase {
 
-    private static final Logger LOG = Logger.getLogger(CmpRAAuthenticationTest.class);
+    private static final Logger LOG = LogManager.getLogger(CmpRAAuthenticationTest.class);
     private static final Random RND = new SecureRandom();
 
     private static final String TESTCA_NAME = "CmpRaThrowAwayTestCA";

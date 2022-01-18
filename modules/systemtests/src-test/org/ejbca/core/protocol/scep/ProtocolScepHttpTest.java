@@ -47,7 +47,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.ASN1Set;
@@ -166,7 +167,7 @@ import static org.junit.Assume.assumeTrue;
 @RunWith(CryptoTokenTestRunner.class)
 public class ProtocolScepHttpTest {
 
-    private static final Logger log = Logger.getLogger(ProtocolScepHttpTest.class);
+    private static final Logger log = LogManager.getLogger(ProtocolScepHttpTest.class);
 
     private static final String scepAlias = "ProtocolHttpTestScepAlias";
     private static final String resourceScep = "publicweb/apply/scep/" + scepAlias + "/pkiclient.exe";
@@ -1392,7 +1393,7 @@ public class ProtocolScepHttpTest {
     static class InternalResourcesStub extends InternalEjbcaResources {
 
         private static final long serialVersionUID = 1L;
-        private static final Logger log = Logger.getLogger(InternalResourcesStub.class);
+        private static final Logger log = LogManager.getLogger(InternalResourcesStub.class);
 
         private InternalResourcesStub() {
 

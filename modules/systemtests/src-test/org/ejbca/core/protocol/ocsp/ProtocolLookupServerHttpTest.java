@@ -44,7 +44,8 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1OctetString;
 import org.bouncycastle.asn1.DEROctetString;
@@ -122,7 +123,7 @@ import org.junit.Test;
  *
  */
 public class ProtocolLookupServerHttpTest extends CaTestCase {
-    private static Logger log = Logger.getLogger(ProtocolLookupServerHttpTest.class);
+    private static Logger log = LogManager.getLogger(ProtocolLookupServerHttpTest.class);
 
     private static AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("ProtocolLookupServerHttpTest"));
 

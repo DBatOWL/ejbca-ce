@@ -19,6 +19,9 @@
         <resources>
             <resource-root path="lib/bcprov-jdk15on-170.jar" use-physical-code-source="true"/>
         </resources>
+        <exclusions>
+            <module name="org.apache.log4j" />
+        </exclusions>
     </deployment>
   
 </jboss-deployment-structure>

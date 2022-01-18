@@ -15,7 +15,7 @@ package org.ejbca.issuechecker;
 
 import java.util.function.Predicate;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 
 /**
@@ -136,6 +136,6 @@ public class Ticket implements Comparable<Ticket> {
      */
     @Override
     public int compareTo(final Ticket ticket) {
-        return ticket.getLevel().toInt() - this.getLevel().toInt();
+        return this.getLevel().intLevel() - ticket.getLevel().intLevel();
     }
 }

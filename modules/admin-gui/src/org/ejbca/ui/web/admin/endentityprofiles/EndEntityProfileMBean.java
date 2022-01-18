@@ -40,7 +40,8 @@ import javax.servlet.http.Part;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.AuthorizationSessionLocal;
 import org.cesecore.certificates.ca.CAFactory;
@@ -74,7 +75,7 @@ import org.ejbca.util.mail.MailSender;
 @ViewScoped
 public class EndEntityProfileMBean extends BaseManagedBean implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(EndEntityProfileMBean.class);
+    private static final Logger log = LogManager.getLogger(EndEntityProfileMBean.class);
 
     public static final String PARAMETER_PROFILE_ID = "id";
     private static final int MAX_TEMPLATE_FILESIZE = 2*1024*1024;

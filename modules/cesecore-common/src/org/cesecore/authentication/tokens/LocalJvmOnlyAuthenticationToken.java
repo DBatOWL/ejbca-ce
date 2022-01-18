@@ -17,7 +17,8 @@ import java.security.SecureRandom;
 import java.util.Set;
 
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Common base class for tokens that are only valid in the JVM they are created and could
@@ -30,7 +31,7 @@ public abstract class LocalJvmOnlyAuthenticationToken extends AuthenticationToke
 
     private static final long serialVersionUID = -6830176240864231535L;
 
-    private static final Logger log = Logger.getLogger(LocalJvmOnlyAuthenticationToken.class);
+    private static final Logger log = LogManager.getLogger(LocalJvmOnlyAuthenticationToken.class);
 
 	/** A random token that is unique to this JVM (e.g. the application server JVM and a CLI JVM does not have the same token). */
 	private static final byte[] RANDOM_TOKEN = createRandomToken();

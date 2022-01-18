@@ -22,7 +22,7 @@ import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.endentity.EndEntityInformation;
 import org.cesecore.certificates.endentity.EndEntityType;
 import org.cesecore.certificates.endentity.EndEntityTypes;
@@ -42,7 +42,7 @@ import org.ejbca.util.PrinterManager;
  */
 public class SVGTemplatePrinterCommand extends EjbcaCommandBase {
 
-    private static final Logger log = Logger.getLogger(SVGTemplatePrinterCommand.class);
+    private static final Logger log = LogManager.getLogger(SVGTemplatePrinterCommand.class);
 
     private static final String USERDATAFILENAME = "src/cli/svgtemplateprinttester.properties";
     private static final String TEMPLATEFILENAME_KEYWORD = "-t";

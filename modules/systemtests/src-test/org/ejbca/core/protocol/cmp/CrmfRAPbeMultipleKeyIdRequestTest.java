@@ -24,7 +24,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.ASN1OutputStream;
@@ -111,7 +112,7 @@ import static org.junit.Assert.assertTrue;
 @Ignore
 public class CrmfRAPbeMultipleKeyIdRequestTest extends CmpTestCase {
 	
-    private static final Logger log = Logger.getLogger(CrmfRAPbeMultipleKeyIdRequestTest.class);
+    private static final Logger log = LogManager.getLogger(CrmfRAPbeMultipleKeyIdRequestTest.class);
 
     private static final String PBEPASSWORD = "password";
     

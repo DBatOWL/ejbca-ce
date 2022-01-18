@@ -35,7 +35,8 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.SerializationUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.user.AccessMatchType;
 import org.cesecore.util.Base64;
 import org.cesecore.util.LookAheadObjectInputStream;
@@ -45,7 +46,7 @@ import org.cesecore.util.LookAheadObjectInputStream;
  */
 public class DynamicUiProperty<T extends Serializable> implements Serializable, Cloneable {
 
-    private static final Logger log = Logger.getLogger(DynamicUiProperty.class);
+    private static final Logger log = LogManager.getLogger(DynamicUiProperty.class);
     
     private static final long serialVersionUID = 1L;
 

@@ -17,7 +17,8 @@ import java.io.Serializable;
 import java.security.cert.Certificate;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.certificate.CertificateWrapper;
 import org.cesecore.certificates.endentity.ExtendedInformation;
@@ -34,7 +35,7 @@ public class DummyCustomPublisher implements ICustomPublisher, Serializable {
     		
     private static final long serialVersionUID = 1L;
 
-    private static Logger log = Logger.getLogger(DummyCustomPublisher.class);
+    private static Logger log = LogManager.getLogger(DummyCustomPublisher.class);
 
     private CertificateWrapper certificate = null;
 

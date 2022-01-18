@@ -1,6 +1,7 @@
 package org.ejbca.core.ejb.ws;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authentication.tokens.UsernamePrincipal;
@@ -32,7 +33,7 @@ import static org.junit.Assert.assertNotNull;
 
 public class EjbcaWSHelperSessionBeanTest {
     private final EjbcaWSHelperProxySessionRemote ejbcaWSHelperProxySessionRemote = EjbRemoteHelper.INSTANCE.getRemoteSession(EjbcaWSHelperProxySessionRemote.class, EjbRemoteHelper.MODULE_TEST);
-    private static final Logger log = Logger.getLogger(EjbcaWSHelperSessionBeanTest.class);
+    private static final Logger log = LogManager.getLogger(EjbcaWSHelperSessionBeanTest.class);
 
     private final CertificateStoreSessionRemote certificateStoreSession = EjbRemoteHelper.INSTANCE.getRemoteSession(CertificateStoreSessionRemote.class);
     private final InternalCertificateStoreSessionRemote internalCertificateStoreSession = EjbRemoteHelper.INSTANCE.getRemoteSession(InternalCertificateStoreSessionRemote.class, EjbRemoteHelper.MODULE_TEST);

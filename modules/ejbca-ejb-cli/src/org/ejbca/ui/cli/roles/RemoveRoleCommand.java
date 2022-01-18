@@ -13,7 +13,7 @@
 
 package org.ejbca.ui.cli.roles;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.roles.Role;
 import org.cesecore.roles.management.RoleSessionRemote;
@@ -32,7 +32,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class RemoveRoleCommand extends BaseRolesCommand {
 
-    private static final Logger log = Logger.getLogger(RemoveRoleCommand.class);
+    private static final Logger log = LogManager.getLogger(RemoveRoleCommand.class);
 
     private static final String ROLE_NAME_KEY = "--role";
     private static final String ROLE_NAMESPACE_KEY = "--namespace";

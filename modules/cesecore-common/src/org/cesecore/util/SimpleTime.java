@@ -18,7 +18,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Helper class for handling user friendly format of time intervals.
@@ -64,7 +65,7 @@ public class SimpleTime {
 	    MILLISECONDS_FACTOR.put(TYPE_MILLISECONDS, 1L);
 	}
 	
-    private static final Logger log = Logger.getLogger(SimpleTime.class);
+    private static final Logger log = LogManager.getLogger(SimpleTime.class);
 	
     private static final TimeUnitFormat DAYS_FORMAT_INSTANCE = new TimeUnitFormat(
             Arrays.asList(TYPE_YEARS, TYPE_MONTHS, TYPE_DAYS), MILLISECONDS_FACTOR);

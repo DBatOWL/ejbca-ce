@@ -18,7 +18,8 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 
 /**
@@ -28,7 +29,7 @@ import org.junit.Test;
  */
 public class ProfileIDTest {
 	final static Random RANDOM = new Random();
-    private static final Logger log = Logger.getLogger(ProfileIDTest.class);
+    private static final Logger log = LogManager.getLogger(ProfileIDTest.class);
 	private class DBTestSometimesFree implements ProfileID.DB {
 		private int triesUntilFree = -1;
 		public DBTestSometimesFree() {

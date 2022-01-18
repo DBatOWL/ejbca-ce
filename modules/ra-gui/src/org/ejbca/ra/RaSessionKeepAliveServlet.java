@@ -21,7 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Servlet for receiving AJAX requests that keeps the HTTP session alive.
@@ -32,7 +33,7 @@ import org.apache.log4j.Logger;
 public class RaSessionKeepAliveServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(RaSessionKeepAliveServlet.class);
+    private static final Logger log = LogManager.getLogger(RaSessionKeepAliveServlet.class);
     
     private static final int MAX_INACTIVE_INTERVAL_JSCLIENT_SECONDS = 60;
 

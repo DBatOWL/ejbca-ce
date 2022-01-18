@@ -27,7 +27,8 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.lang.time.FastDateFormat;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Base64;
 import org.bouncycastle.util.encoders.DecoderException;
 import org.cesecore.certificates.crl.RevokedCertInfo;
@@ -49,7 +50,7 @@ public class ExtendedInformation extends UpgradeableDataHashMap implements Seria
     /** Different types of implementations of extended information, can be used to have different implementing classes of extended information */
     public static final int TYPE_BASIC = 0;
 
-    private static final Logger log = Logger.getLogger(ExtendedInformation.class);
+    private static final Logger log = LogManager.getLogger(ExtendedInformation.class);
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();
 

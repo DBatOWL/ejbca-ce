@@ -23,7 +23,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.commons.lang.builder.CompareToBuilder;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.user.matchvalues.AccessMatchValue;
 import org.cesecore.authorization.user.matchvalues.AccessMatchValueReverseLookupRegistry;
 import org.cesecore.dbprotection.DatabaseProtectionException;
@@ -42,7 +43,7 @@ import org.cesecore.dbprotection.ProtectionStringBuilder;
 @Deprecated
 public class AccessUserAspectData extends ProtectedData implements AccessUserAspect, Comparable<AccessUserAspectData> {
 
-    private static final Logger log = Logger.getLogger(AccessUserAspectData.class);
+    private static final Logger log = LogManager.getLogger(AccessUserAspectData.class);
 
     private static final long serialVersionUID = 2504191317243484124L;
     private int primaryKey;

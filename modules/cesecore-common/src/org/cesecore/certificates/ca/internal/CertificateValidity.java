@@ -19,7 +19,8 @@ import java.util.Arrays;
 import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1GeneralizedTime;
 import org.bouncycastle.asn1.x509.PrivateKeyUsagePeriod;
 import org.cesecore.certificates.ca.CAInfo;
@@ -42,7 +43,7 @@ import org.cesecore.util.ValidityDate;
 public class CertificateValidity {
 
 	/** Class logger. */
-    private static final Logger log = Logger.getLogger(CertificateValidity.class);
+    private static final Logger log = LogManager.getLogger(CertificateValidity.class);
     
     /** Internal localization of logs and errors */
     private static final InternalResources intres = InternalResources.getInstance();

@@ -16,7 +16,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.myfaces.custom.fileupload.UploadedFile;
 import org.cesecore.certificates.certificatetransparency.CTLogInfo;
 import org.cesecore.certificates.certificatetransparency.CtLogManager;
@@ -32,7 +33,7 @@ import org.cesecore.keys.util.KeyTools;
 public class SystemConfigurationCtLogManager extends CtLogManager {
     private static final String EDIT_CT_LOG = "editCTLog";
     private static final String CT_LOG_SAVED = "saved";
-    private static final Logger log = Logger.getLogger(SystemConfigurationCtLogManager.class);
+    private static final Logger log = LogManager.getLogger(SystemConfigurationCtLogManager.class);
     private final SystemConfigurationHelper systemConfigurationHelper;
     private final CtLogEditor ctLogEditor;
 

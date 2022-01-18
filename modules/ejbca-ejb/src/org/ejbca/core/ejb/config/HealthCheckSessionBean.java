@@ -19,7 +19,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.jndi.JndiConstants;
 import org.ejbca.config.EjbcaConfiguration;
 
@@ -32,7 +33,7 @@ import org.ejbca.config.EjbcaConfiguration;
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class HealthCheckSessionBean implements HealthCheckSessionLocal, HealthCheckSessionRemote {
 
-    private final static Logger log = Logger.getLogger(HealthCheckSessionBean.class);
+    private final static Logger log = LogManager.getLogger(HealthCheckSessionBean.class);
 
     @PersistenceContext(unitName="ejbca")
     private EntityManager entityManager;

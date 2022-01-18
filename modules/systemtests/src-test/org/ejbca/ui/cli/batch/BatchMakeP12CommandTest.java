@@ -21,7 +21,8 @@ import java.security.Key;
 import java.security.KeyStore;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.edec.EdECObjectIdentifiers;
 import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
@@ -56,7 +57,7 @@ import static org.junit.Assert.assertTrue;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BatchMakeP12CommandTest extends CaTestCase {
-    private static final Logger log = Logger.getLogger(BatchMakeP12CommandTest.class);
+    private static final Logger log = LogManager.getLogger(BatchMakeP12CommandTest.class);
     private static final AuthenticationToken admin = new TestAlwaysAllowLocalAuthenticationToken(new UsernamePrincipal("BatchMakeP12Test"));
     private int caid = getTestCAId();
 

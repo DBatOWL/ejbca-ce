@@ -24,7 +24,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.configuration.GlobalConfigurationSessionLocal;
 import org.ejbca.config.AvailableProtocolsConfiguration;
 import org.ejbca.core.model.util.EjbLocalHelper;
@@ -45,7 +46,7 @@ import org.ejbca.core.model.util.EjbLocalHelper;
  * @version $Id$
  */
 public class ServiceControlFilter implements Filter {
-    private static final Logger log = Logger.getLogger(ServiceControlFilter.class);
+    private static final Logger log = LogManager.getLogger(ServiceControlFilter.class);
     
     private AvailableProtocolsConfiguration availableProtocolsConfiguration;
     

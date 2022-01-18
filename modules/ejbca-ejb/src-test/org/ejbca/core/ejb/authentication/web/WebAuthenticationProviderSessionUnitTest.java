@@ -27,7 +27,8 @@ import java.util.Map;
 
 import com.nimbusds.jose.util.Base64URL;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Base64;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
@@ -68,7 +69,7 @@ import static org.junit.Assert.assertNull;
  */
 public class WebAuthenticationProviderSessionUnitTest {
 
-    private static final Logger log = Logger.getLogger(WebAuthenticationProviderSessionUnitTest.class);
+    private static final Logger log = LogManager.getLogger(WebAuthenticationProviderSessionUnitTest.class);
     // For checking audit logging
     private static final InternalEjbcaResources intres = InternalEjbcaResources.getInstance();
     

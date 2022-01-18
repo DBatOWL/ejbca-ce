@@ -16,7 +16,7 @@ package org.ejbca.ui.cli.ca;
 import java.util.Collection;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.CryptoProviderTools;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.core.ejb.ca.publisher.PublisherSessionRemote;
@@ -30,7 +30,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class CaListPublishersCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaListPublishersCommand.class);
+    private static final Logger log = LogManager.getLogger(CaListPublishersCommand.class);
     
 
     @Override

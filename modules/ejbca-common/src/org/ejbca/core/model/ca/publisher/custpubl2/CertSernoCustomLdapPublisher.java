@@ -21,7 +21,8 @@ import java.util.Enumeration;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.certificates.endentity.ExtendedInformation;
 import org.cesecore.util.CertTools;
@@ -107,7 +108,7 @@ public class CertSernoCustomLdapPublisher extends LdapPublisher implements ICust
 
 
     private static final long serialVersionUID = -584431431033065114L;
-    private static final Logger log = Logger.getLogger(CertSernoCustomLdapPublisher.class);
+    private static final Logger log = LogManager.getLogger(CertSernoCustomLdapPublisher.class);
 
     @Override
     public void init(Properties properties) {

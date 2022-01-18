@@ -13,7 +13,8 @@
 
 package org.cesecore.certificates.certificate.request;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1Set;
 import org.bouncycastle.asn1.ASN1String;
@@ -57,7 +58,7 @@ import java.util.Objects;
  */
 public class PKCS10RequestMessage implements RequestMessage {
     private static final long serialVersionUID = 3597275157018205137L;
-    private static final Logger log = Logger.getLogger(PKCS10RequestMessage.class);
+    private static final Logger log = LogManager.getLogger(PKCS10RequestMessage.class);
     /** Raw form of the PKCS10 message */
     protected byte[] p10msg;
     /** manually set password */

@@ -25,7 +25,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.FileTools;
 import org.cesecore.util.StreamSizeLimitExceededException;
 import org.junit.Test;
@@ -36,7 +37,7 @@ import org.junit.Test;
  * @version $Id$
  */
 public class FileToolsTest {
-    private static Logger log = Logger.getLogger(FileToolsTest.class);
+    private static Logger log = LogManager.getLogger(FileToolsTest.class);
 
     /** Not a ZIP file */
     private static final byte[] NON_ZIP_FILE = new byte[] { 0x12, 0x34, 0x56 };

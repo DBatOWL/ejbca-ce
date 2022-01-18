@@ -20,7 +20,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.util.encoders.Hex;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -42,7 +43,7 @@ import org.junit.Test;
 
 public class MsCompatibleCaCrlTest {
 
-    private static final Logger log = Logger.getLogger(PartitionedCrlSystemTest.class);
+    private static final Logger log = LogManager.getLogger(PartitionedCrlSystemTest.class);
 
     private static final String TEST_NAME = "MsCompatibleCaCrlTest";
     private static final String TEST_CA_NAME = TEST_NAME + "_CA";

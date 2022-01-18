@@ -19,7 +19,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.log.InternalSecurityEventsLoggerSessionLocal;
 import org.cesecore.dbprotection.DatabaseProtectionException;
 import org.cesecore.keys.token.CryptoToken;
@@ -39,7 +40,7 @@ import org.ejbca.core.model.services.ServiceExecutionResult.Result;
  */
 public class HsmKeepAliveWorker extends BaseWorker {
 
-    private static final Logger log = Logger.getLogger(HsmKeepAliveWorker.class);
+    private static final Logger log = LogManager.getLogger(HsmKeepAliveWorker.class);
 
     @Override
     public void canWorkerRun(Map<Class<?>, Object> ejbs) throws ServiceExecutionFailedException {

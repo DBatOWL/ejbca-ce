@@ -19,7 +19,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CaSessionRemote;
@@ -46,7 +46,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class InternalKeyBindingListCommand extends EjbcaCliUserCommandBase {
 
-    private static final Logger log = Logger.getLogger(InternalKeyBindingListCommand.class);
+    private static final Logger log = LogManager.getLogger(InternalKeyBindingListCommand.class);
 
     @Override
     public String[] getCommandPath() {

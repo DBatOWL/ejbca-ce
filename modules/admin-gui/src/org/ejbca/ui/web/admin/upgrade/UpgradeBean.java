@@ -23,9 +23,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.spi.LoggingEvent;
-import org.apache.log4j.spi.ThrowableInformation;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.LogEvent;
 import org.cesecore.authorization.AuthorizationSessionLocal;
 import org.cesecore.util.ValidityDate;
 import org.ejbca.core.ejb.upgrade.UpgradeSessionLocal;
@@ -41,37 +40,34 @@ import org.ejbca.ui.web.admin.BaseManagedBean;
 public class UpgradeBean extends BaseManagedBean implements Serializable {
 
 	/** Wrapper of Log4J LoggingEvents for use in the GUI */
-    public static class LogEvent {
-        final LoggingEvent loggingEvent;
-        public LogEvent(final LoggingEvent loggingEvent) {
+    public static class LogEventUpgrade {
+        final LogEvent loggingEvent;
+        public LogEventUpgrade(final LogEvent loggingEvent) {
             this.loggingEvent = loggingEvent;
         }
 
         /** @return true for FATAL and ERROR level messages */
-        public boolean isLevelError() { return loggingEvent.getLevel().isGreaterOrEqual(Level.ERROR); }
+        public boolean isLevelError() { return loggingEvent.getLevel().isLessSpecificThan(Level.ERROR); }
         public boolean isLevelWarning() { return loggingEvent.getLevel().equals(Level.WARN); }
-        public boolean isLevelInfo() { return !loggingEvent.getLevel().isGreaterOrEqual(Level.WARN); }
+        public boolean isLevelInfo() { return !loggingEvent.getLevel().isLessSpecificThan(Level.WARN); }
 
         public String getLevel() { return loggingEvent.getLevel().toString(); }
 
-        public String getTime() { return ValidityDate.formatAsISO8601ServerTZ(loggingEvent.getTimeStamp(), TimeZone.getDefault()); }
+        public String getTime() { return ValidityDate.formatAsISO8601ServerTZ(loggingEvent.getTimeMillis(), TimeZone.getDefault()); }
 
         public String getMessage() {
-            final StringBuilder sb = new StringBuilder(loggingEvent.getRenderedMessage());
-            final ThrowableInformation throwableInformation = loggingEvent.getThrowableInformation();
-            if (throwableInformation!=null) {
-                Throwable throwable = throwableInformation.getThrowable();
+            final StringBuilder sb = new StringBuilder(loggingEvent.getMessage().getFormattedMessage());
+                Throwable throwable = loggingEvent.getThrown();
                 while (throwable!=null) {
                     sb.append(" <- " + throwable.getMessage());
                     throwable = throwable.getCause();
                 }
-            }
             return sb.toString();
         }
     }
     
     private static final long serialVersionUID = 1L;
-    //private static final Logger log = Logger.getLogger(UpgradeBean.class);
+    //private static final Logger log = LogManager.getLogger(UpgradeBean.class);
     
     @EJB
     private AuthorizationSessionLocal authorizationSession;
@@ -141,11 +137,11 @@ public class UpgradeBean extends BaseManagedBean implements Serializable {
     }
 
     /** @return info logged by the upgrade code */
-    public List<LogEvent> getLogged() {
-        final List<LogEvent> ret = new ArrayList<>();
-        for (final LoggingEvent loggingEvent: new ArrayList<>(upgradeStatusSingleton.getLogged())) {
-            if (loggingEvent.getLevel().isGreaterOrEqual(Level.INFO)) {
-                ret.add(new LogEvent(loggingEvent));
+    public List<LogEventUpgrade> getLogged() {
+        final List<LogEventUpgrade> ret = new ArrayList<>();
+        for (final LogEvent loggingEvent: new ArrayList<>(upgradeStatusSingleton.getLogged())) {
+            if (loggingEvent.getLevel().isLessSpecificThan(Level.INFO)) {
+                ret.add(new LogEventUpgrade(loggingEvent));
             }
         }
         return ret;

@@ -15,14 +15,16 @@ package org.ejbca.issuechecker;
 
 import java.util.List;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
+
+
+
 
 /**
  * A configuration issue is a type of problem which can be checked by the EJBCA Configuration Checker. 
  * Each configuration issue has a priority and a description. A configuration issue can produce one or
  * more tickets if present on the system.
  *
- * @version $Id$
  */
 public abstract class ConfigurationIssue {
     /**
@@ -31,7 +33,7 @@ public abstract class ConfigurationIssue {
      *
      * @return a list of zero or more issues caused by this ticket, never null.
      */
-    abstract public List<Ticket> getTickets();
+    public abstract List<Ticket> getTickets();
 
     /**
      * Get the Log4j level of this issue, determining how tickets caused by this issue are displayed and logged.
@@ -51,7 +53,7 @@ public abstract class ConfigurationIssue {
      *
      * @return the log level of this issue.
      */
-    abstract public Level getLevel();
+    public abstract Level getLevel();
 
     /**
      * Get the description of this issue, as a language key. The description should be a short text
@@ -60,7 +62,7 @@ public abstract class ConfigurationIssue {
      *
      * @return the description of this issue, as a language key.
      */
-    abstract public String getDescriptionLanguageKey();
+    public abstract String getDescriptionLanguageKey();
 
     /**
      * Get the string representing this class in persistent storage. The return value is typically, but

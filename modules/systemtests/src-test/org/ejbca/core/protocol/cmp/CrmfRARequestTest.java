@@ -23,7 +23,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1Encoding;
@@ -107,7 +108,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class CrmfRARequestTest extends CmpTestCase {
 
-    private final static Logger log = Logger.getLogger(CrmfRARequestTest.class);
+    private final static Logger log = LogManager.getLogger(CrmfRARequestTest.class);
 
     private final static String PBEPASSWORD = "password";
     private final static String CA_NAME = "CrmfRARequestTestCA";

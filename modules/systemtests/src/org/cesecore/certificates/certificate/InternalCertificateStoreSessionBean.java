@@ -28,7 +28,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.audit.enums.EventStatus;
 import org.cesecore.audit.enums.EventTypes;
 import org.cesecore.audit.enums.ModuleTypes;
@@ -56,7 +57,7 @@ public class InternalCertificateStoreSessionBean implements InternalCertificateS
 
     /** Internal localization of logs and errors */
     private static final InternalResources INTRES = InternalResources.getInstance();
-    private static final Logger log = Logger.getLogger(InternalCertificateStoreSessionBean.class);
+    private static final Logger log = LogManager.getLogger(InternalCertificateStoreSessionBean.class);
 
     @PersistenceContext(unitName = CesecoreConfiguration.PERSISTENCE_UNIT)
     private EntityManager entityManager;

@@ -13,15 +13,6 @@
 
 package org.ejbca.config;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.cmc.CMCObjectIdentifiers;
-import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
-import org.cesecore.certificates.endentity.EndEntityConstants;
-import org.cesecore.configuration.ConfigurationBase;
-import org.ejbca.core.model.ra.UsernameGeneratorParams;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,14 +26,24 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.asn1.cmc.CMCObjectIdentifiers;
+import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
+import org.cesecore.certificates.endentity.EndEntityConstants;
+import org.cesecore.configuration.ConfigurationBase;
+import org.ejbca.core.model.ra.UsernameGeneratorParams;
 
+    
 /**
  * This is a  class containing EST configuration parameters.
  */
 public class EstConfiguration extends ConfigurationBase implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private static final Logger log = Logger.getLogger(EstConfiguration.class);
+    private static final Logger log = LogManager.getLogger(EstConfiguration.class);
 
     // Possible operation modes
     public static final String OPERATION_MODE_RA     = "ra";
