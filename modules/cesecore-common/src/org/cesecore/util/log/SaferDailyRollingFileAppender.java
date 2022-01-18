@@ -82,10 +82,10 @@ public class SaferDailyRollingFileAppender extends NonFinalRollingFileAppender {
           }
     }
 
- // EJBCAINTER-323 Invoked by config.
-    public void setFile(final String filename) {
-        constructPath(filename);
-    }
+ // EJBCAINTER-323 Must be done with the RollingFileManager
+//    public void setFile(final String filename) {
+//        constructPath(filename);
+//    }
 
     private void constructPath(final String filename) {
         File dir;
