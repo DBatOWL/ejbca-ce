@@ -6,8 +6,8 @@
 	<Appenders>
 
 <!-- 		<RollingFile name="NORMAL_LOG_FILE"
-			fileName="${basePath}/appUMS.log"
-			filePattern="${basePath}/appUMS.log.%d{yyyy-MM-dd-HH}">
+			fileName="${basePath}/server.log"
+			filePattern="${basePath}/server.log.%d{yyyy-MM-dd-HH}">
 			<PatternLayout>
 				<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %c{1} %L- %msg%n
 				</pattern>
