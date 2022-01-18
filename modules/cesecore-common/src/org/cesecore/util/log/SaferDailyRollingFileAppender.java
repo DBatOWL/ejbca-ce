@@ -17,7 +17,6 @@ import java.io.File;
 import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.Logger;
 
 import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.Core;
@@ -28,6 +27,7 @@ import org.apache.logging.log4j.core.appender.rolling.RollingFileManager;
 import org.apache.logging.log4j.core.config.Property;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.net.Advertiser;
+import org.apache.logging.log4j.status.StatusLogger;
 
 /**
  * The purpose of this extension is to notify the client of the this log appender that it isn't possible to log anymore.
@@ -37,11 +37,12 @@ public class SaferDailyRollingFileAppender extends NonFinalRollingFileAppender {
     
     public static final String PLUGIN_NAME = "SaferDailyRollingFileAppender";
 
-    private final static Logger LOGGER = Logger.getLogger(SaferDailyRollingFileAppender.class.getName());
+    protected final static StatusLogger log = StatusLogger.getLogger();
     
     private static SaferAppenderListener subscriber;
 
     /** Sets the SaferAppenderListener that will be informed if a logging error occurs. */
+    
     public static void addSubscriber(SaferAppenderListener pSubscriber) {
         subscriber = pSubscriber;
     }
@@ -97,7 +98,7 @@ public class SaferDailyRollingFileAppender extends NonFinalRollingFileAppender {
         if (!dir.exists()) {
             boolean success = dir.mkdirs();
             if (!success) {
-                LOGGER.info("Failed to create directory structure: '" + dir + "'.");
+                log.info("Failed to create directory structure: '" + dir + "'.");
             }
         }
     }
