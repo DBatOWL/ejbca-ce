@@ -138,6 +138,9 @@ public class StartupSingletonBean {
     private void setLog4j2Prop() {
         final String log4jPath = EjbcaConfigurationHolder.getString("log4j2.xml.path");
         System.setProperty("log4j.configurationFile",  log4jPath);
+   
+        // This is to get rid of "Could not register mbeans javax.management.InstanceAlreadyExistsException"
+        System.setProperty("log4j2.disableJmx", "true");
     }
 
     @PreDestroy
