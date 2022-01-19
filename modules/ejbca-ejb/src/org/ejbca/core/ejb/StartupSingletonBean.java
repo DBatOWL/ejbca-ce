@@ -40,6 +40,7 @@ import org.cesecore.util.Base64;
 import org.cesecore.util.CertTools;
 import org.cesecore.util.CryptoProviderTools;
 import org.ejbca.config.EjbcaConfiguration;
+import org.ejbca.config.EjbcaConfigurationHolder;
 import org.ejbca.config.GlobalConfiguration;
 import org.ejbca.core.ejb.audit.enums.EjbcaEventTypes;
 import org.ejbca.core.ejb.audit.enums.EjbcaModuleTypes;
@@ -132,6 +133,12 @@ public class StartupSingletonBean {
     private ServiceSessionLocal serviceSession;
     @EJB
     private OcspResponseCleanupSessionLocal ocspResponseCleanupSession;
+    
+    
+    private void setLog4j2Prop() {
+        final String log4jPath = EjbcaConfigurationHolder.getString("log4j2.xml.path");
+        System.setProperty("log4j.configurationFile",  log4jPath);
+    }
 
     @PreDestroy
     private void shutdown() {
@@ -196,6 +203,8 @@ public class StartupSingletonBean {
         //
         // Run all "safe" initializations first, 
         // i.e. those that does not depend on other running beans, components etc
+        
+        setLog4j2Prop();
 
         // Log a startup message
         String iMsg = InternalEjbcaResources.getInstance().getLocalizedMessage("startservice.startup", GlobalConfiguration.EJBCA_VERSION);

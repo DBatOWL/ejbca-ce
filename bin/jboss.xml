@@ -113,5 +113,12 @@
 		<copy file="log4j2.xml" tofile="${jboss.server.home.dir}/${log4j2.file}" overwrite="true"/>
 		<chmod file="${jboss.server.home.dir}/${log4j2.file}" perm="600"/>
 	</target>
-
+	
+	<target name="jee:reload-jboss" depends="jee:check">
+	    <exec executable="${appserverhome}/bin/jboss-cli.sh">
+	        <arg value="--connect" />
+	        <arg value="--command=:reload" />
+	    </exec>
+	</target>
+	
 </project>

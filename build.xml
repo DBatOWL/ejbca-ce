@@ -861,6 +861,12 @@
         </fail>
         <antcall target="jee:deploy-log4j2xml" />
         <antcall target="jee:deployear" />
+    	
+    	<waitfor maxwait="5" maxwaitunit="minute">
+    	    <available file="${appserver.home}/standalone/deployments/ejbca.ear.deployed"/>
+    	</waitfor>
+    	
+    	<antcall target="jee:reload-jboss" />
         <antcall target="showtime" inheritall="true" inheritrefs="true"/>
     </target>
 
