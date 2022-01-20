@@ -5,7 +5,7 @@
 	</Properties>
 	<Appenders>
 
-<!-- 		<RollingFile name="NORMAL_LOG_FILE"
+ 		<RollingFile name="file"
 			fileName="${basePath}/server.log"
 			filePattern="${basePath}/server.log.%d{yyyy-MM-dd-HH}">
 			<PatternLayout>
@@ -17,7 +17,7 @@
 					modulate="true" />
 			</Policies>
 			<ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
-		</RollingFile> -->
+		</RollingFile> 
 
 		<Console name="console" target="SYSTEM_OUT">
 			<PatternLayout
@@ -26,11 +26,12 @@
 
 	</Appenders>
 	<Loggers>
-		<Logger name="org.ejbca" level="info"/>
-		<Logger name="org.cesecore" level="info"/>
+		<Logger name="org.ejbca" level="debug"/>
+		<Logger name="org.cesecore" level="debug"/>
 
  		<Root level="info">
 			<AppenderRef ref="console" level="info"/>
+			<AppenderRef ref="file" level="info"/>
 		</Root> 
 	</Loggers>
 </Configuration>
