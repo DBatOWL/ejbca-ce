@@ -196,7 +196,12 @@ public class SecurityEventPropertiesUnitTest {
         final Map<String, Object> resultMap = securityEventProperties.toMap();
         // then
         assertEquals("Resulting map has unexpected number of elements.", 0, resultMap.keySet().size());
-        assertTrue("Event log is missing.", testLog.getOutput().contains(prefix + "Got an entry with null key, excluding from the result map."));
+        final String logEntry = prefix + "Got an entry with null key, excluding from the result map.";
+        final boolean match = testLog.getOutput().contains(logEntry);
+        if (!match) { // Log for Jenkins.
+            System.err.println( testLog.getOutput() + " Mismatch.");
+        }
+        assertTrue("Event log is missing.", match);
     }
 
     @Test
@@ -215,7 +220,12 @@ public class SecurityEventPropertiesUnitTest {
         final Map<String, Object> resultMap = securityEventProperties.toMap();
         // then
         assertEquals("Resulting map has unexpected number of elements.", 1, resultMap.keySet().size());
-        assertTrue("Event log is missing.", testLog.getOutput().contains(prefix + "The standalone property [msg] was overridden by property in custom map."));
+        final String logEntry = prefix + "The standalone property [msg] was overridden by property in custom map.";
+        final boolean match = testLog.getOutput().contains(logEntry);
+        if (!match) { // Log for Jenkins.
+            System.err.println( testLog.getOutput() + " Mismatch.");
+        }
+        assertTrue("Event log is missing.", match);
         assertEquals("msg was not mapped from customMap.", customValue, resultMap.get(SecurityEventProperties.MSG));
     }
 
