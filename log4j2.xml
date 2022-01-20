@@ -21,7 +21,7 @@
 
 		<Console name="console" target="SYSTEM_OUT">
 			<PatternLayout
-				pattern="%highlight{%d [%t] %-5level: %msg%n%throwable}" />
+				pattern="%highlight{%d %-5level [%logger] (%t) %msg%n%throwable}{FATAL=red, ERROR=red, WARN=yellow, INFO=white, DEBUG=green, TRACE=blue}" />
 		</Console>
 
 	</Appenders>

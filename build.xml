@@ -859,15 +859,11 @@
                 </not>
             </condition>
         </fail>
+    	<!-- Target used for copying log4j xml file to jboss configuration dir -->
         <antcall target="jee:deploy-log4j2xml" />
+    	<antcall target="jee:load-log4j-sysprop" />
         <antcall target="jee:deployear" />
-    	
-    	<waitfor maxwait="5" maxwaitunit="minute">
-    	    <available file="${appserver.home}/standalone/deployments/ejbca.ear.deployed"/>
-    	</waitfor>
-    	
-    	<antcall target="jee:reload-jboss" />
-        <antcall target="showtime" inheritall="true" inheritrefs="true"/>
+    	<antcall target="showtime" inheritall="true" inheritrefs="true"/>
     </target>
 
     <!-- ======================================================================= -->

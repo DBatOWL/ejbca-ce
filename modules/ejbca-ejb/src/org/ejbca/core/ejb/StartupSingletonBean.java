@@ -133,15 +133,6 @@ public class StartupSingletonBean {
     private ServiceSessionLocal serviceSession;
     @EJB
     private OcspResponseCleanupSessionLocal ocspResponseCleanupSession;
-    
-    
-    private void setLog4j2Prop() {
-        final String log4jPath = EjbcaConfigurationHolder.getString("log4j2.xml.path");
-        System.setProperty("log4j.configurationFile",  log4jPath);
-   
-        // This is to get rid of "Could not register mbeans javax.management.InstanceAlreadyExistsException"
-        System.setProperty("log4j2.disableJmx", "true");
-    }
 
     @PreDestroy
     private void shutdown() {
@@ -206,8 +197,6 @@ public class StartupSingletonBean {
         //
         // Run all "safe" initializations first, 
         // i.e. those that does not depend on other running beans, components etc
-        
-        setLog4j2Prop();
 
         // Log a startup message
         String iMsg = InternalEjbcaResources.getInstance().getLocalizedMessage("startservice.startup", GlobalConfiguration.EJBCA_VERSION);

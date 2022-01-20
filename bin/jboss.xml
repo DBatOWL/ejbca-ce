@@ -56,8 +56,10 @@
 		<fail message="Please set the property 'appserver.home' for this project" unless="appserverhome"/>
 		<!-- modules.xml is JBoss 7.x. Available does not touch the property if the file does not exist, which is why this works. -->
 		<available file="${appserverhome}/modules/org/jboss/as/standalone/main/module.xml" property="appserver.home.valid"/>
+		<available file="${appserverhome}/bin/standalone.conf" property="standalone.conf.valid"/>
 		<available file="${appserverhome}/modules/system/layers/base/org/jboss/as/standalone/main/module.xml" property="appserver.home.valid"/>
-		<fail message="'appserver.home' (${appserverhome}) does not seem to be a valid JBoss home directory" unless="appserver.home.valid"/>
+		<fail message="'appserver.home' (${appserverhome}) does not seem to be a valid JBoss home directory" unless="appserver.home.valid" />
+		<fail message="'standalone.conf' does not seem to be a valid and accesible file" unless="standalone.conf.valid"/>
 		<echo message="Using appserver.home : ${appserverhome}"/>
 	</target>
 
@@ -113,12 +115,24 @@
 		<copy file="log4j2.xml" tofile="${jboss.server.home.dir}/${log4j2.file}" overwrite="true"/>
 		<chmod file="${jboss.server.home.dir}/${log4j2.file}" perm="600"/>
 	</target>
-	
-	<target name="jee:reload-jboss" depends="jee:check">
-	    <exec executable="${appserverhome}/bin/jboss-cli.sh">
-	        <arg value="--connect" />
-	        <arg value="--command=:reload" />
-	    </exec>
+
+	<target name="jee:load-log4j-sysprop" depends="jee:check">
+		<exec executable="${appserverhome}/bin/jboss-cli.sh">
+			<arg value="--connect" />
+			<arg value="--command=/system-property=log4j.configurationFile:remove" />
+		</exec>
+		<exec executable="${appserverhome}/bin/jboss-cli.sh">
+			<arg value="--connect" />
+			<arg value="--command=/system-property=log4j2.disableJmx:remove" />
+		</exec>
+		<exec executable="${appserverhome}/bin/jboss-cli.sh">
+			<arg value="--connect" />
+			<arg value="--command=/system-property=log4j.configurationFile:add(value=${jboss.server.home.dir}/${log4j2.file})" />
+		</exec>
+		<exec executable="${appserverhome}/bin/jboss-cli.sh">
+			<arg value="--connect" />
+			<arg value="--command=/system-property=log4j2.disableJmx:add(value=true)" />
+		</exec>
 	</target>
-	
+
 </project>
