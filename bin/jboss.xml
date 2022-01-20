@@ -56,10 +56,8 @@
 		<fail message="Please set the property 'appserver.home' for this project" unless="appserverhome"/>
 		<!-- modules.xml is JBoss 7.x. Available does not touch the property if the file does not exist, which is why this works. -->
 		<available file="${appserverhome}/modules/org/jboss/as/standalone/main/module.xml" property="appserver.home.valid"/>
-		<available file="${appserverhome}/bin/standalone.conf" property="standalone.conf.valid"/>
 		<available file="${appserverhome}/modules/system/layers/base/org/jboss/as/standalone/main/module.xml" property="appserver.home.valid"/>
 		<fail message="'appserver.home' (${appserverhome}) does not seem to be a valid JBoss home directory" unless="appserver.home.valid" />
-		<fail message="'standalone.conf' does not seem to be a valid and accesible file" unless="standalone.conf.valid"/>
 		<echo message="Using appserver.home : ${appserverhome}"/>
 	</target>
 
