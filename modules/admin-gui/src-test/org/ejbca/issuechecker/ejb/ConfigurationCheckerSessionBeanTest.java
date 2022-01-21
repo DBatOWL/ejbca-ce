@@ -97,16 +97,16 @@ public class ConfigurationCheckerSessionBeanTest {
     @Test
     public void filterByTicketLevel() {
         final ConfigurationCheckerSessionLocal configurationCheckerSession = new ConfigurationCheckerSessionBeanPartialMock.Builder()
-                .withAvailableConfigurationIssues(ImmutableSet.of(new GreenIssue(1, Level.DEBUG), new RedIssue(2, Level.ERROR)))
+                .withAvailableConfigurationIssues(ImmutableSet.of(new GreenIssue(2, Level.DEBUG), new RedIssue(1, Level.ERROR)))
                 .withEnabledConfigurationSets(ImmutableSet.of(new GreenIssueSet(), new RedIssueSet()))
                 .buildLocal();
         final List<Ticket> tickets = configurationCheckerSession.getTickets(TicketRequest
                     .builder(getAuthenticationToken())
-                    .filterByLevel(Level.DEBUG)
+                    .filterByLevel(Level.ERROR)
                     .build())
                 .collect(Collectors.toList());
         assertEquals(1, tickets.size());
-        assertEquals("Green Ticket 1", tickets.get(0).getTicketDescription().toString());
+        assertEquals("Red Ticket 1", tickets.get(0).getTicketDescription().toString());
     }
     
     @Test

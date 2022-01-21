@@ -47,9 +47,9 @@ public class UpgradeBean extends BaseManagedBean implements Serializable {
         }
 
         /** @return true for FATAL and ERROR level messages */
-        public boolean isLevelError() { return loggingEvent.getLevel().isLessSpecificThan(Level.ERROR); }
+        public boolean isLevelError() { return loggingEvent.getLevel().isMoreSpecificThan(Level.ERROR); }
         public boolean isLevelWarning() { return loggingEvent.getLevel().equals(Level.WARN); }
-        public boolean isLevelInfo() { return !loggingEvent.getLevel().isLessSpecificThan(Level.WARN); }
+        public boolean isLevelInfo() { return !loggingEvent.getLevel().isMoreSpecificThan(Level.WARN); }
 
         public String getLevel() { return loggingEvent.getLevel().toString(); }
 
@@ -67,7 +67,6 @@ public class UpgradeBean extends BaseManagedBean implements Serializable {
     }
     
     private static final long serialVersionUID = 1L;
-    //private static final Logger log = LogManager.getLogger(UpgradeBean.class);
     
     @EJB
     private AuthorizationSessionLocal authorizationSession;
@@ -140,7 +139,7 @@ public class UpgradeBean extends BaseManagedBean implements Serializable {
     public List<LogEventUpgrade> getLogged() {
         final List<LogEventUpgrade> ret = new ArrayList<>();
         for (final LogEvent loggingEvent: new ArrayList<>(upgradeStatusSingleton.getLogged())) {
-            if (loggingEvent.getLevel().isLessSpecificThan(Level.INFO)) {
+            if (loggingEvent.getLevel().isMoreSpecificThan(Level.INFO)) {
                 ret.add(new LogEventUpgrade(loggingEvent));
             }
         }

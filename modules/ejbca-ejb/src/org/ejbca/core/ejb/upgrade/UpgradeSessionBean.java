@@ -410,6 +410,7 @@ public class UpgradeSessionBean implements UpgradeSessionLocal, UpgradeSessionRe
         boolean ret = false;
         if (setPostUpgradeStartedInternal(System.currentTimeMillis())) {
             try {
+                
                 upgradeStatusSingleton.logAppenderAttach(log);
                 if (upgradeStatusSingleton.setPostUpgradeInProgressIfDifferent(true)) {
                     try {
@@ -440,7 +441,7 @@ public class UpgradeSessionBean implements UpgradeSessionLocal, UpgradeSessionRe
             log.info("Preventing start of post-upgrade background tasks since it has already been started by a cluster node.");
         }
         log.trace("<startPostUpgrade");
-        return new AsyncResult<Boolean>(ret);
+        return new AsyncResult<>(ret);
     }
 
     @Override

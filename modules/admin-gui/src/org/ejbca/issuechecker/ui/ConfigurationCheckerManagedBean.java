@@ -50,10 +50,10 @@ public class ConfigurationCheckerManagedBean extends BaseManagedBean {
     }
 
     public String getStyleClass(final Ticket ticket) {
-        if (ticket.getLevel().isLessSpecificThan(Level.ERROR)) {
+        if (ticket.getLevel().isMoreSpecificThan(Level.ERROR)) {
             return "prio-error";
         }
-        if (ticket.getLevel().isLessSpecificThan(Level.WARN)) {
+        if (ticket.getLevel().isMoreSpecificThan(Level.WARN)) {
             return "prio-warn";
         } else {
             return "prio-info";

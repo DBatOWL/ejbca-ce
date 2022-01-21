@@ -5,8 +5,7 @@
 	</Properties>
 	<Appenders>
 
- 		<RollingFile name="file"
-			fileName="${basePath}/server.log"
+		<RollingFile name="file" fileName="${basePath}/server.log"
 			filePattern="${basePath}/server.log.%d{yyyy-MM-dd-HH}">
 			<PatternLayout>
 				<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %c{1} %L- %msg%n
@@ -16,23 +15,31 @@
 				<TimeBasedTriggeringPolicy interval="1"
 					modulate="true" />
 			</Policies>
-			<ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
-		</RollingFile> 
+			<ThresholdFilter level="ERROR" onMatch="DENY"
+				onMismatch="NEUTRAL" />
+		</RollingFile>
 
 		<Console name="console" target="SYSTEM_OUT">
 			<PatternLayout
 				pattern="%highlight{%d %-5level [%logger] (%t) %msg%n%throwable}{FATAL=red, ERROR=red, WARN=yellow, INFO=white, DEBUG=green, TRACE=blue}" />
 		</Console>
 
+		<!-- Appender which is used for keep track of upgrade logs for use in the admin GUI  -->
+		<UpgradeListAppender name="UpgradeListAppender" />
 	</Appenders>
-	<Loggers>
-		<Logger name="org.ejbca" level="debug"/>
-		<Logger name="org.cesecore" level="debug"/>
 
- 		<Root level="info">
-			<AppenderRef ref="console" level="info"/>
-			<AppenderRef ref="file" level="info"/>
-		</Root> 
+	<Loggers>
+		<Logger name="org.ejbca" level="debug" />
+		<Logger name="org.cesecore" level="debug" />
+		<Logger name="org.ejbca.core.ejb.upgrade.UpgradeStatusSingletonBean" level="info"
+			additivity="false">
+			<AppenderRef ref="UpgradeListAppender" />
+		</Logger>
+
+		<Root level="info">
+			<AppenderRef ref="console" level="info" />
+			<AppenderRef ref="file" level="info" />
+		</Root>
 	</Loggers>
 </Configuration>
 

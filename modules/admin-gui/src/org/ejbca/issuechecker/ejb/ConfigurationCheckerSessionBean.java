@@ -107,7 +107,7 @@ public class ConfigurationCheckerSessionBean implements ConfigurationCheckerSess
                 .flatMap(tickets -> tickets.stream())
                 .sorted()
                 .filter(ticket -> ticket.isAuthorizedToView(request.getAuthenticationToken()))
-                .filter(ticket -> ticket.getLevel().isLessSpecificThan(request.getMinimumLevel()))
+                .filter(ticket -> ticket.getLevel().isMoreSpecificThan(request.getMinimumLevel()))
                 .skip(request.getOffset())
                 .limit(request.getLimit());
     }

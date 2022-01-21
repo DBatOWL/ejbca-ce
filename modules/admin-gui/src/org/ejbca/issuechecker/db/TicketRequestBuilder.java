@@ -25,7 +25,7 @@ public class TicketRequestBuilder {
     protected final AuthenticationToken authenticationToken;
     protected int limit = Integer.MAX_VALUE;
     protected int offset = 0;
-    protected Level minimumLevel = Level.OFF;
+    protected Level minimumLevel = Level.ALL;
 
     /**
      * Construct a new builder of {@link TicketRequest} objects.

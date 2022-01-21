@@ -12,8 +12,6 @@
  *************************************************************************/
 package org.ejbca.core.ejb.upgrade;
 
-import java.io.Serializable;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -23,94 +21,22 @@ import javax.ejb.Singleton;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.core.Appender;
-import org.apache.logging.log4j.core.ErrorHandler;
-import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.Logger;
 
 /**
  * Singleton responsible for keep track of a node-local post upgrade.
  * 
- * @version $Id$
  */
 @Singleton
 @ConcurrencyManagement(ConcurrencyManagementType.BEAN)
 @TransactionManagement(TransactionManagementType.BEAN)
 public class UpgradeStatusSingletonBean implements UpgradeStatusSingletonLocal {
 
-    /** Custom appender so that we can capture and display the log from the upgrade process. */
-    private final Appender appender = new Appender() {
-
-        @Override
-        public String getName() {
-            return UpgradeStatusSingletonBean.class.getSimpleName();
-        }
-
-        @Override
-        public State getState() {
-            return null;
-        }
-        @Override
-        public void initialize() {
-        }
-        @Override
-        public boolean isStarted() {
-            return false;
-        }
-        @Override
-        public boolean isStopped() {
-            return false;
-        }
-        @Override
-        public void start() {
-        }
-        @Override
-        public void stop() {
-        }
-        @Override
-        public void append(LogEvent event) {
-            logged.add(event);
-        }
-        @Override
-        public ErrorHandler getHandler() {
-            return null;
-        }
-        @Override
-        public Layout<? extends Serializable> getLayout() {
-            return null;
-        }
-        @Override
-        public boolean ignoreExceptions() {
-            return false;
-        }
-        @Override
-        public void setHandler(ErrorHandler handler) {
-        }
-    };
-
     private AtomicBoolean postUpgradeInProgress = new AtomicBoolean(false);
 
-    /** Fixed size list (dropping oldest additions when running out of space) to prevent all memory from being consumed if attached process never detaches. */
-    private List<LogEvent> logged = new LinkedList<LogEvent>() {
-        private static final long serialVersionUID = 1L;
-        private static final int MAX_ENTRIES_IN_LIST = 10000;
+    private UpgradeListAppender appender = UpgradeListAppender.createAppender("UpgradeEventListAppender", null);
 
-        @Override
-        public boolean add(final LogEvent loggingEvent) {
-            // Hard code a filter so we only keep DEBUG and above here in the in-memory buffer
-            if (!loggingEvent.getLevel().isLessSpecificThan(Level.DEBUG)) {
-                return false;
-            }
-            final boolean added = super.add(loggingEvent);
-            while (added && size()>MAX_ENTRIES_IN_LIST) {
-                super.remove();
-            }
-            return added;
-        }  
-    };
-    
     @Override
     public boolean isPostUpgradeInProgress() {
         return postUpgradeInProgress.get();
@@ -118,28 +44,29 @@ public class UpgradeStatusSingletonBean implements UpgradeStatusSingletonLocal {
 
     @Override
     public boolean setPostUpgradeInProgressIfDifferent(boolean newValue) {
-        logged.clear();
+        appender.getLogged().clear();
         return this.postUpgradeInProgress.compareAndSet(!newValue, newValue);
     }
-    
+
     @Override
     public void resetPostUpgradeInProgress() {
         this.postUpgradeInProgress.set(false);
     }
-    
+
     @Override
     public List<LogEvent> getLogged() {
-        return logged;
+        return appender.getLogged();
     }
-    
+
     @Override
     public void logAppenderAttach(final Logger log) {
+        appender.start();
         log.addAppender(appender);
     }
 
     @Override
     public void logAppenderDetach(final Logger log) {
+        appender.stop();
         log.removeAppender(appender);
-        
     }
 }
