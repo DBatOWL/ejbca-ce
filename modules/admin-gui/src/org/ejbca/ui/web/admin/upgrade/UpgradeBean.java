@@ -138,10 +138,8 @@ public class UpgradeBean extends BaseManagedBean implements Serializable {
     /** @return info logged by the upgrade code */
     public List<LogEventUpgrade> getLogged() {
         final List<LogEventUpgrade> ret = new ArrayList<>();
-        for (final LogEvent loggingEvent: new ArrayList<>(upgradeStatusSingleton.getLogged())) {
-            if (loggingEvent.getLevel().isMoreSpecificThan(Level.INFO)) {
-                ret.add(new LogEventUpgrade(loggingEvent));
-            }
+        for (final LogEvent loggingEvent : new ArrayList<>(upgradeStatusSingleton.getLogged())) {
+            ret.add(new LogEventUpgrade(loggingEvent));
         }
         return ret;
     }

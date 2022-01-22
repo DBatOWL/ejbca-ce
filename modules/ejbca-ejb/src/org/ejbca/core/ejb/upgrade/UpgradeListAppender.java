@@ -13,6 +13,7 @@
 
 package org.ejbca.core.ejb.upgrade;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,8 +33,28 @@ import org.apache.logging.log4j.core.config.plugins.PluginFactory;
  */
 @Plugin(name = "UpgradeListAppender", category = Core.CATEGORY_NAME, elementType = Appender.ELEMENT_TYPE)
 public class UpgradeListAppender extends AbstractAppender {
+    
+    private List<LogEvent> logList;
+    
     protected UpgradeListAppender(String name, Filter filter) {
         super(name, filter, null, false, null);
+        logList = Collections.synchronizedList(new LinkedList<LogEvent>() {
+            private static final long serialVersionUID = 1L;
+            private static final int MAX_ENTRIES_IN_LIST = 10000;
+
+            @Override
+            public boolean add(final LogEvent loggingEvent) {
+                // Hard code a filter so we only keep DEBUG and above here in the in-memory buffer
+                if (!loggingEvent.getLevel().isMoreSpecificThan(Level.DEBUG)) {
+                    return false;
+                }
+                final boolean added = super.add(loggingEvent);
+                while (added && size() > MAX_ENTRIES_IN_LIST) {
+                    super.remove();
+                }
+                return added;
+            }
+        });
     }
 
     @PluginFactory
@@ -43,28 +64,14 @@ public class UpgradeListAppender extends AbstractAppender {
 
     @Override
     public void append(LogEvent event) {
-        logged.add(event);
+        if (!event.getLevel().isMoreSpecificThan(Level.INFO)) {
+            error("Unable to log less than WARN level.");
+            return;
+        }
+        logList.add(event);
     }
 
     public List<LogEvent> getLogged() {
-        return logged;
+        return logList;
     }
-
-    private List<LogEvent> logged = new LinkedList<LogEvent>() {
-        private static final long serialVersionUID = 1L;
-        private static final int MAX_ENTRIES_IN_LIST = 10000;
-
-        @Override
-        public boolean add(final LogEvent loggingEvent) {
-            // Hard code a filter so we only keep DEBUG and above here in the in-memory buffer
-            if (!loggingEvent.getLevel().isMoreSpecificThan(Level.DEBUG)) {
-                return false;
-            }
-            final boolean added = super.add(loggingEvent);
-            while (added && size() > MAX_ENTRIES_IN_LIST) {
-                super.remove();
-            }
-            return added;
-        }
-    };
 }

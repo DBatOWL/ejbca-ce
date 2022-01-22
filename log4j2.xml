@@ -19,22 +19,123 @@
 				onMismatch="NEUTRAL" />
 		</RollingFile>
 
+		<!-- OCSP Logging Appenders Section -->
+
+<!-- 		<RollingFile name="OCSPTRANSACTION"
+			fileName="${basePath}/transaction.log"
+			filePattern="${basePath}/transaction.log.%d{yyyy-MM-dd-HH}"
+			append="false">
+			<PatternLayout>
+				<pattern>%d %-5p [%c] %m%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="500KB" />
+			</Policies>
+			<DefaultRolloverStrategy max="1" />
+
+			<ThresholdFilter level="ERROR" onMatch="DENY"
+				onMismatch="NEUTRAL" />
+		</RollingFile>
+
+
+		<RollingFile name="OCSPAUDIT"
+			fileName="${basePath}/audit.log"
+			filePattern="${basePath}/audit.log.%d{yyyy-MM-dd-HH}" append="false">
+			<PatternLayout>
+				<pattern>%d %-5p [%c] %m%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="500KB" />
+			</Policies>
+			<DefaultRolloverStrategy max="1" />
+
+			<ThresholdFilter level="ERROR" onMatch="DENY"
+				onMismatch="NEUTRAL" />
+		</RollingFile> -->
+
+		<!-- OCSP Logging Appenders Section -->
+		
+		
+		<!-- OCSP Safer Logging Appenders Section -->
+
+<!-- 		<SaferDailyRollingFileAppender name="OCSPTRANSACTION"
+			fileName="${basePath}/transaction.log"
+			filePattern="${basePath}/transaction.log.%d{yyyy-MM-dd}"
+			append="true">
+			<PatternLayout>
+				<pattern>%d %-5p [%c] %m%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+			    <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+			</Policies>
+			<DefaultRolloverStrategy max="1" />
+
+			<ThresholdFilter level="ERROR" onMatch="DENY"
+				onMismatch="NEUTRAL" />
+		</SaferDailyRollingFileAppender>
+
+
+		<SaferDailyRollingFileAppender name="OCSPAUDIT"
+			fileName="${basePath}/audit.log"
+			filePattern="${basePath}/audit.log.%d{yyyy-MM-dd}" append="true">
+			<PatternLayout>
+				<pattern>%d %-5p [%c] %m%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+			    <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+			</Policies>
+			<DefaultRolloverStrategy max="1" />
+
+			<ThresholdFilter level="ERROR" onMatch="DENY"
+				onMismatch="NEUTRAL" />
+		</SaferDailyRollingFileAppender>  -->
+
+		<!-- OCSP Safer Logging Appenders Section -->
+
+
+		<!-- Default app server console appender -->
+
 		<Console name="console" target="SYSTEM_OUT">
 			<PatternLayout
 				pattern="%highlight{%d %-5level [%logger] (%t) %msg%n%throwable}{FATAL=red, ERROR=red, WARN=yellow, INFO=white, DEBUG=green, TRACE=blue}" />
 		</Console>
 
-		<!-- Appender which is used for keep track of upgrade logs for use in the admin GUI  -->
+		<!-- Appender which is used for keep track of upgrade logs for use in the 
+			admin GUI -->
 		<UpgradeListAppender name="UpgradeListAppender" />
+
+
 	</Appenders>
 
 	<Loggers>
 		<Logger name="org.ejbca" level="debug" />
 		<Logger name="org.cesecore" level="debug" />
-		<Logger name="org.ejbca.core.ejb.upgrade.UpgradeStatusSingletonBean" level="info"
-			additivity="false">
+
+		<!-- Logger catching the upgrade logs for admin GUI -->
+		<Logger
+			name="org.ejbca.core.ejb.upgrade.UpgradeStatusSingletonBean"
+			level="info" additivity="false">
 			<AppenderRef ref="UpgradeListAppender" />
 		</Logger>
+
+		<!-- OCSP audit and transaction loggers - regular case  -->
+<!-- 		<Logger
+			name="org.cesecore.certificates.ocsp.logging.TransactionLogger"
+			level="debug">
+			<AppenderRef ref="OCSPTRANSACTION" />
+		</Logger>
+
+		<Logger
+			name="org.cesecore.certificates.ocsp.logging.AuditLogger"
+			level="debug">
+			<AppenderRef ref="OCSPAUDIT" />
+		</Logger> -->
+		<!-- OCSP audit and transaction loggers - regular case  -->
+
 
 		<Root level="info">
 			<AppenderRef ref="console" level="info" />
