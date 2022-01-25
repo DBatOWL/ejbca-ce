@@ -67,5 +67,5 @@ wait_for_deployment
 
 echo '=================== starting system tests ================================='
 
-ant test:run -Dtest.includep11=true -Dtests.jvmargs="$TEST_OPTS"
+ant test:run -Dlog4j1.compatibility=true -Dtest.includep11=true -Dtests.jvmargs="$TEST_OPTS"
 

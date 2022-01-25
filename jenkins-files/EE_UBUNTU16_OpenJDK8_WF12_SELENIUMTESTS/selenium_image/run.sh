@@ -24,5 +24,5 @@ echo '=================== build finished ========================'
 ls -la /app/ejbca/modules/ejbca-webtest/resources
 
 ant ejbca:setup:selenium -Dbrowser.firefox.binary=/usr/bin/firefox -Denv.HOME=/home/jenkins
-ant test:webtest:jenkins -Dtests.jvmargs="$TEST_OPTS"
+ant test:webtest:jenkins - -Dlog4j1.compatibility=true Dtests.jvmargs="$TEST_OPTS"
 
