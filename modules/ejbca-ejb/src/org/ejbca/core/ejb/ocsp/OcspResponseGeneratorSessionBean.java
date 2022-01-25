@@ -1867,11 +1867,12 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
 
                 }
                 // See if the Appender has reported any problems
-                if (!CanLogCache.INSTANCE.canLog()) {
-                    log.info("SaferDailyRollingFileAppender reported error, cannot answer request");
-                    // RFC 2560: responseBytes are not set on error.
-                    ocspResponse = responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null);
-                }
+                // EJBCAINTER-323 Fix if required.
+//                if (!CanLogCache.INSTANCE.canLog()) {
+//                    log.info("SaferDailyRollingFileAppender reported error, cannot answer request");
+//                    // RFC 2560: responseBytes are not set on error.
+//                    ocspResponse = responseGenerator.build(OCSPRespBuilder.INTERNAL_ERROR, null);
+//                }
             }
         } catch (IOException e) {
             log.error("Unexpected IOException caught.", e);
