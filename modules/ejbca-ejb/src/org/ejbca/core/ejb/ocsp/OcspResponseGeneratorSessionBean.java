@@ -192,7 +192,6 @@ import org.cesecore.util.StringTools;
 import org.cesecore.util.ValidityDate;
 import org.cesecore.util.log.ProbableErrorHandler;
 import org.cesecore.util.log.SaferAppenderListener;
-import org.cesecore.util.log.SaferDailyRollingFileAppender;
 import org.cesecore.util.provider.EkuPKIXCertPathChecker;
 import org.ejbca.core.ejb.ca.publisher.PublisherSessionLocal;
 import org.ejbca.core.model.ca.publisher.PublisherException;
@@ -247,10 +246,11 @@ public class OcspResponseGeneratorSessionBean implements OcspResponseGeneratorSe
 
     @PostConstruct
     public void init() {
-        if (OcspConfiguration.getLogSafer()) {
+    	// EJBCAINTER-323 Fix if required.
+        /*if (OcspConfiguration.getLogSafer()) {
             SaferDailyRollingFileAppender.addSubscriber(this);
             log.info("Added us as subscriber: " + SaferDailyRollingFileAppender.class.getCanonicalName());
-        }
+        }*/
         timerService = sessionContext.getTimerService();
     }
     
