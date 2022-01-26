@@ -35,7 +35,8 @@ import java.util.Iterator;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAExistsException;
@@ -71,7 +72,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaImportCVCCACommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaImportCVCCACommand.class);
+    private static final Logger log = LogManager.getLogger(CaImportCVCCACommand.class);
 
     private static final String CA_NAME_KEY = "--caname";
     private static final String KEY_FILE_KEY = "-f";

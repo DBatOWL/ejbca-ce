@@ -16,7 +16,8 @@ package org.ejbca.ui.cli.config;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.configuration.GlobalConfigurationSessionRemote;
 import org.cesecore.util.EjbRemoteHelper;
@@ -31,7 +32,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class ConfigdumpCommand extends ConfigBaseCommand {
 
-    private static final Logger log = Logger.getLogger(ConfigdumpCommand.class);
+    private static final Logger log = LogManager.getLogger(ConfigdumpCommand.class);
 
     @Override
     public String getMainCommand() {

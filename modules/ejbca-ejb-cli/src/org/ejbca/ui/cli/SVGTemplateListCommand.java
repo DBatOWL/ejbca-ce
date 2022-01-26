@@ -16,7 +16,8 @@ package org.ejbca.ui.cli;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
 import org.ejbca.ui.cli.infrastructure.command.EjbcaCommandBase;
 import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
@@ -30,7 +31,7 @@ import org.ejbca.util.PrinterManager;
  */
 public class SVGTemplateListCommand extends EjbcaCommandBase {
 
-    private static final Logger log = Logger.getLogger(SVGTemplateListCommand.class);
+    private static final Logger log = LogManager.getLogger(SVGTemplateListCommand.class);
 
     @Override
     public String[] getCommandPath() {

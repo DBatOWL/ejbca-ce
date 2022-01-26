@@ -13,8 +13,9 @@
 
 package org.ejbca.ui.cli.ra;
 
-import org.apache.log4j.AppenderSkeleton;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.log4j.WriterAppender;
 import org.apache.log4j.spi.LoggingEvent;
 import org.bouncycastle.jce.X509KeyUsage;
 import org.cesecore.CaTestUtils;
@@ -156,7 +157,7 @@ public class AddEndEntityCommandTest {
             // after running
             final TestAppender appender1 = new TestAppender();
             final Logger logger1 = command1.getLogger();
-            logger1.addAppender(appender1);
+            ((org.apache.logging.log4j.core.Logger) logger1).addAppender((org.apache.logging.log4j.core.Appender)appender1);
             command1.execute(INVALIDUSER_PATH_SETPWDPWD_ARGS);
             col = endEntityAccessSession.query(admin, query, caauthstring, eeprofilestr, 0, AccessRulesConstants.CREATE_END_ENTITY);
             assertEquals(1, col.size());
@@ -174,7 +175,7 @@ public class AddEndEntityCommandTest {
             // after running
             final TestAppender appender2 = new TestAppender();
             final Logger logger2 = command2.getLogger();
-            logger2.addAppender(appender2);
+            ((org.apache.logging.log4j.core.Logger) logger2).addAppender((org.apache.logging.log4j.core.Appender)appender2);
             command2.execute(INVALIDUSER_PATH_SETCLEARPWD_ARGS);
             col = endEntityAccessSession.query(admin, query, caauthstring, eeprofilestr, 0, AccessRulesConstants.CREATE_END_ENTITY);
             assertEquals(1, col.size());
@@ -194,7 +195,7 @@ public class AddEndEntityCommandTest {
         }    
     }
     
-    class TestAppender extends AppenderSkeleton {
+    class TestAppender extends WriterAppender {
         private final List<LoggingEvent> log = new ArrayList<LoggingEvent>();
 
         @Override
@@ -202,10 +203,10 @@ public class AddEndEntityCommandTest {
             return false;
         }
 
-        @Override
-        protected void append(final LoggingEvent loggingEvent) {
-            log.add(loggingEvent);
-        }
+//        @Override
+//        protected void append(final LoggingEvent loggingEvent) {
+//            log.add(loggingEvent);
+//        }
 
         @Override
         public void close() {

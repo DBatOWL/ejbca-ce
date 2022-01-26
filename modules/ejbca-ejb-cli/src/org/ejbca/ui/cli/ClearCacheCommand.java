@@ -13,7 +13,8 @@
 
 package org.ejbca.ui.cli;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationSessionRemote;
 import org.cesecore.certificates.ca.CaSessionRemote;
 import org.cesecore.certificates.certificateprofile.CertificateProfileSessionRemote;
@@ -44,7 +45,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class ClearCacheCommand extends EjbcaCommandBase {
 
-    private static final Logger log = Logger.getLogger(ClearCacheCommand.class);
+    private static final Logger log = LogManager.getLogger(ClearCacheCommand.class);
     private static final String ALL = "-all";
     private static final String GLOBAL_CONFIGURATION = "-globalconf";
     private static final String EE_PROFILES = "-eeprofile";

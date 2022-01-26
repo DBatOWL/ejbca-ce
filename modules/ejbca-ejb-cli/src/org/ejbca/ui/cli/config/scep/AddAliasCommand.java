@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.ui.cli.config.scep;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.ejbca.config.ScepConfiguration;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
@@ -30,7 +31,7 @@ public class AddAliasCommand extends BaseScepConfigCommand {
 
     private static final String ALIAS_KEY = "--alias";
 
-    private static final Logger log = Logger.getLogger(AddAliasCommand.class);
+    private static final Logger log = LogManager.getLogger(AddAliasCommand.class);
 
     {
         registerParameter(new Parameter(ALIAS_KEY, "Alias", MandatoryMode.MANDATORY, StandaloneMode.ALLOW, ParameterMode.ARGUMENT,

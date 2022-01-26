@@ -16,7 +16,8 @@ package org.ejbca.ui.cli.ca;
 import java.util.Collection;
 
 import org.apache.commons.lang.math.IntRange;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.certificates.ca.CaSessionRemote;
@@ -35,7 +36,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class CaGetCrlInfo extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaGetCrlInfo.class);
+    private static final Logger log = LogManager.getLogger(CaGetCrlInfo.class);
 
     @Override
     public String getMainCommand() {

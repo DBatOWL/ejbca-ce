@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.ui.cli.keybind;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.InvalidAlgorithmException;
 import org.cesecore.keybind.InternalKeyBindingMgmtSessionRemote;
@@ -29,7 +30,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class InternalKeyBindingDeleteCommand extends RudInternalKeyBindingCommand {
 
-    private static final Logger log = Logger.getLogger(InternalKeyBindingDeleteCommand.class);
+    private static final Logger log = LogManager.getLogger(InternalKeyBindingDeleteCommand.class);
 
     @Override
     public String getMainCommand() {

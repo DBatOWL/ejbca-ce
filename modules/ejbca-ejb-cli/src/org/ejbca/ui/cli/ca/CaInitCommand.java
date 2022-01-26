@@ -32,7 +32,8 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAConstants;
 import org.cesecore.certificates.ca.CAExistsException;
@@ -119,7 +120,7 @@ enum CaType {
 
 public class CaInitCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaInitCommand.class);
+    private static final Logger log = LogManager.getLogger(CaInitCommand.class);
 
     private static final String CA_NAME_KEY = "--caname";
     private static final String DN_KEY = "--dn";

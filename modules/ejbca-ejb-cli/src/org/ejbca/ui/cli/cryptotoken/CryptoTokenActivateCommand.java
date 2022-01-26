@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.ui.cli.cryptotoken;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.keys.token.CryptoTokenInfo;
 import org.cesecore.keys.token.CryptoTokenManagementSessionRemote;
@@ -32,7 +33,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CryptoTokenActivateCommand extends BaseCryptoTokenCommand {
 
-    private static final Logger log = Logger.getLogger(CryptoTokenActivateCommand.class);
+    private static final Logger log = LogManager.getLogger(CryptoTokenActivateCommand.class);
 
     private static final String PIN_KEY = "--pin";
 

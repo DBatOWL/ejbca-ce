@@ -18,7 +18,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CADoesntExistsException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -61,7 +63,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class AddEndEntityCommand extends BaseRaCommand {
 
-    private static final Logger log = Logger.getLogger(AddEndEntityCommand.class);
+    private static final Logger log = LogManager.getLogger(AddEndEntityCommand.class);
 
     private static final String USERGENERATED = "USERGENERATED";
     private static final String P12 = "P12";

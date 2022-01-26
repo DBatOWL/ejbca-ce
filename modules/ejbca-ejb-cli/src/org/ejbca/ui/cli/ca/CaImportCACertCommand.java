@@ -24,7 +24,8 @@ import java.util.Collection;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.CesecoreException;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAConstants;
@@ -51,7 +52,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaImportCACertCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaImportCACertCommand.class);
+    private static final Logger log = LogManager.getLogger(CaImportCACertCommand.class);
 
     private static final String CA_NAME_KEY = "--caname";
     private static final String FILE_KEY = "-f";

@@ -26,7 +26,8 @@ import java.security.cert.CertificateException;
 import java.util.Collection;
 import java.util.Enumeration;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAExistsException;
@@ -54,7 +55,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaImportCACommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaImportCACommand.class);
+    private static final Logger log = LogManager.getLogger(CaImportCACommand.class);
 
     private static final String CA_NAME_KEY = "--caname";
     private static final String HARD_SWITCH_KEY = "--hard";

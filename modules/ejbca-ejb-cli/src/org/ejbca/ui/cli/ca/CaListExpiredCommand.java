@@ -18,7 +18,8 @@ import java.security.cert.X509Certificate;
 import java.util.Collection;
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.CertificateStoreSessionRemote;
 import org.cesecore.util.CertTools;
 import org.cesecore.util.CryptoProviderTools;
@@ -40,7 +41,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaListExpiredCommand extends EjbcaCommandBase {
 
-    private static final Logger log = Logger.getLogger(CaListExpiredCommand.class);
+    private static final Logger log = LogManager.getLogger(CaListExpiredCommand.class);
 
     private static final String DAYS_KEY = "-d";
 

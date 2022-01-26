@@ -13,7 +13,8 @@
 
 package org.ejbca.ui.cli;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.CryptoProviderTools;
 import org.cesecore.util.StringTools;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
@@ -31,7 +32,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class EncryptPwdCommand extends EjbcaCommandBase {
 
-    private static final Logger log = Logger.getLogger(EncryptPwdCommand.class);
+    private static final Logger log = LogManager.getLogger(EncryptPwdCommand.class);
 
     private static final String ENCRYPT_KEY = "--key";
 

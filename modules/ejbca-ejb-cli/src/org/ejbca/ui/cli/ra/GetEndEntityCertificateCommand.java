@@ -20,7 +20,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.certificate.CertificateDataWrapper;
 import org.cesecore.certificates.certificate.CertificateStoreSessionRemote;
 import org.cesecore.util.CertTools;
@@ -39,7 +40,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class GetEndEntityCertificateCommand extends BaseRaCommand {
     
-    private static final Logger log = Logger.getLogger(GetEndEntityCertificateCommand.class);
+    private static final Logger log = LogManager.getLogger(GetEndEntityCertificateCommand.class);
     
     private static final String COMMAND = "getendentitycert";
     private static final String OLD_COMMAND = "getusercert";

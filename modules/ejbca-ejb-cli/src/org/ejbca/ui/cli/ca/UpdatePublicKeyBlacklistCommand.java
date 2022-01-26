@@ -23,7 +23,8 @@ import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.keys.util.KeyTools;
 import org.cesecore.util.CryptoProviderTools;
@@ -46,7 +47,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  * @version $Id$
  */
 public class UpdatePublicKeyBlacklistCommand extends BaseCaAdminCommand {
-    private static final Logger log = Logger.getLogger(UpdatePublicKeyBlacklistCommand.class);
+    private static final Logger log = LogManager.getLogger(UpdatePublicKeyBlacklistCommand.class);
 
     public static final String COMMAND_KEY = "--command";
     public static final String KEY_GENERATION_SOURCES_KEY = "--sources";

@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.ui.cli.service;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.core.ejb.services.ServiceSessionRemote;
 import org.ejbca.core.model.services.ServiceConfiguration;
@@ -31,7 +32,7 @@ import org.ejbca.ui.cli.roles.ListRolesCommand;
  */
 public class ServiceEditCommand extends BaseServiceModificationCommand {
 
-    private static final Logger log = Logger.getLogger(ListRolesCommand.class);
+    private static final Logger log = LogManager.getLogger(ListRolesCommand.class);
 
     private static final String ARGS_KEY = "--properties";
 

@@ -15,7 +15,8 @@ package org.ejbca.ui.cli.service;
 import java.util.Collection;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.core.ejb.services.ServiceSessionRemote;
 import org.ejbca.core.model.services.ServiceConfiguration;
@@ -30,7 +31,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class ServiceListCommand extends EjbcaCliUserCommandBase {
 
-    private static final Logger log = Logger.getLogger(ServiceListCommand.class);
+    private static final Logger log = LogManager.getLogger(ServiceListCommand.class);
 
     @Override
     public String[] getCommandPath() {

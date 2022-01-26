@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.ui.cli.config.cmp;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.ejbca.config.CmpConfiguration;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
@@ -30,7 +31,7 @@ public class RemoveAliasCommand extends BaseCmpConfigCommand {
 
     private static final String ALIAS_KEY = "--alias";
 
-    private static final Logger log = Logger.getLogger(RemoveAliasCommand.class);
+    private static final Logger log = LogManager.getLogger(RemoveAliasCommand.class);
 
     {
         registerParameter(new Parameter(ALIAS_KEY, "Alias", MandatoryMode.MANDATORY, StandaloneMode.ALLOW, ParameterMode.ARGUMENT,

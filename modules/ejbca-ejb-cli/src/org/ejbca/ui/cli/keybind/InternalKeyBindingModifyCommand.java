@@ -23,7 +23,8 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -52,7 +53,7 @@ import org.ejbca.util.cert.OID;
  */
 public class InternalKeyBindingModifyCommand extends RudInternalKeyBindingCommand {
 
-    private static final Logger log = Logger.getLogger(InternalKeyBindingModifyCommand.class);
+    private static final Logger log = LogManager.getLogger(InternalKeyBindingModifyCommand.class);
 
     private static final String NEXTKEYPAIR_KEY = "--nextkeypair";
     private static final String ADDTRUST_KEY = "--addtrust";

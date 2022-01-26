@@ -17,7 +17,8 @@ import java.security.cert.Certificate;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.certificates.ca.CaSessionRemote;
@@ -34,7 +35,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class CaListCAsCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaListCAsCommand.class);
+    private static final Logger log = LogManager.getLogger(CaListCAsCommand.class);
 
     @Override
     public String getMainCommand() {

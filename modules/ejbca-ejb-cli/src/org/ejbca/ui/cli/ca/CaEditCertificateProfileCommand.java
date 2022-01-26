@@ -13,7 +13,8 @@
 
 package org.ejbca.ui.cli.ca;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.certificateprofile.CertificateProfile;
 import org.cesecore.certificates.certificateprofile.CertificateProfileSessionRemote;
@@ -35,7 +36,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaEditCertificateProfileCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaEditCertificateProfileCommand.class);
+    private static final Logger log = LogManager.getLogger(CaEditCertificateProfileCommand.class);
 
     private static final String CERTIFICATEPROFILE_NAME_KEY = "--cpname";
     private static final String FIELD_KEY = "--field";

@@ -14,7 +14,8 @@ package org.ejbca.ui.cli.config.oauth;
 
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
 import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
@@ -25,7 +26,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class ListOAuthProvidersCommand extends BaseOAuthConfigCommand {
     
-    private static final Logger log = Logger.getLogger(ListOAuthProvidersCommand.class);
+    private static final Logger log = LogManager.getLogger(ListOAuthProvidersCommand.class);
 
     @Override
     public String getMainCommand() {

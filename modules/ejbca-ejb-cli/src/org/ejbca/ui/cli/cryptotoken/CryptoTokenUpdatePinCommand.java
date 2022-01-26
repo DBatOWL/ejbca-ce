@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.ui.cli.cryptotoken;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.keys.token.CryptoTokenManagementSessionRemote;
 import org.cesecore.keys.token.CryptoTokenOfflineException;
@@ -31,7 +32,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CryptoTokenUpdatePinCommand extends BaseCryptoTokenCommand {
 
-    private static final Logger log = Logger.getLogger(CryptoTokenUpdatePinCommand.class);
+    private static final Logger log = LogManager.getLogger(CryptoTokenUpdatePinCommand.class);
 
     private static final String SWITCH_UPDATE_ONLY_KEY = "--update";
     private static final String SWITCH_REMOVE_AUTO_KEY = "--remove";

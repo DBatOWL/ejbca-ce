@@ -26,7 +26,8 @@ import java.util.Date;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Enumerated;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1OctetString;
@@ -76,7 +77,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaImportCRLCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaImportCRLCommand.class);
+    private static final Logger log = LogManager.getLogger(CaImportCRLCommand.class);
 
     public static final String MISSING_USERNAME_PREFIX = "*** Missing During CRL Import to: ";
 

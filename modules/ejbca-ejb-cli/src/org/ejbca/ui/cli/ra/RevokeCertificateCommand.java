@@ -15,7 +15,8 @@ package org.ejbca.ui.cli.ra;
 
 import java.math.BigInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.certificate.CertificateDataWrapper;
 import org.cesecore.certificates.certificate.CertificateStoreSessionRemote;
@@ -40,7 +41,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class RevokeCertificateCommand extends BaseRaCommand {
 
-    private static final Logger log = Logger.getLogger(RevokeCertificateCommand.class);
+    private static final Logger log = LogManager.getLogger(RevokeCertificateCommand.class);
 
     private static final String SERIAL_NUMBER_KEY = "-s";
     private static final String DN_KEY = "--dn";

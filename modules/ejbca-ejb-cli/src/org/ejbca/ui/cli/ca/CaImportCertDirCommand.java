@@ -26,7 +26,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.certificates.certificate.CertificateConstants;
 import org.cesecore.certificates.certificateprofile.CertificateProfileConstants;
@@ -51,7 +52,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaImportCertDirCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaImportCertDirCommand.class);
+    private static final Logger log = LogManager.getLogger(CaImportCertDirCommand.class);
 
     public static final String DATE_FORMAT = "yyyy.MM.dd-HH:mm";
 

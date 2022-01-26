@@ -15,7 +15,8 @@ package org.ejbca.ui.cli.config.est;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
 import org.ejbca.ui.cli.infrastructure.parameter.Parameter;
 import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
@@ -31,7 +32,7 @@ public class DumpAliasCommand extends BaseEstConfigCommand {
 
     private static final String ALIAS_KEY = "--alias";
 
-    private static final Logger log = Logger.getLogger(DumpAliasCommand.class);
+    private static final Logger log = LogManager.getLogger(DumpAliasCommand.class);
 
     {
         registerParameter(new Parameter(ALIAS_KEY, "Alias", MandatoryMode.MANDATORY, StandaloneMode.ALLOW, ParameterMode.ARGUMENT,

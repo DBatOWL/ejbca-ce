@@ -15,7 +15,8 @@ package org.ejbca.ui.cli.config.scep;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
 import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
 
@@ -25,7 +26,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class ListAliasCommand extends BaseScepConfigCommand {
 
-    private static final Logger log = Logger.getLogger(ListAliasCommand.class);
+    private static final Logger log = LogManager.getLogger(ListAliasCommand.class);
 
     @Override
     public String getMainCommand() {

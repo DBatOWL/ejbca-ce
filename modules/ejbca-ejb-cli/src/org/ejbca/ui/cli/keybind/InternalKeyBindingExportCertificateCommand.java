@@ -16,7 +16,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.security.cert.Certificate;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.openssl.jcajce.JcaPEMWriter;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.certificate.CertificateStoreSessionRemote;
@@ -39,7 +40,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class InternalKeyBindingExportCertificateCommand extends RudInternalKeyBindingCommand {
 
-    private static final Logger log = Logger.getLogger(InternalKeyBindingExportCertificateCommand.class);
+    private static final Logger log = LogManager.getLogger(InternalKeyBindingExportCertificateCommand.class);
 
     private static final String PEM_FILE_KEY = "-f";
 

@@ -25,7 +25,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.certificates.ca.CaSessionRemote;
@@ -43,7 +44,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.ParameterMode;
 import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
 
 public class GetAdminTruststoreCommand extends BaseCaAdminCommand {
-    private static final Logger log = Logger.getLogger(GetAdminTruststoreCommand.class);
+    private static final Logger log = LogManager.getLogger(GetAdminTruststoreCommand.class);
 
     private static final String FORMAT_KEY = "--format";
     private static final String TRUSTSTORE_KEY = "--truststore";

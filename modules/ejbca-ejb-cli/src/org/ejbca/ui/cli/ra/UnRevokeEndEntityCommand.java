@@ -20,7 +20,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.certificate.CertificateConstants;
 import org.cesecore.certificates.certificate.CertificateDataWrapper;
@@ -51,7 +52,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class UnRevokeEndEntityCommand extends BaseRaCommand {
 
-    private static final Logger log = Logger.getLogger(UnRevokeEndEntityCommand.class);
+    private static final Logger log = LogManager.getLogger(UnRevokeEndEntityCommand.class);
 
     private static final String COMMAND = "unrevokeendentity";
     private static final String OLD_COMMAND = "unrevokeuser";

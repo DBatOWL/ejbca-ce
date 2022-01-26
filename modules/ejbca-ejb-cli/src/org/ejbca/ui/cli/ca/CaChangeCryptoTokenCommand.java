@@ -18,7 +18,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CADoesntExistsException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -45,7 +46,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaChangeCryptoTokenCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaChangeCryptoTokenCommand.class);
+    private static final Logger log = LogManager.getLogger(CaChangeCryptoTokenCommand.class);
     private static final String CA_NAME_KEY = "--caname";
     private static final String CRYPTOTOKEN_NAME_KEY = "--cryptotoken";
     private static final String EXECUTE_KEY = "--execute";

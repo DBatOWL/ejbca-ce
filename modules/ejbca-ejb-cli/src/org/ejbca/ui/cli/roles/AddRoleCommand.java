@@ -13,7 +13,8 @@
 
 package org.ejbca.ui.cli.roles;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.roles.Role;
 import org.cesecore.roles.RoleExistsException;
@@ -32,7 +33,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class AddRoleCommand extends BaseRolesCommand {
 
-    private static final Logger log = Logger.getLogger(AddRoleCommand.class);
+    private static final Logger log = LogManager.getLogger(AddRoleCommand.class);
 
     private static final String NAME_KEY = "--role";
     

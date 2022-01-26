@@ -25,7 +25,8 @@ import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
 import org.bouncycastle.asn1.ASN1OutputStream;
 import org.bouncycastle.asn1.DERSet;
@@ -58,7 +59,7 @@ import org.ejbca.ui.cli.infrastructure.command.EjbcaCliUserCommandBase;
  */
 public abstract class BaseCaAdminCommand extends EjbcaCliUserCommandBase {
 
-    private static final Logger log = Logger.getLogger(BaseCaAdminCommand.class);
+    private static final Logger log = LogManager.getLogger(BaseCaAdminCommand.class);
 
     protected static final String MAINCOMMAND = "ca";
 

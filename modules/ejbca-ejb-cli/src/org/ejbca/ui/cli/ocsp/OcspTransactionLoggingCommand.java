@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.ui.cli.ocsp;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.config.GlobalOcspConfiguration;
 import org.cesecore.configuration.GlobalConfigurationSessionRemote;
@@ -29,7 +30,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  * Implements the CLI command <code>./ejbca.sh ocsp transactionlogging</code>.
  */
 public class OcspTransactionLoggingCommand extends EjbcaCliUserCommandBase {
-    private static final Logger log = Logger.getLogger(OcspTransactionLoggingCommand.class);
+    private static final Logger log = LogManager.getLogger(OcspTransactionLoggingCommand.class);
     private static final String ENABLE_KEY = "--enable";
     private static final String LOG_PATTERN_KEY = "--log-pattern";
     private static final String LOG_VALUES_KEY = "--log-values";

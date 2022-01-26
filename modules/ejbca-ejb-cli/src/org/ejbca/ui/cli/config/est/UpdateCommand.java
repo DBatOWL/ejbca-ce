@@ -17,7 +17,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CaSessionRemote;
 import org.cesecore.certificates.certificate.CertificateConstants;
@@ -45,7 +46,7 @@ public class UpdateCommand extends BaseEstConfigCommand {
     private static final String KEY_KEY = "--key"; //Hue hue hue
     private static final String VALUE_KEY = "--value";
 
-    private static final Logger log = Logger.getLogger(UpdateCommand.class);
+    private static final Logger log = LogManager.getLogger(UpdateCommand.class);
 
     {
         registerParameter(new Parameter(ALIAS_KEY, "Alias", MandatoryMode.MANDATORY, StandaloneMode.ALLOW, ParameterMode.ARGUMENT,

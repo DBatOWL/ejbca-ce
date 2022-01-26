@@ -14,7 +14,8 @@
 package org.ejbca.ui.cli.roles;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationTokenMetaData;
 import org.cesecore.authentication.tokens.X509CertificateAuthenticationTokenMetaData;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -41,7 +42,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class RemoveAdminCommand extends BaseRolesCommand {
 
-    private static final Logger log = Logger.getLogger(RemoveAdminCommand.class);
+    private static final Logger log = LogManager.getLogger(RemoveAdminCommand.class);
 
     private static final String ROLE_NAME_KEY = "--role";
     private static final String CA_NAME_KEY = "--caname";

@@ -16,7 +16,8 @@ import java.util.Map.Entry;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.core.ejb.services.ServiceSessionRemote;
 import org.ejbca.core.model.services.ServiceConfiguration;
@@ -30,7 +31,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class ServiceInfoCommand extends BaseServiceCommand {
 
-    private static final Logger log = Logger.getLogger(ServiceInfoCommand.class);
+    private static final Logger log = LogManager.getLogger(ServiceInfoCommand.class);
 
     @Override
     public String getMainCommand() {

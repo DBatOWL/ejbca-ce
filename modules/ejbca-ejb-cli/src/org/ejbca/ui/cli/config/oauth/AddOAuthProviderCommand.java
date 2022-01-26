@@ -14,7 +14,8 @@ package org.ejbca.ui.cli.config.oauth;
 
 import java.util.Optional;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.oauth.OAuthProviderCliHelper;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.cesecore.authentication.oauth.OAuthKeyInfo.OAuthProviderType;
@@ -31,7 +32,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class AddOAuthProviderCommand extends BaseOAuthConfigCommand {
 
-    private static final Logger log = Logger.getLogger(AddOAuthProviderCommand.class);
+    private static final Logger log = LogManager.getLogger(AddOAuthProviderCommand.class);
 
     private static final String TYPE = "--type";
     private static final String SKEW_LIMIT = "--skewlimit";

@@ -18,7 +18,8 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.authorization.rules.AccessRuleState;
 import org.cesecore.roles.AccessRulesHelper;
@@ -38,7 +39,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class ChangeRuleCommand extends BaseRolesCommand {
 
-    private static final Logger log = Logger.getLogger(ChangeRuleCommand.class);
+    private static final Logger log = LogManager.getLogger(ChangeRuleCommand.class);
 
     private static final String NAME_KEY = "--name";
     private static final String RULE_KEY = "--rule";

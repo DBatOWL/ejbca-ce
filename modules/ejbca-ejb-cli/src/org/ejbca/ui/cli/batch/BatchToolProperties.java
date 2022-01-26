@@ -17,7 +17,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.ejbca.core.model.InternalEjbcaResources;
 
 /**
@@ -33,7 +34,7 @@ public class BatchToolProperties {
 
 
 	Properties batchToolProperties = new Properties();
-	private static final Logger log = Logger.getLogger(BatchToolProperties.class);
+	private static final Logger log = LogManager.getLogger(BatchToolProperties.class);
 
 	private Logger logger;
 	

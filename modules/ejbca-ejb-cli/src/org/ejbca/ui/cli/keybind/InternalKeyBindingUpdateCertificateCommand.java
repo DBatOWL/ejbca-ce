@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.ui.cli.keybind;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.certificate.CertificateInfo;
 import org.cesecore.certificates.certificate.CertificateStoreSessionRemote;
@@ -30,7 +31,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class InternalKeyBindingUpdateCertificateCommand extends RudInternalKeyBindingCommand {
 
-    private static final Logger log = Logger.getLogger(InternalKeyBindingUpdateCertificateCommand.class);
+    private static final Logger log = LogManager.getLogger(InternalKeyBindingUpdateCertificateCommand.class);
 
     @Override
     public String getMainCommand() {

@@ -15,7 +15,8 @@ package org.ejbca.ui.cli.ca;
 
 import javax.security.auth.login.FailedLoginException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAConstants;
 import org.cesecore.certificates.ca.CADoesntExistsException;
@@ -43,7 +44,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class CaActivateCACommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(CaActivateCACommand.class);
+    private static final Logger log = LogManager.getLogger(CaActivateCACommand.class);
     
     private static final String CA_NAME_KEY = "--caname";
     private static final String AUTHORIZATION_CODE_KEY = "--code";

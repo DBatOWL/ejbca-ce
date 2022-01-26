@@ -12,7 +12,8 @@
  *************************************************************************/
 package org.ejbca.core.protocol.ws;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
@@ -88,7 +89,7 @@ import java.util.List;
  */
 public abstract class BatchCreateTool {
 
-    private static final Logger log = Logger.getLogger(BatchCreateTool.class);
+    private static final Logger log = LogManager.getLogger(BatchCreateTool.class);
     private static final BatchToolProperties props = new BatchToolProperties(log);
     private static final GlobalConfigurationSessionRemote globalConfigurationSession = EjbRemoteHelper.INSTANCE.getRemoteSession(GlobalConfigurationSessionRemote.class);
     private static final GlobalConfiguration globalConfiguration = (GlobalConfiguration) globalConfigurationSession.getCachedConfiguration(GlobalConfiguration.GLOBAL_CONFIGURATION_ID);

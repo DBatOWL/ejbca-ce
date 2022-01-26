@@ -13,7 +13,8 @@
 
 package org.ejbca.ui.cli.ca;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAInfo;
 import org.cesecore.certificates.ca.CaMsCompatibilityIrreversibleException;
@@ -41,7 +42,7 @@ public class CaChangeCATokenSignAlgCommand extends BaseCaAdminCommand {
     private static final String CA_NAME_KEY = "--caname";
     private static final String SIGALG_KEY = "--sigalg";
 
-    private static final Logger log = Logger.getLogger(CaChangeCATokenSignAlgCommand.class);
+    private static final Logger log = LogManager.getLogger(CaChangeCATokenSignAlgCommand.class);
 
     {
         parameterHandler.registerParameter(new Parameter(CA_NAME_KEY, "CA Name", MandatoryMode.MANDATORY, StandaloneMode.ALLOW,

@@ -16,7 +16,8 @@ package org.ejbca.ui.cli;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.EjbRemoteHelper;
 import org.ejbca.core.ejb.upgrade.UpgradeSessionRemote;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
@@ -30,7 +31,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.ParameterContainer;
  */
 public class UpgradeCommand extends EjbcaCommandBase {
 
-    private static final Logger log = Logger.getLogger(UpgradeCommand.class);
+    private static final Logger log = LogManager.getLogger(UpgradeCommand.class);
 
 
     @Override

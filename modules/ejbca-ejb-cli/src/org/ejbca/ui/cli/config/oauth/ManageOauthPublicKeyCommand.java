@@ -18,7 +18,8 @@ import com.nimbusds.jose.jwk.JWKSet;
 import java.security.cert.CertificateParsingException;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.cesecore.keys.util.KeyTools;
 import org.cesecore.authentication.oauth.OAuthPublicKey;
@@ -42,7 +43,7 @@ import java.text.ParseException;
  *
  */
 public class ManageOauthPublicKeyCommand extends BaseOAuthConfigCommand{
-    private static final Logger log = Logger.getLogger(ManageOauthPublicKeyCommand.class);
+    private static final Logger log = LogManager.getLogger(ManageOauthPublicKeyCommand.class);
 
     private static final String LABEL = "--label";
     private static final String ACTION = "--action";

@@ -12,7 +12,7 @@
  *************************************************************************/
 package org.ejbca.ui.cli.cryptotoken;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 import org.cesecore.authentication.tokens.AuthenticationToken;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.keys.token.CryptoTokenManagementSessionRemote;

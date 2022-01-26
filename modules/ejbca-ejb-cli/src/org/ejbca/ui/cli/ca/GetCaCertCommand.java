@@ -23,7 +23,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.util.CertTools;
 import org.cesecore.util.CryptoProviderTools;
 import org.ejbca.ui.cli.infrastructure.command.CommandResult;
@@ -40,7 +41,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class GetCaCertCommand extends BaseCaAdminCommand {
 
-    private static final Logger log = Logger.getLogger(GetCaCertCommand.class);
+    private static final Logger log = LogManager.getLogger(GetCaCertCommand.class);
 
     private static final String CA_NAME_KEY = "--caname";
     private static final String FILE_KEY = "-f";

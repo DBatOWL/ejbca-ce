@@ -20,7 +20,8 @@ import java.util.Optional;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.ObjectUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.oauth.OAuthKeyInfo;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.config.OAuthConfiguration;
@@ -35,7 +36,7 @@ import org.ejbca.ui.cli.config.ConfigBaseCommand;
  */
 public abstract class BaseOAuthConfigCommand extends ConfigBaseCommand {
     
-    private static final Logger log = Logger.getLogger(BaseOAuthConfigCommand.class);
+    private static final Logger log = LogManager.getLogger(BaseOAuthConfigCommand.class);
 
     private OAuthConfiguration oAuthConfiguration = null;
 

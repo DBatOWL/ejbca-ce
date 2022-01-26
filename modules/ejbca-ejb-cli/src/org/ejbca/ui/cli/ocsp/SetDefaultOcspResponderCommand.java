@@ -18,7 +18,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAConstants;
 import org.cesecore.certificates.ca.CAInfo;
@@ -48,7 +49,7 @@ import org.ejbca.ui.cli.infrastructure.parameter.enums.StandaloneMode;
  */
 public class SetDefaultOcspResponderCommand extends EjbcaCliUserCommandBase {
 
-    private static final Logger log = Logger.getLogger(SetDefaultOcspResponderCommand.class);
+    private static final Logger log = LogManager.getLogger(SetDefaultOcspResponderCommand.class);
 
     private static final String DN_KEY = "--dn";
 
