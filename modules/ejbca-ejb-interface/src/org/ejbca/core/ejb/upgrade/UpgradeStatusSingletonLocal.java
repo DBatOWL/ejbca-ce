@@ -17,7 +17,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import org.apache.logging.log4j.core.LogEvent;
-import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Local interface for UpgradeStatusSingletonBean.

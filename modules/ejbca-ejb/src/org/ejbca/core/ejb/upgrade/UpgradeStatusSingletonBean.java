@@ -22,7 +22,7 @@ import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 
 import org.apache.logging.log4j.core.LogEvent;
-import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Singleton responsible for keep track of a node-local post upgrade.
@@ -61,12 +61,12 @@ public class UpgradeStatusSingletonBean implements UpgradeStatusSingletonLocal {
     @Override
     public void logAppenderAttach(final Logger log) {
         appender.start();
-        log.addAppender(appender);
+        ((org.apache.logging.log4j.core.Logger) log).addAppender(appender);
     }
 
     @Override
     public void logAppenderDetach(final Logger log) {
         appender.stop();
-        log.removeAppender(appender);
+        ((org.apache.logging.log4j.core.Logger) log).removeAppender(appender);
     }
 }
