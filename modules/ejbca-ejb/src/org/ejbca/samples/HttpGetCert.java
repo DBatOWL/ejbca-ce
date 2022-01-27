@@ -23,7 +23,6 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.security.KeyPair;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.bouncycastle.asn1.ASN1Encoding;
@@ -253,7 +252,7 @@ public class HttpGetCert {
      */
     public static void main(String[] args) throws Exception {
         //Configure Log4j
-        BasicConfigurator.configure();
+        // BasicConfigurator.configure();
 
         // Install BouncyCastle provider
         CryptoProviderTools.installBCProvider();
