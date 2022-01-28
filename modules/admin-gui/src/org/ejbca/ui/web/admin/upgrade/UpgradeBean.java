@@ -38,6 +38,7 @@ import org.ejbca.ui.web.admin.BaseManagedBean;
  */
 @ViewScoped // Local variables will live as long as actions on the backed page return "" or void.
 @ManagedBean
+// EJBCAINTER-323 Fix LoggingEvent.getLevel() NPE etc. because of NOOP implementation!
 public class UpgradeBean extends BaseManagedBean implements Serializable {
 
 	/** Wrapper of Log4J LoggingEvents for use in the GUI */

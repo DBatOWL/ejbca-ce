@@ -66,5 +66,5 @@ sleep 10
 wait_for_deployment
 
 echo '=================== starting system tests ================================='
-ant test:runsys -Dtests.jvmargs="$TEST_OPTS"
+ant test:runsys -Dlog4j1.compatibility=true -Dtests.jvmargs="$TEST_OPTS"
 

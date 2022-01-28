@@ -14,7 +14,7 @@
 package org.cesecore.util.log;
 
 /**
- * Interface implemented by the client of the SaferDailyRollingFileAppender.
+ * Interface implemented by the client of the OcspResponseGeneratorSessionBean.
  * 
  * Since the appender is used from JBoss we can't just throw an Exception and
  * need this to communicate errors.

@@ -50,8 +50,6 @@ import static org.junit.Assert.assertTrue;
  * Unit tests for the CaImportProfilesCommand class.
  * <br/>
  * Check resources-test/readme.txt for files definition.
- *
- * @version $Id$
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({JndiHelper.class})
