@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.cesecore.authentication.tokens.AuthenticationSubject;
 import org.cesecore.authorization.AuthorizationDeniedException;
 import org.cesecore.certificates.ca.CAInfo;
@@ -57,7 +57,7 @@ import static org.junit.Assert.assertTrue;
 public class CaImportProfilesCommandUnitTest {
 
     @Rule
-    public TestLogAppenderResource testLog = new TestLogAppenderResource(Logger.getLogger(CaImportProfilesCommand.class));
+    public TestLogAppenderResource testLog = new TestLogAppenderResource(LogManager.getLogger(CaImportProfilesCommand.class));
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 

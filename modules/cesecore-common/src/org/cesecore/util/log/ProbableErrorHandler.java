@@ -84,7 +84,8 @@ public class ProbableErrorHandler implements ErrorHandler {
     }
 
     /** No options to activate. */
-    @Override
+    // EJBCAINTER-323 Removed.
+//    @Override
     public void activateOptions() {
     }
     

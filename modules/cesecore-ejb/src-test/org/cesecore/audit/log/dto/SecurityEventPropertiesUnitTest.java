@@ -12,28 +12,29 @@
  *************************************************************************/
 package org.cesecore.audit.log.dto;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-
-import org.apache.log4j.Logger;
-import org.cesecore.util.TestLogAppenderResource;
-import org.junit.Rule;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+
+import org.apache.logging.log4j.LogManager;
+import org.cesecore.util.TestLogAppenderResource;
+import org.junit.Rule;
+import org.junit.Test;
+
 /**
  * Unit test for SecurityEventProperties.
- *
- * @version $Id$
  */
 public class SecurityEventPropertiesUnitTest {
-
+    
+    // EJBCAINTER-323 Formatting.
+    private static final String prefix = "[main] WARN  org.cesecore.audit.log.dto.SecurityEventProperties  - ";
+    
     @Rule
-    public TestLogAppenderResource testLog = new TestLogAppenderResource(Logger.getLogger(SecurityEventProperties.class));
+    public TestLogAppenderResource testLog = new TestLogAppenderResource(LogManager.getLogger(SecurityEventProperties.class));
 
     @Test
     public void shouldMapCertSignKey() {
