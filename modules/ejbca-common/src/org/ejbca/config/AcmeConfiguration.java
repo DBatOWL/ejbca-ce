@@ -155,8 +155,8 @@ public class AcmeConfiguration extends UpgradeableDataHashMap implements Seriali
             }
             // v2. ACME external account binding implementation.
             try {
-                if (getExternalAccountBinding() == null) {
-                    setExternalAccountBinding(AcmeExternalAccountBindingFactory.INSTANCE.getDefaultImplementation());
+                if (getExternalAccountBinding() == null || getExternalAccountBinding().isEmpty()) {
+                    setExternalAccountBinding(Collections.singletonList(AcmeExternalAccountBindingFactory.INSTANCE.getDefaultImplementation()));
                 }
             } catch (AccountBindingException e) {
                 log.error("Could not upgrade ACME configuration with default ACME EAB implementation: " + e.getMessage());
@@ -275,19 +275,34 @@ public class AcmeConfiguration extends UpgradeableDataHashMap implements Seriali
     }
 
     @SuppressWarnings("unchecked")
-    public AcmeExternalAccountBinding getExternalAccountBinding() throws AccountBindingException {
-        if (data.get(KEY_EXTERNAL_ACCOUNT_BINDING) instanceof LinkedHashMap) {
-            final LinkedHashMap<Object,Object> eabData = (LinkedHashMap<Object,Object>) data.get(KEY_EXTERNAL_ACCOUNT_BINDING);
-            final AcmeExternalAccountBinding eab = AcmeExternalAccountBindingFactory.INSTANCE.getArcheType((String) eabData.get("typeIdentifier"));
-            eab.setDataMap(eabData);
-            return eab;
+    public List<AcmeExternalAccountBinding> getExternalAccountBinding() throws AccountBindingException {
+        final List<AcmeExternalAccountBinding> result = new ArrayList<>();
+        
+        if (data.get(KEY_EXTERNAL_ACCOUNT_BINDING) instanceof List) {
+            for (Object o : (List<?>) data.get(KEY_EXTERNAL_ACCOUNT_BINDING)) {
+                if (o instanceof LinkedHashMap) {
+                    final LinkedHashMap<Object,Object> eabData = (LinkedHashMap<Object,Object>) o;
+                    final AcmeExternalAccountBinding eab = AcmeExternalAccountBindingFactory.INSTANCE.getArcheType((String) eabData.get("typeIdentifier"));
+                    eab.setDataMap(eabData);
+                    result.add(eab);
+                } else {
+                    log.error("Failed to read ACME EAB data. Invalid data type '" + o + "'.");
+                    throw new AccountBindingException("Failed to read ACME EAB data. Invalid data type.");
+                }
+            }
         }
-        return null;
+        
+        return result;
     }
 
-    public void setExternalAccountBinding(final AcmeExternalAccountBinding eab) {
-        if (eab != null) {
-            data.put(KEY_EXTERNAL_ACCOUNT_BINDING, eab.clone().getDataMap());
+    public void setExternalAccountBinding(final List<AcmeExternalAccountBinding> eabs) {
+        if (eabs != null) {
+            final List<LinkedHashMap<Object,Object>> clones = new ArrayList<>();
+            for (AcmeExternalAccountBinding eab : eabs) {
+                final LinkedHashMap<Object,Object> clone = eab.clone().getDataMap();
+                clones.add(clone);
+            }
+            data.put(KEY_EXTERNAL_ACCOUNT_BINDING, clones);
         }
     }
 
@@ -512,7 +527,7 @@ public class AcmeConfiguration extends UpgradeableDataHashMap implements Seriali
         setEndEntityProfileId(DEFAULT_END_ENTITY_PROFILE_ID);
         setRequireExternalAccountBinding(DEFAULT_REQUIRE_EXTERNAL_ACCOUNT_BINDING);
         try {
-            setExternalAccountBinding(AcmeExternalAccountBindingFactory.INSTANCE.getDefaultImplementation());
+            setExternalAccountBinding(Collections.singletonList(AcmeExternalAccountBindingFactory.INSTANCE.getDefaultImplementation()));
         } catch (AccountBindingException e) {
             // NOOP
         }
