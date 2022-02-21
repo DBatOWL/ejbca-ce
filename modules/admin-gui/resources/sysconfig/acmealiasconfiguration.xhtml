@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 <ui:remove>
 	<!--
     /*************************************************************************
@@ -32,7 +33,7 @@
                 <h:panelGrid columns="2" columnClasses="fixEditColumn1,fixEditColumn2">
                     <h:outputLink value="acmeconfiguration.xhtml"><h:outputText value="#{web.text.ACME_ALIAS_NAV_BACK}"/></h:outputLink>
                     <h:commandButton  actionListener="#{acmeConfigMBean.toggleCurrentAliasEditMode}" value="#{web.text.CRYPTOTOKEN_NAV_EDIT}" 
-                    	rendered="#{!acmeConfigMBean.currentAliasEditMode and acmeConfigMBean.allowedToEdit}"/>
+                    	rendered="#{!acmeConfigMBean.currentAliasEditMode and acmeConfigMBean.allowedToEdit}" immediate="true"/>
                     	
                     <h:panelGroup id="placeholder1" />
                     <h:panelGroup id="placeholder2" rendered="#{!acmeConfigMBean.currentAliasEditMode and acmeConfigMBean.allowedToEdit}"/>
@@ -362,12 +363,24 @@
 						disabled="#{!acmeConfigMBean.currentAliasEditMode}">
 						<f:ajax listener="#{acmeConfigMBean.eabTypeChanged}" render="@all"/>
 						<f:selectItems value="#{acmeConfigMBean.availableEabs}" />
-					</h:selectOneMenu>	                    
+					</h:selectOneMenu>
+					
+					<h:outputLabel for="addEab" value="#{web.text.ACME_ADD_REMOVE_EAB}" rendered="#{acmeConfigMBean.currentAliasEditMode and acmeConfigMBean.currentAlias.requireExternalAccountBinding}" styleClass="titles"/>
+					<h:panelGroup rendered="#{acmeConfigMBean.currentAliasEditMode and acmeConfigMBean.currentAlias.requireExternalAccountBinding}">
+						<h:commandButton action="#{acmeConfigMBean.addEab}" value="#{web.text.ACME_ADD_EAB}" rendered="#{acmeConfigMBean.currentAliasEditMode and acmeConfigMBean.currentAlias.requireExternalAccountBinding}" style="margin-right:3px;" immediate="true"/>					
+						<h:commandButton action="#{acmeConfigMBean.removeEab}" value="#{web.text.ACME_REMOVE_EAB}" rendered="#{acmeConfigMBean.currentAliasEditMode and acmeConfigMBean.currentAlias.requireExternalAccountBinding}" style="margin-right:3px;" immediate="true"/>
+					</h:panelGroup>
+						                    
                 </h:panelGrid>
-                <h:panelGrid binding="#{acmeConfigMBean.dataGrid}" columnClasses="fixEditColumn1,fixEditColumn2"
-                	rendered="#{acmeConfigMBean.currentAlias.requireExternalAccountBinding}" 
-                	disabled="#{!acmeConfigMBean.currentAliasEditMode}">
-				</h:panelGrid>
+                
+                <c:forEach items="#{acmeConfigMBean.dataGrid}" var="grid">
+                    <hr/>
+	                <h:panelGrid binding="#{grid}" columnClasses="fixEditColumn1,fixEditColumn2"
+	                	rendered="#{acmeConfigMBean.currentAlias.requireExternalAccountBinding}" 
+	                	disabled="#{!acmeConfigMBean.currentAliasEditMode}">
+					</h:panelGrid>
+				</c:forEach>
+                
                 <h:panelGrid columns="1">
                 <h:panelGroup>
                         <h:commandButton action="#{acmeConfigMBean.cancelCurrentAlias}" value="#{web.text.CANCEL}" rendered="#{acmeConfigMBean.currentAliasEditMode}" style="margin-right:3px;" immediate="true"/>
