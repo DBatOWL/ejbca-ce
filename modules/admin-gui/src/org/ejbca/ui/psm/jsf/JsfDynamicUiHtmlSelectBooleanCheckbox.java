@@ -46,6 +46,11 @@ public class JsfDynamicUiHtmlSelectBooleanCheckbox extends HtmlSelectBooleanChec
     void setDynamicUiProperty(final DynamicUiProperty<?> property) {
         this.dynamicUiProperty = property;
         this.dynamicUiProperty.addDynamicUiComponent(this);
+        // ECA-10561 Fix.Does not seem to be effective.
+        if (property.getValue() instanceof Boolean) {
+            setSelected((Boolean) property.getValue());
+            setValue((Boolean) property.getValue());
+        }
     }
     
     @Override
