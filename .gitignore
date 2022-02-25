@@ -4,6 +4,7 @@ dist/
 build*/
 tmp/
 conf/*.properties
+!conf/ocsp.properties
 velocity.log
 src/java/jndi.properties
 validationtool.log
